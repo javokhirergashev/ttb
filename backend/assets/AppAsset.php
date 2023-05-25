@@ -10,11 +10,27 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $baseUrl = '@web/backend-files';
     public $css = [
-        'css/site.css',
+        "img/favicon.png",
+        "https://fonts.googleapis.com/icon?family=Material+Icons",
+        "css/bootstrap.min.css",
+        "plugins/fontawesome/css/fontawesome.min.css",
+        "plugins/fontawesome/css/all.min.css",
+        "css/select2.min.css",
+        "css/bootstrap-datetimepicker.min.css",
+        "plugins/feather/feather.css",
+        "css/style.css",
     ];
     public $js = [
+        "cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "js/bootstrap.bundle.min.js",
+        "js/feather.min.js",
+        "js/jquery.slimscroll.js",
+//        "js/select2.min.js",
+        "plugins/moment/moment.min.js",
+        "js/bootstrap-datetimepicker.min.js",
+        "js/app.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',

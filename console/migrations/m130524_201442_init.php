@@ -1,5 +1,6 @@
 <?php
 
+use common\models\User;
 use yii\db\Migration;
 
 class m130524_201442_init extends Migration
@@ -14,16 +15,32 @@ class m130524_201442_init extends Migration
 
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
-            'username' => $this->string()->notNull()->unique(),
+            'phone_number' => $this->string()->notNull(),
+            'first_name' => $this->string(255),
+            'last_name' => $this->string(255),
+            'email' => $this->string(255),
+            'username' => $this->string(255),
+            'type' => $this->integer(),
+            'role' => $this->integer(),
             'auth_key' => $this->string(32)->notNull(),
-            'password_hash' => $this->string()->notNull(),
-            'password_reset_token' => $this->string()->unique(),
-            'email' => $this->string()->notNull()->unique(),
-
-            'status' => $this->smallInteger()->notNull()->defaultValue(10),
+            'password_hash' => $this->string(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
+            'deleted_at' => $this->integer(),
+            'avatar_id' => $this->integer(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(User::STATUS_INACTIVE),
         ], $tableOptions);
+
+        $this->insert('{{%user}}', [
+            'phone_number' => '+998111234567',
+            'username' => 'admin@admin.loc',
+            'role' => \common\models\User::ROLE_ADMIN,
+            'auth_key' => Yii::$app->security->generateRandomString(),
+            'password_hash' => Yii::$app->security->generatePasswordHash('admin123'),
+            'created_at' => date('U'),
+            'updated_at' => date('U'),
+            'status' => \common\models\User::STATUS_ACTIVE
+        ]);
     }
 
     public function down()

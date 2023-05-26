@@ -9,23 +9,53 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="category-form">
+    <div class="row">
+        <?php $form = ActiveForm::begin(); ?>
+        <div class="col-md-12">
+            <div class="card-box">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Nomi</label>
+                                <div class="col-md-9">
+                                    <?= $form->field($model, 'title')->textarea(['rows' => 6])->label(false) ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Ikonkasi</label>
+                                <div class="col-md-9">
+                                    <?= $form->field($model, 'icon')->textInput(['maxlength' => true])->label(false) ?>
+                                </div>
+                            </div>
+                        </div>
 
-    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textarea(['rows' => 6]) ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Statusi</label>
+                                    <div class="col-md-9">
+                                        <?= $form->field($model, 'status')->textInput()->label(false) ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Kategoriya turi</label>
+                                    <div class="col-md-9">
+                                        <?= $form->field($model, 'type')->textInput()->label(false) ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+                        </div>
 
-    <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'parent_id')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'type')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-</div>
+                    </div>
+                </form>
+            </div>
+            <?php ActiveForm::end(); ?>
+        </div>

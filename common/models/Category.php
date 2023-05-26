@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -28,13 +29,24 @@ class Category extends \yii\db\ActiveRecord
         return 'category';
     }
 
+
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title'] // Bu yerga titl , description hammasini yozsa boladi
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title'], 'string'],
+            [['title'], 'safe'],
             [['parent_id', 'status', 'type'], 'default', 'value' => null],
             [['parent_id', 'status', 'type'], 'integer'],
             [['icon'], 'string', 'max' => 255],

@@ -44,7 +44,7 @@ use yii\widgets\ActiveForm;
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label">Ikonkasi</label>
+                                    <label class="col-md-3 col-form-label">Kategoriya turi</label>
                                     <div class="col-md-9">
                                         <?= $form->field($model, 'type')->textInput()->label(false) ?>
                                     </div>

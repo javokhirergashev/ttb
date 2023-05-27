@@ -4,10 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var common\models\Category $model */
+/** @var common\models\Banner $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
-
 <div class="category-form">
     <div class="row">
         <?php $form = ActiveForm::begin(); ?>
@@ -39,31 +38,53 @@ use yii\widgets\ActiveForm;
                                             <div class="tab-pane <?= $key != 0 ? ' ' : 'show active' ?>"
                                                  id="<?= $language ?>" role="tabpanel"
                                                  aria-labelledby="<?= $language ?>-tab">
-                                                <label class="col-form-label">Nomi</label>
+                                                <label class="col-form-label">Title</label>
                                                 <?= $form->field($model, 'title[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
+                                                <label class="col-form-label">Description</label>
+                                                <?= $form->field($model, 'description[' . $language . ']')->textarea(['maxlength' => true])->label(false) ?>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-form-label">Statusi</label>
                                     <div class="col-md-9">
                                         <?= $form->field($model, 'status')->dropDownList([
-                                            \common\models\Category::STATUS_ACTIVE => "Active",
-                                            \common\models\Category::STATUS_INACTIVE => "InActive",
+                                            \common\models\Banner::STATUS_ACTIVE => "Active",
+                                            \common\models\Banner::STATUS_INACTIVE => "InActive",
                                         ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-form-label">Kategoriya turi</label>
+                                    <label class="col-form-label">Joylashuv turi</label>
                                     <div class="col-md-9">
-                                        <?= $form->field($model, 'type')->textInput()->label(false) ?>
+                                        <?= $form->field($model, 'type')->dropDownList([
+                                            \common\models\Banner::TYPE_HOME => "Home page",
+                                            \common\models\Banner::TYPE_SERVICE => "Service page",
+                                        ], ['prompt' => "Joylashuvini tanlang"])->label(false) ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-form-label">Link</label>
+                                    <div class="col-md-9">
+                                        <?= $form->field($model, 'link')->textInput()->label(false) ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-form-label">Image</label>
+                                    <div class="col-md-9">
+                                        <?= $form->field($model, 'image')->fileInput()->label(false) ?>
                                     </div>
                                 </div>
                             </div>
@@ -76,5 +97,3 @@ use yii\widgets\ActiveForm;
             </div>
             <?php ActiveForm::end(); ?>
         </div>
-    </div>
-</div>

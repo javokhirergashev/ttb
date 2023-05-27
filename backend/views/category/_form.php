@@ -31,8 +31,6 @@ use yii\widgets\ActiveForm;
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -50,12 +48,14 @@ use yii\widgets\ActiveForm;
                                     </div>
                                 </div>
                             </div>
-                        <div class="form-group">
-                            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
-                        </div>
+                            <div class="form-group">
+                                <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+                            </div>
 
-                    </div>
+                        </div>
                 </form>
             </div>
             <?php ActiveForm::end(); ?>
         </div>
+    </div>
+</div>

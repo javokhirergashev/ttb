@@ -23,15 +23,15 @@ class ConvertBehaviors extends AttributeBehavior
     {
         foreach ($this->attributes as $attribute) {
 //            $temp = $this->owner->{$attribute};
-            $this->owner->title = json_encode($this->owner->title, JSON_UNESCAPED_SLASHES);
+            $this->owner->{$attribute} = json_encode($this->owner->{$attribute}, JSON_UNESCAPED_SLASHES);
         }
     }
 
     public function getData()
     {
         foreach ($this->attributes as $attribute) {
-            $temp = $this->owner->{$attribute};
-            $this->owner->{$attribute} = json_decode($temp, true);
+//            $temp = $this->owner->{$attribute};
+            $this->owner->{$attribute} = json_decode($this->owner->{$attribute}, true);
         }
 
     }

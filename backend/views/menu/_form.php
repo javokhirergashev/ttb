@@ -38,9 +38,9 @@ use yii\widgets\ActiveForm;
                                              id="<?= $language ?>" role="tabpanel"
                                              aria-labelledby="<?= $language ?>-tab">
                                             <div class="col-md-12">
-                                                <div class="form-group row">
+                                                <div class="form-group row" style="margin-bottom: 0px!important;">
                                                     <label class="col-form-label">Nomi</label>
-                                                    <div class="col-md-9" style="margin-right: 0px!important;">
+                                                    <div class="col-md-9" style="margin-right: 0px!important; margin-bottom: 0px!important;">
                                                         <?= $form->field($model, 'title[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
                                                     </div>
                                                 </div>
@@ -51,7 +51,7 @@ use yii\widgets\ActiveForm;
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row" style="padding-top: 20px!important;">
+                            <div class="form-group row" style="padding-top: 20px!important; margin-bottom: 0px!important;">
                                 <label class="col-form-label">Statusi</label>
                                 <div class="col-md-9">
                                     <?= $form->field($model, 'status')->textInput()->label(false) ?>

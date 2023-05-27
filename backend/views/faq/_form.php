@@ -34,28 +34,28 @@ use yii\widgets\ActiveForm;
                                 <div class="form-group row">
                                     <div class="tab-content" id="myTabContent">
                                         <?php foreach ($languages
-                                                       as $key => $language): ?>
-                                            <div class="tab-pane <?= $key != 0 ? ' ' : 'show active' ?>"
-                                                 id="<?= $language ?>" role="tabpanel"
-                                                 aria-labelledby="<?= $language ?>-tab">
-                                                <div class="col-md-12">
-                                                    <div class="form-group row">
-                                                        <label class="col-form-label">Nomi</label>
-                                                        <div class="col-md-9" style="margin-right: 0px!important;">
-                                                            <?= $form->field($model, 'title[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
-                                                        </div>
+                                        as $key => $language): ?>
+                                        <div class="tab-pane <?= $key != 0 ? ' ' : 'show active' ?>"
+                                             id="<?= $language ?>" role="tabpanel"
+                                             aria-labelledby="<?= $language ?>-tab">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <label class="col-form-label">Nomi</label>
+                                                    <div class="col-md-9" style="margin-right: 0px!important;">
+                                                        <?= $form->field($model, 'title[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-12">
-                                                            <label class="col-form-label">Javob</label>
-                                                            <div class="col-md-9" style="margin-right: 0px!important;">
-                                                                <?= $form->field($model, 'description[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
-                                                            </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <label class="col-form-label">Javob</label>
+                                                        <div class="col-md-9" style="margin-right: 0px!important;">
+                                                            <?= $form->field($model, 'description[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php endforeach; ?>
+                                        </div>
+                                <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

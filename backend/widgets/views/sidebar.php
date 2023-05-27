@@ -4,7 +4,9 @@
             <ul>
                 <li class="menu-title">Main</li>
                 <li class="submenu">
-                    <a href="#" class="active"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-01.svg" alt=""></span> <span> Dashboard </span> <span class="menu-arrow"></span></a>
+                    <a href="#" class="active"><span class="menu-side"><img
+                                    src="/backend-files/img/icons/menu-icon-01.svg" alt=""></span>
+                        <span> Dashboard </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="index.html">Admin Dashboard</a></li>
                         <li><a class="active" href="doctor-dashboard.html">Doctor Dashboard</a></li>
@@ -12,7 +14,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-02.svg" alt=""></span> <span> Doctors </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-02.svg"
+                                                             alt=""></span> <span> Doctors </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="doctors.html">Doctor List</a></li>
                         <li><a href="add-doctor.html">Add Doctor</a></li>
@@ -21,7 +25,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-03.svg" alt=""></span> <span>Patients </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-03.svg"
+                                                             alt=""></span> <span>Patients </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="patients.html">Patients List</a></li>
                         <li><a href="add-patient.html">Add Patients</a></li>
@@ -30,7 +36,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-08.svg" alt=""></span> <span> Staff </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-08.svg"
+                                                             alt=""></span> <span> Staff </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="staff-list.html">Staff List</a></li>
                         <li><a href="add-staff.html">Add Staff</a></li>
@@ -41,7 +49,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-04.svg" alt=""></span> <span> Appointments </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-04.svg"
+                                                             alt=""></span> <span> Appointments </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="appointments.html">Appointment List</a></li>
                         <li><a href="add-appointment.html">Book Appointment</a></li>
@@ -49,7 +59,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-05.svg" alt=""></span> <span> Doctor Schedule </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-05.svg"
+                                                             alt=""></span> <span> Doctor Schedule </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="schedule.html">Schedule List</a></li>
                         <li><a href="add-schedule.html">Add Schedule</a></li>
@@ -57,7 +69,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-06.svg" alt=""></span> <span> Departments </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-06.svg"
+                                                             alt=""></span> <span> Departments </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="departments.html">Department List</a></li>
                         <li><a href="add-department.html">Add Department</a></li>
@@ -65,7 +79,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-07.svg" alt=""></span> <span> Accounts </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-07.svg"
+                                                             alt=""></span> <span> Accounts </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="invoices.html">Invoices</a></li>
                         <li><a href="payments.html">Payments</a></li>
@@ -75,17 +91,22 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span> <span> Payroll </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-09.svg"
+                                                             alt=""></span> <span> Payroll </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="salary.html"> Employee Salary </a></li>
                         <li><a href="salary-view.html"> Payslip </a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="chat.html"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-10.svg" alt=""></span> <span>Chat</span></a>
+                    <a href="chat.html"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-10.svg"
+                                                                     alt=""></span> <span>Chat</span></a>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-11.svg" alt=""></span> <span> Calls</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-11.svg"
+                                                             alt=""></span> <span> Calls</span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="voice-call.html">Voice Call</a></li>
                         <li><a href="video-call.html">Video Call</a></li>
@@ -93,7 +114,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-12.svg" alt=""></span> <span> Email</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-12.svg"
+                                                             alt=""></span> <span> Email</span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="compose.html">Compose Mail</a></li>
                         <li><a href="inbox.html">Inbox</a></li>
@@ -101,7 +124,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span> <span> Blog</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-13.svg"
+                                                             alt=""></span> <span> Blog</span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="blog-details.html">Blog View</a></li>
@@ -113,7 +138,9 @@
                     <a href="assets.html"><i class="fa fa-cube"></i> <span>Assets</span></a>
                 </li>
                 <li>
-                    <a href="activities.html"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span> <span>Activities</span></a>
+                    <a href="activities.html"><span class="menu-side"><img
+                                    src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span>
+                        <span>Activities</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fa fa-flag"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
@@ -123,7 +150,9 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-15.svg" alt=""></span> <span> Invoice </span> <span class="menu-arrow"></span></a>
+                    <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg"
+                                                             alt=""></span> <span> Invoice </span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="invoices-list.html"> Invoices List </a></li>
                         <li><a href="invoices-grid.html"> Invoices Grid</a></li>
@@ -134,11 +163,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="settings.html"><span class="menu-side"><img  src="/backend-files/img/icons/menu-icon-16.svg" alt=""></span> <span>Settings</span></a>
+                    <a href="settings.html"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-16.svg"
+                                                                         alt=""></span> <span>Settings</span></a>
                 </li>
                 <li class="menu-title">UI Elements</li>
                 <li class="submenu">
-                    <a href="#"><i class="fa fa-laptop"></i> <span> Components</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fa fa-laptop"></i> <span> Components</span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="uikit.html">UI Kit</a></li>
                         <li><a href="typography.html">Typography</a></li>
@@ -181,14 +212,16 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="javascript:void(0);"><i class="fa fa-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+                    <a href="javascript:void(0);"><i class="fa fa-share-alt"></i> <span>Multi Level</span> <span
+                                class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li class="submenu">
                             <a href="javascript:void(0);"><span>Level 1</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
                                 <li class="submenu">
-                                    <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+                                    <a href="javascript:void(0);"> <span> Level 2</span> <span
+                                                class="menu-arrow"></span></a>
                                     <ul style="display: none;">
                                         <li><a href="javascript:void(0);">Level 3</a></li>
                                         <li><a href="javascript:void(0);">Level 3</a></li>
@@ -204,7 +237,8 @@
                 </li>
             </ul>
             <div class="logout-btn">
-                <a href="login.html"><span class="menu-side"><img   src="/backend-files/img/icons/logout.svg" alt=""></span> <span>Logout</span></a>
+                <a data-method="posts" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><span class="menu-side"><img
+                                src="/backend-files/img/icons/logout.svg" alt=""></span> <span>Logout</span></a>
             </div>
         </div>
     </div>

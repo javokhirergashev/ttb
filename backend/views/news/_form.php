@@ -6,6 +6,15 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\News $model */
 /** @var yii\widgets\ActiveForm $form */
+$this->registerJsFile("@web/backend-files/ckeditor/ckeditor.js");
+
+$js = <<<JS
+    CKEDITOR.replace( 'news-description-uz' );
+    CKEDITOR.replace( 'news-description-ru' );
+    CKEDITOR.replace( 'news-description-en' );
+JS;
+$this->registerJs($js);
+
 ?>
 <div class="news-form">
     <div class="row">
@@ -40,14 +49,14 @@ use yii\widgets\ActiveForm;
                                                  aria-labelledby="<?= $language ?>-tab">
                                                 <div class="col-md-12">
                                                     <div class="form-group row">
-                                                        <label class="col-form-label">Nomi</label>
+                                                        <label class="col-form-label">Sarlavhasi</label>
                                                         <div class="col-md-9" style="margin-right: 0px!important;">
-                                                            <?= $form->field($model, 'title[' . $language . ']')->textarea(['rows' => 7])->label(false) ?>
+                                                            <?= $form->field($model, 'title[' . $language . ']')->textInput()->label(false) ?>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-md-12">
-                                                            <label class="col-form-label">Javob</label>
+                                                            <label class="col-form-label">Yangilik matni</label>
                                                             <div class="col-md-9" style="margin-right: 0px!important;">
                                                                 <?= $form->field($model, 'description[' . $language . ']')->textarea(['rows' =>7])->label(false) ?>
                                                             </div>
@@ -85,16 +94,12 @@ use yii\widgets\ActiveForm;
                                     <?= $form->field($model, 'type')->textInput()->label(false) ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-form-label">Yangilik kategoriyasi</label>
                                 <div class="col-md-9">
                                     <?= $form->field($model, 'category_id')->textInput()->label(false) ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
                             <div class="form-group row">
                                 <label class="col-form-label">Yangilikni chop etilish sanasi</label>
                                 <div class="col-md-9">

@@ -7,7 +7,7 @@ use yii\db\ActiveRecord;
 
 class ConvertBehaviors extends AttributeBehavior
 {
-    public $attributes = ['title'];
+    public $attributes = ['title', 'description'];
 
 
     public function events()

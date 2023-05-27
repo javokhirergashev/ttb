@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -22,7 +23,15 @@ class Faq extends \yii\db\ActiveRecord
     {
         return 'faq';
     }
-
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title', 'description'] // Bu yerga titl , description hammasini yozsa boladi
+            ]
+        ];
+    }
     /**
      * {@inheritdoc}
      */

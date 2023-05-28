@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Service;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -69,16 +70,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-
-    /**
      * Logs in a user.
      *
      * @return mixed
@@ -98,6 +89,24 @@ class SiteController extends Controller
 
         return $this->render('login', [
             'model' => $model,
+        ]);
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+
+        /**
+         *  Shu yerga qandaydur shart qoyamiz aynan qaysi servicelani olib chiqish boyicha
+         *  top service lani glavni page ga olib chiqamiz !!!
+         */
+        $services = Service::find()->limit(6)->all();
+        return $this->render('index', [
+            'services' => $services
         ]);
     }
 
@@ -217,8 +226,8 @@ class SiteController extends Controller
      * Verify email address
      *
      * @param string $token
-     * @throws BadRequestHttpException
      * @return yii\web\Response
+     * @throws BadRequestHttpException
      */
     public function actionVerifyEmail($token)
     {

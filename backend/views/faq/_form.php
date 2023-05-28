@@ -65,7 +65,10 @@ use yii\widgets\ActiveForm;
                             <div class="form-group row" style="padding-top: 20px!important;">
                                 <label class="col-form-label">Statusi</label>
                                 <div class="col-md-9">
-                                    <?= $form->field($model, 'status')->textInput()->label(false) ?>
+                                    <?= $form->field($model, 'status')->dropDownList([
+                                    \common\models\Faq::STATUS_ACTIVE => "Active",
+                                    \common\models\Faq::STATUS_INACTIVE => "InActive",
+                                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                                 </div>
                             </div>
                             <div class="form-group row">

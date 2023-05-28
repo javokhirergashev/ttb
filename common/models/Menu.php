@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -18,12 +19,23 @@ use Yii;
  */
 class Menu extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'menu';
+    }
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title']
+            ]
+        ];
     }
 
     /**
@@ -32,7 +44,7 @@ class Menu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'string'],
+            [['title'], 'safe'],
             [['type', 'status', 'parent_id'], 'default', 'value' => null],
             [['type', 'status', 'parent_id'], 'integer'],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::class, 'targetAttribute' => ['parent_id' => 'id']],

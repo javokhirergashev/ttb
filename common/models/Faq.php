@@ -16,6 +16,8 @@ use Yii;
  */
 class Faq extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */
@@ -38,7 +40,7 @@ class Faq extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'string'],
+            [['title', 'description'], 'safe'],
             [['type', 'status'], 'default', 'value' => null],
             [['type', 'status'], 'integer'],
         ];

@@ -54,7 +54,10 @@ use yii\widgets\ActiveForm;
                             <div class="form-group row" style="padding-top: 20px!important; margin-bottom: 0px!important;">
                                 <label class="col-form-label">Statusi</label>
                                 <div class="col-md-9">
-                                    <?= $form->field($model, 'status')->textInput()->label(false) ?>
+                                    <?= $form->field($model, 'status')->dropDownList([
+                                        \common\models\Menu::STATUS_ACTIVE => "Active",
+                                        \common\models\Menu::STATUS_INACTIVE => "InActive",
+                                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +65,11 @@ use yii\widgets\ActiveForm;
                             <div class="form-group row">
                                 <label class="col-form-label">Ota menyusi</label>
                                 <div class="col-md-9">
-                                    <?= $form->field($model, 'parent_id')->textInput()->label(false) ?>
+                                    <?= $form->field($model, 'parent_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Menu::find()->all(), 'id', 'title'), [
+                                        'prompt' => 'Menyuni tanlang',
+                                        'options' => [
+                                        ]
+                                    ])->label(false) ?>
                                 </div>
                             </div>
                         </div>

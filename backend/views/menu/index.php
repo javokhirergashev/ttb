@@ -44,9 +44,23 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-                            'title:ntext',
+                            [
+                                'attribute' => 'title',
+                                'value' => function ($model) {
+                                    return $model->title[Yii::$app->language];
+                                }
+                            ],
 //            'type',
-                            'status',
+                            [
+                                'attribute' => 'status',
+                                'value' => function ($data) {
+                                    if ($data->status == 1) {
+                                        return 'faol';
+                                    }else{
+                                        return 'faol emas';
+                                    }
+                                }
+                            ],
                             'parent_id',
                             [
                                 'class' => 'yii\grid\ActionColumn',

@@ -45,10 +45,24 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-                            'title:ntext',
-                            'icon',
+                            [
+                                'attribute' => 'title',
+                                'value' => function ($model) {
+                                    return $model->title[Yii::$app->language];
+                                }
+                            ],
+//                            'icon',
 //            'parent_id',
-                            'status',
+                            [
+                                'attribute' => 'status',
+                                'value' => function ($data) {
+                                    if ($data->status == 1) {
+                                        return 'faol';
+                                    }else{
+                                        return 'faol emas';
+                                    }
+                                }
+                            ],
                             //'type',
                             [
                                 'class' => 'yii\grid\ActionColumn',

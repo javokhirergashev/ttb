@@ -5,7 +5,7 @@
                 <div class="page-title-content">
                     <h2>Blog</h2>
                     <ul>
-                        <li><a href="<?=\yii\helpers\Url::to(['/'])?>">Home</a></li>
+                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a></li>
                         <li>Blog</li>
                     </ul>
                 </div>
@@ -21,7 +21,8 @@
         <div class="section-title">
             <span>News</span>
             <h2>Our Latest News</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum su</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Quis ipsum su</p>
         </div>
 
         <div class="row">

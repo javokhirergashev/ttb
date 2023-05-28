@@ -6,6 +6,7 @@
 
 $this->title = 'TTB';
 ?>
+<?= \frontend\widgets\Banner::widget() ?>
 <?= \frontend\widgets\About::widget() ?>
 <section class="services-section bg-f4f6fe pt-100 pb-70">
     <div class="container">

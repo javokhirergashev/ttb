@@ -31,7 +31,6 @@ AppAsset::register($this);
     </div>
     <!-- End Preloader Area -->
     <?= \frontend\widgets\Header::widget() ?>
-    <?= \frontend\widgets\Banner::widget() ?>
     <?= $content ?>
     <?= \frontend\widgets\Footer::widget() ?>
 

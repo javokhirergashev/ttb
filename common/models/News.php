@@ -3,7 +3,9 @@
 namespace common\models;
 
 use common\behaviors\ConvertBehaviors;
+use common\behaviors\DateTimeBehavior;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "news".
@@ -26,6 +28,7 @@ class News extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -33,16 +36,23 @@ class News extends \yii\db\ActiveRecord
     {
         return 'news';
     }
+
     public function behaviors()
     {
         return [
             'convertBehavior' => [
                 'class' => ConvertBehaviors::class,
                 'attributes' => ['title', 'description']
-            ]
+            ],
+            TimestampBehavior::class,
+            'date_publish_date' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'published_at', //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy HH:mm',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
         ];
     }
-
 
 
     /**

@@ -76,12 +76,12 @@ class NewsController extends Controller
 //                print_r($model); die();
 //                date_default_timezone_set('Asia/Tashkent');
 //                $model->created_at = date('Y-m-d H:i:s',strtotime($model->created_at));
-                $model->poster = UploadedFile::getInstance($model, 'poster');
-                $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
+//                $model->poster = UploadedFile::getInstance($model, 'poster');
+//                $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
                 if ($model->save()) {
                     return $this->redirect(['index']);
                 } else{
-                    print_r("Hello"); die();
+                    print_r($model->errors); die();
                 }
 
             }

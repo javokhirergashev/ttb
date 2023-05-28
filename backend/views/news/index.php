@@ -44,8 +44,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-                            'title:ntext',
-                            'description:ntext',
+                            [
+                                'attribute' => 'title',
+                                'value' => function ($model) {
+                                    return $model->title[Yii::$app->language];
+                                }
+                            ],
+                            [
+                                'attribute' => 'description',
+                                'value' => function ($model) {
+                                    return $model->description[Yii::$app->language];
+                                }
+                            ],
                             'poster',
                             'main_image',
                             'status',

@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\News;
 use common\models\search\NewsSearch;
+use common\models\StaticFunctions;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -70,8 +72,18 @@ class NewsController extends Controller
         $model = new News();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+//                print_r($model); die();
+//                date_default_timezone_set('Asia/Tashkent');
+//                $model->created_at = date('Y-m-d H:i:s',strtotime($model->created_at));
+                $model->poster = UploadedFile::getInstance($model, 'poster');
+                $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                } else{
+                    print_r("Hello"); die();
+                }
+
             }
         } else {
             $model->loadDefaultValues();

@@ -70,6 +70,7 @@ class FaqController extends Controller
         $model = new Faq();
 
         if ($this->request->isPost) {
+            print_r($model); die();
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['index']);
             }

@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -23,12 +24,23 @@ use Yii;
  */
 class News extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'news';
+    }
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title', 'description']
+            ]
+        ];
     }
 
     /**
@@ -37,9 +49,9 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'string'],
+            [['title', 'description'], 'safe'],
             [['status', 'published_at', 'created_at', 'updated_at', 'type', 'category_id'], 'default', 'value' => null],
-            [['status', 'published_at', 'created_at', 'updated_at', 'type', 'category_id'], 'integer'],
+            [['status', 'type', 'category_id'], 'integer'],
             [['poster', 'main_image'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];

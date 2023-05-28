@@ -10,7 +10,7 @@ class StaticFunctions
         return "/uploads/$tableName/$id/$image";
     }
     public static function saveImage($tableName,$modelId,$image){
-        $DIR = "uploads/$tableName/$modelId/";
+        $DIR = "../../frontend/web/uploads/$tableName/$modelId/";
         FileHelper::createDirectory($DIR);
         $FILENAME = sha1(rand(0,10000).time().rand(0,10000).$image->basename);
         $FILENAME = $FILENAME . '.' .$image->extension;

@@ -85,41 +85,39 @@
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="<?= \yii\helpers\Url::to(['/']) ?>" class="nav-link active">
+                                <a href="<?= \yii\helpers\Url::to(['/']) ?>"
+                                   class="nav-link <?= Yii::$app->request->url == "/" ? "active" : "" ?>">
                                     Home
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="<?= \yii\helpers\Url::to(['site/about']) ?>" class="nav-link">
+                                <a href="<?= \yii\helpers\Url::to(['site/about']) ?>"
+                                   class="nav-link <?= Yii::$app->request->url == "/site/about" ? "active" : "" ?>">
                                     About
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="<?= \yii\helpers\Url::to(['service/index']) ?>" class="nav-link">
+                                <a href="<?= \yii\helpers\Url::to(['service/index']) ?>"
+                                   class="nav-link <?= Yii::$app->controller->id == "service" ? "active" : "" ?>">
                                     Services
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>" class="nav-link">
+                                <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"
+                                   class="nav-link <?= Yii::$app->controller->id == "blog" ? "active" : "" ?>">
                                     Blog
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>" class="nav-link">
+                                <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"
+                                   class="nav-link <?= Yii::$app->request->url == "/site/contact" ? "active" : "" ?>">
                                     Contact
                                 </a>
                             </li>
                         </ul>
-
-                        <div class="others-options">
-                            <a href="appointment.html" class="default-btn-two">
-                                Get a Quote
-                                <span></span>
-                            </a>
-                        </div>
                     </div>
                 </nav>
             </div>

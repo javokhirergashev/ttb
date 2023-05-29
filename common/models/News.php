@@ -99,4 +99,14 @@ class News extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
+
+    public function getPrettyTitle()
+    {
+        return $this->title[Yii::$app->language];
+    }
+
+    public function getPrettyDescription()
+    {
+        return $this->description[Yii::$app->language];
+    }
 }

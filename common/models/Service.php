@@ -5,6 +5,7 @@ namespace common\models;
 use common\behaviors\ConvertBehaviors;
 use common\behaviors\DateTimeBehavior;
 use Yii;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -46,6 +47,8 @@ class Service extends \yii\db\ActiveRecord
                 'class' => ConvertBehaviors::class,
                 'attributes' => ['title', 'description', 'content']
             ],
+            TimestampBehavior::class,
+            BlameableBehavior::class
         ];
     }
 
@@ -103,5 +106,15 @@ class Service extends \yii\db\ActiveRecord
     public function getUpdatedBy()
     {
         return $this->hasOne(User::class, ['id' => 'updated_by']);
+    }
+
+    public function getPrettyTitle()
+    {
+        return $this->title[Yii::$app->language];
+    }
+
+    public function getPrettyDescription()
+    {
+        return $this->description[Yii::$app->language];
     }
 }

@@ -73,18 +73,18 @@ class NewsController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
-                $model->poster = UploadedFile::getInstance($model, 'poster');
-                $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
-                $model->main_image = UploadedFile::getInstance($model, 'main_image');
-                $model->main_image = StaticFunctions::saveImage('news', $model->id, $model->main_image);
-                if ($model->save()) {
-                    return $this->redirect(['index']);
-                } else {
-                    print_r($model->errors);
-                    die();
+                if (!$model->save()) {
+                    return $this->render('create', [
+                        'model' => $model,
+                    ]);
                 }
+                $poster = UploadedFile::getInstance($model, 'poster');
+                $poster_url = StaticFunctions::saveImage('news', $model->id, $poster);
+                $main_image = UploadedFile::getInstance($model, 'main_image');
+                $main_image_url = StaticFunctions::saveImage('news', $model->id, $main_image);
+                $model->updateAttributes(['poster' => $poster_url, 'main_image' => $main_image_url]);
 
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -108,7 +108,6 @@ class NewsController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->updated_at = date('Y-m-d H:i:s', strtotime($model->updated_at));
                 $oldPoster = $model->poster;
                 $oldMainImage = $model->main_image;
                 $model->poster = UploadedFile::getInstance($model, 'poster');

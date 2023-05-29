@@ -49,13 +49,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'title',
                                 'value' => function ($model) {
                                     return $model->title[Yii::$app->language];
-                                }
+                                },
                             ],
                             [
                                 'attribute' => 'description',
                                 'value' => function ($model) {
                                     return $model->description[Yii::$app->language];
-                                }
+                                },
+//                                'format'
                             ],
                             [
                                 'attribute' => 'poster',

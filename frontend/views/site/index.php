@@ -26,9 +26,9 @@ $this->title = 'TTB';
                                 <i class="flaticon-bacteria"></i>
                             </div>
                             <a href="<?= \yii\helpers\Url::to(['service/view', 'id' => $service->id]) ?>">
-                                <h3><?= $service->title ?></h3>
+                                <h3><?= $service->getPrettyTitle() ?></h3>
                             </a>
-                            <p><?= $service->description ?></p>
+                            <p><?= $service->getPrettyDescription() ?></p>
                             <a href="<?= \yii\helpers\Url::to(['service/view', 'id' => $service->id]) ?>"
                                class="read-btn">Read More +</a>
                         </div>

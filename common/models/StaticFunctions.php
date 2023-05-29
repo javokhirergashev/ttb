@@ -18,7 +18,7 @@ class StaticFunctions
         return $FILENAME;
     }
     public static function deleteImage($tableName, $model, $oldimage){
-        $file = "../../frontend/web/uploads/$tableName/$model->id/$oldimage";
+        $file = "../../frontend/web/uploads/$tableName/$model/$oldimage";
         if (is_file($file)){
             unlink($file);
         }

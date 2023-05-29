@@ -38,7 +38,7 @@
                 </li>
             </ul>
             <div class="logout-btn">
-                <a data-method="posts" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><span class="menu-side"><img
+                <a data-method="post" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><span class="menu-side"><img
                                 src="/backend-files/img/icons/logout.svg" alt=""></span> <span>Logout</span></a>
             </div>
         </div>

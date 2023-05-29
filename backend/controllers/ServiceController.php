@@ -4,15 +4,19 @@ namespace backend\controllers;
 
 use common\models\Service;
 use common\models\search\ServiceSearch;
+use common\models\StaticFunctions;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ServiceController implements the CRUD actions for Service model.
  */
 class ServiceController extends Controller
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * @inheritDoc
      */
@@ -70,8 +74,13 @@ class ServiceController extends Controller
         $model = new Service();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
+                $model->image = UploadedFile::getInstance($model, 'image');
+                $model->image = StaticFunctions::saveImage('service', $model->id, $model->image);
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -93,8 +102,21 @@ class ServiceController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $model->updated_at = date('Y-m-d H:i:s', strtotime($model->updated_at));
+                $oldImage = $model->image;
+                $model->image = UploadedFile::getInstance($model, 'image');
+                if (!empty($model->image)) {
+                    StaticFunctions::deleteImage('service', $model->id, $oldImage);
+                    $model->image = StaticFunctions::saveImage('service', $model->id, $model->image);
+                } else {
+                    $model->image = $oldImage;
+                }
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                }
+            }
         }
 
         return $this->render('update', [

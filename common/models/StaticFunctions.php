@@ -7,7 +7,7 @@ use yii\helpers\FileHelper;
 class StaticFunctions
 {
     public static function getImage($tableName,$id,$image){
-        return "/uploads/$tableName/$id/$image";
+        return "../../frontend/web/uploads/$tableName/$id/$image";
     }
     public static function saveImage($tableName,$modelId,$image){
         $DIR = "../../frontend/web/uploads/$tableName/$modelId/";
@@ -18,7 +18,7 @@ class StaticFunctions
         return $FILENAME;
     }
     public static function deleteImage($tableName, $model, $oldimage){
-        $file = "uploads/$tableName/$model->id/$oldimage";
+        $file = "../../frontend/web/uploads/$tableName/$model->id/$oldimage";
         if (is_file($file)){
             unlink($file);
         }

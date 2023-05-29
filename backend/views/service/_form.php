@@ -41,6 +41,12 @@ use yii\widgets\ActiveForm;
                                                 <div class="form-group row">
                                                     <label class="col-form-label">Sarlavhasi</label>
                                                     <div class="col-md-9" style="margin-right: 0px!important;">
+                                                        <?= $form->field($model, 'title[' . $language . ']')->textInput()->label(false) ?>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-form-label">Izoh</label>
+                                                    <div class="col-md-9" style="margin-right: 0px!important;">
                                                         <?= $form->field($model, 'description[' . $language . ']')->textInput()->label(false) ?>
                                                     </div>
                                                 </div>
@@ -69,7 +75,10 @@ use yii\widgets\ActiveForm;
                             <div class="form-group row">
                                 <label class="col-form-label">Statusi</label>
                                 <div class="col-md-9">
-                                    <?= $form->field($model, 'status')->textInput()->label(false) ?>
+                                    <?= $form->field($model, 'status')->dropDownList([
+                                        \common\models\Service::STATUS_ACTIVE => "Active",
+                                        \common\models\Service::STATUS_INACTIVE => "InActive",
+                                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                                 </div>
                             </div>
                             <div class="form-group row">

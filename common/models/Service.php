@@ -2,7 +2,10 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
+use common\behaviors\DateTimeBehavior;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "service".
@@ -25,6 +28,9 @@ use Yii;
  */
 class Service extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -33,15 +39,25 @@ class Service extends \yii\db\ActiveRecord
         return 'service';
     }
 
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title', 'description', 'content']
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title', 'description', 'content'], 'string'],
+            [['title', 'description', 'content'], 'safe'],
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'type'], 'default', 'value' => null],
-            [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'type'], 'integer'],
+            [['status', 'created_by', 'updated_by', 'type'], 'integer'],
             [['image', 'icon'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],

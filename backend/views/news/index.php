@@ -1,6 +1,7 @@
 <?php
 
 use common\models\News;
+use common\models\StaticFunctions;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -56,19 +57,63 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return $model->description[Yii::$app->language];
                                 }
                             ],
-                            'poster',
-                            'main_image',
-                            'status',
+                            [
+                                'attribute' => 'poster',
+                                'value' => function($data){
+                                    $image = StaticFunctions::getImage('news',$data->id, $data->poster);
+                                    return "<img src='$image' style='max-width: 120px; text-align: center!important;'>";
+                                },
+                                'format' => 'html'
+                            ],
+                            [
+                                'attribute' => 'main_image',
+                                'value' => function($data){
+                                    $image = StaticFunctions::getImage('news',$data->id, $data->main_image);
+                                    return "<img src='$image' style='max-width: 120px; text-align: center!important;'>";
+                                },
+                                'format' => 'html'
+                            ],
                             'published_at',
-                            'created_at',
-                            'updated_at',
+                            [
+                                'attribute' => 'created_at',
+                                'format' => ['datetime', 'php:d.m.Y H:m']
+                            ],
+                            [
+                                'attribute' => 'updated_at',
+                                'format' => ['datetime', 'php:d.m.Y H:m']
+                            ],
                             //'type',
                             'category_id',
                             [
-                                'class' => ActionColumn::className(),
-                                'urlCreator' => function ($action, News $model, $key, $index, $column) {
-                                    return Url::toRoute([$action, 'id' => $model->id]);
+                                'attribute' => 'status',
+                                'value' => function ($data) {
+                                    if ($data->status == 1) {
+                                        return 'faol';
+                                    }else{
+                                        return 'faol emas';
+                                    }
                                 }
+                            ],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'header' => 'Amallar',
+                                'headerOptions' => ['style' => 'text-align:center'],
+                                'template' => '{buttons}',
+                                'contentOptions' => ['style' => 'min-width:150px;max-width:150px;width:150px', 'class' => 'v-align-middle'],
+                                'buttons' => [
+                                    'buttons' => function ($url, $model) {
+                                        $controller = Yii::$app->controller->id;
+                                        $code = <<<BUTTONS
+                                <div class="btn-group flex-center">
+                                    <a href="/{$controller}/update?id={$model->id}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                    <a href="/{$controller}/delete?id={$model->id}" id="{$controller}{$model->id}" data-postID="{$model->id}" data-postType="{$controller}" class="btn btn-danger postRemove" data-method="post"><i class="far fa-trash-alt"></i></a>
+                                </div>
+BUTTONS;
+                                        return $code;
+                                    }
+
+                                ],
+
                             ],
                         ],
                     ]); ?>

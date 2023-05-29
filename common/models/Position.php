@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -16,6 +17,8 @@ use Yii;
  */
 class Position extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */
@@ -24,13 +27,23 @@ class Position extends \yii\db\ActiveRecord
         return 'position';
     }
 
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title']
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title'], 'string'],
+            [['title'], 'safe'],
             [['status', 'type'], 'default', 'value' => null],
             [['status', 'type'], 'integer'],
         ];

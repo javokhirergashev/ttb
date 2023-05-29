@@ -50,7 +50,7 @@ class News extends \yii\db\ActiveRecord
                 'attribute' => 'published_at', //атрибут модели, который будем менять
                 'format' => 'dd.MM.yyyy HH:mm',   //формат вывода даты для пользователя
 //                'default' => 'today'
-            ],
+            ]
         ];
     }
 
@@ -64,6 +64,7 @@ class News extends \yii\db\ActiveRecord
             [['title', 'description'], 'safe'],
             [['status', 'published_at', 'created_at', 'updated_at', 'type', 'category_id'], 'default', 'value' => null],
             [['status', 'type', 'category_id'], 'integer'],
+            [['created_at'], 'safe'],
             [['poster', 'main_image'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];

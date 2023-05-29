@@ -85,7 +85,10 @@ $this->registerJs($js);
                             <div class="form-group row">
                                 <label class="col-form-label">Statusi</label>
                                 <div class="col-md-9">
-                                    <?= $form->field($model, 'status')->textInput()->label(false) ?>
+                                    <?= $form->field($model, 'status')->dropDownList([
+                                        \common\models\News::STATUS_ACTIVE => "Active",
+                                        \common\models\News::STATUS_INACTIVE => "InActive",
+                                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                                 </div>
                             </div>
                             <div class="form-group row">

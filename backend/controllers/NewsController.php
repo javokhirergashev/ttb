@@ -73,15 +73,16 @@ class NewsController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-//                print_r($model); die();
-//                date_default_timezone_set('Asia/Tashkent');
-//                $model->created_at = date('Y-m-d H:i:s',strtotime($model->created_at));
-//                $model->poster = UploadedFile::getInstance($model, 'poster');
-//                $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
+                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
+                $model->poster = UploadedFile::getInstance($model, 'poster');
+                $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
+                $model->main_image = UploadedFile::getInstance($model, 'main_image');
+                $model->main_image = StaticFunctions::saveImage('news', $model->id, $model->main_image);
                 if ($model->save()) {
                     return $this->redirect(['index']);
-                } else{
-                    print_r($model->errors); die();
+                } else {
+                    print_r($model->errors);
+                    die();
                 }
 
             }
@@ -105,8 +106,29 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $model->updated_at = date('Y-m-d H:i:s', strtotime($model->updated_at));
+                $oldPoster = $model->poster;
+                $oldMainImage = $model->main_image;
+                $model->poster = UploadedFile::getInstance($model, 'poster');
+                $model->main_image = UploadedFile::getInstance($model, 'main_image');
+                if (!empty($model->poster)) {
+                    StaticFunctions::deleteImage('news', $model->id, $oldPoster);
+                    $model->poster = StaticFunctions::saveImage('news', $model->id, $model->poster);
+                } else {
+                    $model->poster = $oldPoster;
+                }
+                if (!empty($model->main_image)) {
+                    StaticFunctions::deleteImage('news', $model->id, $oldMainImage);
+                    $model->main_image = StaticFunctions::saveImage('news', $model->id, $model->main_image);
+                } else {
+                    $model->main_image = $oldMainImage;
+                }
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                }
+            }
         }
 
         return $this->render('update', [

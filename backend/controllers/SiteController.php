@@ -14,6 +14,7 @@ use yii\web\Response;
  */
 class SiteController extends Controller
 {
+
     /**
      * {@inheritdoc}
      */
@@ -24,7 +25,7 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'map'],
                         'allow' => true,
                     ],
                     [
@@ -100,5 +101,14 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionMap()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $request = Yii::$app->request->getQueryParams();
+        return $request['latitude'];
+
     }
 }

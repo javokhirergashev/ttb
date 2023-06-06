@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\User;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -25,11 +26,11 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'map'],
+                        'actions' => ['login', 'error', 'change-map'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','map'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -103,12 +104,25 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionMap()
+    public function actionChangeMap()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-
         $request = Yii::$app->request->getQueryParams();
-        return $request['latitude'];
 
+        if ($request['latitude'] && $request['longitude']) {
+            $user = User::findOne(Yii::$app->user->id);
+            $user->updateAttributes(['lat' => $request['latitude'], 'lon' => $request['longitude']]);
+        }
+
+        return $user;
     }
+
+    public function actionMap()
+    {
+//        $this->layout = 'map';
+        $model = User::find()->all();
+        return $this->render('map', ['users' => $model]);
+    }
+
+
 }

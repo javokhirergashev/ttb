@@ -40,7 +40,7 @@ function sendLocation(latitude, longitude) {
     };
 
     $.ajax({
-        url: '/site/map',
+        url: '/site/change-map',
         type: 'GET',
         dataType: 'json',
         data: data,

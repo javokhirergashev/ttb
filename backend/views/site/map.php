@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var $data []
+ */
+$locations = json_encode($data);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

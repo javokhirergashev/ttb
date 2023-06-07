@@ -3,9 +3,10 @@
 namespace backend\controllers;
 
 use common\models\LoginForm;
+use common\models\User;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -14,6 +15,7 @@ use yii\web\Response;
  */
 class SiteController extends Controller
 {
+
     /**
      * {@inheritdoc}
      */
@@ -24,11 +26,11 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'change-map'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'map'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -72,7 +74,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        if (! Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
@@ -101,4 +103,29 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    public function actionChangeMap()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $request = Yii::$app->request->getQueryParams();
+
+        if ($request['latitude'] && $request['longitude']) {
+            $user = User::findOne(Yii::$app->user->id);
+            $user->updateAttributes(['lat' => $request['latitude'], 'lon' => $request['longitude']]);
+        }
+
+        return $user;
+    }
+
+    public function actionMap()
+    {
+//        $this->layout = 'map';
+        $models = User::find()->all();
+        foreach ($models as $index => $model) {
+            $result [] = ["lat" => $model->lat, "lon" => $model->lon, "fullname" => $model->first_name . " " . $model->last_name];
+        }
+        return $this->render('map', ['data' => $result]);
+    }
+
+
 }

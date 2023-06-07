@@ -265,4 +265,10 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionMap()
+    {
+        $this->layout = false;
+        return $this->render('map');
+    }
 }

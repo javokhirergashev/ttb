@@ -46,19 +46,43 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
                             //'id',
-                            'phone_number',
                             'first_name',
                             'last_name',
-                            'email:email',
-                            'avatar',
                             'username',
+                            'email:email',
+                            'phone_number',
+                            'avatar',
                             //'type',
-                            'role',
+                            [
+                                'attribute' => 'role',
+                                'value' => function ($data) {
+                                    if ($data->role == 1) {
+                                        return 'admin';
+                                    } elseif ($data->role == 2) {
+                                        return 'meneger';
+                                    } elseif ($data->role == 3) {
+                                        return 'statist';
+                                    } elseif ($data->role == 4) {
+                                        return 'shifokor';
+                                    } elseif ($data->role == 5) {
+                                        return 'hamshira';
+                                    }
+                                }
+                            ],
                             //'auth_key',
-                            //'password_hash',
-                            'created_at',
-                            'updated_at',
-                            'deleted_at',
+//                            'created_at',
+                            [
+                                'attribute' => 'created_at',
+                                'format' => ['datetime', 'php:d.m.Y H:m']
+                            ],
+                            [
+                                'attribute' => 'updated_at',
+                                'format' => ['datetime', 'php:d.m.Y H:m']
+                            ],
+                            [
+                                'attribute' => 'deleted_at',
+                                'format' => ['datetime', 'php:d.m.Y H:m']
+                            ],
                             //'verification_token',
                             'position_id',
                             [
@@ -66,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => function ($data) {
                                     if ($data->status == 1) {
                                         return 'faol';
-                                    }else{
+                                    } else {
                                         return 'faol emas';
                                     }
                                 }

@@ -17,6 +17,7 @@ class ServiceController extends Controller
 {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
+
     /**
      * @inheritDoc
      */

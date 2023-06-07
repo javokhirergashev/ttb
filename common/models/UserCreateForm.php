@@ -2,7 +2,10 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
+use common\behaviors\DateTimeBehavior;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "user".
@@ -32,6 +35,15 @@ use Yii;
  */
 class UserCreateForm extends \yii\db\ActiveRecord
 {
+    public $password;
+    const STATUS_INACTIVE = 2;
+    const STATUS_ACTIVE = 1;
+    const ROLE_ADMIN = 1;
+    const ROLE_MANAGER = 2;
+    const ROLE_STATIST = 3;
+    const ROLE_DOCTOR = 4;
+    const ROLE_NURSE = 5;
+
     /**
      * {@inheritdoc}
      */
@@ -40,15 +52,22 @@ class UserCreateForm extends \yii\db\ActiveRecord
         return 'user';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['phone_number', 'auth_key', 'created_at', 'updated_at'], 'required'],
+            [['password'], 'safe'],
             [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'position_id'], 'integer'],
-            [['phone_number', 'first_name', 'last_name', 'email', 'username', 'password_hash', 'verification_token', 'avatar'], 'string', 'max' => 255],
+            [['phone_number', 'first_name', 'last_name', 'email', 'username', 'password_hash', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => Position::class, 'targetAttribute' => ['position_id' => 'id']],
         ];

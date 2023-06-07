@@ -2,11 +2,13 @@
 
 namespace backend\controllers;
 
+use common\models\StaticFunctions;
 use common\models\UserCreateForm;
 use common\models\search\UserCreateFormSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for UserCreateForm model.
@@ -70,8 +72,15 @@ class UserController extends Controller
         $model = new UserCreateForm();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->password_hash = \Yii::$app->security->generatePasswordHash($model->password);
+//                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
+                $model->avatar = UploadedFile::getInstance($model, 'avatar');
+//                print_r($model); die();
+                if ($model->save()) {
+                    $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);
+                    return $this->redirect(['index']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -93,8 +102,20 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $oldAvatar = $model->avatar;
+                $model->avatar = UploadedFile::getInstance($model, 'avatar');
+                if ($model->save()) {
+                    if (!empty($model->avatar)) {
+                        StaticFunctions::deleteImage('user', $model->id, $oldAvatar);
+                        $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);
+                    } else {
+                        $model->avatar = $oldAvatar;
+                    }
+                    return $this->redirect(['index']);
+                }
+            }
         }
 
         return $this->render('update', [

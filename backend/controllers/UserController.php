@@ -2,22 +2,19 @@
 
 namespace backend\controllers;
 
-use common\models\Service;
-use common\models\search\ServiceSearch;
 use common\models\StaticFunctions;
+use common\models\UserCreateForm;
+use common\models\search\UserCreateFormSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * ServiceController implements the CRUD actions for Service model.
+ * UserController implements the CRUD actions for UserCreateForm model.
  */
-class ServiceController extends Controller
+class UserController extends Controller
 {
-    const STATUS_ACTIVE = 1;
-    const STATUS_INACTIVE = 2;
-
     /**
      * @inheritDoc
      */
@@ -37,13 +34,13 @@ class ServiceController extends Controller
     }
 
     /**
-     * Lists all Service models.
+     * Lists all UserCreateForm models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ServiceSearch();
+        $searchModel = new UserCreateFormSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -53,7 +50,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Displays a single Service model.
+     * Displays a single UserCreateForm model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -66,20 +63,22 @@ class ServiceController extends Controller
     }
 
     /**
-     * Creates a new Service model.
+     * Creates a new UserCreateForm model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Service();
+        $model = new UserCreateForm();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
-                $model->image = UploadedFile::getInstance($model, 'image');
-                $model->image = StaticFunctions::saveImage('service', $model->id, $model->image);
+                $model->password_hash = \Yii::$app->security->generatePasswordHash($model->password);
+//                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
+                $model->avatar = UploadedFile::getInstance($model, 'avatar');
+//                print_r($model); die();
                 if ($model->save()) {
+                    $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);
                     return $this->redirect(['index']);
                 }
             }
@@ -93,7 +92,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Updates an existing Service model.
+     * Updates an existing UserCreateForm model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -105,16 +104,15 @@ class ServiceController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->updated_at = date('Y-m-d H:i:s', strtotime($model->updated_at));
-                $oldImage = $model->image;
-                $model->image = UploadedFile::getInstance($model, 'image');
-                if (!empty($model->image)) {
-                    StaticFunctions::deleteImage('service', $model->id, $oldImage);
-                    $model->image = StaticFunctions::saveImage('service', $model->id, $model->image);
-                } else {
-                    $model->image = $oldImage;
-                }
+                $oldAvatar = $model->avatar;
+                $model->avatar = UploadedFile::getInstance($model, 'avatar');
                 if ($model->save()) {
+                    if (!empty($model->avatar)) {
+                        StaticFunctions::deleteImage('user', $model->id, $oldAvatar);
+                        $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);
+                    } else {
+                        $model->avatar = $oldAvatar;
+                    }
                     return $this->redirect(['index']);
                 }
             }
@@ -126,7 +124,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Deletes an existing Service model.
+     * Deletes an existing UserCreateForm model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -140,15 +138,15 @@ class ServiceController extends Controller
     }
 
     /**
-     * Finds the Service model based on its primary key value.
+     * Finds the UserCreateForm model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Service the loaded model
+     * @return UserCreateForm the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Service::findOne(['id' => $id])) !== null) {
+        if (($model = UserCreateForm::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

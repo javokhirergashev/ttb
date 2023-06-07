@@ -16,7 +16,7 @@
 <script src="/js/map.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-    var map = L.map('map').setView([41.2972855, 69.2262816], 13);
+    var map = L.map('map').setView([41.2972855, 69.2262816],15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',

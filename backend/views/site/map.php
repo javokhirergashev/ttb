@@ -9,7 +9,6 @@ $locations = json_encode($data);
 <html>
 <head>
    <title>Leaflet Map Example</title>
-   <title>Leaflet Map Example</title>
    <style>
       #map {
          height: 80vh;

@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\form\UserForm;
 use common\models\search\UserCreateFormSearch;
-use common\models\StaticFunctions;
 use common\models\UserCreateForm;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -72,22 +72,13 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new UserCreateForm();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $model->password_hash = \Yii::$app->security->generatePasswordHash($model->password);
-//                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
-                $model->avatar = UploadedFile::getInstance($model, 'avatar');
-                $model->auth_key = \Yii::$app->security->generateRandomString();
-//                print_r($model); die();
-                if ($model->save()) {
-                    $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);
-                    return $this->redirect(['index']);
-                }
+        $model = new UserForm();
+        $model->setScenario(UserForm::SCENARIO_REGISTER);
+        if ($model->load(\Yii::$app->request->post())) {
+            $model->avatar = UploadedFile::getInstance($model, 'avatar');
+            if ($model->save()) {
+                return $this->redirect(['index']);
             }
-        } else {
-            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
@@ -106,21 +97,14 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = new UserForm(['user_id' => $id]);
+        $user = $this->findModel($id);
+        $model->setAttributes($user->attributes);
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $oldAvatar = $model->avatar;
-                $model->avatar = UploadedFile::getInstance($model, 'avatar');
-                if ($model->save()) {
-                    if (! empty($model->avatar)) {
-                        StaticFunctions::deleteImage('user', $model->id, $oldAvatar);
-                        $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);
-                    } else {
-                        $model->avatar = $oldAvatar;
-                    }
-                    return $this->redirect(['index']);
-                }
+        if ($model->load(\Yii::$app->request->post())) {
+            $model->avatar = UploadedFile::getInstance($model, 'avatar');
+            if ($model->save()) {
+                return $this->redirect(['index']);
             }
         }
 

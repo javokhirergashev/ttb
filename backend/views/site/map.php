@@ -8,15 +8,18 @@ $locations = json_encode($data);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Leaflet Map Example</title>
-    <style>
-        #map {
-            height: 400px;
-        }
-    </style>
+   <title>Leaflet Map Example</title>
+   <title>Leaflet Map Example</title>
+   <style>
+      #map {
+         height: 80vh;
+      }
+   </style>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
-<h1>Leaflet Map Example</h1>
+<h1>Joylashuvlarni ko'rish</h1>
 
 <div id="map"></div>
 

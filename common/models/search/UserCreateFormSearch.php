@@ -17,8 +17,8 @@ class UserCreateFormSearch extends UserCreateForm
     public function rules()
     {
         return [
-            [['id', 'type', 'role', 'created_at', 'updated_at', 'deleted_at', 'avatar_id', 'status', 'position_id'], 'integer'],
-            [['phone_number', 'first_name', 'last_name', 'email', 'username', 'auth_key', 'password_hash', 'verification_token', 'avatar'], 'safe'],
+            [['id', 'type', 'role', 'avatar_id', 'status', 'position_id'], 'integer'],
+            [['phone_number', 'first_name', 'last_name', 'email', 'username',  'avatar'], 'safe'],
         ];
     }
 

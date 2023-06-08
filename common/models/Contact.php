@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -23,13 +24,22 @@ class Contact extends \yii\db\ActiveRecord
         return 'contact';
     }
 
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['title']
+            ]
+        ];
+    }
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['title'], 'string'],
+            [['title'], 'safe'],
             [['value', 'slug', 'icon'], 'string', 'max' => 255],
         ];
     }

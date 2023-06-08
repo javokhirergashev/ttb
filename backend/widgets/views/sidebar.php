@@ -43,7 +43,7 @@
                </ul>
             </li>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['contacts/']) ?>"><span class="menu-side"><img
+               <a href="<?= \yii\helpers\Url::to(['contact/']) ?>"><span class="menu-side"><img
                         src="/backend-files/img/icons/menu-icon-11.svg" alt=""></span> <span> Kontaktlar </span></a>
             </li>
             <li>

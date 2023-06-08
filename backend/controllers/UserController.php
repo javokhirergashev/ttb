@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\StaticFunctions;
 use common\models\UserCreateForm;
 use common\models\search\UserCreateFormSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -76,7 +77,7 @@ class UserController extends Controller
                 $model->password_hash = \Yii::$app->security->generatePasswordHash($model->password);
 //                $model->created_at = date('Y-m-d H:i:s', strtotime($model->created_at));
                 $model->avatar = UploadedFile::getInstance($model, 'avatar');
-                $model->auth_key = \Yii::$app->security->generateRandomKey();
+                $model->auth_key = Yii::$app->security->generateRandomString();;
 //                print_r($model); die();
                 if ($model->save()) {
                     $model->avatar = StaticFunctions::saveImage('user', $model->id, $model->avatar);

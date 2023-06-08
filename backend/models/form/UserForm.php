@@ -58,7 +58,7 @@ class UserForm extends \yii\base\Model
     {
         $scenarios = parent::scenarios();
         $scenarios['register'] = ['username', 'email', 'password', 'phone_number', 'avatar', 'first_name', 'last_name',
-            'password_confirm', 'status' . 'role'];
+            'password_confirm', 'status', 'role'];
 
         return $scenarios;
     }

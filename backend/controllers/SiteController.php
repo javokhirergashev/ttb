@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\LoginForm;
 use common\models\User;
 use Yii;
+use yii\db\Expression;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -120,11 +121,14 @@ class SiteController extends Controller
     public function actionMap()
     {
 //        $this->layout = 'map';
-        $models = User::find()->all();
+        $models = User::find()->andWhere(['is not', 'lat', null])->all();
+
         foreach ($models as $index => $model) {
             $result [] = ["lat" => $model->lat, "lon" => $model->lon, "fullname" => $model->first_name . " " . $model->last_name];
         }
-        return $this->render('map', ['data' => $result]);
+        return $this->render('map', [
+            'data' => $result,
+        ]);
     }
 
 

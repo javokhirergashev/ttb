@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $data []
+ * @var $data            []
+ * @var $defaultLocation []
  */
 $locations = json_encode($data);
 
@@ -24,15 +25,8 @@ $locations = json_encode($data);
 
 <script src="/js/map.js"></script>
 <script>
-   var map = L.map('map').setView([41.2972855, 69.2262816], 13);
-   var locations = <?php echo $locations; ?>;
-   // console.log(locations);
-   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-      maxZoom: 18
-   }).addTo(map);
-
-
+   var map = L.map('map').setView([41.1950235, 71.7242899], 15);
+   var locations = <?php echo $locations;?>;
    for (var i = 0; i < locations.length; i++) {
       marker = new L.marker([locations[i].lat, locations[i].lon])
          .addTo(map);
@@ -46,6 +40,14 @@ $locations = json_encode($data);
          this.closePopup();
       });
    }
+
+   // console.log(locations);
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+   }).addTo(map);
+
+
    var customIcon = L.icon({
       iconUrl: '/sites/marker-icon.png',
       iconSize: [50, 50], // Set the width and height of the icon

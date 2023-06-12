@@ -26,14 +26,12 @@
                   <i class='flaticon-email'></i>
                </div>
 
-               <h3>Email Here</h3>
+               <h3><?= \common\models\Contact::getContact("first_email")->title[Yii::$app->language]; ?></h3>
                <p>
-                  <a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#3756535a5e5977435e594d52451954585a"><span
-                        class="__cf_email__"
-                        data-cfemail="d3b2b7bebabd93a7babda9b6a1fdb0bcbe">[email&#160;protected]</span></a></p>
-               <p><a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#b2dbdcd4ddf2c6dbdcc8d7c09cd1dddf"><span
-                        class="__cf_email__"
-                        data-cfemail="8ee7e0e8e1cefae7e0f4ebfca0ede1e3">[email&#160;protected]</span></a></p>
+                  <a href="mailto:<?=\common\models\Contact::getContact("first_email")->value; ?>"><span
+                        class="__cf_email__"><?= \common\models\Contact::getContact("first_email")->value; ?></span></a></p>
+               <p><a href="mailto:<?=\common\models\Contact::getContact("second_email")->value; ?>"><span
+                               class="__cf_email__"><?= \common\models\Contact::getContact("second_email")->value; ?></span></a></p>
             </div>
          </div>
 
@@ -43,8 +41,8 @@
                   <i class='flaticon-pin'></i>
                </div>
 
-               <h3>Location Here</h3>
-               <p>2750 Quadra Street Victoria, <br> New York, Canada</p>
+               <h3><?= \common\models\Contact::getContact("address")->title[Yii::$app->language]; ?></h3>
+               <p>  Namangan viloyati, <br><?= \common\models\Contact::getContact("address")->value; ?> </p>
             </div>
          </div>
 
@@ -54,9 +52,9 @@
                   <i class='flaticon-phone-call'></i>
                </div>
 
-               <h3>Call Here</h3>
-               <p><a href="tel:1234567890">+123 456 7890</a></p>
-               <p><a href="tel:2414524526">+241 452 4526</a></p>
+               <h3><?= \common\models\Contact::getContact("first_phone")->title[Yii::$app->language]; ?></h3>
+               <p><a href="<?= \common\models\Contact::getContact("first_phone")->value; ?>"><?= \common\models\Contact::getContact("first_phone")->value; ?></a></p>
+               <p><a href="<?= \common\models\Contact::getContact("second_phone")->value; ?>"><?= \common\models\Contact::getContact("second_phone")->value; ?></a></p>
             </div>
          </div>
       </div>

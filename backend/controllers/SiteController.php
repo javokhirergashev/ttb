@@ -9,6 +9,7 @@ use yii\db\Expression;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
 /**
@@ -27,11 +28,11 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'change-map'],
+                        'actions' => ['login', 'change-map'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'map'],
+                        'actions' => ['logout', 'index', 'map', 'error'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -75,7 +76,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (! Yii::$app->user->isGuest) {
+        if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 

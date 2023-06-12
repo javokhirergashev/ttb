@@ -61,10 +61,6 @@ class UserCreateSearch extends UserCreateForm
             'id' => $this->id,
             'type' => $this->type,
             'role' => $this->role,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
-            'avatar_id' => $this->avatar_id,
             'status' => $this->status,
             'position_id' => $this->position_id,
         ]);
@@ -73,10 +69,7 @@ class UserCreateSearch extends UserCreateForm
             ->andFilterWhere(['like', 'first_name', $this->first_name])
             ->andFilterWhere(['like', 'last_name', $this->last_name])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'verification_token', $this->verification_token]);
+            ->andFilterWhere(['like', 'username', $this->username]);
 
         return $dataProvider;
     }

@@ -3,7 +3,6 @@
 namespace frontend\controllers;
 
 use common\models\Service;
-use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -17,7 +16,6 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use yii\web\Response;
 
 /**
  * Site controller
@@ -266,28 +264,5 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
-    }
-
-    public function actionChangeMap()
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $request = Yii::$app->request->getQueryParams();
-
-        if ($request['latitude'] && $request['longitude']) {
-            $user = User::findOne(Yii::$app->user->id);
-            $user->updateAttributes(['lat' => $request['latitude'], 'lon' => $request['longitude']]);
-        }
-
-        return $user;
-    }
-
-    public function actionMap()
-    {
-//        $this->layout = 'map';
-        $models = User::find()->all();
-        foreach ($models as $index => $model) {
-            $result [] = ["lat" => $model->lat, "lon" => $model->lon, "fullname" => $model->first_name . " " . $model->last_name];
-        }
-        return $this->render('map', ['data' => $result]);
     }
 }

@@ -33,6 +33,7 @@ class Request extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'first_name', 'last_name', 'phone_number'], 'required'],
             [['comment'], 'string'],
             [['created_at', 'updated_at', 'status'], 'default', 'value' => null],
             [['created_at', 'updated_at', 'status'], 'integer'],

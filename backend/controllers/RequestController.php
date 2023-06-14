@@ -60,6 +60,14 @@ class RequestController extends Controller
         ]);
     }
 
+    public function actionChangeStatus($id)
+    {
+
+        $model = $this->findModel($id);
+        $model->updateAttributes(['status' => Request::STATUS_VIEWED]);
+        return $this->redirect(['index']);
+    }
+
     /**
      * Creates a new Request model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -94,7 +102,7 @@ class RequestController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post())) {
-            $model->status=2;
+            $model->status = 2;
             $model->save();
             return $this->redirect(['index']);
         }
@@ -109,7 +117,7 @@ class RequestController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post())) {
-            $model->status=2;
+            $model->status = 2;
             $model->save();
             return $this->redirect(['index']);
         }

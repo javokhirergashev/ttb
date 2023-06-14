@@ -27,6 +27,9 @@ class Request extends \yii\db\ActiveRecord
         return 'request';
     }
 
+    const STATUS_PENDING = 1;
+    const STATUS_VIEWED = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -35,7 +38,7 @@ class Request extends \yii\db\ActiveRecord
         return [
             [['title', 'first_name', 'last_name', 'phone_number'], 'required'],
             [['comment'], 'string'],
-            [['created_at', 'updated_at', 'status'], 'default', 'value' => null],
+            [['status'], 'default', 'value' => self::STATUS_PENDING],
             [['created_at', 'updated_at', 'status'], 'integer'],
             [['title', 'first_name', 'last_name', 'phone_number'], 'string', 'max' => 255],
         ];

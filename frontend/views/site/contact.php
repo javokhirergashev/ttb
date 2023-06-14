@@ -7,9 +7,11 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\Request $model */
 /** @var yii\widgets\ActiveForm $form */
+
+$contact = common\models\Contact::getContact("first_email");
 ?>
 <style>
-    .form-group{
+    .form-group {
         margin-bottom: 20px;
     }
 </style>
@@ -33,7 +35,7 @@ use yii\widgets\ActiveForm;
 <!-- Start Contact Area -->
 <section class="contact-area ptb-100">
     <div class="container">
-        <?= Alert::widget()  ?>
+        <?= Alert::widget() ?>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="contact-info-box">
@@ -41,10 +43,10 @@ use yii\widgets\ActiveForm;
                         <i class='flaticon-email'></i>
                     </div>
 
-                    <h3><?= \common\models\Contact::getContact("first_email")->title[Yii::$app->language]; ?></h3>
+                    <h3><?= $contact->title[Yii::$app->language] ?? $contact->title; ?></h3>
                     <p>
                         <a href="mailto:<?= \common\models\Contact::getContact("first_email")->value; ?>"><span
-                                    class="__cf_email__"><?= \common\models\Contact::getContact("first_email")->value; ?></span></a>
+                                    class="__cf_email__"><?= $contact->value; ?></span></a>
                     </p>
                     <p><a href="mailto:<?= \common\models\Contact::getContact("second_email")->value; ?>"><span
                                     class="__cf_email__"><?= \common\models\Contact::getContact("second_email")->value; ?></span></a>
@@ -58,7 +60,7 @@ use yii\widgets\ActiveForm;
                         <i class='flaticon-pin'></i>
                     </div>
 
-                    <h3><?= \common\models\Contact::getContact("address")->title[Yii::$app->language]; ?></h3>
+                    <h3><?= \common\models\Contact::getContact("address")->title[Yii::$app->language] ?? ""; ?></h3>
                     <p> Namangan viloyati, <br><?= \common\models\Contact::getContact("address")->value; ?> </p>
                 </div>
             </div>
@@ -69,7 +71,7 @@ use yii\widgets\ActiveForm;
                         <i class='flaticon-phone-call'></i>
                     </div>
 
-                    <h3><?= \common\models\Contact::getContact("first_phone")->title[Yii::$app->language]; ?></h3>
+                    <h3><?= \common\models\Contact::getContact("first_phone")->title[Yii::$app->language] ?? ""; ?></h3>
                     <p>
                         <a href="<?= \common\models\Contact::getContact("first_phone")->value; ?>"><?= \common\models\Contact::getContact("first_phone")->value; ?></a>
                     </p>

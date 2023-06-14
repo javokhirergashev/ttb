@@ -70,6 +70,8 @@ class RequestSearch extends Request
             ->andFilterWhere(['ilike', 'phone_number', $this->phone_number])
             ->andFilterWhere(['ilike', 'comment', $this->comment]);
 
+        $query->orderBy(['status' => SORT_ASC]);
+
         return $dataProvider;
     }
 }

@@ -34,15 +34,35 @@ $this->params['breadcrumbs'][] = $this->title;
             'first_name',
             'last_name',
             'phone_number',
-            //'comment:ntext',
-            //'created_at',
-            //'updated_at',
-            //'status',
+            'comment:ntext',
+//            'created_at',
+//            'updated_at',
+            'status',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Amallar',
+                'headerOptions' => ['style' => 'text-align:center'],
+                'template' => '{buttons}',
+                'contentOptions' => ['style' => 'min-width:150px;max-width:150px;width:150px', 'class' => 'v-align-middle'],
+                'buttons' => [
+                    'buttons' => function ($url, $model) {
+                        $controller = Yii::$app->controller->id;
+                        $code = <<<BUTTONS
+                                <div class="btn-group flex-center">
+                                    <a href="/{$controller}/update?id={$model->id}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                </div>
+BUTTONS;
+                        return $code;
+                    }
+
+                ],
+
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Request $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

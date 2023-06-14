@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Request;
 use common\models\Service;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -129,15 +130,13 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+        $model = new Request();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', "Murojaatingiz qabul qilindi. Tez orada siz bilan bog'lanamiz!");
+                return $this->refresh();
             }
 
-            return $this->refresh();
         }
 
         return $this->render('contact', [

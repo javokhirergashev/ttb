@@ -3,12 +3,11 @@
 namespace common\models;
 
 use common\behaviors\ConvertBehaviors;
-use Yii;
 
 /**
  * This is the model class for table "contact".
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $title
  * @property string|null $value
  * @property string|null $slug
@@ -33,6 +32,7 @@ class Contact extends \yii\db\ActiveRecord
             ]
         ];
     }
+
     /**
      * {@inheritdoc}
      */
@@ -56,5 +56,15 @@ class Contact extends \yii\db\ActiveRecord
             'slug' => 'Slug',
             'icon' => 'Icon',
         ];
+    }
+
+
+    public static function getContact($slug)
+    {
+        $model = static::findOne(['slug' => $slug]);
+        if (! $model) {
+            $model = new Contact();
+        }
+        return $model;
     }
 }

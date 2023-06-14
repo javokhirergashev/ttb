@@ -37,10 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'comment:ntext',
 //            'created_at',
 //            'updated_at',
-            'status',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'header' => 'Amallar',
+                'header' => 'Status',
                 'headerOptions' => ['style' => 'text-align:center'],
                 'template' => '{view}',
                 'contentOptions' => ['style' => 'min-width:150px;max-width:150px;width:150px', 'class' => 'v-align-middle'],

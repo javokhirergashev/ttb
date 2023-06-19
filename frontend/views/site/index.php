@@ -3,6 +3,7 @@
  * @var $services \common\models\Service[]
  */
 /** @var yii\web\View $this */
+/** @var $doctors \common\models\User[] */
 
 $this->title = 'TTB';
 ?>
@@ -140,145 +141,42 @@ $this->title = 'TTB';
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="doctor-item">
-                    <div class="image">
-                        <img src="/frontend-files/img/team/image1.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>Dr. James Adult</h3>
-                        <span>Cardiologist</span>
+            <?php foreach ($doctors as $index => $doctor): ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="doctor-item">
+                        <div class="image">
+                            <img src="/frontend-files/img/team/image1.jpg" alt="image">
+                        </div>
+                        <div class="content">
+                            <h3><?= $doctor->first_name . " " . $doctor->last_name ?></h3>
+                            <span>Cardiologist</span>
 
-                        <ul class="social">
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-pinterest-p"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
+                            <ul class="social">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-pinterest-p"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="doctor-item">
-                    <div class="image">
-                        <img src="/frontend-files/img/team/image2.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>Dr. James Alison</h3>
-                        <span>Medicine</span>
-
-                        <ul class="social">
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-pinterest-p"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="doctor-item">
-                    <div class="image">
-                        <img src="/frontend-files/img/team/image3.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>Dr. Peter Adlock</h3>
-                        <span>Neurologiest</span>
-
-                        <ul class="social">
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-pinterest-p"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="doctor-item">
-                    <div class="image">
-                        <img src="/frontend-files/img/team/image4.jpg" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>Dr. Jelin Alis</h3>
-                        <span>Medicine</span>
-
-                        <ul class="social">
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-pinterest-p"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

@@ -35,23 +35,9 @@
             'itemView' => '_list_item',
             'options' => ['class' => 'row'],
             'itemOptions' => ['class' => 'col-lg-4 col-md-6'],
-            'layout' => '{data}{page}'
+            'layout' => '{items}'
         ]) ?>
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="services-item-two">
-                    <div class="icon">
-                        <i class="flaticon-bacteria"></i>
-                    </div>
-                    <a href="single-services.html">
-                        <h3>COVID-19 Consulting</h3>
-                    </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolore</p>
-                    <a href="single-services.html" class="read-btn">Read More +</a>
-                </div>
-
-            </div>
-
             <div class="col-lg-12 col-md-12">
                 <div class="pagination-area">
                     <a href="#" class="prev page-numbers">

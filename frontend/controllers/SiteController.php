@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\Request;
 use common\models\Service;
+use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -106,8 +107,12 @@ class SiteController extends Controller
          *  top service lani glavni page ga olib chiqamiz !!!
          */
         $services = Service::find()->limit(6)->all();
+
+        $doctors = User::find()->andWhere(['>=', 'role', User::ROLE_DOCTOR])->all();
+
         return $this->render('index', [
-            'services' => $services
+            'services' => $services,
+            'doctors' => $doctors
         ]);
     }
 

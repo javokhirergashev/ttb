@@ -1,4 +1,12 @@
 <?php
+
+use common\widgets\Alert;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/** @var yii\web\View $this */
+/** @var common\models\Queue $model */
+/** @var yii\widgets\ActiveForm $form */
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
  */
@@ -46,7 +54,8 @@
                     <a href="single-services.html">
                         <h3>COVID-19 Consulting</h3>
                     </a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dolore</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore dolore</p>
                     <a href="single-services.html" class="read-btn">Read More +</a>
                 </div>
 
@@ -118,61 +127,64 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-6">
-                <div class="appointment-form">
+                <?php $form = ActiveForm::begin(); ?>
+                <div class="appointment-form queue-form">
                     <div class="content">
                         <span>Call to Action</span>
                         <h3>Make An Appointment</h3>
                     </div>
-                    <form>
+                    <form id="queue-form">
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="Name" placeholder="Enter Your Name">
+                                    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true, 'placeholder' => 'Ism'])->label(false) ?>
                                     <i class="flaticon-user"></i>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="Email" placeholder="Enter Email">
+                                    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true, 'placeholder' => 'Familiya'])->label(false) ?>
                                     <i class="flaticon-email"></i>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="Phone" placeholder="Enter Phone Number">
+                                    <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true, 'placeholder' => 'Telefon raqami'])->label(false) ?>
                                     <i class="flaticon-call"></i>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <select>
-                                        <option value="">Select Category</option>
-                                        <option value="">Cardiologists</option>
-                                        <option value="">Dermatologists</option>
-                                        <option value="">Endocrinologists</option>
-                                        <option value="">Gastroenterologists</option>
-                                        <option value="">Allergists</option>
-                                        <option value="">Immunologists</option>
-                                    </select>
+                                    <?= $form->field($model, 'reason')->textInput(['maxlength' => true, 'placeholder' => 'Bemor shikoyati'])->label(false) ?>
+                                    <i class="flaticon-call"></i>
                                 </div>
                             </div>
 
+<!--                            <div class="col-lg-6 col-sm-6">-->
+<!--                                <div class="form-group">-->
+<!--                                    <select>-->
+<!--                                        <option value="">Select Category</option>-->
+<!--                                        <option value="">Cardiologists</option>-->
+<!--                                        <option value="">Dermatologists</option>-->
+<!--                                        <option value="">Endocrinologists</option>-->
+<!--                                        <option value="">Gastroenterologists</option>-->
+<!--                                        <option value="">Allergists</option>-->
+<!--                                        <option value="">Immunologists</option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <select>
-                                        <option value="">Select Doctor</option>
-                                        <option value="">Dr. James Adult</option>
-                                        <option value="">Dr. James Alison</option>
-                                        <option value="">Dr. Peter Adlock</option>
-                                        <option value="">Dr. Jelin Alis</option>
-                                        <option value="">Dr. Josh Taylor</option>
-                                        <option value="">Dr. Steven Smith</option>
-                                    </select>
+                                    <?= $form->field($model, 'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where(['role' => 4])->all(),'id','first_name'), [
+                                        'prompt' => 'Shifokorni tanlang',
+                                        'options' => [
+                                        ]
+                                    ])->label(false) ?>
                                 </div>
                             </div>
 
@@ -197,6 +209,7 @@
                         </div>
                     </form>
                 </div>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>

@@ -3,10 +3,13 @@
 use common\widgets\Alert;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\datetime\DateTimePicker;
+
 
 /** @var yii\web\View $this */
 /** @var common\models\Queue $model */
 /** @var yii\widgets\ActiveForm $form */
+
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
  */
@@ -149,23 +152,23 @@ use yii\widgets\ActiveForm;
                                 </div>
                             </div>
 
-<!--                            <div class="col-lg-6 col-sm-6">-->
-<!--                                <div class="form-group">-->
-<!--                                    <select>-->
-<!--                                        <option value="">Select Category</option>-->
-<!--                                        <option value="">Cardiologists</option>-->
-<!--                                        <option value="">Dermatologists</option>-->
-<!--                                        <option value="">Endocrinologists</option>-->
-<!--                                        <option value="">Gastroenterologists</option>-->
-<!--                                        <option value="">Allergists</option>-->
-<!--                                        <option value="">Immunologists</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <!--                            <div class="col-lg-6 col-sm-6">-->
+                            <!--                                <div class="form-group">-->
+                            <!--                                    <select>-->
+                            <!--                                        <option value="">Select Category</option>-->
+                            <!--                                        <option value="">Cardiologists</option>-->
+                            <!--                                        <option value="">Dermatologists</option>-->
+                            <!--                                        <option value="">Endocrinologists</option>-->
+                            <!--                                        <option value="">Gastroenterologists</option>-->
+                            <!--                                        <option value="">Allergists</option>-->
+                            <!--                                        <option value="">Immunologists</option>-->
+                            <!--                                    </select>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <?= $form->field($model, 'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where(['role' => 4])->all(),'id','first_name'), [
+                                    <?= $form->field($model, 'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where(['role' => 4])->all(), 'id', 'first_name'), [
                                         'prompt' => 'Shifokorni tanlang',
                                         'options' => [
                                         ]
@@ -177,6 +180,24 @@ use yii\widgets\ActiveForm;
                                 <div class="form-group">
                                     <div class="input-group date" id="datetimepicker">
                                         <input type="text" class="form-control" placeholder="Date">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                    <i class="flaticon-calendar"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker">
+                                        <?= DateTimePicker::widget([
+                                            'name' => 'dp_2',
+                                            'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
+                                            'value' => '23-Feb-1982 10:01',
+                                            'pluginOptions' => [
+                                                'autoclose' => true,
+                                                'format' => 'dd-M-yyyy hh:ii'
+                                            ]
+                                        ]); ?>
                                         <span class="input-group-addon"></span>
                                     </div>
                                     <i class="flaticon-calendar"></i>

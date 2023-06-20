@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         "css/style.css",
         "css/dark.css",
         "css/responsive.css",
+        "css/error.css",
     ];
     public $js = [
         "js/jquery.min.js",
@@ -37,8 +38,8 @@ class AppAsset extends AssetBundle
         "js/jquery.magnific-popup.min.js",
         "js/owl.carousel.min.js",
         "js/jquery.ajaxchimp.min.js",
-		"js/form-validator.min.js",
-		"js/contact-form-script.js",
+        "js/form-validator.min.js",
+        "js/contact-form-script.js",
         "js/main.js",
     ];
     public $depends = [

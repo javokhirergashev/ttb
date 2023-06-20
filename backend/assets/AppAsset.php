@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         "css/bootstrap-datetimepicker.min.css",
         "plugins/feather/feather.css",
         "css/style.css",
+        "css/error.css",
     ];
     public $js = [
         "cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",

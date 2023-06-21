@@ -28,7 +28,7 @@ class AppAsset extends AssetBundle
         "css/error.css",
     ];
     public $js = [
-        "js/jquery.min.js",
+//        "js/jquery.min.js",
         "js/bootstrap.bundle.min.js",
         "js/jquery.meanmenu.js",
         "js/jquery.nice-select.min.js",
@@ -41,6 +41,7 @@ class AppAsset extends AssetBundle
         "js/form-validator.min.js",
         "js/contact-form-script.js",
         "js/main.js",
+        "js/custom.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',

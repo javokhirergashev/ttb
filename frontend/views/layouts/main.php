@@ -32,7 +32,6 @@ AppAsset::register($this);
    <?= \frontend\widgets\Header::widget() ?>
    <?= $content ?>
    <?= \frontend\widgets\Footer::widget() ?>
-
    <?php $this->endBody() ?>
    </body>
    </html>

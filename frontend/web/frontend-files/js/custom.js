@@ -1,6 +1,12 @@
 $(document).ready(function () {
     $('.nice-select').removeClass('form-control');
 
+    $('.close-time-modal').on('click', function (e) {
+        $('.modal').removeClass('show')
+        $('.modal').attr('style', 'display:none;')
+        $('.modal-body').empty();
+    })
+
 });
 
 $(document).ready(function () {
@@ -34,27 +40,26 @@ $(document).ready(function () {
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 dateTimePicker.val(null);
+                $('.modal').addClass('show')
+                $('.modal').attr('style', 'display: block;')
                 console.log(jqXHR.responseJSON);
-                var response = jqXHR.responseJSON;
-                var result = [];
-                for (let i = 0; i < response.length; i++) {
-                    var dateTimeString = response[i];
-                    var dateTime = new Date(dateTimeString);
-                    var year = dateTime.getFullYear();
-                    var month = dateTime.getMonth() + 1; // Adding 1 because month is zero-based
-                    var day = dateTime.getDate();
-                    var full_date = year + '-' + month + '-' + day;
-                    result[full_date] = dateTime.getHours();
+                let response = jqXHR.responseJSON;
+                let text = '';
+                console.log(typeof response)
+                for (let i in response) {
+
+                    text = text + '<div className="d-flex flex-column" style="display: flex;flex-direction: column;"> <strong className="text-center" style="text-align: center">' + i + ' </strong> <div style="display: flex; flex-wrap: wrap; margin-bottom: 0.75rem" className="mb-1 d-flex flex-wrap">';
+
+                    let hours = '';
+                    response[i].forEach((item, index) => {
+                        hours = hours + `<div style="margin-bottom: 0.75rem;" class="alert alert-danger mx-1 mb-1 px-2 py-1" role="alert">
+                        ${item}
+                    </div>`
+                    });
+                    text = text + hours + '</div></div>';
 
                 }
-
-                // console.log(result);
-
-
-                // Close modal when close button or outside modal is clicked
-
-
-                alert('Zaynit vaqtlar listi \n' + JSON.stringify(jqXHR.responseJSON));
+                $('.modal-body').append(text);
                 console.error(textStatus, errorThrown);
             }
         });

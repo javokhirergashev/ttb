@@ -36,7 +36,7 @@ class QueueController extends Controller
 
                 $data = Queue::find()->andWhere(['user_id' => $bodyParams['user_id']])->andWhere(['>', 'writing_time', time()])->all();
                 foreach ($data as $datum) {
-                    $result [] = date('Y-m-d H:i', $datum->writing_time);
+                    $result[date('Y-m-d', $datum->writing_time)][] = date('H:i', $datum->writing_time);
                 }
 
                 return $result;

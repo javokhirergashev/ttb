@@ -178,29 +178,15 @@ use kartik\datetime\DateTimePicker;
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group date" id="datetimepicker">
-                                        <input type="text" class="form-control" placeholder="Date">
-                                        <span class="input-group-addon"></span>
-                                    </div>
-                                    <i class="flaticon-calendar"></i>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <div class="input-group date" id="datetimepicker">
-                                        <?= DateTimePicker::widget([
-                                            'name' => 'dp_2',
-                                            'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-                                            'value' => '23-Feb-1982 10:01',
-                                            'pluginOptions' => [
-                                                'autoclose' => true,
-                                                'format' => 'dd-M-yyyy hh:ii'
-                                            ]
-                                        ]); ?>
-                                        <span class="input-group-addon"></span>
-                                    </div>
-                                    <i class="flaticon-calendar"></i>
+                                    <?= DateTimePicker::widget([
+                                        'name' => 'dp_2',
+                                        'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
+                                        'value' => '23-Feb-1982 10:01',
+                                        'pluginOptions' => [
+                                            'autoclose' => true,
+                                            'format' => 'dd-M-yyyy hh:ii'
+                                        ]
+                                    ]); ?>
                                 </div>
                             </div>
 

@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => function ($data) {
                                     if ($data->status == 1) {
                                         return 'faol';
-                                    }else{
+                                    } else {
                                         return 'faol emas';
                                     }
                                 }

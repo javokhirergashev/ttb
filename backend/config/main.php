@@ -11,11 +11,15 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'timeZone' => 'Asia\Tashkent',
     'language' => 'uz',
     'modules' => [],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+        ],
+        'formatter' => [
+            'timeZone' => 'Asia/Tashkent',
         ],
         'user' => [
             'identityClass' => 'common\models\User',

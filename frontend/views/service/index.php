@@ -1,9 +1,8 @@
 <?php
 
-use common\widgets\Alert;
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use common\models\User;
 use kartik\datetime\DateTimePicker;
+use yii\widgets\ActiveForm;
 
 
 /** @var yii\web\View $this */
@@ -15,6 +14,28 @@ use kartik\datetime\DateTimePicker;
  */
 
 ?>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Bu vaqtlar band qilingan. Iltimos boshqa vaqt
+                    tanlang</h5>
+                <button type="button" class="btn-close close-time-modal" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-time-modal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="page-title-area item-bg-6">
     <div class="d-table">
         <div class="d-table-cell">
@@ -22,8 +43,8 @@ use kartik\datetime\DateTimePicker;
                 <div class="page-title-content">
                     <h2>Services</h2>
                     <ul>
-                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a></li>
-                        <li>Services</li>
+                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>"><?= __('Home') ?></a></li>
+                        <li><?= __('Services') ?></li>
                     </ul>
                 </div>
             </div>
@@ -36,8 +57,8 @@ use kartik\datetime\DateTimePicker;
 <section class="services-section bg-f4f6fe pt-100 pb-100">
     <div class="container">
         <div class="section-title">
-            <span>Our Services</span>
-            <h2>Our Healthcare Services</h2>
+            <span><?= __('Our Services') ?></span>
+            <h2><?= __('Our Healthcare Services') ?></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Quis ipsum suspendisse</p>
         </div>
@@ -116,92 +137,90 @@ use kartik\datetime\DateTimePicker;
                 </div>
             </div>
             <div class="col-lg-6">
-                <?php $form = ActiveForm::begin(); ?>
+
                 <div class="appointment-form queue-form">
                     <div class="content">
                         <span>Call to Action</span>
                         <h3>Make An Appointment</h3>
                     </div>
-                    <form id="queue-form">
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true, 'placeholder' => 'Ism'])->label(false) ?>
-                                    <i class="flaticon-user"></i>
-                                </div>
-                            </div>
+                    <?php $form = ActiveForm::begin(['method' => 'POST', 'action' => \yii\helpers\Url::to(['queue/create'])], ['options' => ['id' => 'queue-form']]); ?>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6">
+                            <?= $form->field($model, 'first_name')->textInput(['maxlength' => true, 'placeholder' => 'Ism', 'template' => '
+                       <div class="form-group">
+                             {input}
+      
+                             <div class="help-block">{hint}</div>
+                             <div class="error-block">{error}</div>
+                       </div>'])->hint('<i class="flaticon-user"></i>')->label(false)
+                            ?>
+                        </div>
 
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true, 'placeholder' => 'Familiya'])->label(false) ?>
-                                    <i class="flaticon-email"></i>
-                                </div>
-                            </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <?= $form->field($model, 'last_name')->textInput(['maxlength' => true, 'placeholder' => 'Familiya', 'template' => '
+                       <div class="form-group">
+                             {input}
+      
+                             <div class="help-block">{hint}</div>
+                             <div class="error-block">{error}</div>
+                       </div>'])->hint('<i class="flaticon-user"></i>')->label(false)
+                            ?>
+                        </div>
 
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true, 'placeholder' => 'Telefon raqami'])->label(false) ?>
-                                    <i class="flaticon-call"></i>
-                                </div>
-                            </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="form-group">
+                                <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true, 'placeholder' => 'Telefon raqami'])->label(false) ?>
+                                <i class="flaticon-call"></i>
 
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <?= $form->field($model, 'reason')->textInput(['maxlength' => true, 'placeholder' => 'Bemor shikoyati'])->label(false) ?>
-                                    <i class="flaticon-call"></i>
-                                </div>
-                            </div>
-
-                            <!--                            <div class="col-lg-6 col-sm-6">-->
-                            <!--                                <div class="form-group">-->
-                            <!--                                    <select>-->
-                            <!--                                        <option value="">Select Category</option>-->
-                            <!--                                        <option value="">Cardiologists</option>-->
-                            <!--                                        <option value="">Dermatologists</option>-->
-                            <!--                                        <option value="">Endocrinologists</option>-->
-                            <!--                                        <option value="">Gastroenterologists</option>-->
-                            <!--                                        <option value="">Allergists</option>-->
-                            <!--                                        <option value="">Immunologists</option>-->
-                            <!--                                    </select>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <?= $form->field($model, 'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where(['role' => 4])->all(), 'id', 'first_name'), [
-                                        'prompt' => 'Shifokorni tanlang',
-                                        'options' => [
-                                        ]
-                                    ])->label(false) ?>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group">
-                                    <?= DateTimePicker::widget([
-                                        'name' => 'dp_2',
-                                        'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-                                        'value' => '23-Feb-1982 10:01',
-                                        'pluginOptions' => [
-                                            'autoclose' => true,
-                                            'format' => 'dd-M-yyyy hh:ii'
-                                        ]
-                                    ]); ?>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="appointment-btn">
-                                    <button type="submit" class="default-btn">
-                                        Confirm Appointment
-                                        <span></span>
-                                    </button>
-                                </div>
                             </div>
                         </div>
-                    </form>
+                        <div class="col-lg-6 col-sm-6">
+                            <?= $form->field($model, 'user_id')->dropDownList(User::getDropDownList(), [
+                                'prompt' => 'Shifokorni tanlang',
+                                'options' => [
+                                ],
+                                'inputOptions' => [
+                                ]
+                            ])->label(false) ?>
+                        </div>
+                        <div class="col-lg-12 col-sm-12 mb-3">
+                            <?php
+
+                            echo DateTimePicker::widget([
+                                'id' => 'my-datetime-picker',
+                                'name' => 'Queue[writing_time]',
+                                'options' => ['placeholder' => 'Select date and time...'],
+                                'convertFormat' => true,
+                                'pluginOptions' => [
+                                    'style' => 'margin-bottom:22px',
+                                    'format' => 'yyyy-MM-dd HH:i',
+                                    'todayHighlight' => true,
+                                    'autoclose' => true,
+                                    'startDate' => date('Y-m-d H:i', strtotime(date('Y-m-d H:i',) . '+5 hour')),
+                                    'endDate' => '2023-06-30',
+                                    'minuteStep' => 20,
+                                    'removeButton' => true,
+                                    'clearBtn' => false,
+                                    'disabledMinutes' => [0, 15, 30, 45], // Array of disabled minutes
+                                ],
+                            ]);
+                            ?>
+                        </div>
+
+
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <?= $form->field($model, 'reason')->textarea(['maxlength' => true, 'placeholder' => 'Bemor shikoyati'])->label(false) ?>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="appointment-btn">
+                                <?php echo \yii\helpers\Html::submitButton(__('Navbatga yozilish'), ['class' => 'default-btn']) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
-                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>

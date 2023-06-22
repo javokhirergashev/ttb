@@ -8,6 +8,7 @@ class Banner extends Widget
 {
     public function run()
     {
+
         return $this->render('banner');
     }
 }

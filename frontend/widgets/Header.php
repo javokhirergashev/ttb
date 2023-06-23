@@ -12,6 +12,6 @@ class Header extends Widget
     public function run()
     {
         $models = Contact::find()->all();
-        return $this->render('header', compact($models));
+        return $this->render('header', compact('models'));
     }
 }

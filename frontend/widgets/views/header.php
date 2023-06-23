@@ -2,22 +2,21 @@
 <header class="header-area">
     <div class="top-header">
         <div class="container">
-            
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <ul class="top-list">
                         <li>
                             <i class='flaticon-clock'></i>
-                            Mon-Fri 09-18.00
+                            <?= \common\models\Contact::getContact("working_time")->title[Yii::$app->language] ?? ""; ?> <?= \common\models\Contact::getContact("working_time")->value; ?>
                         </li>
                         <li>
                             <i class='flaticon-phone-call'></i>
-                            <a href="tel:821-456-241">Call Us: +821-456-241</a>
+                            <a href="tel:<?= \common\models\Contact::getContact("first_phone")->value; ?>"><?= \common\models\Contact::getContact("first_phone")->title[Yii::$app->language] ?? ""; ?>: <?= \common\models\Contact::getContact("first_phone")->value; ?></a>
                         </li>
                         <li>
                             <i class='flaticon-paper-plane'></i>
-                            <a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#670f020b0b08270e0901084904080a"><span
-                                        class="__cf_email__" data-cfemail="c1a9a4adadae81a8afa7aeefa2aeac">[email&#160;protected]</span></a>
+                            <a href="mailto:<?= \common\models\Contact::getContact("second_email")->value; ?>"><span
+                                        class="__cf_email__"><?= \common\models\Contact::getContact("first_email")->value; ?></span></a>
                         </li>
                     </ul>
                 </div>
@@ -25,23 +24,23 @@
                 <div class="col-lg-6">
                     <ul class="top-social">
                         <li>
-                            <a href="#" class="facebook">
+                            <a href="<?= \common\models\Contact::getContact("telegram")->value; ?>" class="fa-telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= \common\models\Contact::getContact("instagram")->value; ?>" class="instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= \common\models\Contact::getContact("facebook")->value; ?>" class="facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="twitter">
+                            <a href="<?= \common\models\Contact::getContact("tweetter")->value; ?>" class="twitter">
                                 <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="pinterest">
-                                <i class="fab fa-pinterest-p"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="instagram">
-                                <i class="fab fa-instagram"></i>
                             </a>
                         </li>
                         <li>

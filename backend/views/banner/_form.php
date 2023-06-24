@@ -84,7 +84,7 @@ use yii\widgets\ActiveForm;
                                 <div class="form-group row">
                                     <label class="col-form-label">Image</label>
                                     <div class="col-md-9">
-                                        <?= $form->field($model, 'image')->fileInput()->label(false) ?>
+                                        <?= $form->field($model, 'image')->fileInput(['accept' => 'image/*', 'class' => 'form-control'])->label(false) ?>
                                     </div>
                                 </div>
                             </div>

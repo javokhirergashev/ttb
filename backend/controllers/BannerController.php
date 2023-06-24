@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\Banner;
 use common\models\search\BannerSearch;
+use common\models\StaticFunctions;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BannerController implements the CRUD actions for Banner model.
@@ -70,10 +72,12 @@ class BannerController extends Controller
         $model = new Banner();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-
-
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                if ($model->save()) {
+                    $model->image = UploadedFile::getInstance($model, 'image');
+                    $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
+                    return $this->redirect(['index']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -95,8 +99,20 @@ class BannerController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $oldImage = $model->image;
+                if ($model->save()) {
+                    if (!empty($model->image)) {
+                        $model->image = UploadedFile::getInstance($model, 'image');
+                        StaticFunctions::deleteImage('image', $model->id, $oldImage);
+                        $model->image = StaticFunctions::saveImage('image', $model->id, $model->image);
+                    } else {
+                        $model->image = $oldImage;
+                    }
+                    return $this->redirect(['index']);
+                }
+            }
         }
 
         return $this->render('update', [

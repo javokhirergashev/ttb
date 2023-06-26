@@ -34,7 +34,7 @@ $page = 1;
                             </a>
                             <p><?= $service->getPrettyDescription() ?></p>
                             <a href="<?= \yii\helpers\Url::to(['service/view', 'id' => $service->id]) ?>"
-                               class="read-btn">Read More +</a>
+                               class="read-btn"><?= __('Read more')?> +</a>
                         </div>
                     </div>
 

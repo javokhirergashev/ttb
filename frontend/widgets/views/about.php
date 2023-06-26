@@ -10,7 +10,7 @@
 
             <div class="col-lg-6">
                 <div class="about-content">
-                    <span>About Us</span>
+                    <span><?= __('About Us')?></span>
                     <h3>Connect to a Call Doctor by Video or Audio During the COVID-19 Pandemic</h3>
                     <p>Many healthcare systems around the world together with government agencies and startup companies are building and delivering Telehealth solutions  the future of non-emergency and routine healthcare delivery</p>
 

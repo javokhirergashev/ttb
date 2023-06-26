@@ -36,21 +36,21 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 </div>
-<div class="page-title-area item-bg-6">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container">
-                <div class="page-title-content">
-                    <h2>Services</h2>
-                    <ul>
-                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>"><?= __('Home') ?></a></li>
-                        <li><?= __('Services') ?></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="page-title-area item-bg-6">-->
+<!--    <div class="d-table">-->
+<!--        <div class="d-table-cell">-->
+<!--            <div class="container">-->
+<!--                <div class="page-title-content">-->
+<!--                    <h2>Services</h2>-->
+<!--                    <ul>-->
+<!--                        <li><a href="--><?//= \yii\helpers\Url::to(['/']) ?><!--">--><?//= __('Home') ?><!--</a></li>-->
+<!--                        <li>--><?//= __('Services') ?><!--</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!-- End Page Title Area -->
 <?= \frontend\widgets\Banner::widget([
     'type' => \common\models\Banner::TYPE_SERVICE

@@ -1,18 +1,18 @@
-<div class="page-title-area item-bg-1">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container">
-                <div class="page-title-content">
-                    <h2>About</h2>
-                    <ul>
-                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a></li>
-                        <li>About</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="page-title-area item-bg-1">-->
+<!--    <div class="d-table">-->
+<!--        <div class="d-table-cell">-->
+<!--            <div class="container">-->
+<!--                <div class="page-title-content">-->
+<!--                    <h2>About</h2>-->
+<!--                    <ul>-->
+<!--                        <li><a href="--><?//= \yii\helpers\Url::to(['/']) ?><!--">Home</a></li>-->
+<!--                        <li>About</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!-- End Page Title Area -->
 
 <?= \frontend\widgets\Banner::widget([

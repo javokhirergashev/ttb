@@ -1,7 +1,8 @@
 <?php if(!empty($models)): ?>
-<!-- Start Main Banner Area -->
-<?php foreach ($models as $model) : ?>
-<div class="main-banner" style="background-image: <?= \common\models\StaticFunctions::getImage('banner', $model->id, $model->image)?>!important;">
+
+    <!-- Start Main Banner Area -->
+    <?php foreach ($models as $model) :;?>
+        <div class="main-banner" style="background-image: url('<?=\common\models\StaticFunctions::getImage('banner',$model->id,$model->image)?>')">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">

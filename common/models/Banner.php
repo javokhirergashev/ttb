@@ -24,6 +24,7 @@ class Banner extends \yii\db\ActiveRecord
 
     const TYPE_HOME = 1;
     const TYPE_SERVICE = 2;
+    const TYPE_ABOUT = 3;
 
 
     public function behaviors()

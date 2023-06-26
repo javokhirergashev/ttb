@@ -6,8 +6,11 @@
 /** @var $doctors \common\models\User[] */
 
 $this->title = 'TTB';
+$page = 1;
 ?>
-<?= \frontend\widgets\Banner::widget() ?>
+<?= \frontend\widgets\Banner::widget([
+        'type' => \common\models\Banner::TYPE_HOME
+]) ?>
 <?= \frontend\widgets\About::widget() ?>
 <section class="services-section bg-f4f6fe pt-100 pb-70">
     <div class="container">

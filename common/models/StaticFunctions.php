@@ -7,7 +7,7 @@ use yii\helpers\FileHelper;
 class StaticFunctions
 {
     public static function getImage($tableName,$id,$image){
-        return "../../frontend/web/uploads/$tableName/$id/$image";
+        return "/frontend/web/uploads/$tableName/$id/$image";
     }
     public static function saveImage($tableName,$modelId,$image){
         $DIR = "../../frontend/web/uploads/$tableName/$modelId/";

@@ -1,12 +1,14 @@
+<?php if(!empty($models)): ?>
 <!-- Start Main Banner Area -->
-<div class="main-banner bg-two">
+<?php foreach ($models as $model) : ?>
+<div class="main-banner" style="background-image: <?= \common\models\StaticFunctions::getImage('banner', $model->id, $model->image)?>!important;">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
                         <div class="main-banner-content">
-                            <h1>TeleHealth Services Rapid Response to Coronavirus Pandemic</h1>
+                            <h1></h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse.</p>
                         </div>
 
@@ -72,4 +74,7 @@
         </div>
     </div>
 </div>
+<?php endforeach; ?>
 <!-- End Main Banner Area -->
+
+<?php endif; ?>

@@ -52,7 +52,9 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 <!-- End Page Title Area -->
-
+<?= \frontend\widgets\Banner::widget([
+    'type' => \common\models\Banner::TYPE_SERVICE
+]) ?>
 <!-- Start Services Area -->
 <section class="services-section bg-f4f6fe pt-100 pb-100">
     <div class="container">

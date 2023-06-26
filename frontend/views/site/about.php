@@ -15,6 +15,10 @@
 </div>
 <!-- End Page Title Area -->
 
+<?= \frontend\widgets\Banner::widget([
+    'type' => \common\models\Banner::TYPE_ABOUT
+]) ?>
+
 <!-- Start About Area -->
 <section class="about-area pt-100">
     <div class="container-fluid">

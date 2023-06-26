@@ -65,10 +65,7 @@ use yii\widgets\ActiveForm;
                                 <div class="form-group row">
                                     <label class="col-form-label">Joylashuv turi</label>
                                     <div class="col-md-9">
-                                        <?= $form->field($model, 'type')->dropDownList([
-                                            \common\models\Banner::TYPE_HOME => "Home page",
-                                            \common\models\Banner::TYPE_SERVICE => "Service page",
-                                        ], ['prompt' => "Joylashuvini tanlang"])->label(false) ?>
+                                        <?= $form->field($model, 'type')->dropDownList(Yii::$app->params['banner_positions'], ['prompt' => "Joylashuvini tanlang"])->label(false) ?>
                                     </div>
                                 </div>
                             </div>

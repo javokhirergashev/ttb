@@ -156,7 +156,8 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $position = 2;
+        return $this->render('about', compact('position'));
     }
 
     /**

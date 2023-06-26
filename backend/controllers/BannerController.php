@@ -73,9 +73,9 @@ class BannerController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
+                $model->image = UploadedFile::getInstance($model, 'image');
+                $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
                 if ($model->save()) {
-                    $model->image = UploadedFile::getInstance($model, 'image');
-                    $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
                     return $this->redirect(['index']);
                 }
             }
@@ -102,14 +102,14 @@ class BannerController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $oldImage = $model->image;
+                $model->image = UploadedFile::getInstance($model, 'image');
+                if (!empty($model->image)) {
+                    StaticFunctions::deleteImage('banner', $model->id, $oldImage);
+                    $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
+                } else {
+                    $model->image = $oldImage;
+                }
                 if ($model->save()) {
-                    if (!empty($model->image)) {
-                        $model->image = UploadedFile::getInstance($model, 'image');
-                        StaticFunctions::deleteImage('image', $model->id, $oldImage);
-                        $model->image = StaticFunctions::saveImage('image', $model->id, $model->image);
-                    } else {
-                        $model->image = $oldImage;
-                    }
                     return $this->redirect(['index']);
                 }
             }

@@ -15,7 +15,26 @@ class QueueController extends Controller
         if ($model->load(\Yii::$app->request->post())) {
             $model->writing_time = strtotime($model->writing_time);
             if ($model->save()) {
-                \Yii::$app->session->setFlash('success', 'Siz muvaffaqqiyatli  navbatga qoshildingiz !');
+
+                $htmlFile = 'path/to/custom.html';
+
+                // Read the contents of the HTML file
+                $htmlContent = file_get_contents($htmlFile);
+
+                // Create a new mPDF object
+                $mpdf = new \Mpdf\Mpdf();
+
+                // Set the custom HTML content for the PDF
+                $mpdf->WriteHTML($htmlContent);
+
+                // Set the headers for download
+                header('Content-Type: application/pdf');
+                header('Content-Disposition: attachment; filename="example.pdf"');
+
+                // Output the PDF file
+                $mpdf->Output('example.pdf', 'D');
+
+
                 return $this->redirect(\Yii::$app->request->referrer);
             }
         }

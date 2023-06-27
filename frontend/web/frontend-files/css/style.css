@@ -927,7 +927,7 @@ Main Banner Area CSS
 .main-banner {
   position: relative;
   z-index: 1;
-  background-image: url(../img/banner-bg.jpg);
+  /*background-image: url(../img/banner-bg.jpg);*/
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

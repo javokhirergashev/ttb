@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\Banner;
 use common\models\search\BannerSearch;
+use common\models\StaticFunctions;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BannerController implements the CRUD actions for Banner model.
@@ -70,10 +72,12 @@ class BannerController extends Controller
         $model = new Banner();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-
-
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->image = UploadedFile::getInstance($model, 'image');
+                $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -95,8 +99,20 @@ class BannerController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $oldImage = $model->image;
+                $model->image = UploadedFile::getInstance($model, 'image');
+                if (!empty($model->image)) {
+                    StaticFunctions::deleteImage('banner', $model->id, $oldImage);
+                    $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
+                } else {
+                    $model->image = $oldImage;
+                }
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                }
+            }
         }
 
         return $this->render('update', [

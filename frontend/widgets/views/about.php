@@ -1,3 +1,9 @@
+<?php
+
+$this->title = 'About';
+$this->params['breadcrumbs'][] = $this->title;
+
+?>
 <!-- Start About Area -->
 <section class="about-area ptb-100">
     <div class="container-fluid">

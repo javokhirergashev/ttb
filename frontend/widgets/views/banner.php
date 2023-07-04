@@ -1,7 +1,15 @@
 <?php if (!empty($models)): ?>
-
     <!-- Start Main Banner Area -->
     <?php foreach ($models as $model) :; ?>
+        <?php
+            $breadcrumb = '';
+            if ($model->type == 1  ){
+            $breadcrumb = '';
+            }elseif ($model->type == 2){
+            $breadcrumb = 'Service';
+            }elseif ($model->type == 2){
+            $breadcrumb = 'About';
+        }?>
         <div class="main-banner"
              style="background-image: url('<?= \common\models\StaticFunctions::getImage('banner', $model->id, $model->image) ?>');">
             <div class="d-table">
@@ -72,17 +80,18 @@
                                 </div>
                             </div>
                             <?php
-                                if ($model->type != 1) {
-                                    echo '<div class="container">
+
+                            if ($model->type != 1) {
+                                echo '<div class="container">
                                             <div class="page-title-content">
                                                 <h2>About</h2>
                                                 <ul>
                                                     <li><a href="' . \yii\helpers\Url::to(['/']) . '">' . __('Home') . '</a></li>
-                                                    <li></li>
+                                                    <li>'.$breadcrumb.'</li>
                                                 </ul>
                                             </div>
                                         </div>';
-                                    }
+                            }
                             ?>
                         </div>
                     </div>

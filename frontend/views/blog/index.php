@@ -64,7 +64,9 @@
             'pagination' => $dataProvider->pagination,
             'prevPageLabel' => false,
             'nextPageLabel' => false,
-            'linkContainerOptions' => ['class' => 'page-numbers','tag' => 'i'],
+            'activePageCssClass' => 'current',
+            'prevPageCssClass' => 'prev page-numbers',
+            'linkContainerOptions' => ['class' => 'page-numbers', 'tag' => 'a.i'],
 
             'options' => [
                'class' => 'pagination-area',

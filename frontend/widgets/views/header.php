@@ -120,14 +120,11 @@
                             </li>
                         </ul>
                         <div class="others-options">
-                            <!--                       <a href="appointment.html" class="default-btn">-->
-                            <!--                           Get a Quote-->
-                            <!--                           <span style="top: 204.099px; left: -106.254px;"></span>-->
-                            <!--                       </a>-->
                             <div class="dropdown">
-                                <li  class="dropdown-toggle nav-item" data-bs-toggle="dropdown" style="list-style-type: none">
+                                <li class="dropdown-toggle nav-item" data-bs-toggle="dropdown"
+                                    style="list-style-type: none">
                                     <span class="fa fa-globe"></span>
-                                    <?= Yii::$app->language?>
+<!--                                    --><?//= Yii::$app->language ?>
                                 </li>
                                 <ul class="dropdown-menu">
                                     <?php
@@ -137,19 +134,6 @@
                                     ?>
                                 </ul>
                             </div>
-
-<!--                            <div class="dropdown">-->
-<!---->
-<!--                                    --><?//= Yii::t("app", "language")?>
-<!--                                <ul class="dropdown-menu">-->
-<!--                                    --><?php
-//                                    foreach (Yii::$app->params['languages'] as $key => $value) {
-//                                        echo " <li><a class='dropdown-item' href='" . \yii\helpers\Url::current(['language' => $value]) . "'>$value</a></li>";
-//                                    }
-//                                    ?>
-<!--                                </ul>-->
-<!--                            </div>-->
-
                         </div>
                     </div>
                 </nav>

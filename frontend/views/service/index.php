@@ -139,7 +139,6 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
             <div class="col-lg-6">
-
                 <div class="appointment-form queue-form">
                     <div class="content">
                         <span>Call to Action</span>
@@ -199,7 +198,7 @@ use yii\widgets\ActiveForm;
                                     'todayHighlight' => true,
                                     'autoclose' => true,
                                     'startDate' => date('Y-m-d H:i', strtotime(date('Y-m-d H:i',) . '+5 hour')),
-                                    'endDate' => '2023-06-30',
+                                    'endDate' => date('Y-m-d H:i', strtotime(date('Y-m-d H:i',) . '+6 day')),
                                     'minuteStep' => 20,
                                     'removeButton' => true,
                                     'clearBtn' => false,

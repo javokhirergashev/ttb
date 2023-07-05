@@ -207,8 +207,6 @@ use yii\widgets\ActiveForm;
                             ]);
                             ?>
                         </div>
-
-
                         <div class="col-lg-12 col-sm-12">
                             <div class="form-group">
                                 <?= $form->field($model, 'reason')->textarea(['maxlength' => true, 'placeholder' => 'Bemor shikoyati'])->label(false) ?>

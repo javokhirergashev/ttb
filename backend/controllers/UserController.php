@@ -132,7 +132,6 @@ class UserController extends Controller
     /**
      * Finds the UserCreateForm model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     *
      * @param int $id ID
      *
      * @return UserCreateForm the loaded model
@@ -145,5 +144,10 @@ class UserController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionProfile()
+    {
+        return $this->render('profile', ['user' => \Yii::$app->user->identity]);
     }
 }

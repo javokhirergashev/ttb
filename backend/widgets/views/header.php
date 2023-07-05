@@ -111,10 +111,11 @@
 </span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.html">My Profile</a>
+                <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['user/profile']) ?>">My Profile</a>
                 <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                 <a class="dropdown-item" href="settings.html">Settings</a>
-                <a data-method="post" class="dropdown-item" href="<?= \yii\helpers\Url::to(['site/logout']) ?>">Logout</a>
+                <a data-method="post" class="dropdown-item"
+                   href="<?= \yii\helpers\Url::to(['site/logout']) ?>">Logout</a>
             </div>
         </li>
         <li class="nav-item ">

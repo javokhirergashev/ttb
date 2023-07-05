@@ -2,6 +2,7 @@
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
  */
+
 ?>
 
 <div class="page-title-area item-bg-5">
@@ -35,7 +36,7 @@
          'itemView' => '_list_item',
          'options' => ['class' => 'row'],
          'itemOptions' => ['class' => 'col-lg-4 col-md-6'],
-         'layout' => '{items}\n{pager}'
+         'layout' => '{items}',
       ]) ?>
       <div class="row">
          <?php if (count($dataProvider->getModels()) <= 0): ?>
@@ -59,6 +60,18 @@
                </div>
             </div>
          <?php endif; ?>
+         <?= \yii\widgets\LinkPager::widget([
+            'pagination' => $dataProvider->pagination,
+            'prevPageLabel' => '<i class="fa fa-chevron-left"></i>',
+            'nextPageLabel' => '<i class="fa fa-chevron-right"></i>',
+            'activePageCssClass' => ['tag' => 'span','class' => 'current'],
+            'prevPageCssClass' => 'prev page-numbers',
+            'linkOptions' => ['class' => 'page-numbers'],
+            'linkContainerOptions' => ['tag' => false],
+            'options' => [
+               'class' => 'pagination-area',
+            ],
+         ]) ?>
          <div class="col-lg-12 col-md-12">
             <div class="pagination-area">
                <a href="#" class="prev page-numbers">

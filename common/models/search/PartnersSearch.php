@@ -4,12 +4,12 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\News;
+use common\models\Partners;
 
 /**
- * NewsSearch represents the model behind the search form of `common\models\News`.
+ * PartnersSearch represents the model behind the search form of `common\models\Partners`.
  */
-class NewsSearch extends News
+class PartnersSearch extends Partners
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class NewsSearch extends News
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at', 'type', 'category_id'], 'integer'],
-            [['title', 'description', 'poster', 'main_image', 'published_at',], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['name', 'image', 'link'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class NewsSearch extends News
      */
     public function search($params)
     {
-        $query = News::find();
+        $query = Partners::find();
 
         // add conditions that should always apply here
 
@@ -60,19 +60,11 @@ class NewsSearch extends News
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'published_at' => $this->published_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'type' => $this->type,
-            'category_id' => $this->category_id,
         ]);
 
-        $dataProvider->pagination->pageSize = 5;
-
-        $query->andFilterWhere(['ilike', 'title', $this->title])
-            ->andFilterWhere(['ilike', 'description', $this->description])
-            ->andFilterWhere(['ilike', 'poster', $this->poster])
-            ->andFilterWhere(['ilike', 'main_image', $this->main_image]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'link', $this->link]);
 
         return $dataProvider;
     }

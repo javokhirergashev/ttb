@@ -39,6 +39,21 @@
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
+                        <li>
+                            <a href="<?= \common\models\Contact::getContact("tweetter")->value; ?>" class="twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sign-in.html" class="log-in">
+                                Sign In
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sign-up.html" class="sign-in">
+                                Sign Up
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -73,37 +88,53 @@
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['/']) ?>"
                                    class="nav-link <?= Yii::$app->request->url == "/" ? "active" : "" ?>">
-                                    <?= Yii::t('app', 'Home') ?>
+                                    Home
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['site/about']) ?>"
                                    class="nav-link <?= Yii::$app->request->url == "/site/about" ? "active" : "" ?>">
-                                     <?= Yii::t('app', 'About') ?>
+                                    About
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['service/index']) ?>"
                                    class="nav-link <?= Yii::$app->controller->id == "service" ? "active" : "" ?>">
-                                      <?= Yii::t('app', 'Services') ?>
+                                    Services
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"
                                    class="nav-link <?= Yii::$app->controller->id == "blog" ? "active" : "" ?>">
-                                    <?= Yii::t('app', 'Blog') ?>
+                                    Blog
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"
                                    class="nav-link <?= Yii::$app->request->url == "/site/contact" ? "active" : "" ?>">
-                                    <?= Yii::t('app', 'Contact') ?>
+                                    Contact
                                 </a>
                             </li>
                         </ul>
+                        <div class="others-options">
+                            <div class="dropdown">
+                                <li class="dropdown-toggle nav-item" data-bs-toggle="dropdown"
+                                    style="list-style-type: none">
+                                    <span class="fa fa-globe"></span>
+<!--                                    --><?//= Yii::$app->language ?>
+                                </li>
+                                <ul class="dropdown-menu">
+                                    <?php
+                                    foreach (Yii::$app->params['languages'] as $key => $value) {
+                                        echo " <li><a class='dropdown-item' href='" . \yii\helpers\Url::current(['language' => $value]) . "'>$value</a></li>";
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </div>

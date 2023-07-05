@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -15,12 +16,25 @@ use Yii;
  */
 class Partners extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'partners';
+    }
+
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['name']
+            ]
+        ];
     }
 
     /**
@@ -43,8 +57,8 @@ class Partners extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'image' => 'Image',
+            'name' => 'Nomi',
+            'image' => 'Rasmi',
             'link' => 'Link',
             'status' => 'Status',
         ];

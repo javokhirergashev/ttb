@@ -62,12 +62,12 @@
          <?php endif; ?>
          <?= \yii\widgets\LinkPager::widget([
             'pagination' => $dataProvider->pagination,
-            'prevPageLabel' => false,
-            'nextPageLabel' => false,
-            'activePageCssClass' => 'current',
+            'prevPageLabel' => '<i class="fa fa-chevron-left"></i>',
+            'nextPageLabel' => '<i class="fa fa-chevron-right"></i>',
+            'activePageCssClass' => ['tag' => 'span','class' => 'current'],
             'prevPageCssClass' => 'prev page-numbers',
-            'linkContainerOptions' => ['class' => 'page-numbers', 'tag' => 'a.i'],
-
+            'linkOptions' => ['class' => 'page-numbers'],
+            'linkContainerOptions' => ['tag' => false],
             'options' => [
                'class' => 'pagination-area',
             ],

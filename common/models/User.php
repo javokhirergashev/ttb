@@ -63,7 +63,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['phone_number', 'username'], 'required'],
             ['email', 'email'],
             [['avatar'], 'safe'],
-            [['first_name', 'last_name', 'email'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'email', 'address', 'birthday'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
             [['status', 'role'], 'integer'],
         ];
@@ -230,5 +230,10 @@ class User extends ActiveRecord implements IdentityInterface
     public static function getDropDownList()
     {
         return \yii\helpers\ArrayHelper::map(static::find()->where(['role' => self::ROLE_DOCTOR])->all(), 'id', 'first_name');
+    }
+
+    public function getPosition()
+    {
+        return $this->hasOne(Position::class, ['id' => 'position_id']);
     }
 }

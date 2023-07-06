@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use common\modules\country\models\District;
 use common\modules\country\models\Quarter;
 use common\modules\country\models\Region;
-use Yii;
 
 /**
  * This is the model class for table "qvp".

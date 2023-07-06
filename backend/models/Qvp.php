@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use common\modules\country\models\District;
+use common\modules\country\models\Quarter;
+use common\modules\country\models\Region;
 use Yii;
 
 /**

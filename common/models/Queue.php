@@ -25,6 +25,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class Queue extends \yii\db\ActiveRecord
 {
+
+    public $passport_number;
+
     /**
      * {@inheritdoc}
      */
@@ -48,7 +51,7 @@ class Queue extends \yii\db\ActiveRecord
         return [
             [['service_id', 'user_id', 'status', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
             [['service_id', 'user_id', 'status', 'created_at', 'updated_at', 'number'], 'integer'],
-            [['reason', 'first_name', 'last_name', 'phone_number'], 'string', 'max' => 255],
+            [['reason', 'first_name', 'last_name', 'phone_number', 'passport_number'], 'string', 'max' => 255],
             [['writing_time'], 'unique'],
             [['writing_time'], 'safe'],
             [['reason', 'first_name', 'last_name', 'phone_number', 'writing_time'], 'required'],

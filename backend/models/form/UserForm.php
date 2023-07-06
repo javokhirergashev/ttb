@@ -30,6 +30,8 @@ class UserForm extends \yii\base\Model
     public $status;
 
     public $avatar;
+    public $birthday;
+    public $address;
     public $user_id;
 
     const SCENARIO_REGISTER = 'register';
@@ -47,7 +49,7 @@ class UserForm extends \yii\base\Model
             ['email', 'email'],
             [['avatar'], 'safe'],
             [['password'], 'string', 'min' => 6, 'max' => 16],
-            [['first_name', 'last_name', 'email'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'email', 'birthday', 'address'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
             [['status', 'role', 'user_id', 'id'], 'integer'],
             [['password_confirm'], 'compare', 'compareAttribute' => 'password'],
@@ -58,7 +60,7 @@ class UserForm extends \yii\base\Model
     {
         $scenarios = parent::scenarios();
         $scenarios['register'] = ['username', 'email', 'password', 'phone_number', 'avatar', 'first_name', 'last_name',
-            'password_confirm', 'status', 'role'];
+            'password_confirm', 'status', 'role', 'birthday', 'address'];
 
         return $scenarios;
     }
@@ -108,6 +110,8 @@ class UserForm extends \yii\base\Model
             'email' => $this->email,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
+            'address' => $this->address,
+            'birthday' => $this->birthday,
         ]);
 
         if ($this->password) {

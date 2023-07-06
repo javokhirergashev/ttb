@@ -43,10 +43,10 @@ class Partners extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string'],
+            [['name'], 'safe'],
             [['link'], 'required'],
             [['status'], 'integer'],
-            [['image', 'link'], 'string', 'max' => 255],
+            [['link'], 'string', 'max' => 255],
         ];
     }
 

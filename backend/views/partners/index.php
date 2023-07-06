@@ -45,10 +45,27 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
 //                          'id',
-                            'name:ntext',
+                            [
+                                'attribute' => 'name',
+                                'value' => function ($model) {
+                                    return $model->name[Yii::$app->language];
+                                },
+//                                'format'
+                            ],
                             'image',
                             'link',
-                            'status',
+                            [
+                                'attribute' => 'status',
+                                'value' => function ($data) {
+                                    if ($data->status == \common\models\Partners::STATUS_ACTIVE) {
+                                        return '<span class="badge badge-success">Faol</span>';
+                                    } else {
+                                        return '<span class="badge badge-danger">Faol emas</span>';
+                                    }
+                                },
+                                'format' => 'raw',
+                                'filter' => [\common\models\Partners::STATUS_ACTIVE => 'Faol',\common\models\User::STATUS_INACTIVE => 'Faol emas']
+                            ],
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'header' => 'Amallar',

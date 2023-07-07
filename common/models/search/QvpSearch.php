@@ -4,12 +4,12 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\News;
+use common\models\Qvp;
 
 /**
- * NewsSearch represents the model behind the search form of `common\models\News`.
+ * QvpSearch represents the model behind the search form of `common\models\Qvp`.
  */
-class NewsSearch extends News
+class QvpSearch extends Qvp
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class NewsSearch extends News
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at', 'type', 'category_id'], 'integer'],
-            [['title', 'description', 'poster', 'main_image', 'published_at',], 'safe'],
+            [['id', 'status', 'type', 'created_at', 'updated_at', 'quarter_id', 'district_id', 'region_id'], 'integer'],
+            [['title', 'address', 'phone_number', 'number'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class NewsSearch extends News
      */
     public function search($params)
     {
-        $query = News::find();
+        $query = Qvp::find();
 
         // add conditions that should always apply here
 
@@ -60,18 +60,18 @@ class NewsSearch extends News
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'published_at' => $this->published_at,
+            'type' => $this->type,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'type' => $this->type,
-            'category_id' => $this->category_id,
+            'quarter_id' => $this->quarter_id,
+            'district_id' => $this->district_id,
+            'region_id' => $this->region_id,
         ]);
 
-
         $query->andFilterWhere(['ilike', 'title', $this->title])
-            ->andFilterWhere(['ilike', 'description', $this->description])
-            ->andFilterWhere(['ilike', 'poster', $this->poster])
-            ->andFilterWhere(['ilike', 'main_image', $this->main_image]);
+            ->andFilterWhere(['ilike', 'address', $this->address])
+            ->andFilterWhere(['ilike', 'phone_number', $this->phone_number])
+            ->andFilterWhere(['ilike', 'number', $this->number]);
 
         return $dataProvider;
     }

@@ -34,6 +34,10 @@
                <a href="<?= \yii\helpers\Url::to(['queue/']) ?>"><span class="menu-side"><img
                         src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span> <span> Navbatlar </span></a>
             </li>
+            <li>
+               <a href="<?= \yii\helpers\Url::to(['qvp/index']) ?>"><span class="menu-side"><img
+                        src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span> <span> Qvp </span></a>
+            </li>
             <li class="submenu">
                <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-16.svg" alt=""></span>
                   <span>Sayt sozlamalari</span> <span class="menu-arrow"></span></a>

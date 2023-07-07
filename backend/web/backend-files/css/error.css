@@ -1,3 +1,7 @@
 .help-block {
     color: red;
 }
+
+span.select2-container {
+    width: 100% !important;
+}

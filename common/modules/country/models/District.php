@@ -9,17 +9,20 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "district_uz".
  *
- * @property int $id
- * @property int|null $region_id
+ * @property int         $id
+ * @property int|null    $region_id
  * @property string|null $name
- * @property int|null $status
- * @property int|null $top
+ * @property int|null    $status
+ * @property int|null    $top
  *
- * @property Region $region
- * @property Quarter[] $quarterUzs
+ * @property Region      $region
+ * @property Quarter[]   $quarterUzs
  */
 class District extends \yii\db\ActiveRecord
 {
+
+
+    const YANGIQORGON_ID = 107;
     /**
      * {@inheritdoc}
      */
@@ -87,7 +90,7 @@ class District extends \yii\db\ActiveRecord
                 ->all();
         }
 
-        return ArrayHelper::map(static::find()->all(), 'id', 'name.' . \Yii::$app->language);
+        return ArrayHelper::map(static::find()->orderBy(['id' => SORT_DESC])->andWhere(['region_id' => Region::NAMANGAN_ID])->all(), 'id', 'name.' . \Yii::$app->language);
     }
 
     public function fields()
@@ -95,9 +98,7 @@ class District extends \yii\db\ActiveRecord
         return [
             'id',
             'region_id',
-            'name' => function ($model) {
-                return Util::getExistsLanguage($model->name);
-            },
+            'name',
             'status',
             'top',
         ];

@@ -12,13 +12,13 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "region_uz".
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $name
- * @property int|null $status
- * @property int|null $top
- * @property int|null $mspd_id
+ * @property int|null    $status
+ * @property int|null    $top
+ * @property int|null    $mspd_id
  *
- * @property District[] $districtUzs
+ * @property District[]  $districtUzs
  */
 class Region extends \yii\db\ActiveRecord
 {
@@ -28,6 +28,7 @@ class Region extends \yii\db\ActiveRecord
      * Bu o'zgaruvchi regionla boyicha personlani sitatistikasini olib chiqishda kerak bo'ldi
      */
     public $count;
+    const NAMANGAN_ID = 7;
 
     /**
      * {@inheritdoc}

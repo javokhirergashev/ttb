@@ -19,7 +19,7 @@ class RegionMigration extends Migration
     {
         $this->createTable($this->table, [
             'id' => $this->primaryKey(),
-            'name' => ' json',
+            'name' => $this->json(),
             'status' => $this->integer()->defaultValue(1),
             'top' => $this->integer(2)->defaultValue(0),
         ]);

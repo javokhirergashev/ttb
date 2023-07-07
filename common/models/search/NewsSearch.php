@@ -67,7 +67,6 @@ class NewsSearch extends News
             'category_id' => $this->category_id,
         ]);
 
-        $dataProvider->pagination->pageSize = 5;
 
         $query->andFilterWhere(['ilike', 'title', $this->title])
             ->andFilterWhere(['ilike', 'description', $this->description])

@@ -55,13 +55,18 @@ $this->params['breadcrumbs'][] = $this->title;
                return $model->district->name[Yii::$app->language];
             }
          ],
-         [
-            'attribute' => 'quarter_id',
-            'label' => 'MFY',
-            'value' => function ($model) {
-               return $model->quarter->name[Yii::$app->language];
-            }
-         ],
+          [
+              'attribute' => 'quarter_id',
+              'label' => 'MFY',
+              'value' => function ($model) {
+                  $quarters = $model->getQuarters()->all();
+                  $text = "";
+                  foreach ($quarters as $item) {
+                      $text = $item->name[Yii::$app->language] . " , " . $text;
+                  }
+                  return $text;
+              }
+          ],
          [
             'attribute' => 'region_id',
             'label' => 'Viloyat',

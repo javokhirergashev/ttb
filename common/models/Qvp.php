@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\SelectBehavior;
 use common\modules\country\models\District;
 use common\modules\country\models\Quarter;
 use common\modules\country\models\Region;
@@ -10,22 +11,22 @@ use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "qvp".
  *
- * @property int         $id
+ * @property int $id
  * @property string|null $title
  * @property string|null $address
  * @property string|null $phone_number
- * @property int|null    $status
- * @property int|null    $type
- * @property int|null    $created_at
- * @property int|null    $updated_at
+ * @property int|null $status
+ * @property int|null $type
+ * @property int|null $created_at
+ * @property int|null $updated_at
  * @property string|null $number
- * @property int|null    $quarter_id
- * @property int|null    $district_id
- * @property int|null    $region_id
+ * @property int|null $quarter_id
+ * @property int|null $district_id
+ * @property int|null $region_id
  *
- * @property District    $district
- * @property Quarter     $quarter
- * @property Region      $region
+ * @property District $district
+ * @property Quarter $quarter
+ * @property Region $region
  */
 class Qvp extends \yii\db\ActiveRecord
 {
@@ -33,6 +34,8 @@ class Qvp extends \yii\db\ActiveRecord
     const TYPE_QVP = 2;
 
     const STATUS_ACTIVE = 1;
+
+    public $quarterIds;
 
     /**
      * {@inheritdoc}
@@ -45,7 +48,8 @@ class Qvp extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::class
+            TimestampBehavior::class,
+            SelectBehavior::class
         ];
     }
 
@@ -62,6 +66,7 @@ class Qvp extends \yii\db\ActiveRecord
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
+            [['quarterIds'], 'safe']
         ];
     }
 
@@ -130,5 +135,15 @@ class Qvp extends \yii\db\ActiveRecord
             return "Active";
         }
         return "No Active";
+    }
+
+    public function getQvpQuarters()
+    {
+        return $this->hasMany(QvpQuater::class, ['qvp_id' => 'id']);
+    }
+
+    public function getQuarters()
+    {
+        return $this->hasMany(Quarter::class, ['id' => 'quarter_id'])->via('qvpQuarters');
     }
 }

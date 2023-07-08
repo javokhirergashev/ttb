@@ -7,6 +7,7 @@ use common\modules\country\models\District;
 use common\modules\country\models\Quarter;
 use common\modules\country\models\Region;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "qvp".
@@ -44,6 +45,7 @@ class Qvp extends \yii\db\ActiveRecord
     {
         return 'qvp';
     }
+
 
     public function behaviors()
     {
@@ -145,5 +147,10 @@ class Qvp extends \yii\db\ActiveRecord
     public function getQuarters()
     {
         return $this->hasMany(Quarter::class, ['id' => 'quarter_id'])->via('qvpQuarters');
+    }
+
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(static::find()->all(), 'id', 'title');
     }
 }

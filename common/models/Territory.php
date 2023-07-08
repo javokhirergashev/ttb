@@ -19,6 +19,9 @@ use Yii;
  */
 class Territory extends \yii\db\ActiveRecord
 {
+
+    const STATUS_ACTIVE = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -33,7 +36,7 @@ class Territory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'qvp_id'], 'default', 'value' => null],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
             [['status', 'qvp_id'], 'integer'],
             [['name', 'address', 'people_count', 'home_count'], 'string', 'max' => 255],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],

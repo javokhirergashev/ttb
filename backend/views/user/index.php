@@ -48,8 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
                      'username',
                      'email:email',
                      'phone_number',
-                     'lat',
-                     'lon',
+                     'position_id',
+                     'district_id',
+                     'qvp_id',
+//                     'lat',
+//                     'lon',
                      [
                         'attribute' => 'role',
                         'value' => function ($data) {

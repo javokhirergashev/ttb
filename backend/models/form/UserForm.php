@@ -33,6 +33,10 @@ class UserForm extends \yii\base\Model
     public $birthday;
     public $address;
     public $user_id;
+    public $qvp_id;
+    public $district_id;
+    public $position_id;
+
 
     const SCENARIO_REGISTER = 'register';
 
@@ -51,7 +55,7 @@ class UserForm extends \yii\base\Model
             [['password'], 'string', 'min' => 6, 'max' => 16],
             [['first_name', 'last_name', 'email', 'birthday', 'address'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
-            [['status', 'role', 'user_id', 'id'], 'integer'],
+            [['status', 'role', 'user_id', 'id', 'qvp_id', 'district_id', 'position_id'], 'integer'],
             [['password_confirm'], 'compare', 'compareAttribute' => 'password'],
         ];
     }

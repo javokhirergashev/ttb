@@ -3,8 +3,11 @@
 namespace backend\controllers;
 
 use backend\models\form\UserForm;
+use common\models\People;
+use common\models\Queue;
 use common\models\search\UserCreateFormSearch;
 use common\models\UserCreateForm;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -148,7 +151,17 @@ class UserController extends Controller
 
     public function actionProfile()
     {
+//        var_dump(\Yii::$app->user->id);
+//        die();
+        $query = Queue::find()
+            ->andWhere(['user_id' => \Yii::$app->user->id]);
 
-        return $this->render('profile', ['user' => \Yii::$app->user->identity]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+        return $this->render('profile', [
+            'user' => \Yii::$app->user->identity,
+            'dataProvider' => $dataProvider
+        ]);
     }
 }

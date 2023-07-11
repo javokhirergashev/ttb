@@ -70,6 +70,7 @@ class PeopleController extends Controller
         $model = new People();
 
         if ($this->request->isPost) {
+//            var_dump($model); die();
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

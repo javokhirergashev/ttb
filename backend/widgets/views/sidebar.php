@@ -14,6 +14,10 @@
                <a href="<?= \yii\helpers\Url::to(['position/']) ?>"><span class="menu-side"><img
                         src="/backend-files/img/icons/menu-icon-06.svg" alt=""></span> <span> Lavozimlar </span></a>
             </li>
+             <li>
+                 <a href="<?= \yii\helpers\Url::to(['people/']) ?>"><span class="menu-side"><img
+                                 src="/backend-files/img/icons/menu-icon-02.svg" alt=""></span> <span> Aholi ro'yxati </span></a>
+             </li>
             <li>
                <a href="<?= \yii\helpers\Url::to(['category/']) ?>"><span class="menu-side"><img
                         src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span> <span> Kategoriyalar </span></a>

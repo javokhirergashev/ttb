@@ -2,10 +2,12 @@
 
 namespace common\models;
 
+use common\behaviors\DateTimeBehavior;
 use common\modules\country\models\District;
 use common\modules\country\models\Quarter;
 use common\modules\country\models\Region;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "people".
@@ -16,9 +18,10 @@ use Yii;
  * @property string|null $middle_name
  * @property int|null $status
  * @property string|null $pinfl
+ * @property string|null $passport_seria
  * @property string|null $passport_number
  * @property string|null $phone_number
- * @property string|null $birthday
+ * @property integer|null $birthday
  * @property int|null $region_id
  * @property int|null $district_id
  * @property int|null $quarter_id
@@ -37,9 +40,28 @@ class People extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $quarterIds;
+    const STATUS_INACTIVE = 1;
+    const STATUS_ACTIVE = 2;
+    const GENDER_MALE = 1;
+    const GENDER_FEMALE = 2;
+
     public static function tableName()
     {
         return 'people';
+    }
+
+    public function behaviors()
+    {
+        return [
+            DateTimeBehavior::class,
+            'birthday' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'birthday', //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ]
+        ];
     }
 
     /**
@@ -48,13 +70,14 @@ class People extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'default', 'value' => null],
+            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'birthday', 'metrka_number', 'territory_code'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'passport_seria'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
+            [['quarterIds', 'birthday'], 'safe']
         ];
     }
 
@@ -70,6 +93,7 @@ class People extends \yii\db\ActiveRecord
             'middle_name' => 'Middle Name',
             'status' => 'Status',
             'pinfl' => 'Pinfl',
+            'passport_seria' => 'Passport Seriyasi',
             'passport_number' => 'Passport Number',
             'phone_number' => 'Phone Number',
             'birthday' => 'Birthday',

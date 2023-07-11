@@ -35,7 +35,7 @@ class Qvp extends \yii\db\ActiveRecord
     const TYPE_QVP = 2;
 
     const STATUS_ACTIVE = 1;
-
+    const STATUS_INACTIVE = 2;
     public $quarterIds;
 
     /**

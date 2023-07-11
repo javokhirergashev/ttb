@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="single-footer-widget">
                     <h3>Tinzer</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua.</p>
+                    <p><?= Yii::t('app', "Bizning vazifamiz har tomonlama va shaxsiylashtirilgan tibbiy xizmatlar orqali odamlar va oilalar salomatligi va hayot sifatini yaxshilashdir. ")?></p>
                     <ul class="footer-social">
                         <li>
                             <a href="#">
@@ -36,7 +36,7 @@
 
             <div class="col-lg-3 col-sm-6">
                 <div class="single-footer-widget pl-5">
-                    <h3>Departments</h3>
+                    <h3><?= Yii::t('app', "Bo'limlar")?></h3>
 
                     <ul class="footer-quick-links">
                         <li>
@@ -63,7 +63,7 @@
 
             <div class="col-lg-3 col-sm-6">
                 <div class="single-footer-widget pl-5">
-                    <h3>Useful Links</h3>
+                    <h3><?= Yii::t('app', "Tezkor havolalar")?></h3>
 
                     <ul class="footer-quick-links">
                         <li>
@@ -90,23 +90,23 @@
 
             <div class="col-lg-3 col-sm-6">
                 <div class="single-footer-widget">
-                    <h3>Contact</h3>
+                    <h3><?= Yii::t('app', 'Bog`lanish')?></h3>
 
                     <div class="footer-info-contact">
                         <i class="flaticon-call"></i>
-                        <h3>Phone</h3>
+                        <h3><?= Yii::t('app', 'Telefon raqam')?></h3>
                         <span><a href="tel:123456123">+123(456)123</a></span>
                     </div>
 
                     <div class="footer-info-contact">
                         <i class="flaticon-email"></i>
-                        <h3>Email</h3>
+                        <h3><?= Yii::t('app', 'Elektron pochta')?></h3>
                         <span><a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#b6dfd8d0d9f6c2dfd8ccd3c498d5d9db"><span class="__cf_email__" data-cfemail="472e29212807332e293d22356924282a">[email&#160;protected]</span></a></span>
                     </div>
 
                     <div class="footer-info-contact">
                         <i class="flaticon-pin"></i>
-                        <h3>Address</h3>
+                        <h3><?= Yii::t('app', 'Manzil')?></h3>
                         <span>3254-425 NW-2nd Ave, Miami USA</span>
                     </div>
                 </div>
@@ -130,9 +130,9 @@
 <div class="copyright-area">
     <div class="container">
         <p>
-            Copyright © <script data-cfasync="false" src="/frontend-files/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Tinzer. All Rights Reserved by
-            <a href="https://envytheme.com/" target="_blank">
-                EnvyTheme
+            Copyright © <script data-cfasync="false" src="/frontend-files/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> All Rights Reserved by
+            <a href="" target="_blank">
+                Webspace
             </a>
         </p>
     </div>

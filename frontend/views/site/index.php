@@ -15,10 +15,9 @@ $page = 1;
 <section class="services-section bg-f4f6fe pt-100 pb-70">
    <div class="container">
       <div class="section-title">
-         <span><?= Yii::t('app', 'Our Services') ?></span>
-         <h2>Our Healthcare Services</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Quis ipsum suspendisse</p>
+         <span><?= Yii::t('app', 'Bizning xizmatlar') ?></span>
+         <h2><?= Yii::t('app', 'Bizning sog`liqni saqlash xizmatlarimiz')?></h2>
+         <p><?= Yii::t('app', 'Bizning keng qamrovli xizmatlarimiz profilaktika yordami, diagnostika muolajalari, ilg`or muolajalar va ixtisoslashtirilgan davolash usullarini o`z ichiga oladi va bu sizning barcha sog`liqni saqlash ehtiyojlaringiz bir tom ostida qondirilishini ta`minlaydi.')?></p>
       </div>
       <?php if (count($services) > 0): ?>
          <div class="row">
@@ -47,12 +46,10 @@ $page = 1;
                   <div class="icon">
                      <i class="flaticon-bacteria"></i>
                   </div>
-                  <a href="single-services.html">
-                     <h3>COVID-19 Consulting</h3>
+                  <a href="">
+                     <h3><?= Yii::t('app', 'Infeksiologiya')?></h3>
                   </a>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                     labore dolore</p>
-                  <a href="single-services.html" class="read-btn">Read More +</a>
+                  <p><?= Yii::t('app', "Yuqumli kasalliklar bo'limi bakteriyalar, viruslar, zamburug'lar va parazitlar kabi mikroorganizmlar keltirib chiqaradigan kasalliklarning oldini olish, tashxislash va davolashga qaratilgan. Ushbu bo'lim yuqumli kasalliklar tarqalishini boshqarish va nazorat qilishda hal qiluvchi rol o'ynaydi.")?></p>
                </div>
             </div>
 
@@ -61,12 +58,10 @@ $page = 1;
                   <div class="icon">
                      <i class="flaticon-shield"></i>
                   </div>
-                  <a href="single-services.html">
-                     <h3>Special Follow Up</h3>
+                  <a href="">
+                     <h3><?= Yii::t('app', 'Tez tibbiy yordam')?></h3>
                   </a>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                     labore dolore</p>
-                  <a href="single-services.html" class="read-btn">Read More +</a>
+                  <p><?= Yii::t('app', "Shoshilinch tibbiy yordam bo'limi o'tkir kasalliklar, jarohatlar va tibbiy favqulodda vaziyatlarda zudlik bilan tibbiy yordam ko'rsatadi. U 24/7 ishlaydi va ko'plab shoshilinch tibbiy sharoitlarni ko'rib chiqish uchun jihozlangan.")?></p>
                </div>
             </div>
 
@@ -75,12 +70,10 @@ $page = 1;
                   <div class="icon">
                      <i class="flaticon-beauty-treatment"></i>
                   </div>
-                  <a href="single-services.html">
-                     <h3>Dermatology</h3>
+                  <a href="">
+                     <h3><?= Yii::t('app', 'Dermatologiya')?></h3>
                   </a>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                     labore dolore</p>
-                  <a href="single-services.html" class="read-btn">Read More +</a>
+                  <p><?= Yii::t('app', 'Dermatologiya bo`limi teri, soch va tirnoqlar bilan bog`liq kasalliklarni tashxislash va davolash bilan shug`ullanadi. U teri infektsiyalari, allergiya, dermatit, akne va teri saratoni kabi ko`plab muammolarni qamrab oladi.')?></p>
                </div>
             </div>
 
@@ -89,12 +82,10 @@ $page = 1;
                   <div class="icon">
                      <i class="flaticon-mental-health"></i>
                   </div>
-                  <a href="single-services.html">
-                     <h3>Mental Health</h3>
+                  <a href="">
+                     <h3><?= Yii::t('app', 'Nevrologiya')?></h3>
                   </a>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                     labore dolore</p>
-                  <a href="single-services.html" class="read-btn">Read More +</a>
+                  <p><?= Yii::t('app', 'Nevrologiya bo`limi asab tizimining, jumladan, miya, orqa miya va periferik nervlarning buzilishlari bilan shug`ullanadi. U insult, epilepsiya, Parkinson kasalligi va ko`p skleroz kabi kasalliklarni tashxislash va boshqarishga qaratilgan.')?></p>
                </div>
             </div>
 
@@ -103,12 +94,10 @@ $page = 1;
                   <div class="icon">
                      <i class="flaticon-crutches"></i>
                   </div>
-                  <a href="single-services.html">
-                     <h3>Orthopedics</h3>
+                  <a href="">
+                     <h3><?= Yii::t('app', 'Ortopediya')?></h3>
                   </a>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                     labore dolore</p>
-                  <a href="single-services.html" class="read-btn">Read More +</a>
+                  <p><?= Yii::t('app', 'Ortopediya bo`limi suyak sinishi, bo`g`imlarning buzilishi, sport jarohatlari va degenerativ kasalliklarni o`z ichiga olgan tayanch-harakat tizimi kasalliklarini tashxislash va davolashga ixtisoslashgan.')?></p>
                </div>
             </div>
 
@@ -117,12 +106,10 @@ $page = 1;
                   <div class="icon">
                      <i class="flaticon-pregnancy"></i>
                   </div>
-                  <a href="single-services.html">
-                     <h3>Gynecological</h3>
+                  <a href="">
+                     <h3><?= Yii::t('app', 'Akusherlik va ginekologiya')?></h3>
                   </a>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                     labore dolore</p>
-                  <a href="single-services.html" class="read-btn">Read More +</a>
+                  <p><?= Yii::t('app', "Akusherlik va ginekologiya: Akusherlik va ginekologiya bo‘limi ayollarga har tomonlama yordam ko‘rsatadi, jumladan, prenatal parvarish, tug‘ruq, reproduktiv salomatlik, oilani rejalashtirish, ginekologik kasalliklarni davolash.")?></p>
                </div>
             </div>
          </div>
@@ -198,30 +185,25 @@ $page = 1;
          <div class="col-lg-6">
             <div class="goal-content-item">
                <div class="item-content">
-                  <span>Goal</span>
+                  <span></span>
                   <h3>The Telehealth Goals</h3>
-                  <p>Many healthcare systems around the world together with government agencies and startup
-                     companies are building and delivering Telehealth </p>
+                  <p><?= Yii::t('app', "Shifoxonamizda bizning maqsadlarimiz alohida tibbiy xizmatlar ko'rsatish va bemorlarimizning umumiy farovonligini yaxshilashga qaratilgan. Mana bizning asosiy maqsadlarimiz:")?></p>
 
                   <ul class="list">
                      <li>
-                        Make health care accessible to people who live in rural or isolated communities
+                         <?= Yii::t('app', "Yuqori sifatli yordam ko'rsatish: Bizning asosiy maqsadimiz bemorlarimizga eng yuqori standartdagi yordamni taqdim etishdir.")?>
                      </li>
                      <li>
-                        Make services more readily available or convenient for people with limited mobility,
-                        time or transportation options.
+                         <?= Yii::t('app', "Bemorga yo'naltirilgan yondashuv: Biz bemorlarimizni hamma narsada birinchi o'ringa qo'yishga intilamiz.")?>
                      </li>
                      <li>
-                        Improve communication and coordination of care among members of a health care team and a
-                        patient
+                         <?= Yii::t('app', "Innovatsiyalar va texnologiyalarni qamrab olish: Biz tibbiy yutuqlar va texnologik innovatsiyalarning oldingi saflarida qolishga intilamiz.")?>
                      </li>
                      <li>
-                        Provide support for self-management of health care.
+                         <?= Yii::t('app', "Doimiy takomillashtirish: Biz doimiy takomillashtirish madaniyatiga sodiqmiz. Bizning maqsadimiz o'z faoliyatini muntazam ravishda baholashdir")?>
                      </li>
                   </ul>
                   <div class="goal-btn">
-                     <a href="https://www.youtube.com/watch?v=cOT6DjgER2Y" class="default-btn popup-youtube">
-                        Watch Live Video
                         <span></span>
                      </a>
                   </div>
@@ -631,8 +613,8 @@ $page = 1;
             <div class="testimonials-slider owl-carousel owl-theme">
                <div class="testimonials-item">
                   <div class="content">
-                     <span>Testimonials</span>
-                     <h3>What Client’s Say About Us</h3>
+                     <span><?= Yii::t('app', 'Mijozlarimiz fikrlari')?></span>
+                     <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?')?></h3>
                      <div class="icon">
                         <i class="flaticon-left-quote"></i>
                      </div>
@@ -650,8 +632,8 @@ $page = 1;
 
                <div class="testimonials-item">
                   <div class="content">
-                     <span>Testimonials</span>
-                     <h3>What Client’s Say About Us</h3>
+                     <span><?= Yii::t('app', 'Mijozlarimiz fikrlari')?></span>
+                     <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?')?></h3>
                      <div class="icon">
                         <i class="flaticon-left-quote"></i>
                      </div>
@@ -669,8 +651,8 @@ $page = 1;
 
                <div class="testimonials-item">
                   <div class="content">
-                     <span>Testimonials</span>
-                     <h3>What Client’s Say About Us</h3>
+                     <span><?= Yii::t('app', 'Mijozlarimiz fikrlari')?></span>
+                     <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?')?></h3>
                      <div class="icon">
                         <i class="flaticon-left-quote"></i>
                      </div>
@@ -696,7 +678,7 @@ $page = 1;
 <section class="partner-area pt-100 pb-70">
    <div class="container">
       <div class="section-title">
-         <span>Partners</span>
+         <span><?= Yii::t('app', 'Hamkorlar')?></span>
          <h2>Featured Customer & Partners</h2>
          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Quis ipsum suspendisse</p>

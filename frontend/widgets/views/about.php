@@ -16,45 +16,45 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="col-lg-6">
                 <div class="about-content">
-                    <span><?= Yii::t('app', 'About Us')?></span>
-                    <h3>Connect to a Call Doctor by Video or Audio During the COVID-19 Pandemic</h3>
-                    <p>Many healthcare systems around the world together with government agencies and startup companies are building and delivering Telehealth solutions  the future of non-emergency and routine healthcare delivery</p>
+                    <span><?= Yii::t('app', 'Biz haqimizda')?></span>
+                    <h3><?= Yii::t('app', 'Shifoxonamizga xush kelibsiz ')?></h3>
+                    <p><?= Yii::t('app', 'Shifoxonamizga xush kelibsiz, bu yerda sog`ligingiz bizning ustuvor vazifamizdir. Biz sizning tibbiy ehtiyojlaringiz uchun to`g`ri shifoxonani tanlash juda muhim qaror ekanligini tushunamiz va nima uchun biz sizning ishonchli tibbiy xizmat ko`rsatuvchi provayderingiz bo`lishimiz kerakligini ko`rsatish uchun shu yerdamiz.')?></p>
 
                     <ul class="about-features two">
                         <li>
                                     <span>
                                         <i class='flaticon-doctor'></i>
-                                        Orthopedic Solutions
+                                        <?= Yii::t('app', 'Umumiy shifokor')?>
                                     </span>
                         </li>
                         <li>
                                     <span>
-                                        <i class='flaticon-worm'></i>
-                                        Chronic Disease
+                                        <i class='flaticon-patient'></i>
+                                       <?= Yii::t('app', 'Sifatli xizmat ko`rsatish')?>
                                     </span>
                         </li>
                         <li>
                                     <span>
                                         <i class='flaticon-cough'></i>
-                                        COVID-19 Test
+                                       <?= Yii::t('app', 'Bolalar shifokori')?>
                                     </span>
                         </li>
                         <li>
                                     <span>
                                         <i class='flaticon-blood-test'></i>
-                                        Diabetic Test
+                                        <?= Yii::t('app', 'Tezkor tahlil natijasi')?>
                                     </span>
                         </li>
                         <li>
                                     <span>
                                         <i class='flaticon-family'></i>
-                                        Family Solutions
+                                        <?= Yii::t('app', 'Oilaviy poliklinika')?>
                                     </span>
                         </li>
                         <li>
                                     <span>
                                         <i class='flaticon-insurance'></i>
-                                        Medical Questions
+                                        <?= Yii::t('app', 'Tezkor ro`yxatga olish')?>
                                     </span>
                         </li>
                     </ul>

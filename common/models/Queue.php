@@ -7,26 +7,25 @@ use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "queue".
  *
- * @property int         $id
+ * @property int $id
  * @property string|null $reason
- * @property int|null    $service_id
- * @property int|null    $user_id
- * @property int|null    $status
- * @property int|null    $writing_time
- * @property int|null    $created_at
- * @property int|null    $updated_at
+ * @property int|null $service_id
+ * @property int|null $user_id
+ * @property int|null $status
+ * @property int|null $writing_time
+ * @property int|null $created_at
+ * @property int|null $updated_at
  * @property string|null $first_name
  * @property string|null $last_name
  * @property string|null $phone_number
- * @property int|null    $number
+ * @property int|null $number
  *
- * @property Service     $service
- * @property User        $user
+ * @property Service $service
+ * @property User $user
  */
 class Queue extends \yii\db\ActiveRecord
 {
 
-    public $passport_number;
 
     /**
      * {@inheritdoc}
@@ -50,13 +49,14 @@ class Queue extends \yii\db\ActiveRecord
     {
         return [
             [['service_id', 'user_id', 'status', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
-            [['service_id', 'user_id', 'status', 'created_at', 'updated_at', 'number'], 'integer'],
-            [['reason', 'first_name', 'last_name', 'phone_number', 'passport_number'], 'string', 'max' => 255],
+            [['service_id', 'user_id', 'status', 'created_at', 'updated_at', 'number', 'people_id'], 'integer'],
+            [['reason', 'first_name', 'last_name', 'phone_number', 'passport_number', 'metrka_number'], 'string', 'max' => 255],
             [['writing_time'], 'unique'],
             [['writing_time'], 'safe'],
             [['reason', 'first_name', 'last_name', 'phone_number', 'writing_time'], 'required'],
             [['service_id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::class, 'targetAttribute' => ['service_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['people_id'], 'exist', 'skipOnError' => true, 'targetClass' => People::class, 'targetAttribute' => ['people' => 'id']],
         ];
     }
 
@@ -99,5 +99,10 @@ class Queue extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getPeople()
+    {
+        return $this->hasOne(People::class, ['id' => 'people_id']);
     }
 }

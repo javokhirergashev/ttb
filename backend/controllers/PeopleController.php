@@ -2,16 +2,16 @@
 
 namespace backend\controllers;
 
-use common\models\Queue;
-use common\models\search\QueueSearch;
+use common\models\People;
+use common\models\search\PeopleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * QueueController implements the CRUD actions for Queue model.
+ * PeopleController implements the CRUD actions for People model.
  */
-class QueueController extends Controller
+class PeopleController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class QueueController extends Controller
     }
 
     /**
-     * Lists all Queue models.
+     * Lists all People models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new QueueSearch();
+        $searchModel = new PeopleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class QueueController extends Controller
     }
 
     /**
-     * Displays a single Queue model.
+     * Displays a single People model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class QueueController extends Controller
     }
 
     /**
-     * Creates a new Queue model.
+     * Creates a new People model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Queue();
+        $model = new People();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class QueueController extends Controller
     }
 
     /**
-     * Updates an existing Queue model.
+     * Updates an existing People model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class QueueController extends Controller
     }
 
     /**
-     * Deletes an existing Queue model.
+     * Deletes an existing People model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -113,19 +113,19 @@ class QueueController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(\Yii::$app->request->referrer);
+        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Queue model based on its primary key value.
+     * Finds the People model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Queue the loaded model
+     * @return People the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Queue::findOne(['id' => $id])) !== null) {
+        if (($model = People::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

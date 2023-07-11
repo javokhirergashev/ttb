@@ -123,10 +123,9 @@ $page = 1;
    <div class="container-fluid">
       <div class="section-title">
          <div class="section-title">
-            <span>Our Doctors</span>
-            <h2>Specialized Doctors</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-               et dolore magna aliqua. Quis ipsum suspendisse</p>
+            <span><?= Yii::t('app', 'Xodimlar')?></span>
+            <h2><?= Yii::t('app', 'Bizning malakali shifokorlarimiz')?></h2>
+            <p><?= Yii::t('app', "Shifoxonamizdagi yuqori malakali va fidoyi shifokorlarimiz jamoasi har bir bemorga alohida tibbiy yordam ko'rsatish va shaxsiy e'tiborni taqdim etishga intiladi. Turli mutaxassisliklar va boy tajribaga ega bo'lgan shifokorlarimiz eng yuqori sifatli tibbiy xizmatlarni taqdim etishga ishtiyoqlidir.")?></p>
          </div>
       </div>
 
@@ -186,7 +185,7 @@ $page = 1;
             <div class="goal-content-item">
                <div class="item-content">
                   <span></span>
-                  <h3>The Telehealth Goals</h3>
+                  <h3><?= Yii::t('app', 'Bizning asosiy maqsadimiz')?></h3>
                   <p><?= Yii::t('app', "Shifoxonamizda bizning maqsadlarimiz alohida tibbiy xizmatlar ko'rsatish va bemorlarimizning umumiy farovonligini yaxshilashga qaratilgan. Mana bizning asosiy maqsadlarimiz:")?></p>
 
                   <ul class="list">
@@ -220,10 +219,9 @@ $page = 1;
    <div class="container-fluid">
       <div class="section-title">
          <div class="section-title">
-            <span>Our Shop</span>
-            <h2>Trending Products</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-               et dolore magna aliqua. Quis ipsum suspendisse</p>
+            <span><?= Yii::t('app', 'Xizmatlar')?></span>
+            <h2><?= Yii::t('app', 'Bizning pullik xizmatlar')?></h2>
+            <p><?= Yii::t('app', "Bizning keng qamrovli sog'liqni saqlash xizmatlarimizdan tashqari, tibbiyot birlashma muayyan ehtiyoj va imtiyozlarni qondirish uchun mo'ljallangan yuqori darajadagi pullik xizmatlar tanlovini taklif etadi. Ushbu pullik xizmatlar kengaytirilgan qulaylik, shaxsiy parvarish va qo'shimcha qulayliklarni ta'minlash uchun mo'ljallangan.")?></p>
          </div>
       </div>
 
@@ -484,10 +482,9 @@ $page = 1;
 <section class="projects-area pt-100 pb-70">
    <div class="container-fluid">
       <div class="section-title">
-         <span>Our Project</span>
-         <h2>Recent Project Cases</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Quis ipsum suspendisse</p>
+         <span><?= Yii::t('app', "Yangiliklar")?></span>
+         <h2><?= Yii::t('app', "Eng so'nngi yangliklar")?></h2>
+         <p><?= Yii::t('app', "Shifoxonamizdan soʻnggi yangiliklar va yangilanishlardan xabardor boʻling. Bizning yangiliklar bo'limimiz yangi xizmatlar, tibbiy yutuqlar, jamoat tadbirlari va muhim e'lonlar haqida qimmatli ma'lumotlarni taqdim etadi.")?></p>
       </div>
 
       <div class="row">
@@ -679,9 +676,8 @@ $page = 1;
    <div class="container">
       <div class="section-title">
          <span><?= Yii::t('app', 'Hamkorlar')?></span>
-         <h2>Featured Customer & Partners</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Quis ipsum suspendisse</p>
+         <h2><?= Yii::t('app', 'Bizning hamkorlar')?></h2>
+         <p><?= Yii::t('app', "Keng qamrovli va favqulodda sog'liqni saqlash xizmatlarini taqdim etish missiyamizda biz boshqa sog'liqni saqlash provayderlari, tashkilotlari va manfaatdor tomonlar bilan mustahkam hamkorlik o'rnatish muhimligini tan olamiz.")?></p>
       </div>
 
       <div class="partner-list">
@@ -738,77 +734,5 @@ $page = 1;
 <!-- End Partner Area -->
 
 <!-- Start Blog Area -->
-<section class="blog-area pt-100 pb-70">
-   <div class="container-fluid">
-      <div class="section-title">
-         <span>News</span>
-         <h2>Our Latest News</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Quis ipsum su</p>
-      </div>
-
-      <div class="row">
-         <div class="col-lg-4 col-md-6">
-            <div class="blog-item">
-               <div class="image">
-                  <a href="single-blog.html">
-                     <img src="/frontend-files/img/blog/image1.jpg" alt="image">
-                  </a>
-
-                  <a href="#" class="date">20 April, 2022</a>
-               </div>
-
-               <div class="content">
-                  <h3>
-                     <a href="single-blog.html">Telehealth Is Here To Stay. In Your Facility Ready?</a>
-                  </h3>
-
-                  <a href="single-blog.html" class="blog-btn">Read More +</a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6">
-            <div class="blog-item">
-               <div class="image">
-                  <a href="single-blog.html">
-                     <img src="/frontend-files/img/blog/image2.jpg" alt="image">
-                  </a>
-
-                  <a href="#" class="date">20 April, 2022</a>
-               </div>
-
-               <div class="content">
-                  <h3>
-                     <a href="single-blog.html">Coronavirus stimulus checks: What you need to know</a>
-                  </h3>
-
-                  <a href="single-blog.html" class="blog-btn">Read More +</a>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6">
-            <div class="blog-item">
-               <div class="image">
-                  <a href="single-blog.html">
-                     <img src="/frontend-files/img/blog/image3.jpg" alt="image">
-                  </a>
-
-                  <a href="#" class="date">20 April, 2022</a>
-               </div>
-
-               <div class="content">
-                  <h3>
-                     <a href="single-blog.html">People worldwide adjust to new life amid COVID-19</a>
-                  </h3>
-
-                  <a href="single-blog.html" class="blog-btn">Read More +</a>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
 <!-- End Blog Area -->
 

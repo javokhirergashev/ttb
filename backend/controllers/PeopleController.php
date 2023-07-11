@@ -38,6 +38,7 @@ class PeopleController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new PeopleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 

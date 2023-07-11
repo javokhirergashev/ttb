@@ -54,13 +54,13 @@ class People extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            DateTimeBehavior::class,
             'birthday' => [
                 'class' => DateTimeBehavior::class,
                 'attribute' => 'birthday', //атрибут модели, который будем менять
                 'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
 //                'default' => 'today'
-            ]
+            ],
+            TimestampBehavior::class
         ];
     }
 

@@ -16,7 +16,7 @@
             </ul>
         </div>
         <div class="col-sm-5 col-6 text-end m-b-30">
-            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Aholi ro'yhatiga o'tish</a>
         </div>
     </div>
     <div class="card-box profile-header">
@@ -95,22 +95,26 @@
                                                         </form>
                                                     </div>
                                                     <div class="add-group">
-                                                        <a href="add-patient.html"
-                                                           class="btn btn-primary add-pluss ms-2"><img
-                                                                    src="assets/img/icons/plus.svg" alt=""></a>
+                                                        <a href="<?=\yii\helpers\Url::to(['diagnosis/people'])?>"
+                                                           class="btn btn-primary">
+                                                            <img
+                                                                    src="/backend-files/img/icons/plus.svg"
+                                                                    alt="">
+                                                        </a>
                                                         <a href="javascript:;"
                                                            class="btn btn-primary doctor-refresh ms-2"><img
-                                                                    src="assets/img/icons/re-fresh.svg" alt=""></a>
+                                                                    src="/backend-files/img/icons/re-fresh.svg" alt="">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto text-end float-end ms-auto download-grp">
                                             <a href="javascript:;" class=" me-2"><img
-                                                        src="assets/img/icons/pdf-icon-01.svg"
+                                                        src="/backend-files/img/icons/pdf-icon-01.svg"
                                                         alt=""></a>
                                             <a href="javascript:;" class=" me-2"><img
-                                                        src="assets/img/icons/pdf-icon-02.svg"
+                                                        src="/backend-files/img/icons/pdf-icon-02.svg"
                                                         alt=""></a>
                                             <a href="javascript:;" class=" me-2"><img
                                                         src="assets/img/icons/pdf-icon-03.svg"
@@ -153,6 +157,8 @@
                                                 <td><?= "Qvp  title" ?></td>
                                                 <td><?= "Qvp  title" ?></td>
                                                 <td class="text-end">
+                                                    <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
+                                                       class="btn btn-primary add-pluss ms-2"><i class="fa fa-edit"></i></a>
                                                     <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
                                                        class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
                                                     <a data-method="post" href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"

@@ -118,10 +118,22 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
+                <label class="col-form-label">QVP</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'qvp_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Qvp::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'title'), [
+                        'prompt' => 'QVP ni tanlang',
+                        'options' => [
+                        ]
+                    ])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
                 <label class="col-form-label">Mahalla</label>
                 <div class="col-md-9">
                     <?php
-                    echo $form->field($model, 'quarterIds')->widget(DepDrop::classname(), [
+                    echo $form->field($model, 'quarter_id')->widget(DepDrop::classname(), [
                         'pluginOptions' => [
                             'depends' => ['quarter-id'],
                             'placeholder' => 'MFY ni tanlang',
@@ -131,18 +143,6 @@ use yii\widgets\ActiveForm;
                         'type' => DepDrop::TYPE_SELECT2,
                     ])->label(false);
                     ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label class="col-form-label">QVP</label>
-                <div class="col-md-9">
-                    <?= $form->field($model, 'qvp_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Qvp::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'title'), [
-                        'prompt' => 'QVP ni tanlang',
-                        'options' => [
-                        ]
-                    ])->label(false) ?>
                 </div>
             </div>
         </div>

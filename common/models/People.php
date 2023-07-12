@@ -41,8 +41,8 @@ class People extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
     public $quarterIds;
-    const STATUS_INACTIVE = 1;
-    const STATUS_ACTIVE = 2;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
 
@@ -60,7 +60,6 @@ class People extends \yii\db\ActiveRecord
                 'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
 //                'default' => 'today'
             ],
-            TimestampBehavior::class
         ];
     }
 

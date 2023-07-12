@@ -58,7 +58,7 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group row" style="padding-top: 20px!important;">
+            <div class="form-group row">
                 <label class="col-form-label">District</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'district_id')->dropDownList(District::getDropdownList(), ['id' => 'quarter-id', 'prompt' => "Hududni tanlang"])->label(false) ?>
@@ -66,7 +66,7 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group row" style="padding-top: 20px!important;">
+            <div class="form-group row">
                 <label class="col-form-label">Quarter</label>
                 <div class="col-md-9">
                     <?php

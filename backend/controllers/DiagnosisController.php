@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Diagnosis;
 use common\models\People;
+use common\models\Queue;
 use common\models\search\DiagnosisSearch;
 use common\models\search\PeopleSearch;
 use yii\web\Controller;
@@ -67,8 +68,12 @@ class DiagnosisController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($people_id)
+    public function actionCreate($people_id, $queue_id = null)
     {
+        if ($queue_id) {
+            $queue = Queue::findOne($queue_id)->updateAttributes(['status' => Queue::STATUS_VIEWED]);
+
+        }
         $model = new Diagnosis(['people_id' => $people_id]);
         $people = People::findOne($people_id);
         if (!$people) {

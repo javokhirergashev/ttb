@@ -27,6 +27,7 @@ class Queue extends \yii\db\ActiveRecord
 {
     const STATUS_PENDING = 1;
     const STATUS_VIEWED = 2;
+    const STATUS_NOT_COME = 3;
 
 
     /**

@@ -70,10 +70,6 @@ class DiagnosisController extends Controller
      */
     public function actionCreate($people_id, $queue_id = null)
     {
-        if ($queue_id) {
-            $queue = Queue::findOne($queue_id)->updateAttributes(['status' => Queue::STATUS_VIEWED]);
-
-        }
         $model = new Diagnosis(['people_id' => $people_id]);
         $people = People::findOne($people_id);
         if (!$people) {
@@ -84,6 +80,9 @@ class DiagnosisController extends Controller
             if ($model->load($this->request->post())) {
                 $model->doctor_id = \Yii::$app->user->id;
                 if ($model->save()) {
+                    if ($queue_id) {
+                        Queue::findOne($queue_id)->updateAttributes(['status' => Queue::STATUS_VIEWED]);
+                    }
                     return $this->redirect(['user/profile']);
                 }
             }
@@ -93,6 +92,7 @@ class DiagnosisController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'people' => $people
         ]);
     }
 

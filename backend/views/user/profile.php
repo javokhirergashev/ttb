@@ -18,7 +18,8 @@
             </ul>
         </div>
         <div class="col-sm-5 col-6 text-end m-b-30">
-            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Aholi ro'yhatiga
+            <a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>
+                Aholi ro'yhatiga
                 o'tish</a>
         </div>
     </div>
@@ -164,7 +165,7 @@
                                                        class="btn btn-primary add-pluss ms-2"><i class="fa fa-pen"></i></a>
                                                     <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
                                                        class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
-                                                    <a data-method="post"
+                                                    <a data-method="post" title="Kelmadi"
                                                        href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
                                                        class="btn btn-danger add-pluss ms-2"><i
                                                                 class="fa fa-times"></i></a>

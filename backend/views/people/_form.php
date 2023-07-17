@@ -120,7 +120,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">QVP</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'qvp_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Qvp::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'title'), [
+                    <?= $form->field($model, 'qvp_id')->dropDownList(\common\models\Qvp::getDropDownList(), [
                         'prompt' => 'QVP ni tanlang',
                         'options' => [
                         ]
@@ -150,11 +150,22 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">Uchastka</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'territory_code')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Territory::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'name'), [
-                        'prompt' => 'Uchastkani tanlang',
-                        'options' => [
-                        ]
-                    ])->label(false) ?>
+<!--                    --><?//= $form->field($model, 'territory_code')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Territory::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'name'), [
+//                        'prompt' => 'Uchastkani tanlang',
+//                        'options' => [
+//                        ]
+//                    ])->label(false) ?>
+                    <?php
+                    echo $form->field($model, 'territory_code')->widget(DepDrop::classname(), [
+                        'pluginOptions' => [
+                            'depends' => ['territory_code'],
+                            'placeholder' => 'Uchastkani  tanlang',
+                            'url' => Url::to(['/people/territory']),
+                            'initialize' => true,
+                        ],
+                        'type' => DepDrop::TYPE_SELECT2,
+                    ])->label(false);
+                    ?>
                 </div>
             </div>
         </div>

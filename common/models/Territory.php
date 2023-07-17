@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "territory".
@@ -67,5 +68,10 @@ class Territory extends \yii\db\ActiveRecord
     public function getQvp()
     {
         return $this->hasOne(Qvp::class, ['id' => 'qvp_id']);
+    }
+
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(static::find()->all(), 'id', 'name');
     }
 }

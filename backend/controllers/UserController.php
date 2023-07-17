@@ -154,14 +154,22 @@ class UserController extends Controller
 //        var_dump(\Yii::$app->user->id);
 //        die();
         $query = Queue::find()
-            ->andWhere(['user_id' => \Yii::$app->user->id]);
+            ->andWhere(['user_id' => \Yii::$app->user->id])->andWhere(['status' => Queue::STATUS_PENDING]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
+
+        $historyQuery = People::find()->leftJoin('diagnosis', 'people.id=diagnosis.people_id')
+            ->andWhere(['diagnosis.doctor_id' => \Yii::$app->user->id])->orderBy(['diagnosis.id' => SORT_DESC]);
+        $historyProvider = new ActiveDataProvider([
+            'query' => $historyQuery
+        ]);
+
         return $this->render('profile', [
             'user' => \Yii::$app->user->identity,
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'historyProvider' => $historyProvider
         ]);
     }
 }

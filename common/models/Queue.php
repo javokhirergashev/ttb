@@ -25,6 +25,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class Queue extends \yii\db\ActiveRecord
 {
+    const STATUS_PENDING = 1;
+    const STATUS_VIEWED = 2;
+    const STATUS_NOT_COME = 3;
 
 
     /**
@@ -48,7 +51,8 @@ class Queue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id', 'user_id', 'status', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
+            [['service_id', 'user_id', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
+            [['status'], 'default', 'value' => self::STATUS_PENDING],
             [['service_id', 'user_id', 'status', 'created_at', 'updated_at', 'number', 'people_id'], 'integer'],
             [['reason', 'first_name', 'last_name', 'phone_number', 'passport_number', 'metrka_number'], 'string', 'max' => 255],
             [['writing_time'], 'unique'],

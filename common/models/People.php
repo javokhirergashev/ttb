@@ -145,4 +145,9 @@ class People extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Region::class, ['id' => 'region_id']);
     }
+
+    public function getDiagnosis()
+    {
+        return $this->hasMany(Diagnosis::class, ['people_id' => 'id'])->orderBy(['id' => SORT_DESC]);
+    }
 }

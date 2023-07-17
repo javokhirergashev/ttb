@@ -66,7 +66,5 @@ class QueueController extends Controller
 
         }
         return $bodyParams;
-
-
     }
 }

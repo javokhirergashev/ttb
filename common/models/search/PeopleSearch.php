@@ -17,8 +17,8 @@ class PeopleSearch extends People
     public function rules()
     {
         return [
-            [['id', 'status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'birthday', 'metrka_number', 'territory_code'], 'safe'],
+            [['id', 'status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender','birthday'], 'integer'],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code'], 'safe'],
         ];
     }
 

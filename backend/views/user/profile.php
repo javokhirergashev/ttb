@@ -2,7 +2,9 @@
 /**
  * @var $user \common\models\User
  * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $historyProvider \yii\data\ActiveDataProvider
  * @var $model \common\models\Queue
+ * @var $history \common\models\People
  */
 ?>
 
@@ -16,7 +18,9 @@
             </ul>
         </div>
         <div class="col-sm-5 col-6 text-end m-b-30">
-            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+            <a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>
+                Aholi ro'yhatiga
+                o'tish</a>
         </div>
     </div>
     <div class="card-box profile-header">
@@ -95,22 +99,26 @@
                                                         </form>
                                                     </div>
                                                     <div class="add-group">
-                                                        <a href="add-patient.html"
-                                                           class="btn btn-primary add-pluss ms-2"><img
-                                                                    src="assets/img/icons/plus.svg" alt=""></a>
+                                                        <a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>"
+                                                           class="btn btn-primary">
+                                                            <img
+                                                                    src="/backend-files/img/icons/plus.svg"
+                                                                    alt="">
+                                                        </a>
                                                         <a href="javascript:;"
                                                            class="btn btn-primary doctor-refresh ms-2"><img
-                                                                    src="assets/img/icons/re-fresh.svg" alt=""></a>
+                                                                    src="/backend-files/img/icons/re-fresh.svg" alt="">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto text-end float-end ms-auto download-grp">
                                             <a href="javascript:;" class=" me-2"><img
-                                                        src="assets/img/icons/pdf-icon-01.svg"
+                                                        src="/backend-files/img/icons/pdf-icon-01.svg"
                                                         alt=""></a>
                                             <a href="javascript:;" class=" me-2"><img
-                                                        src="assets/img/icons/pdf-icon-02.svg"
+                                                        src="/backend-files/img/icons/pdf-icon-02.svg"
                                                         alt=""></a>
                                             <a href="javascript:;" class=" me-2"><img
                                                         src="assets/img/icons/pdf-icon-03.svg"
@@ -153,9 +161,12 @@
                                                 <td><?= "Qvp  title" ?></td>
                                                 <td><?= "Qvp  title" ?></td>
                                                 <td class="text-end">
+                                                    <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->people_id, 'queue_id' => $model->id]) ?>"
+                                                       class="btn btn-primary add-pluss ms-2"><i class="fa fa-pen"></i></a>
                                                     <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
                                                        class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
-                                                    <a data-method="post" href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
+                                                    <a data-method="post" title="Kelmadi"
+                                                       href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
                                                        class="btn btn-danger add-pluss ms-2"><i
                                                                 class="fa fa-times"></i></a>
                                                 </td>
@@ -170,7 +181,83 @@
                 </div>
             </div>
             <div class="tab-pane" id="bottom-tab2">
-                Tab content 2
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card card-table show-entire">
+                            <div class="card-body">
+                                <div class="page-table-header mb-2">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <div class="doctor-table-blk">
+                                                <div class="doctor-search-blk">
+                                                    <div class="top-nav-search table-search-blk">
+                                                        <form>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Search here">
+                                                            <a class="btn"><img src="assets/img/icons/search-normal.svg"
+                                                                                alt=""></a>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table border-0 custom-table comman-table datatable mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Id
+                                            </th>
+                                            <th>FIO</th>
+                                            <th>Tekshirilgan vaqti</th>
+                                            <th>Telefon nomeri</th>
+                                            <th>Passport seriyasi</th>
+                                            <th>Tugilgan sanasi</th>
+                                            <th>Address</th>
+                                            <th class="text-end">Amallar</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        foreach ($historyProvider->getModels() as $index => $history): ?>
+                                            <tr>
+                                                <td><?= $history->id; ?></td>
+                                                <td class="profile-image">
+                                                    <a href="<?= \yii\helpers\Url::to(['people/view', 'id' => $history->id]) ?>">
+                                                        <?= $history->first_name . " " . $history->last_name ?>
+                                                    </a>
+                                                </td>
+                                                <td><?= date("d.m.Y", $history->getDiagnosis()->one()->created_at) ?></td>
+                                                <td><?= $history->phone_number ?></td>
+                                                <td><?= $history->passport_number ?? $history->metrka_number ?></td>
+                                                <td><?= $history->birthday ?></td>
+                                                <td><?= "test" ?></td>
+                                                <td class="text-end">
+                                                    <a href="javascript:;" class=" me-2"><img
+                                                                src="/backend-files/img/icons/pdf-icon-01.svg"
+                                                                alt=""></a>
+                                                    <a href="javascript:;" class=" me-2"><img
+                                                                src="/backend-files/img/icons/pdf-icon-02.svg"
+                                                                alt=""></a>
+                                                    <a href="javascript:;" class=" me-2"><img
+                                                                src="assets/img/icons/pdf-icon-03.svg"
+                                                                alt=""></a>
+                                                    <a href="javascript:;"><img src="assets/img/icons/pdf-icon-04.svg"
+                                                                                alt=""></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="bottom-tab3">
                 Tab content 3

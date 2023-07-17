@@ -2,16 +2,19 @@
 
 namespace backend\controllers;
 
+use common\models\Diagnosis;
+use common\models\People;
 use common\models\Queue;
-use common\models\search\QueueSearch;
+use common\models\search\DiagnosisSearch;
+use common\models\search\PeopleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * QueueController implements the CRUD actions for Queue model.
+ * DiagnosisController implements the CRUD actions for Diagnosis model.
  */
-class QueueController extends Controller
+class DiagnosisController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +35,13 @@ class QueueController extends Controller
     }
 
     /**
-     * Lists all Queue models.
+     * Lists all Diagnosis models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new QueueSearch();
+        $searchModel = new DiagnosisSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +51,7 @@ class QueueController extends Controller
     }
 
     /**
-     * Displays a single Queue model.
+     * Displays a single Diagnosis model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,17 +64,27 @@ class QueueController extends Controller
     }
 
     /**
-     * Creates a new Queue model.
+     * Creates a new Diagnosis model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($people_id, $queue_id = null)
     {
-        $model = new Queue();
+        $model = new Diagnosis(['people_id' => $people_id]);
+        $people = People::findOne($people_id);
+        if (!$people) {
+            throw new NotFoundHttpException("Ushbu bemor topilmadi");
+        }
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->doctor_id = \Yii::$app->user->id;
+                if ($model->save()) {
+                    if ($queue_id) {
+                        Queue::findOne($queue_id)->updateAttributes(['status' => Queue::STATUS_VIEWED]);
+                    }
+                    return $this->redirect(['user/profile']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -79,11 +92,12 @@ class QueueController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'people' => $people
         ]);
     }
 
     /**
-     * Updates an existing Queue model.
+     * Updates an existing Diagnosis model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +117,7 @@ class QueueController extends Controller
     }
 
     /**
-     * Deletes an existing Queue model.
+     * Deletes an existing Diagnosis model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -111,25 +125,31 @@ class QueueController extends Controller
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-        $model->updateAttributes(['status' => Queue::STATUS_NOT_COME]);
+        $this->findModel($id)->delete();
 
-        return $this->redirect(\Yii::$app->request->referrer);
+        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Queue model based on its primary key value.
+     * Finds the Diagnosis model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Queue the loaded model
+     * @return Diagnosis the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Queue::findOne(['id' => $id])) !== null) {
+        if (($model = Diagnosis::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionPeople()
+    {
+        $searchModel = new PeopleSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('people', ['dataProvider' => $dataProvider]);
     }
 }

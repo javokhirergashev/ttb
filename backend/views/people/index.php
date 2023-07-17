@@ -58,8 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            'gender',
                             [
                                 'attribute' => 'territory_code',
-                                'value' => function($data){
-                                    return \common\models\Territory::findOne($data->territory_code)->name;
+                                'value' => function ($data) {
+                                    return "";
+//                                    return \common\models\Territory::findOne($data->territory_code)->name;
                                 }
                             ],
                             [
@@ -72,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     }
                                 },
                                 'format' => 'raw',
-                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol',\common\models\People::STATUS_INACTIVE => 'Faol emas']
+                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol', \common\models\People::STATUS_INACTIVE => 'Faol emas']
                             ],
                             [
                                 'class' => 'yii\grid\ActionColumn',

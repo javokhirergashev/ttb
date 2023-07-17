@@ -149,16 +149,17 @@ class Qvp extends \yii\db\ActiveRecord
         return $this->hasMany(Quarter::class, ['id' => 'quarter_id'])->via('qvpQuarters');
     }
 
-    public static function getDropdownList($qvp_id = null)
+    public static function getDropdownList($quarter_id = null)
     {
-        if ($qvp_id) {
+        if ($quarter_id) {
             return self::find()
-                ->select("id, (title) as title")
+                ->leftJoin('qvp_quater qq', 'qvp.id=qq.qvp_id')
+                ->andWhere(['qq.quarter_id' => $quarter_id])
+                ->select("qvp.id as id, (title) as name")
                 ->asArray()
-                ->andWhere(['qvp_id' => $qvp_id])
                 ->all();
         }
+        return Qvp::find()->all();
 
-    return ArrayHelper::map(static::find()->orderBy(['id' => SORT_DESC])->andWhere(['$qvp_id' => Territory::find()->where(['qvp_id' => $qvp_id])->all()])->all(), 'id', 'name');
     }
 }

@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\People;
 use common\models\Qvp;
 use common\models\search\PeopleSearch;
+use common\models\Territory;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -135,6 +136,7 @@ class PeopleController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
     public function actionTerritory()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -143,9 +145,13 @@ class PeopleController extends Controller
             $parents = $_POST['depdrop_parents'];
             if ($parents != null) {
                 $cat_id = $parents[0];
-                $out = Qvp::getDropDownList($cat_id);
+                if (intval($cat_id)) {
+                    $out = Territory::getDropDownList($cat_id);
+                    return ['output' => $out, 'selected' => ''];
+                }else {
+                    return intval($cat_id);
+                }
 
-                return ['output' => $out, 'selected' => ''];
             }
         }
         return ['output' => '', 'selected' => ''];

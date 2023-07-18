@@ -112,7 +112,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">District</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'district_id')->dropDownList(District::getDropdo   wnList(), ['id' => 'quarter-id', 'prompt' => "Hududni tanlang"])->label(false) ?>
+                    <?= $form->field($model, 'district_id')->dropDownList(District::getDropdownList(), ['id' => 'quarter-id', 'prompt' => "Hududni tanlang"])->label(false) ?>
                 </div>
             </div>
         </div>

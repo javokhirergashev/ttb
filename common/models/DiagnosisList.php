@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "diagnosis_list".
@@ -23,6 +24,7 @@ class DiagnosisList extends \yii\db\ActiveRecord
     {
         return 'diagnosis_list';
     }
+
 
     /**
      * {@inheritdoc}
@@ -49,5 +51,10 @@ class DiagnosisList extends \yii\db\ActiveRecord
             'description' => 'Description',
             'status' => 'Status',
         ];
+    }
+
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(static::find()->all(), 'id', 'name');
     }
 }

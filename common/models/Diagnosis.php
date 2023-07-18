@@ -47,11 +47,12 @@ class Diagnosis extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at', 'created_by', 'updated_by', 'type', 'status'], 'default', 'value' => null],
-            [['created_at', 'updated_at', 'created_by', 'updated_by', 'type', 'status'], 'integer'],
-            [['description'], 'string'],
+            [['created_at', 'updated_at', 'created_by', 'updated_by', 'type', 'status', 'diagnosis_list_id'], 'integer'],
+            [['description', 'complaint', 'anamnez', 'conclusion', 'diagnosis'], 'string'],
             [['title'], 'string', 'max' => 255],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
             [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
+            [['diagnosis_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => DiagnosisList::class, 'targetAttribute' => ['diagnosis_list_id' => 'id']],
         ];
     }
 

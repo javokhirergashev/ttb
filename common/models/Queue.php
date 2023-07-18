@@ -71,17 +71,17 @@ class Queue extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'reason' => 'Reason',
-            'service_id' => 'Service ID',
-            'user_id' => 'User ID',
+            'reason' => 'Murojaat ',
+            'service_id' => 'Xizmat nomi',
+            'user_id' => 'Shifokor',
             'status' => 'Status',
-            'writing_time' => 'Writing Time',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'phone_number' => 'Phone Number',
-            'number' => 'Number',
+            'writing_time' => 'Yozilgan vaqti',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'first_name' => 'Ismi',
+            'last_name' => 'Familiyasi',
+            'phone_number' => 'Telefon raqami',
+            'number' => 'Raqami',
         ];
     }
 

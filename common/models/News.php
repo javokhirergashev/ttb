@@ -77,16 +77,16 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'title' => 'Nomi',
+            'description' => 'Izoh',
             'poster' => 'Poster',
-            'main_image' => 'Main Image',
+            'main_image' => 'Asosiy rasm',
             'status' => 'Status',
-            'published_at' => 'Published At',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'type' => 'Type',
-            'category_id' => 'Category ID',
+            'published_at' => 'Chop etish vaqti',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'type' => 'Turi',
+            'category_id' => 'Kategoriya',
         ];
     }
 

@@ -62,13 +62,13 @@ class Diagnosis extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'description' => 'Description',
-            'created_by' => 'Created By',
-            'updated_by' => 'Updated By',
-            'type' => 'Type',
+            'title' => 'Sarlavha',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'description' => 'Izoh',
+            'created_by' => 'Yaratgan shifokor',
+            'updated_by' => 'Tahrirlagan shifokor',
+            'type' => 'Turi',
             'status' => 'Status',
         ];
     }

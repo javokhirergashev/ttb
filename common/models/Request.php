@@ -51,13 +51,13 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'phone_number' => 'Phone Number',
-            'comment' => 'Comment',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => 'Nomi',
+            'first_name' => 'Ismi',
+            'last_name' => 'Familiyasi',
+            'phone_number' => 'Telefon raqami',
+            'comment' => 'Murojaat',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
             'status' => 'Status',
         ];
     }

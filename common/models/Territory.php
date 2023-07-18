@@ -51,12 +51,12 @@ class Territory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Nomi',
             'status' => 'Status',
-            'address' => 'Address',
-            'people_count' => 'People Count',
-            'home_count' => 'Home Count',
-            'qvp_id' => 'Qvp ID',
+            'address' => 'Manzil',
+            'people_count' => 'Aholi soni',
+            'home_count' => 'Xonadon soni',
+            'qvp_id' => 'Qvp',
         ];
     }
 

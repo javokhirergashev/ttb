@@ -79,17 +79,17 @@ class Qvp extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'address' => 'Address',
-            'phone_number' => 'Phone Number',
+            'title' => 'Nomi',
+            'address' => 'Manzili',
+            'phone_number' => 'Telefon raqami',
             'status' => 'Status',
-            'type' => 'Type',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'number' => 'Number',
-            'quarter_id' => 'Quarter ID',
-            'district_id' => 'District ID',
-            'region_id' => 'Region ID',
+            'type' => 'Turi',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'number' => 'Raqami',
+            'quarter_id' => 'Mahalla',
+            'district_id' => 'Tuman',
+            'region_id' => 'Viloyat',
         ];
     }
 

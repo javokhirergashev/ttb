@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "diagnosis_group".
@@ -15,6 +16,8 @@ use Yii;
  */
 class DiagnosisGroup extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */
@@ -47,5 +50,10 @@ class DiagnosisGroup extends \yii\db\ActiveRecord
             'description' => 'Description',
             'status' => 'Status',
         ];
+    }
+
+    public static function getDropdownList()
+    {
+        return ArrayHelper::map(DiagnosisClass::find()->all(),'id','description');
     }
 }

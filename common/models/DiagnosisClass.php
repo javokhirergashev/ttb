@@ -14,6 +14,8 @@ use Yii;
  */
 class DiagnosisClass extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */

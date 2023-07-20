@@ -18,9 +18,41 @@ use yii\widgets\ActiveForm;
         <h3><strong class="font-weight-normal"> Test</strong> : Yana nimaduri kerak bolsa qoshamiz</h3>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="col-form-label">Tashxis nomi</label>
+                <label class="col-form-label">Shikoyat</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'title')->textInput()->label(false) ?>
+                    <?= $form->field($model, 'complaint')->textarea()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Tashxis</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'diagnosis')->textarea()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Yondosh tashxis</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'description')->textarea()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Xulosa</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'conclusion')->textarea()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Ma'lumotnoma</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'anamnez')->textInput()->label(false) ?>
                 </div>
             </div>
         </div>
@@ -28,18 +60,11 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">Tashxis turi</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'type')->dropDownList([1 => 'test', 2 => "Qandaydur tashxis boladi baza qilish kerak "], ['prompt' => 'Tashxis turini tanlang'])->label(false) ?>
+                    <?= $form->field($model, 'diagnosis_list_id')->dropDownList(\common\models\DiagnosisList::getDropDownList(), ['prompt' => 'Tashxis turini tanlang'])->label(false) ?>
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="form-group row">
-                <label class="col-form-label">Tashxis to'liq matni</label>
-                <div class="col-md-9">
-                    <?= $form->field($model, 'description')->textarea()->label(false) ?>
-                </div>
-            </div>
-        </div>
+
 
         <div class="form-group text-end">
             <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>

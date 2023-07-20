@@ -27,6 +27,7 @@ class DiagnosisList extends \yii\db\ActiveRecord
         return 'diagnosis_list';
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -53,12 +54,13 @@ class DiagnosisList extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+
     public static function getClassName()
     {
         return ArrayHelper::map(DiagnosisClass::find()->all(),'id','description');
     }
     public static function getGroupName()
     {
-        return ArrayHelper::map(DiagnosisGroup::find()->all(),'id','name');
+        return ArrayHelper::map(DiagnosisGroup::find()->all(), 'id', 'name');
     }
 }

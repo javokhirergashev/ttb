@@ -151,4 +151,9 @@ class People extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Diagnosis::class, ['people_id' => 'id'])->orderBy(['id' => SORT_DESC]);
     }
+
+    public function getTerritory()
+    {
+        return $this->hasOne(Territory::class, ['id' => 'territory_id']);
+    }
 }

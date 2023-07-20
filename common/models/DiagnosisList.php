@@ -19,6 +19,7 @@ class DiagnosisList extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -57,10 +58,16 @@ class DiagnosisList extends \yii\db\ActiveRecord
 
     public static function getClassName()
     {
-        return ArrayHelper::map(DiagnosisClass::find()->all(),'id','description');
+        return ArrayHelper::map(DiagnosisClass::find()->all(), 'id', 'description');
     }
+
     public static function getGroupName()
     {
         return ArrayHelper::map(DiagnosisGroup::find()->all(), 'id', 'name');
+    }
+
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(static::find()->all(), 'id', 'name');
     }
 }

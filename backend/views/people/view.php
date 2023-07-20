@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if ($data->status == \common\models\People::STATUS_ACTIVE) {
                         return 'faol';
-                    }else{
+                    } else {
                         return 'faol emas';
                     }
                 }
@@ -49,26 +49,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'birthday',
             [
                 'attribute' => 'region_id',
-                'value' => function($data){
-                    return \common\modules\country\models\Region::findOne($data->region_id)->name[\Yii::$app->language];
+                'value' => function ($data) {
+                    return $data->region->name[Yii::$app->language];
                 }
             ],
             [
                 'attribute' => 'district_id',
-                'value' => function($data){
-                    return \common\modules\country\models\District::findOne($data->district_id)->name[\Yii::$app->language];
+                'value' => function ($data) {
+                    return $data->district->name[Yii::$app->language];
                 }
             ],
             [
                 'attribute' => 'quarter_id',
-                'value' => function($data){
-                    return \common\modules\country\models\Quarter::findOne($data->quarter_id)->name[\Yii::$app->language];
+                'value' => function ($data) {
+                    return $data->quarter->name[Yii::$app->language];
                 }
             ],
             [
                 'attribute' => 'qvp_id',
-                'value' => function($data){
-                    return \common\models\Qvp::findOne($data->qvp_id)->title;
+                'value' => function ($data) {
+                    return $data->qvp->title;
                 }
             ],
             'metrka_number',
@@ -77,15 +77,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if ($data->status == \common\models\People::GENDER_MALE) {
                         return 'erkak';
-                    }else{
+                    } else {
                         return 'ayol';
                     }
                 }
             ],
             [
                 'attribute' => 'territory_code',
-                'value' => function($data){
-                    return \common\models\Territory::findOne($data->territory_code)->name;
+                'value' => function ($data) {
+                    return $data->territory->name;
                 }
             ],
         ],

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\People;
 use common\models\Queue;
 use common\models\Request;
 use common\models\search\ServiceSearch;
@@ -36,10 +37,12 @@ class ServiceController extends Controller
             'model' => $model
         ]);
     }
+
     public function actionQueue()
     {
         $model = new Queue();
         if ($model->load(Yii::$app->request->post())) {
+
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', "Murojaatingiz qabul qilindi. Tez orada siz bilan bog'lanamiz!");
                 return $this->refresh();

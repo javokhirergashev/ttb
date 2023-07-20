@@ -2,7 +2,11 @@
 
 namespace frontend\controllers;
 
+use common\models\People;
 use common\models\Queue;
+use Doctrine\Instantiator\Exception\ExceptionInterface;
+use Symfony\Component\DomCrawler\Field\InputFormField;
+use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -14,29 +18,20 @@ class QueueController extends Controller
         $model = new Queue();
         if ($model->load(\Yii::$app->request->post())) {
             $model->writing_time = strtotime($model->writing_time);
-            if ($model->save()) {
+            if (!$model->passport_number){
+                  die("nds nkdjssd  ds");
+            }
 
-                $htmlFile = 'path/to/custom.html';
-
-                // Read the contents of the HTML file
-                $htmlContent = file_get_contents($htmlFile);
-
-                // Create a new mPDF object
-                $mpdf = new \Mpdf\Mpdf();
-
-                // Set the custom HTML content for the PDF
-                $mpdf->WriteHTML($htmlContent);
-
-                // Set the headers for download
-                header('Content-Type: application/pdf');
-                header('Content-Disposition: attachment; filename="example.pdf"');
-
-                // Output the PDF file
-                $mpdf->Output('example.pdf', 'D');
-
-
+            $people = People::find()->andWhere(['passport_number' => 'AB12345'])->one();
+            if (!$people) {
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+            $model->people_id = $people->id;
+            if ($model->save(false)) {
                 return $this->redirect(\Yii::$app->request->referrer);
             }
+
+            var_dump($model);die();
         }
         \Yii::$app->session->setFlash('error', 'Navbatga yozilishda hatolik boldi');
         return $this->redirect(\Yii::$app->request->referrer);

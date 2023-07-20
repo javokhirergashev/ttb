@@ -31,7 +31,6 @@ class QueueController extends Controller
                 return $this->redirect(\Yii::$app->request->referrer);
             }
 
-            var_dump($model);die();
         }
         \Yii::$app->session->setFlash('error', 'Navbatga yozilishda hatolik boldi');
         return $this->redirect(\Yii::$app->request->referrer);

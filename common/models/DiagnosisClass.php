@@ -43,8 +43,8 @@ class DiagnosisClass extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
+            'name' => 'Nomi',
+            'description' => 'Izoh',
             'status' => 'Status',
         ];
     }

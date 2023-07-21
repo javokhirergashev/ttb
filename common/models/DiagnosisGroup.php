@@ -45,9 +45,9 @@ class DiagnosisGroup extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'diagnosis_class_id' => 'Diagnosis Class ID',
-            'name' => 'Name',
-            'description' => 'Description',
+            'diagnosis_class_id' => 'Tashxis sinfi',
+            'name' => 'Nomi',
+            'description' => 'Izoh',
             'status' => 'Status',
         ];
     }
@@ -55,5 +55,9 @@ class DiagnosisGroup extends \yii\db\ActiveRecord
     public static function getDropdownList()
     {
         return ArrayHelper::map(DiagnosisClass::find()->all(),'id','description');
+    }
+    public function getClasslist()
+    {
+        return $this->hasOne(DiagnosisClass::class, ['id' => 'diagnosis_class_id']);
     }
 }

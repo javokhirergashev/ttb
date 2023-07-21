@@ -47,8 +47,18 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            'id',
                             'name',
                             'description',
-                            'diagnosis_class_id',
-                            'diagnosis_group_id',
+                            [
+                                'attribute' => 'diagnosis_class_id',
+                                'value' => function ($data) {
+                                    return $data->classlist->description;
+                                }
+                            ],
+                            [
+                                'attribute' => 'diagnosis_group_id',
+                                'value' => function ($data) {
+                                    return $data->group->description;
+                                }
+                            ],
                             //'status',
                             [
                                 'class' => 'yii\grid\ActionColumn',

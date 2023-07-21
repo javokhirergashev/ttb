@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group">
                 <label class="col-form-label">Tashxis sinfini tanlang</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'description')->dropDownList(\common\models\DiagnosisList::getClassName(), ['prompt' => "Tashxis sinfini tanlang"])->label(false) ?>
+                    <?= $form->field($model, 'diagnosis_class_id')->dropDownList(\common\models\DiagnosisList::getClassName(), ['prompt' => "Tashxis sinfini tanlang"])->label(false) ?>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group">
                 <label class="col-form-label">Tashxis guruhini tanlang</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'description')->dropDownList(\common\models\DiagnosisList::getGroupName(), ['prompt' => "Tashxis guruhini tanlang"])->label(false) ?>
+                    <?= $form->field($model, 'diagnosis_group_id')->dropDownList(\common\models\DiagnosisList::getGroupName(), ['prompt' => "Tashxis guruhini tanlang"])->label(false) ?>
                 </div>
             </div>
         </div>

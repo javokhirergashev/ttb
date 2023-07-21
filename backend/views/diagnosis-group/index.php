@@ -43,9 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 //                            'id',
-                            'diagnosis_class_id',
                             'name',
                             'description',
+                            [
+                                'attribute' => 'diagnosis_class_id',
+                                'value' => function ($data) {
+                                    return $data->classlist->description;
+                                }
+                            ],
                             [
                                 'attribute' => 'status',
                                 'value' => function ($data) {

@@ -236,4 +236,18 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(Position::class, ['id' => 'position_id']);
     }
+
+    public function getRoleName()
+    {
+        if ($this->role == self::ROLE_DOCTOR) {
+            return "Doctor";
+        } elseif ($this->role === self::ROLE_ADMIN) {
+            return "Admin";
+        } elseif ($this->role === self::ROLE_NURSE) {
+            return "Hamshira";
+        } elseif ($this->role === self::ROLE_MANAGER) {
+            return "Manager";
+        }
+        return "User";
+    }
 }

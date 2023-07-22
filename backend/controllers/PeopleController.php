@@ -2,11 +2,13 @@
 
 namespace backend\controllers;
 
+use common\models\Diagnosis;
 use common\models\People;
 use common\models\Qvp;
 use common\models\search\PeopleSearch;
 use common\models\Territory;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -148,12 +150,27 @@ class PeopleController extends Controller
                 if (intval($cat_id)) {
                     $out = Territory::getDropDownList($cat_id);
                     return ['output' => $out, 'selected' => ''];
-                }else {
+                } else {
                     return intval($cat_id);
                 }
 
             }
         }
         return ['output' => '', 'selected' => ''];
+    }
+
+
+    public function actionHistory($id)
+    {
+        $people = People::findOne($id);
+        $query = Diagnosis::find()->andWhere(['people_id' => $id]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+
+        return $this->render('history', [
+            'dataProvider' => $dataProvider,
+            'people' => $people
+        ]);
     }
 }

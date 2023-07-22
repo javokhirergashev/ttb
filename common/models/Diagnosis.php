@@ -93,4 +93,9 @@ class Diagnosis extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
+
+    public function getPeople()
+    {
+        return $this->hasOne(People::class, ['id' => 'people_id']);
+    }
 }

@@ -199,8 +199,11 @@ class UserController extends Controller
             $oldQueue->updateAttributes(['status' => Queue::STATUS_REDIRECT]);
             $attributes = $oldQueue->attributes;
             unset($attributes['id']);
+            unset($attributes['created_at']);
+            unset($attributes['updated_at']);
             $queue = new Queue($attributes);
             $queue->user_id = $model->to_doctor_id;
+            $queue->writing_time = time() + 600;
             $queue->save(false);
 
             if ($model->save()) {

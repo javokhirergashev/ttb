@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-sm-7 col-6">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['people/index']) ?>">Aholi ro'yxati </a>
+                <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>">Aholi ro'yxati </a>
                 </li>
                 <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                 <li class="breadcrumb-item active"><?= $people->first_name . " " . $people->last_name ?></li>
@@ -53,7 +53,6 @@
                                         <span class="text"><a href="#"><span class="__cf_email__"
                                                 ><?= $people->district_id ? $people->district->name[Yii::$app->language] : " ---- ----" ?></span></a></span>
                                     </li>
-
                                     <li>
                                         <span class="title">Mahallasi:</span>
                                         <span class="text"><?= $people->quarter_id ? $people->quarter->name[Yii::$app->language] : "---- ----" ?></span>
@@ -81,23 +80,23 @@
                                     </th>
                                     <th>Tashxis</th>
                                     <th>Yaratilgan vaqti</th>
+                                    <th>Tashxis sinfi</th>
 
-                                    <th class="text-end">Amallar</th>
+                                    <th class="text-end">Yuklab olish</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 foreach ($dataProvider->getModels() as $index => $model): ?>
                                     <tr>
-                                        <td><?= $model->id; ?></td>
+                                        <td><?= $index + 1 ; ?></td>
                                         <td class="profile-image">
-                                            <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
-                                                <?= $model->title ?>
-                                            </a>
+                                            <?= $model->title ?>
                                         </td>
                                         <td><?= date("d.m.Y", $model->created_at) ?></td>
+                                        <td><?= $model->diagnosis_list_id ? $model->diagnosisList->name : " ---- ----" ?></td>
 
-                                        <td class="text-end">
+                                        <td class="text-end" title="PDF">
                                             <a href="javascript:;" class=" me-2"><img
                                                         src="/backend-files/img/icons/pdf-icon-01.svg"
                                                         alt=""></a>

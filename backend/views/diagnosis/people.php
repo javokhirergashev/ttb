@@ -85,7 +85,7 @@
                                 <tr>
                                     <td><?= $model->id; ?></td>
                                     <td class="profile-image">
-                                        <a href="<?= \yii\helpers\Url::to(['people/view', 'id' => $model->id]) ?>">
+                                        <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
                                             <?= $model->first_name . " " . $model->last_name . " " . $model->middle_name ?>
                                         </a>
                                     </td>
@@ -93,8 +93,8 @@
                                     <td><?= $model->phone_number ?></td>
                                     <td><?= $model->passport_number ?></td>
                                     <td><?= $model->metrka_number ?></td>
-                                    <td><?= $model->qvp->title ?></td>
-                                    <td><?= $model->quarter->name[Yii::$app->language] ?></td>
+                                    <td><?= $model->qvp_id ? $model->qvp->title :" ---- ----" ?></td>
+                                    <td><?= $model->quarter_id ? $model->quarter->name[Yii::$app->language] :" ---- ----" ?></td>
                                     <td class="text-end">
                                         <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>

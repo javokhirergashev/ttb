@@ -146,18 +146,23 @@ $page = 1;
 
                             <ul class="social">
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="<?= $doctor->telegram_link ?>" target="_blank">
+                                        <i class="fab fa-telegram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= $doctor->facebook_link ?>" target="_blank">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
-                                        <i class="fab fa-twitter"></i>
+                                    <a href="<?= $doctor->instagram_link ?>" target="_blank">
+                                        <i class="fab fa-instagram"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
-                                        <i class="fab fa-instagram"></i>
+                                    <a href="<?= $doctor->twitter_link ?>" target="_blank">
+                                        <i class="fab fa-twitter"></i>
                                     </a>
                                 </li>
                             </ul>

@@ -45,6 +45,18 @@ use yii\widgets\ActiveForm;
                         </div>
                      </div>
                       <div class="form-group row">
+                          <label class="col-form-label">Instagram</label>
+                          <div class="col-md-9">
+                              <?= $form->field($model, 'instagram_link')->textInput(['maxlength' => true])->label(false) ?>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-form-label">Facebook</label>
+                          <div class="col-md-9">
+                              <?= $form->field($model, 'facebook_link')->textInput(['maxlength' => true])->label(false) ?>
+                          </div>
+                      </div>
+                      <div class="form-group row">
                           <label class="col-form-label">Tuman</label>
                           <div class="col-md-9">
                               <?= $form->field($model, 'district_id')->dropDownList(common\modules\country\models\District::getDropdownList(), [
@@ -84,7 +96,6 @@ use yii\widgets\ActiveForm;
                            <?= $form->field($model, 'password_confirm')->passwordInput()->label(false) ?>
                         </div>
                      </div>
-
                      <div class="form-group row">
                         <label class="col-form-label">Statusi</label>
                         <div class="col-md-9">
@@ -94,6 +105,18 @@ use yii\widgets\ActiveForm;
                            ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                         </div>
                      </div>
+                      <div class="form-group row">
+                          <label class="col-form-label">Telegram</label>
+                          <div class="col-md-9">
+                              <?= $form->field($model, 'telegram_link')->textInput(['maxlength' => true])->label(false) ?>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                          <label class="col-form-label">Twitter</label>
+                          <div class="col-md-9">
+                              <?= $form->field($model, 'twitter_link')->textInput(['maxlength' => true])->label(false) ?>
+                          </div>
+                      </div>
                       <div class="form-group row">
                           <label class="col-form-label">QVP</label>
                           <div class="col-md-9">

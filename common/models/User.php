@@ -18,6 +18,10 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $verification_token
  * @property string $email
+ * @property string|null $telegram_link
+ * @property string|null $instagram_link
+ * @property string|null $facebook_link
+ * @property string|null $twitter_link
  * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
@@ -67,7 +71,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['phone_number', 'username'], 'required'],
             ['email', 'email'],
             [['avatar'], 'safe'],
-            [['first_name', 'last_name', 'email', 'address', 'birthday'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'email', 'address', 'birthday', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
             [['status', 'role', 'position_id', 'qvp_id', 'district_id'], 'integer'],
         ];
@@ -244,7 +248,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function getRoleName()
     {
         if ($this->role == self::ROLE_DOCTOR) {
-            return "Doctor";
+            return "Shifokor";
         } elseif ($this->role === self::ROLE_ADMIN) {
             return "Admin";
         } elseif ($this->role === self::ROLE_NURSE) {

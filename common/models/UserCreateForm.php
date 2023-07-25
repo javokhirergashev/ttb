@@ -27,6 +27,10 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $avatar
  * @property int $status
  * @property string|null $verification_token
+ * @property string|null $telegram_link
+ * @property string|null $instagram_link
+ * @property string|null $facebook_link
+ * @property string|null $twitter_link
  * @property int|null $position_id
  * @property int|null $district_id
  *
@@ -82,23 +86,27 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'phone_number' => 'Phone Number',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
+            'phone_number' => 'Telefon raqami',
+            'first_name' => 'Ismi',
+            'last_name' => 'Familiyasi',
             'email' => 'Email',
-            'username' => 'Username',
-            'type' => 'Type',
-            'role' => 'Role',
+            'username' => 'Login',
+            'type' => 'Turi',
+            'role' => 'Rol',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'deleted_at' => 'Deleted At',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'deleted_at' => 'O\'chirilgan vaqti',
             'avatar' => 'Avatar',
             'status' => 'Status',
             'verification_token' => 'Verification Token',
-            'position_id' => 'Position ID',
-            'district_id' => 'District ID',
+            'position_id' => 'Lavozimi',
+            'district_id' => 'Tuman',
+            'telegram_link' => 'Telegram',
+            'facebook_link' => 'Facebook',
+            'instagram_link' => 'Instagram',
+            'twitter_link' => 'Twitter',
         ];
     }
 

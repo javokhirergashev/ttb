@@ -157,7 +157,8 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $position = 2;
-        return $this->render('about', compact('position'));
+        $doctors = User::find()->where(['role'=> User::ROLE_DOCTOR])->all();
+        return $this->render('about', compact('position', 'doctors'));
     }
 
     /**

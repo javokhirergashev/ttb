@@ -85,155 +85,55 @@
 <section class="doctor-area pt-100 pb-70">
    <div class="container-fluid">
       <div class="section-title">
-         <div class="section-title">
-            <span>Our Doctors</span>
-            <h2>Specialized Doctors</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-               et dolore magna aliqua. Quis ipsum suspendisse</p>
-         </div>
+          <div class="section-title">
+              <span><?= Yii::t('app', 'Xodimlar') ?></span>
+              <h2><?= Yii::t('app', 'Bizning malakali shifokorlarimiz') ?></h2>
+              <p><?= Yii::t('app', "Shifoxonamizdagi yuqori malakali va fidoyi shifokorlarimiz jamoasi har bir bemorga alohida tibbiy yordam ko'rsatish va shaxsiy e'tiborni taqdim etishga intiladi. Turli mutaxassisliklar va boy tajribaga ega bo'lgan shifokorlarimiz eng yuqori sifatli tibbiy xizmatlarni taqdim etishga ishtiyoqlidir.") ?></p>
+          </div>
       </div>
 
-      <div class="row">
-         <div class="col-lg-3 col-md-6">
-            <div class="doctor-item">
-               <div class="image">
-                  <img src="/frontend-files/img/team/image1.jpg" alt="image">
-               </div>
-               <div class="content">
-                  <h3>Dr. James Adult</h3>
-                  <span>Cardiologist</span>
+       <div class="row">
+           <?php foreach ($doctors as $doctor): ?>
+               <?php
+               $doctor_image = \common\models\StaticFunctions::getImage('user', $doctor->id, $doctor->avatar)
+               ?>
+               <div class="col-lg-3 col-md-6">
+                   <div class="doctor-item">
+                       <div class="image">
+                           <img src="<?= $doctor_image ?>" alt="image">
+                       </div>
+                       <div class="content">
+                           <h3><?= $doctor->first_name . " " . $doctor->last_name ?></h3>
+                           <span><?= $doctor->position->title[Yii::$app->language] ?></span>
 
-                  <ul class="social">
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-facebook-f"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-twitter"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-pinterest-p"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-instagram"></i>
-                        </a>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
 
-         <div class="col-lg-3 col-md-6">
-            <div class="doctor-item">
-               <div class="image">
-                  <img src="/frontend-files/img/team/image2.jpg" alt="image">
+                           <ul class="social">
+                               <li>
+                                   <a href="<?= $doctor->telegram_link ?>" target="_blank">
+                                       <i class="fab fa-telegram"></i>
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="<?= $doctor->facebook_link ?>" target="_blank">
+                                       <i class="fab fa-facebook-f"></i>
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="<?= $doctor->instagram_link ?>" target="_blank">
+                                       <i class="fab fa-instagram"></i>
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="<?= $doctor->twitter_link ?>" target="_blank">
+                                       <i class="fab fa-twitter"></i>
+                                   </a>
+                               </li>
+                           </ul>
+                       </div>
+                   </div>
                </div>
-               <div class="content">
-                  <h3>Dr. James Alison</h3>
-                  <span>Medicine</span>
-
-                  <ul class="social">
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-facebook-f"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-twitter"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-pinterest-p"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-instagram"></i>
-                        </a>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-6">
-            <div class="doctor-item">
-               <div class="image">
-                  <img src="/frontend-files/img/team/image3.jpg" alt="image">
-               </div>
-               <div class="content">
-                  <h3>Dr. Peter Adlock</h3>
-                  <span>Neurologiest</span>
-
-                  <ul class="social">
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-facebook-f"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-twitter"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-pinterest-p"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-instagram"></i>
-                        </a>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-6">
-            <div class="doctor-item">
-               <div class="image">
-                  <img src="/frontend-files/img/team/image4.jpg" alt="image">
-               </div>
-               <div class="content">
-                  <h3>Dr. Jelin Alis</h3>
-                  <span>Medicine</span>
-
-                  <ul class="social">
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-facebook-f"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-twitter"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-pinterest-p"></i>
-                        </a>
-                     </li>
-                     <li>
-                        <a href="#" target="_blank">
-                           <i class="fab fa-instagram"></i>
-                        </a>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
+           <?php endforeach; ?>
+       </div>
    </div>
 </section>
 <!-- End Doctor Area -->

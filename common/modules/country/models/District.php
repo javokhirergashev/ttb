@@ -3,6 +3,7 @@
 namespace common\modules\country\models;
 
 use common\components\Util;
+use common\models\Position;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -103,4 +104,8 @@ class District extends \yii\db\ActiveRecord
             'top',
         ];
     }
+//    public static function getPositionTitle()
+//    {
+//        return ArrayHelper::map(District::find()->where(['status' => Position::STATUS_ACTIVE])->all(), 'id', 'title.'.Yii::$app->language);
+//    }
 }

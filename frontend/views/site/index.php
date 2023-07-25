@@ -141,7 +141,7 @@ $page = 1;
                         </div>
                         <div class="content">
                             <h3><?= $doctor->first_name . " " . $doctor->last_name ?></h3>
-                            <span><?= $doctor->position_id ?></span>
+                            <span><?= $doctor->position->title[Yii::$app->language] ?></span>
 
 
                             <ul class="social">
@@ -153,11 +153,6 @@ $page = 1;
                                 <li>
                                     <a href="#" target="_blank">
                                         <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="fab fa-pinterest-p"></i>
                                     </a>
                                 </li>
                                 <li>

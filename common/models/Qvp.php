@@ -159,7 +159,8 @@ class Qvp extends \yii\db\ActiveRecord
                 ->asArray()
                 ->all();
         }
-        return Qvp::find()->all();
+
+        return ArrayHelper::map(Qvp::find()->where(['status' => Qvp::STATUS_ACTIVE])->all(), 'id', 'title');
 
     }
 }

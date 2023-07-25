@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use backend\models\form\ProfileUpdateForm;
 use backend\models\form\UserForm;
-use common\models\History;
 use common\models\People;
 use common\models\Queue;
 use common\models\search\UserCreateFormSearch;
@@ -104,7 +103,6 @@ class UserController extends Controller
     {
         $model = new UserForm(['user_id' => $id]);
         $user = $this->findModel($id);
-        print_r($model);die();
         $model->setAttributes($user->attributes);
 
         if ($model->load(\Yii::$app->request->post())) {
@@ -156,8 +154,7 @@ class UserController extends Controller
     public function actionProfile()
     {
 //        var_dump(\Yii::$app->user->id);
-
-        $history = new History();
+//        die();
         $query = Queue::find()
             ->andWhere(['user_id' => \Yii::$app->user->id])->andWhere(['status' => Queue::STATUS_PENDING]);
 
@@ -174,8 +171,7 @@ class UserController extends Controller
         return $this->render('profile', [
             'user' => \Yii::$app->user->identity,
             'dataProvider' => $dataProvider,
-            'historyProvider' => $historyProvider,
-            'history' => $history
+            'historyProvider' => $historyProvider
         ]);
     }
 
@@ -189,29 +185,6 @@ class UserController extends Controller
         }
 
         return $this->render('profile-edite', ['model' => $form]);
-    }
 
-    public function actionRedirect()
-    {
-        $model = new History();
-        if ($model->load(\Yii::$app->request->post())) {
-            $model->from_doctor_id = \Yii::$app->user->id;
-            $oldQueue = Queue::findOne($model->queue_id);
-            $oldQueue->updateAttributes(['status' => Queue::STATUS_REDIRECT]);
-            $attributes = $oldQueue->attributes;
-            unset($attributes['id']);
-            unset($attributes['created_at']);
-            unset($attributes['updated_at']);
-            $queue = new Queue($attributes);
-            $queue->user_id = $model->to_doctor_id;
-            $queue->writing_time = time() + 600;
-            $queue->save(false);
-
-            if ($model->save()) {
-                return $this->redirect(\Yii::$app->request->referrer);
-            }
-        }
-        \Yii::$app->session->setFlash("error", $model->getFirstErrors()[0]);
-        return $this->redirect(\Yii::$app->request->referrer);
     }
 }

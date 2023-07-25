@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\behaviors\ConvertBehaviors;
 use common\behaviors\DateTimeBehavior;
+use common\modules\country\models\District;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -27,6 +28,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $status
  * @property string|null $verification_token
  * @property int|null $position_id
+ * @property int|null $district_id
  *
  * @property Position $position
  * @property Queue[] $queues
@@ -66,7 +68,7 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return [
             [['password'], 'safe'],
-            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'position_id'], 'integer'],
+            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'district_id', 'position_id'], 'integer'],
             [['phone_number', 'first_name', 'last_name', 'email', 'username', 'password_hash', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => Position::class, 'targetAttribute' => ['position_id' => 'id']],
@@ -96,6 +98,7 @@ class UserCreateForm extends \yii\db\ActiveRecord
             'status' => 'Status',
             'verification_token' => 'Verification Token',
             'position_id' => 'Position ID',
+            'district_id' => 'District ID',
         ];
     }
 
@@ -138,4 +141,13 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Service::class, ['updated_by' => 'id']);
     }
+    public function getDistrict()
+    {
+        return $this->hasOne(District::class, ['id' => 'district_id']);
+    }
+    public function getQvp()
+    {
+        return $this->hasOne(Qvp::class, ['id' => 'qvp_id']);
+    }
+
 }

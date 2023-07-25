@@ -47,7 +47,7 @@ class UserForm extends \yii\base\Model
     {
         return [
             [['phone_number', 'username'], 'required'],
-            [['password'], 'required', 'on' => self::SCENARIO_REGISTER],
+            [['password', 'position_id'], 'required', 'on' => self::SCENARIO_REGISTER],
 //            ['username', 'unique', 'targetAttribute' => 'username', 'targetClass' => User::class],
             ['username', 'validateUsername'],
             ['email', 'email'],
@@ -64,7 +64,7 @@ class UserForm extends \yii\base\Model
     {
         $scenarios = parent::scenarios();
         $scenarios['register'] = ['username', 'email', 'password', 'phone_number', 'avatar', 'first_name', 'last_name',
-            'password_confirm', 'status', 'role', 'birthday', 'address'];
+            'password_confirm', 'status', 'role', 'birthday', 'address', 'position_id', 'qvp_id', 'district_id'];
 
         return $scenarios;
     }
@@ -116,6 +116,9 @@ class UserForm extends \yii\base\Model
             'last_name' => $this->last_name,
             'address' => $this->address,
             'birthday' => $this->birthday,
+            'position_id' => $this->position_id,
+            'qvp_id' => $this->qvp_id,
+            'district_id' => $this->district_id
         ]);
 
         if ($this->password) {

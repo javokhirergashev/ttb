@@ -45,9 +45,19 @@ use yii\widgets\ActiveForm;
                         </div>
                      </div>
                       <div class="form-group row">
+                          <label class="col-form-label">Tuman</label>
+                          <div class="col-md-9">
+                              <?= $form->field($model, 'district_id')->dropDownList(common\modules\country\models\District::getDropdownList(), [
+                                  'prompt' => 'Tumanni tanlang',
+                                  'options' => [
+                                  ]
+                              ])->label(false) ?>
+                          </div>
+                      </div>
+                      <div class="form-group row">
                           <label class="col-form-label">Lavozimi</label>
                           <div class="col-md-9">
-                              <?= $form->field($model, 'position_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Position::find()->where(['status'=>\common\models\Position::STATUS_ACTIVE])->all(),'id','title.'.Yii::$app->language), [
+                              <?= $form->field($model, 'position_id')->dropDownList(\common\models\Position::getPositionTitle(), [
                                   'prompt' => 'Lavozimni tanlang',
                                   'options' => [
                                   ]
@@ -87,7 +97,7 @@ use yii\widgets\ActiveForm;
                       <div class="form-group row">
                           <label class="col-form-label">QVP</label>
                           <div class="col-md-9">
-                              <?= $form->field($model, 'qvp_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Qvp::find()->where(['status'=>\common\models\Position::STATUS_ACTIVE])->all(),'id','title'), [
+                              <?= $form->field($model, 'qvp_id')->dropDownList(\common\models\Qvp::getDropdownList(), [
                                   'prompt' => 'QVP ni tanlang',
                                   'options' => [
                                   ]

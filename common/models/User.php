@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\modules\country\models\District;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -12,16 +13,19 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string  $username
- * @property string  $password_hash
- * @property string  $password_reset_token
- * @property string  $verification_token
- * @property string  $email
- * @property string  $auth_key
+ * @property string $username
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $verification_token
+ * @property string $email
+ * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
- * @property string  $password write-only password
+ * @property integer $position_id
+ * @property integer $district_id
+ * @property integer $qvp_id
+ * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -65,7 +69,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['avatar'], 'safe'],
             [['first_name', 'last_name', 'email', 'address', 'birthday'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
-            [['status', 'role'], 'integer'],
+            [['status', 'role', 'position_id', 'qvp_id', 'district_id'], 'integer'],
         ];
     }
 
@@ -106,7 +110,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByPasswordResetToken($token)
     {
-        if (! static::isPasswordResetTokenValid($token)) {
+        if (!static::isPasswordResetTokenValid($token)) {
             return null;
         }
 
@@ -144,7 +148,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -250,4 +254,6 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return "User";
     }
+
+
 }

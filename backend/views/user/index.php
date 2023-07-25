@@ -48,9 +48,24 @@ $this->params['breadcrumbs'][] = $this->title;
                      'username',
                      'email:email',
                      'phone_number',
-                     'position_id',
-                     'district_id',
-                     'qvp_id',
+                      [
+                          'attribute' => 'position_id',
+                          'value' => function ($data) {
+                              return $data->position->title[Yii::$app->language];
+                          }
+                      ],
+                      [
+                          'attribute' => 'district_id',
+                          'value' => function ($data) {
+                              return $data->district->name[Yii::$app->language];
+                          }
+                      ],
+                      [
+                          'attribute' => 'qvp_id',
+                          'value' => function ($data) {
+                              return $data->qvp->title;
+                          }
+                      ],
 //                     'lat',
 //                     'lon',
                      [

@@ -7,6 +7,10 @@ $(document).ready(function () {
         $('.modal-body').empty();
     })
 
+
+
+
+
 });
 
 $(document).ready(function () {
@@ -65,4 +69,7 @@ $(document).ready(function () {
             }
         });
     });
+
+
+
 });

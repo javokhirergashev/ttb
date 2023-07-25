@@ -4,8 +4,11 @@
  * @var $dataProvider \yii\data\ActiveDataProvider
  * @var $historyProvider \yii\data\ActiveDataProvider
  * @var $model \common\models\Queue
- * @var $history \common\models\People
+ * @var $people \common\models\People
+ * @var $history \common\models\History
  */
+
+
 ?>
 
 <div class="content">
@@ -163,9 +166,12 @@
                                                 <td class="text-end">
                                                     <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->people_id, 'queue_id' => $model->id]) ?>"
                                                        class="btn btn-primary add-pluss ms-2"><i class="fa fa-pen"></i></a>
-                                                    <a title="Yo'naltirish"
-                                                       href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
-                                                       class="btn btn-primary add-pluss ms-2"><i
+                                                    <a data-bs-toggle="modal"
+                                                       data-bs-target="#staticBackdrop"
+                                                       title="Yo'naltirish"
+                                                       href="!#"
+                                                       data-value="<?= $model->id ?>"
+                                                       class="btn btn-primary add-pluss ms-2 open-modal-class"><i
                                                                 class="fa fa-external-link"></i></a>
                                                     <a data-method="post"
                                                        href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
@@ -225,18 +231,18 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                        foreach ($historyProvider->getModels() as $index => $history): ?>
+                                        foreach ($historyProvider->getModels() as $index => $people): ?>
                                             <tr>
-                                                <td><?= $history->id; ?></td>
+                                                <td><?= $index + 1; ?></td>
                                                 <td class="profile-image">
-                                                    <a href="<?= \yii\helpers\Url::to(['people/view', 'id' => $history->id]) ?>">
-                                                        <?= $history->first_name . " " . $history->last_name ?>
+                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $history->id]) ?>">
+                                                        <?= $people->first_name . " " . $people->last_name ?>
                                                     </a>
                                                 </td>
-                                                <td><?= date("d.m.Y", $history->getDiagnosis()->one()->created_at) ?></td>
-                                                <td><?= $history->phone_number ?></td>
-                                                <td><?= $history->passport_number ?? $history->metrka_number ?></td>
-                                                <td><?= $history->birthday ?></td>
+                                                <td><?= date("d.m.Y", $people->getDiagnosis()->one()->created_at) ?></td>
+                                                <td><?= $people->phone_number ?></td>
+                                                <td><?= $people->passport_number ?? $people->metrka_number ?></td>
+                                                <td><?= $people->birthday ?></td>
                                                 <td><?= "test" ?></td>
                                                 <td class="text-end">
                                                     <a href="javascript:;" class=" me-2"><img
@@ -471,9 +477,42 @@
                 </li>
             </ul>
         </div>
-        <div class="topnav-dropdown-footer">
-            <a href="chat.html">See all messages</a>
-        </div>
     </div>
 </div>
+</div>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel">Boshqa shifokorga yon</h4>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php $form = \yii\widgets\ActiveForm::begin(['method' => 'POST', 'action' => 'redirect', 'options' => ['id' => 'modal-form']]) ?>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Doctorni tanlang:</label>
+                    <?= $form->field($history, 'to_doctor_id')->dropDownList(\common\models\User::getDropDownList(), ['prompt' => 'Shifokorni tanlang'])->label(false) ?>
+                    <?= $form->field($history, 'queue_id', ['options' => ['id' => 'queue_hidden_id']])->hiddenInput()->label(false) ?>
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Sababi:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+
+                <?php \yii\widgets\ActiveForm::end() ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                </button>
+                <button type="submit" id="form-modal-submit" class="btn btn-primary">Send message</button>
+                <div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

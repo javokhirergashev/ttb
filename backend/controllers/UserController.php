@@ -103,6 +103,7 @@ class UserController extends Controller
     {
         $model = new UserForm(['user_id' => $id]);
         $user = $this->findModel($id);
+        print_r($model);die();
         $model->setAttributes($user->attributes);
 
         if ($model->load(\Yii::$app->request->post())) {

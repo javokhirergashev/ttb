@@ -108,7 +108,7 @@ class SiteController extends Controller
          */
         $services = Service::find()->where(['status' => Service::STATUS_ACTIVE])->limit(6)->all();
 
-        $doctors = User::find()->andWhere(['>=', 'role', User::ROLE_DOCTOR])->all();
+        $doctors = User::find()->where(['role'=> User::ROLE_DOCTOR])->all();
 
         return $this->render('index', [
             'services' => $services,

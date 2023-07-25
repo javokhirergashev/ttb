@@ -47,7 +47,7 @@ use yii\widgets\ActiveForm;
                       <div class="form-group row">
                           <label class="col-form-label">Lavozimi</label>
                           <div class="col-md-9">
-                              <?= $form->field($model, 'position_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Position::find()->where(['status'=>\common\models\Position::STATUS_ACTIVE])->all(),'id','name'), [
+                              <?= $form->field($model, 'position_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Position::find()->where(['status'=>\common\models\Position::STATUS_ACTIVE])->all(),'id','title.'.Yii::$app->language), [
                                   'prompt' => 'Lavozimni tanlang',
                                   'options' => [
                                   ]
@@ -85,10 +85,10 @@ use yii\widgets\ActiveForm;
                         </div>
                      </div>
                       <div class="form-group row">
-                          <label class="col-form-label">Lavozimi</label>
+                          <label class="col-form-label">QVP</label>
                           <div class="col-md-9">
                               <?= $form->field($model, 'qvp_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Qvp::find()->where(['status'=>\common\models\Position::STATUS_ACTIVE])->all(),'id','title'), [
-                                  'prompt' => 'Qvp ni tanlang',
+                                  'prompt' => 'QVP ni tanlang',
                                   'options' => [
                                   ]
                               ])->label(false) ?>

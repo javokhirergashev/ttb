@@ -52,28 +52,28 @@ $this->params['breadcrumbs'][] = $this->title;
                                 },
                             ],
                             [
-                                'attribute' => 'description',
-                                'value' => function ($model) {
-                                    return $model->description[Yii::$app->language];
-                                },
+//                                'attribute' => 'description',
+//                                'value' => function ($model) {
+//                                    return $model->description[Yii::$app->language];
+//                                },
 //                                'format'
                             ],
-                            [
-                                'attribute' => 'poster',
-                                'value' => function($data){
-                                    $image = StaticFunctions::getImage('news',$data->id, $data->poster);
-                                    return "<img src='$image' style='max-width: 120px; text-align: center!important;'>";
-                                },
-                                'format' => 'html'
-                            ],
-                            [
-                                'attribute' => 'main_image',
-                                'value' => function($data){
-                                    $image = StaticFunctions::getImage('news',$data->id, $data->main_image);
-                                    return "<img src='$image' style='max-width: 120px; text-align: center!important;'>";
-                                },
-                                'format' => 'html'
-                            ],
+//                            [
+////                                'attribute' => 'poster',
+//                                'value' => function($data){
+//                                    $image = StaticFunctions::getImage('news',$data->id, $data->poster);
+//                                    return "<img src='$image' style='max-width: 120px; text-align: center!important;'>";
+//                                },
+//                                'format' => 'html'
+//                            ],
+//                            [
+////                                'attribute' => 'main_image',
+//                                'value' => function($data){
+//                                    $image = StaticFunctions::getImage('news',$data->id, $data->main_image);
+//                                    return "<img src='$image' style='max-width: 120px; text-align: center!important;'>";
+//                                },
+//                                'format' => 'html'
+//                            ],
                             'published_at',
                             [
                                 'attribute' => 'created_at',
@@ -84,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => ['datetime', 'php:d.m.Y H:m']
                             ],
                             //'type',
-                            'category_id',
+//                            'category_id',
                             [
                                 'attribute' => 'status',
                                 'value' => function ($data) {

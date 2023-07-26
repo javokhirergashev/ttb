@@ -107,12 +107,11 @@ class SiteController extends Controller
          *  Shu yerga qandaydur shart qoyamiz aynan qaysi servicelani olib chiqish boyicha
          *  top service lani glavni page ga olib chiqamiz !!!
          */
-<<<<<<< HEAD
+
         $services = Service::find()->limit(6)->all();
         $news = News::find()->where(['status'=>News::STATUS_ACTIVE])->all();
-=======
+
         $services = Service::find()->where(['status' => Service::STATUS_ACTIVE])->limit(6)->all();
->>>>>>> bc6d67a9456855db7cc4b93789c77074ea4b630b
 
         $doctors = User::find()->where(['role'=> User::ROLE_DOCTOR])->all();
 

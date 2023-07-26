@@ -30,47 +30,45 @@
 
          <div class="col-lg-6">
             <div class="about-content">
-               <span>About Us</span>
-               <h3>Connect to Call a Doctor by Video or Audio During the COVID-19 Pandemic</h3>
-               <p>Many healthcare systems around the world together with government agencies and startup companies
-                  are building and delivering Telehealth solutions the future of non-emergency and routine
-                  healthcare delivery</p>
+               <span><?= Yii::t('app', 'Biz haqimizda')?></span>
+               <h3><?= Yii::t('app', 'Shifoxonamizga xush kelibsiz ')?></h3>
+               <p><?= Yii::t('app', 'Shifoxonamizga xush kelibsiz, bu yerda sog`ligingiz bizning ustuvor vazifamizdir. Biz sizning tibbiy ehtiyojlaringiz uchun to`g`ri shifoxonani tanlash juda muhim qaror ekanligini tushunamiz va nima uchun biz sizning ishonchli tibbiy xizmat ko`rsatuvchi provayderingiz bo`lishimiz kerakligini ko`rsatish uchun shu yerdamiz.')?></p>
 
                <ul class="about-features two">
                   <li>
                                     <span>
                                         <i class='flaticon-doctor'></i>
-                                        <?= __('Orthopedic Solutions') ?>
+                                         <?= Yii::t('app', 'Umumiy shifokor')?>
                                     </span>
                   </li>
                   <li>
                                     <span>
                                         <i class='flaticon-worm'></i>
-                                        Chronic Disease
+                                     <?= Yii::t('app', 'Sifatli xizmat ko`rsatish')?>
                                     </span>
                   </li>
                   <li>
                                     <span>
                                         <i class='flaticon-cough'></i>
-                                        COVID-19 Test
+                                          <?= Yii::t('app', 'Bolalar shifokori')?>
                                     </span>
                   </li>
                   <li>
                                     <span>
                                         <i class='flaticon-blood-test'></i>
-                                        Diabetic Test
+                                         <?= Yii::t('app', 'Tezkor tahlil natijasi')?>
                                     </span>
                   </li>
                   <li>
                                     <span>
                                         <i class='flaticon-family'></i>
-                                        Family Solutions
+                                            <?= Yii::t('app', 'Oilaviy poliklinika')?>
                                     </span>
                   </li>
                   <li>
                                     <span>
                                         <i class='flaticon-insurance'></i>
-                                        Medical Questions
+                                        <?= Yii::t('app', 'Tezkor ro`yxatga olish')?>
                                     </span>
                   </li>
                </ul>
@@ -147,10 +145,10 @@
                <div class="col-lg-6 col-md-6">
                   <div class="single-fun-fact">
                      <h3>
-                        <span class="odometer" data-count="2700">00</span>
+                        <span class="odometer" data-count="270">00</span>
                         <span class="sign-icon">+</span>
                      </h3>
-                     <p>Care Locations</p>
+                     <p><?= Yii::t('app', 'Malakali shifokorlar')?></p>
                   </div>
                </div>
 
@@ -160,7 +158,7 @@
                         <span class="odometer" data-count="2.7">00</span>
                         <span class="sign-icon">K</span>
                      </h3>
-                     <p>Virtual Care Solutions</p>
+                     <p><?= Yii::t('app', 'Online foydalanuvchilar')?></p>
                   </div>
                </div>
 
@@ -170,7 +168,7 @@
                         <span class="odometer" data-count="99.60">00</span>
                         <span class="sign-icon">%</span>
                      </h3>
-                     <p>Connections Success Rate</p>
+                     <p><?= Yii::t('app', 'Yuqori sifat')?></p>
                   </div>
                </div>
 
@@ -180,7 +178,7 @@
                         <span class="odometer" data-count="30">00</span>
                         <span class="sign-icon">+</span>
                      </h3>
-                     <p>Award Winning</p>
+                     <p><?= Yii::t('app', 'Yillik tajriba')?></p>
                   </div>
                </div>
             </div>
@@ -246,7 +244,7 @@
                      <div class="col-lg-6 col-sm-6">
                         <div class="form-group">
                            <div class="input-group date" id="datetimepicker">
-                              <input type="text" class="form-control" placeholder="Date">
+                              <input type="text" class="form-control" placeholder="<?= Yii::t('app', 'Bizning malakali shifokorlarimiz')?>">
                               <span class="input-group-addon"></span>
                            </div>
                            <i class="flaticon-calendar"></i>
@@ -256,7 +254,7 @@
                      <div class="col-12">
                         <div class="appointment-btn">
                            <button type="submit" class="default-btn">
-                              Confirm Appointment
+                               <?= Yii::t('app', 'Shikoyat qoldirish')?>
                               <span></span>
                            </button>
                         </div>
@@ -272,64 +270,63 @@
 
 <!-- Start Partner Area -->
 <section class="partner-area pt-100 pb-70">
-   <div class="container">
-      <div class="section-title">
-         <span>Partners</span>
-         <h2>Featured Customer & Partners</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Quis ipsum suspendisse</p>
-      </div>
+    <div class="container">
+        <div class="section-title">
+            <span><?= Yii::t('app', 'Hamkorlar')?></span>
+            <h2><?= Yii::t('app', 'Bizning hamkorlar')?></h2>
+            <p><?= Yii::t('app', "Keng qamrovli va favqulodda sog'liqni saqlash xizmatlarini taqdim etish missiyamizda biz boshqa sog'liqni saqlash provayderlari, tashkilotlari va manfaatdor tomonlar bilan mustahkam hamkorlik o'rnatish muhimligini tan olamiz.")?></p>
+        </div>
 
-      <div class="partner-list">
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/1.jpg" alt="image">
-            </a>
-         </div>
+        <div class="partner-list">
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/1.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/2.jpg" alt="image">
-            </a>
-         </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/2.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/3.jpg" alt="image">
-            </a>
-         </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/3.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/4.jpg" alt="image">
-            </a>
-         </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/4.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/5.jpg" alt="image">
-            </a>
-         </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/5.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/5.jpg" alt="image">
-            </a>
-         </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/5.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/6.jpg" alt="image">
-            </a>
-         </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/6.jpg" alt="image">
+                </a>
+            </div>
 
-         <div class="partner-item">
-            <a href="partner.html">
-               <img src="/frontend-files/img/partner/7.jpg" alt="image">
-            </a>
-         </div>
-      </div>
-   </div>
+            <div class="partner-item">
+                <a href="partner.html">
+                    <img src="/frontend-files/img/partner/7.jpg" alt="image">
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- End Partner Area -->
 
@@ -345,31 +342,30 @@
 
          <div class="col-lg-5">
             <div class="consult-content">
-               <span>Online Consult</span>
-               <h3>Get 24/7 Care Right From Your Phone</h3>
-               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                  the industry's standard dummy</p>
+               <span><?= Yii::t('app', 'Onlayn konsultatsiya')?></span>
+               <h3><?= Yii::t('app', 'Siz bilan 24/7 aloqadamiz')?></h3>
+               <p><?= Yii::t('app', "Bizning shifoxonamiz bemorlarimizga qulay va qulay tibbiy xizmatlarni taqdim etishga intiladi. Bemor tajribasini oshirishga bag'ishlashimizning bir qismi sifatida biz eng zamonaviy onlayn maslahat vositalarini taklif etamiz.")?></p>
 
                <ul class="list">
                   <li>
                      <i class="flaticon-check-1"></i>
-                     Get unlimited 24/7 Video Chat with a provider at no extra cost
+                      <?= Yii::t('app', 'Online uchrashuvlar')?>
                   </li>
                   <li>
                      <i class="flaticon-check-1"></i>
-                     Easily book appointments and renew prescriptions
+                      <?= Yii::t('app', 'Xavfsiz va maxfiy')?>
                   </li>
                   <li>
                      <i class="flaticon-check-1"></i>
-                     Skip unnecessary trips to the ER or urgent care
+                      <?= Yii::t('app', 'Elektron retseptlar')?>
                   </li>
                   <li>
                      <i class="flaticon-check-1"></i>
-                     Have a Remote Visit with your primary care provider over video
+                      <?= Yii::t('app', 'Raqamli tibbiy hisobotlar')?>
                   </li>
                   <li>
                      <i class="flaticon-check-1"></i>
-                     Message with your provider
+                      <?= Yii::t('app', 'Foydalanish imkoniyati va qulaylik')?>
                   </li>
                </ul>
             </div>

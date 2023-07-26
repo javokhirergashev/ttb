@@ -491,6 +491,30 @@ $page = 1;
             <p><?= Yii::t('app', "Shifoxonamizdan soʻnggi yangiliklar va yangilanishlardan xabardor boʻling. Bizning yangiliklar bo'limimiz yangi xizmatlar, tibbiy yutuqlar, jamoat tadbirlari va muhim e'lonlar haqida qimmatli ma'lumotlarni taqdim etadi.") ?></p>
         </div>
 
+      <div class="row">
+
+          <?php foreach ($news as $index => $news): ?>
+              <div class="col-lg-4 col-md-6">
+                <div class="projects-item">
+                   <div class="image">
+                      <a href="single-projects.html">
+                         <img src="<?=$news->main_image?>" alt="image">
+                      </a>
+                   </div>
+                   <div class="content">
+                      <p>
+                         <a href="single-projects.html">
+                            <?=$news->title?>
+                         </a>
+                      </p>
+                   </div>
+                </div>
+             </div>
+          <?php endforeach;?>
+
+
+      </div>
+   </div>
         <div class="row">
             <?php foreach ($news as $news_blog) : ?>
             <?php $news_image = \common\models\StaticFunctions::getImage('news',$news_blog->id,$news_blog->main_image)?>
@@ -513,6 +537,7 @@ $page = 1;
             <?php endforeach; ?>
         </div>
     </div>
+>>>>>>> bc6d67a9456855db7cc4b93789c77074ea4b630b
 </section>
 <!-- End Projects Area -->
 

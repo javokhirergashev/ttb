@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Comments;
 use common\models\News;
 use common\models\Partners;
 use common\models\Request;
@@ -113,12 +114,14 @@ class SiteController extends Controller
         $doctors = User::find()->where(['role'=> User::ROLE_DOCTOR])->all();
         $news = News::find()->where(['status' => News::STATUS_ACTIVE])->all();
         $partners = Partners::find()->where(['status' => Partners::STATUS_ACTIVE])->all();
+        $comments = Comments::find()->where(['status' => Comments::STATUS_ACTIVE])->all();
 
         return $this->render('index', [
             'services' => $services,
             'doctors' => $doctors,
             'news' => $news,
-            'partners'=>$partners
+            'partners'=>$partners,
+            'comments'=>$comments,
         ]);
     }
 

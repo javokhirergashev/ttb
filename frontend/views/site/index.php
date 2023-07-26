@@ -530,62 +530,25 @@ $page = 1;
 
             <div class="col-lg-6">
                 <div class="testimonials-slider owl-carousel owl-theme">
-                    <div class="testimonials-item">
-                        <div class="content">
-                            <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
-                            <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
-                            <div class="icon">
-                                <i class="flaticon-left-quote"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem Ipsum is simply dummy text of the printing
-                                and</p>
 
-                            <div class="info">
-                                <img src="/frontend-files/img/client/1.jpg" alt="image">
-                                <h4>Alison Jack</h4>
-                                <p>Web Developer</p>
+                    <?php foreach ($comments as $comment) : ?>
+                    <?php $comment_img = \common\models\StaticFunctions::getImage('commnents',$comment->id,$comment->image)?>
+                        <div class="testimonials-item">
+                            <div class="content">
+                                <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
+                                <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
+                                <div class="icon">
+                                    <i class="flaticon-left-quote"></i>
+                                </div>
+                                <p><?=$comment->comment?></p>
+
+                                <div class="info">
+                                    <img src="<?=$comment_img?>" alt="image">
+                                    <h4><?=$comment->client_full_name?></h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="testimonials-item">
-                        <div class="content">
-                            <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
-                            <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
-                            <div class="icon">
-                                <i class="flaticon-left-quote"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem Ipsum is simply dummy text of the printing
-                                and</p>
-
-                            <div class="info">
-                                <img src="/frontend-files/img/client/2.jpg" alt="image">
-                                <h4>Alex Maxwell</h4>
-                                <p>Web Designer</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonials-item">
-                        <div class="content">
-                            <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
-                            <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
-                            <div class="icon">
-                                <i class="flaticon-left-quote"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem Ipsum is simply dummy text of the printing
-                                and</p>
-
-                            <div class="info">
-                                <img src="/frontend-files/img/client/3.jpg" alt="image">
-                                <h4>Steven Smith</h4>
-                                <p>Web Developer</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

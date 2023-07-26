@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\News;
 use common\models\Request;
 use common\models\Service;
 use common\models\User;
@@ -107,12 +108,14 @@ class SiteController extends Controller
          *  top service lani glavni page ga olib chiqamiz !!!
          */
         $services = Service::find()->limit(6)->all();
+        $news = News::find()->where(['status'=>News::STATUS_ACTIVE])->all();
 
         $doctors = User::find()->andWhere(['>=', 'role', User::ROLE_DOCTOR])->all();
 
         return $this->render('index', [
             'services' => $services,
-            'doctors' => $doctors
+            'doctors' => $doctors,
+            'news' => $news
         ]);
     }
 

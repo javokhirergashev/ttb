@@ -113,10 +113,10 @@ use yii\widgets\ActiveForm;
                <div class="col-lg-6 col-md-6">
                   <div class="single-fun-fact">
                      <h3>
-                        <span class="odometer" data-count="2700">00</span>
+                        <span class="odometer" data-count="270">00</span>
                         <span class="sign-icon">+</span>
                      </h3>
-                     <p>Care Locations</p>
+                     <p><?= Yii::t('app', 'Malakali shifokorlar')?></p>
                   </div>
                </div>
 
@@ -126,7 +126,7 @@ use yii\widgets\ActiveForm;
                         <span class="odometer" data-count="2.7">00</span>
                         <span class="sign-icon">K</span>
                      </h3>
-                     <p>Virtual Care Solutions</p>
+                     <p><?= Yii::t('app', 'Online foydalanuvchilar')?></p>
                   </div>
                </div>
 
@@ -136,7 +136,7 @@ use yii\widgets\ActiveForm;
                         <span class="odometer" data-count="99.60">00</span>
                         <span class="sign-icon">%</span>
                      </h3>
-                     <p>Connections Success Rate</p>
+                     <p><?= Yii::t('app', 'Yuqori sifat')?></p>
                   </div>
                </div>
 
@@ -146,7 +146,7 @@ use yii\widgets\ActiveForm;
                         <span class="odometer" data-count="30">00</span>
                         <span class="sign-icon">+</span>
                      </h3>
-                     <p>Award Winning</p>
+                     <p><?= Yii::t('app', 'Yillik tajriba')?></p>
                   </div>
                </div>
             </div>
@@ -241,46 +241,45 @@ use yii\widgets\ActiveForm;
 
 <!-- Start Consult Area -->
 <section class="consult-area ptb-100">
-   <div class="container-fluid pl-0">
-      <div class="row align-items-center">
-         <div class="col-lg-7">
-            <div class="consult-image">
-               <img src="/frontend-files/img/consult.jpg" alt="image">
+    <div class="container-fluid pl-0">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="consult-image">
+                    <img src="/frontend-files/img/consult.jpg" alt="image">
+                </div>
             </div>
-         </div>
 
-         <div class="col-lg-5">
-            <div class="consult-content">
-               <span>Online Consult</span>
-               <h3>Get 24/7 Care Right From Your Phone</h3>
-               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                  the industry's standard dummy</p>
+            <div class="col-lg-5">
+                <div class="consult-content">
+                    <span><?= Yii::t('app', 'Onlayn konsultatsiya')?></span>
+                    <h3><?= Yii::t('app', 'Siz bilan 24/7 aloqadamiz')?></h3>
+                    <p><?= Yii::t('app', "Bizning shifoxonamiz bemorlarimizga qulay va qulay tibbiy xizmatlarni taqdim etishga intiladi. Bemor tajribasini oshirishga bag'ishlashimizning bir qismi sifatida biz eng zamonaviy onlayn maslahat vositalarini taklif etamiz.")?></p>
 
-               <ul class="list">
-                  <li>
-                     <i class="flaticon-check-1"></i>
-                     Get unlimited 24/7 Video Chat with a provider at no extra cost
-                  </li>
-                  <li>
-                     <i class="flaticon-check-1"></i>
-                     Easily book appointments and renew prescriptions
-                  </li>
-                  <li>
-                     <i class="flaticon-check-1"></i>
-                     Skip unnecessary trips to the ER or urgent care
-                  </li>
-                  <li>
-                     <i class="flaticon-check-1"></i>
-                     Have a Remote Visit with your primary care provider over video
-                  </li>
-                  <li>
-                     <i class="flaticon-check-1"></i>
-                     Message with your provider
-                  </li>
-               </ul>
+                    <ul class="list">
+                        <li>
+                            <i class="flaticon-check-1"></i>
+                            <?= Yii::t('app', 'Online uchrashuvlar')?>
+                        </li>
+                        <li>
+                            <i class="flaticon-check-1"></i>
+                            <?= Yii::t('app', 'Xavfsiz va maxfiy')?>
+                        </li>
+                        <li>
+                            <i class="flaticon-check-1"></i>
+                            <?= Yii::t('app', 'Elektron retseptlar')?>
+                        </li>
+                        <li>
+                            <i class="flaticon-check-1"></i>
+                            <?= Yii::t('app', 'Raqamli tibbiy hisobotlar')?>
+                        </li>
+                        <li>
+                            <i class="flaticon-check-1"></i>
+                            <?= Yii::t('app', 'Foydalanish imkoniyati va qulaylik')?>
+                        </li>
+                    </ul>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </section>
 <!-- End Consult Area -->

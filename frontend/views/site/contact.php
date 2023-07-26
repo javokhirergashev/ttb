@@ -1,4 +1,4 @@
-<?php
+2<?php
 
 use common\widgets\Alert;
 use yii\helpers\Html;

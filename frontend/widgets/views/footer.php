@@ -67,22 +67,20 @@
 
                     <ul class="footer-quick-links">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a>
                         </li>
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="<?= \yii\helpers\Url::to(['site/about']) ?>">About</a>
+                        </li>
+
+                        <li>
+                            <a href="<?= \yii\helpers\Url::to(['service/index']) ?>">Services</a>
                         </li>
                         <li>
-                            <a href="solution.html">Solution</a>
+                            <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>">Blog</a>
                         </li>
                         <li>
-                            <a href="services.html">Services</a>
-                        </li>
-                        <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -95,19 +93,19 @@
                     <div class="footer-info-contact">
                         <i class="flaticon-call"></i>
                         <h3><?= Yii::t('app', 'Telefon raqam')?></h3>
-                        <span><a href="tel:123456123">+123(456)123</a></span>
+                        <span><a href="tel:<?= \common\models\Contact::getContact("first_phone")->value; ?>"><?= \common\models\Contact::getContact("first_phone")->value; ?></a></span>
                     </div>
 
                     <div class="footer-info-contact">
                         <i class="flaticon-email"></i>
                         <h3><?= Yii::t('app', 'Elektron pochta')?></h3>
-                        <span><a href="https://templates.envytheme.com/cdn-cgi/l/email-protection#b6dfd8d0d9f6c2dfd8ccd3c498d5d9db"><span class="__cf_email__" data-cfemail="472e29212807332e293d22356924282a">[email&#160;protected]</span></a></span>
+                        <span><a href="<?= \common\models\Contact::getContact("first_email")->value; ?>"><span class="__cf_email__" ><?= \common\models\Contact::getContact("first_email")->value; ?></span></a></span>
                     </div>
 
                     <div class="footer-info-contact">
                         <i class="flaticon-pin"></i>
                         <h3><?= Yii::t('app', 'Manzil')?></h3>
-                        <span>3254-425 NW-2nd Ave, Miami USA</span>
+                        <span><?= \common\models\Contact::getContact("first_address")->value; ?></span>
                     </div>
                 </div>
             </div>

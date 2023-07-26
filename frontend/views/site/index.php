@@ -488,107 +488,27 @@ $page = 1;
       </div>
 
       <div class="row">
-         <div class="col-lg-4 col-md-6">
-            <div class="projects-item">
-               <div class="image">
-                  <a href="single-projects.html">
-                     <img src="/frontend-files/img/projects/image1.jpg" alt="image">
-                  </a>
-               </div>
-               <div class="content">
-                  <p>
-                     <a href="single-projects.html">
-                        Reducing Hospitalization-Related Stress: Improving Patient Satisfaction and Outcomes
-                     </a>
-                  </p>
-               </div>
-            </div>
-         </div>
 
-         <div class="col-lg-4 col-md-6">
-            <div class="projects-item">
-               <div class="image">
-                  <a href="single-projects.html">
-                     <img src="/frontend-files/img/projects/image2.jpg" alt="image">
-                  </a>
-               </div>
-               <div class="content">
-                  <p>
-                     <a href="single-projects.html">
-                        TeleHealth Services and Banyan Virtual Nurse System Help Hospitals Respond to COVID-19
-                     </a>
-                  </p>
-               </div>
-            </div>
-         </div>
+          <?php foreach ($news as $index => $news): ?>
+              <div class="col-lg-4 col-md-6">
+                <div class="projects-item">
+                   <div class="image">
+                      <a href="single-projects.html">
+                         <img src="<?=$news->main_image?>" alt="image">
+                      </a>
+                   </div>
+                   <div class="content">
+                      <p>
+                         <a href="single-projects.html">
+                            <?=$news->title?>
+                         </a>
+                      </p>
+                   </div>
+                </div>
+             </div>
+          <?php endforeach;?>
 
-         <div class="col-lg-4 col-md-6">
-            <div class="projects-item">
-               <div class="image">
-                  <a href="single-projects.html">
-                     <img src="/frontend-files/img/projects/image3.jpg" alt="image">
-                  </a>
-               </div>
-               <div class="content">
-                  <p>
-                     <a href="single-projects.html">
-                        The Secret Behind Changing Patient Behavior: Achieving the Confidence
-                     </a>
-                  </p>
-               </div>
-            </div>
-         </div>
 
-         <div class="col-lg-4 col-md-6">
-            <div class="projects-item">
-               <div class="image">
-                  <a href="single-projects.html">
-                     <img src="/frontend-files/img/projects/image4.jpg" alt="image">
-                  </a>
-               </div>
-               <div class="content">
-                  <p>
-                     <a href="single-projects.html">
-                        Reducing Hospitalization-Related Stress: Improving Patient Satisfaction and Outcomes
-                     </a>
-                  </p>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6">
-            <div class="projects-item">
-               <div class="image">
-                  <a href="single-projects.html">
-                     <img src="/frontend-files/img/projects/image5.jpg" alt="image">
-                  </a>
-               </div>
-               <div class="content">
-                  <p>
-                     <a href="single-projects.html">
-                        TeleHealth Services and Banyan Virtual Nurse System Help Hospitals Respond to COVID-19
-                     </a>
-                  </p>
-               </div>
-            </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6">
-            <div class="projects-item">
-               <div class="image">
-                  <a href="single-projects.html">
-                     <img src="/frontend-files/img/projects/image6.jpg" alt="image">
-                  </a>
-               </div>
-               <div class="content">
-                  <p>
-                     <a href="single-projects.html">
-                        The Secret Behind Changing Patient Behavior: Achieving the Confidence
-                     </a>
-                  </p>
-               </div>
-            </div>
-         </div>
       </div>
    </div>
 </section>

@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
 use Yii;
 
 /**
@@ -15,6 +16,19 @@ use Yii;
  */
 class Comments extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function behaviors()
+    {
+        return [
+            'convertBehavior' => [
+                'class' => ConvertBehaviors::class,
+                'attributes' => ['comment'] // Bu yerga titl , description hammasini yozsa boladi
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */

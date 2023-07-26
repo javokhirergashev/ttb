@@ -27,59 +27,58 @@ use yii\widgets\ActiveForm;
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <form action="#">
-                    <div class="row">
-                        <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
                             <div class="form-group row">
-                                <div class="form-group row">
-                                    <div class="tab-content" id="myTabContent">
-                                        <?php foreach ($languages
-                                                       as $key => $language): ?>
-                                            <div class="tab-pane <?= $key != 0 ? ' ' : 'show active' ?>"
-                                                 id="<?= $language ?>" role="tabpanel"
-                                                 aria-labelledby="<?= $language ?>-tab">
-                                                <div class="col-md-12">
-                                                    <div class="form-group row" style="margin-right: 0px!important; margin-bottom: 0px!important;">
-                                                        <label class="col-form-label">Nomi</label>
-                                                        <div class="col-md-9" style="margin-right: 0px!important;">
-                                                            <?= $form->field($model, 'title[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
-                                                        </div>
+                                <div class="tab-content" id="myTabContent">
+                                    <?php foreach ($languages
+                                                   as $key => $language): ?>
+                                        <div class="tab-pane <?= $key != 0 ? ' ' : 'show active' ?>"
+                                             id="<?= $language ?>" role="tabpanel"
+                                             aria-labelledby="<?= $language ?>-tab">
+                                            <div class="col-md-12">
+                                                <div class="form-group row"
+                                                     style="margin-right: 0px!important; margin-bottom: 0px!important;">
+                                                    <label class="col-form-label">Nomi</label>
+                                                    <div class="col-md-9" style="margin-right: 0px!important;">
+                                                        <?= $form->field($model, 'title[' . $language . ']')->textInput(['maxlength' => true])->label(false) ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php endforeach; ?>
-                                    </div>
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row" style="padding-top: 20px!important;">
+                            <label class="col-form-label">Statusi</label>
+                            <div class="col-md-9">
+                                <?= $form->field($model, 'status')->dropDownList([
+                                    \common\models\Position::STATUS_ACTIVE => "Active",
+                                    \common\models\Position::STATUS_INACTIVE => "InActive",
+                                ], ['prompt' => "Statusni tanlang"])->label(false) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group row" style="padding-top: 20px!important;">
-                                <label class="col-form-label">Statusi</label>
+                            <div class="form-group row">
+                                <label class="col-form-label">Lavozim turi</label>
                                 <div class="col-md-9">
-                                    <?= $form->field($model, 'status')->dropDownList([
-                                        \common\models\Position::STATUS_ACTIVE => "Active",
-                                        \common\models\Position::STATUS_INACTIVE => "InActive",
-                                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
+                                    <?= $form->field($model, 'type')->textInput()->label(false) ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-form-label">Lavozim turi</label>
-                                    <div class="col-md-9">
-                                        <?= $form->field($model, 'type')->textInput()->label(false) ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
-                            </div>
-
+                        <div class="form-group">
+                            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
                         </div>
-                </form>
+                    </div>
+                </div>
+                <?php ActiveForm::end(); ?>
             </div>
-            <?php ActiveForm::end(); ?>
         </div>
     </div>
 </div>

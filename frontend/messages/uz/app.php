@@ -70,4 +70,5 @@ return [
     'Yuqori sifatli yordam ko\'rsatish: Bizning asosiy maqsadimiz bemorlarimizga eng yuqori standartdagi yordamni taqdim etishdir.' => '',
     'Yuqumli kasalliklar bo\'limi bakteriyalar, viruslar, zamburug\'lar va parazitlar kabi mikroorganizmlar keltirib chiqaradigan kasalliklarning oldini olish, tashxislash va davolashga qaratilgan. Ushbu bo\'lim yuqumli kasalliklar tarqalishini boshqarish va nazorat qilishda hal qiluvchi rol o\'ynaydi.' => '',
     'Test' => '@@Sinov@@',
+    'Malakali Shifokorlar' => "",
 ];

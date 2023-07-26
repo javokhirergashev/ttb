@@ -146,7 +146,7 @@ $page = 1;
 
                             <ul class="social">
                                 <li>
-                                    <a href="<?= $doctor->telegram_link ?>" target="_blank">
+                                  <a href="<?= $doctor->telegram_link ?>" target="_blank">
                                         <i class="fab fa-telegram"></i>
                                     </a>
                                 </li>

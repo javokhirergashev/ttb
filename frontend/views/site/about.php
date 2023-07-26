@@ -244,7 +244,7 @@
                      <div class="col-lg-6 col-sm-6">
                         <div class="form-group">
                            <div class="input-group date" id="datetimepicker">
-                              <input type="text" class="form-control" placeholder="<?= Yii::t('app', 'Bizning malakali shifokorlarimiz')?>">
+                              <input type="text" class="form-control" placeholder="">
                               <span class="input-group-addon"></span>
                            </div>
                            <i class="flaticon-calendar"></i>

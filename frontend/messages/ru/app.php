@@ -70,4 +70,20 @@ return [
     'Yuqori sifatli yordam ko\'rsatish: Bizning asosiy maqsadimiz bemorlarimizga eng yuqori standartdagi yordamni taqdim etishdir.' => 'Предоставление высококачественной медицинской помощи: Наша главная цель — обеспечить высочайший стандарт медицинской помощи для наших пациентов.',
     'Yuqumli kasalliklar bo\'limi bakteriyalar, viruslar, zamburug\'lar va parazitlar kabi mikroorganizmlar keltirib chiqaradigan kasalliklarning oldini olish, tashxislash va davolashga qaratilgan. Ushbu bo\'lim yuqumli kasalliklar tarqalishini boshqarish va nazorat qilishda hal qiluvchi rol o\'ynaydi.' => 'Отделение инфекционных болезней занимается профилактикой, диагностикой и лечением заболеваний, вызванных такими микроорганизмами, как бактерии, вирусы, грибки и паразиты. Этот отдел играет решающую роль в управлении и сдерживании распространения инфекционных заболеваний.',
     'Test' => '@@Testi@@',
+
+    'Malakali Shifokorlar' => "",
+    'Online foydalanuvchilar' => "",
+    'Yuqori sifat' => "",
+    'Yillik tajriba' => "",
+    'Shikoyat qoldirish' => "",
+    'Online uchrashuvlar' => "",
+    'Onlayn konsultatsiya' => "",
+    'Siz bilan 24/7 aloqadamiz' => "",
+    "Bizning shifoxonamiz bemorlarimizga qulay va qulay tibbiy xizmatlarni taqdim etishga intiladi. Bemor tajribasini oshirishga bag'ishlashimizning bir qismi sifatida biz eng zamonaviy onlayn maslahat vositalarini taklif etamiz." => "",
+    'Xavfsiz va maxfiy' => "",
+    'Elektron retseptlar' => "",
+    'Raqamli tibbiy hisobotlar' => "",
+    'Foydalanish imkoniyati va qulaylik' => "",
+    '' => "",
+
 ];

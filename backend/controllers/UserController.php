@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\form\ProfileUpdateForm;
 use backend\models\form\UserForm;
+use common\models\History;
 use common\models\People;
 use common\models\Queue;
 use common\models\search\UserCreateFormSearch;
@@ -158,6 +159,8 @@ class UserController extends Controller
         $query = Queue::find()
             ->andWhere(['user_id' => \Yii::$app->user->id])->andWhere(['status' => Queue::STATUS_PENDING]);
 
+        $history = new History();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
@@ -171,7 +174,8 @@ class UserController extends Controller
         return $this->render('profile', [
             'user' => \Yii::$app->user->identity,
             'dataProvider' => $dataProvider,
-            'historyProvider' => $historyProvider
+            'historyProvider' => $historyProvider,
+            'history' => $history
         ]);
     }
 

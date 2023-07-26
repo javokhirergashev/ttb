@@ -39,7 +39,7 @@
                                             </form>
                                         </div>
                                         <div class="add-group">
-                                            <a href="add-patient.html"
+                                            <a href="<?=\yii\helpers\Url::to(['people/create'])?>"
                                                class="btn btn-primary add-pluss ms-2"><img
                                                         src="/backend-files/img/icons/plus.svg" alt=""></a>
                                             <a href="javascript:;"

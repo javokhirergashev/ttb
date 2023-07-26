@@ -531,24 +531,29 @@ $page = 1;
             <div class="col-lg-6">
                 <div class="testimonials-slider owl-carousel owl-theme">
 
-                    <?php foreach ($comments as $comment) : ?>
-                    <?php $comment_img = \common\models\StaticFunctions::getImage('commnents',$comment->id,$comment->image)?>
-                        <div class="testimonials-item">
+                       <div class="testimonials-item">
+
                             <div class="content">
                                 <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
                                 <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
                                 <div class="icon">
                                     <i class="flaticon-left-quote"></i>
                                 </div>
+                                <?php foreach ($comments as $comment) : ?>
+                                <?php $comment_img = \common\models\StaticFunctions::getImage('commnents',$comment->id,$comment->image)?>
+
                                 <p><?=$comment->comment?></p>
 
                                 <div class="info">
                                     <img src="<?=$comment_img?>" alt="image">
                                     <h4><?=$comment->client_full_name?></h4>
                                 </div>
+                                <?php endforeach; ?>
                             </div>
+
+
                         </div>
-                    <?php endforeach; ?>
+
                 </div>
             </div>
         </div>

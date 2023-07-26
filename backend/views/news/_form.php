@@ -91,24 +91,24 @@ $this->registerJs($js);
                                     ], ['prompt' => "Statusni tanlang"])->label(false) ?>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-form-label">Yangilik turi</label>
-                                <div class="col-md-9">
-                                    <?= $form->field($model, 'type')->textInput()->label(false) ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label">Yangilik kategoriyasi</label>
-                                <div class="col-md-9">
-                                    <?= $form->field($model, 'category_id')->textInput()->label(false) ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label">Yangilikni chop etilish sanasi</label>
-                                <div class="col-md-9">
-                                    <?= $form->field($model, 'published_at')->input('date')->label(false) ?>
-                                </div>
-                            </div>
+<!--                            <div class="form-group row">-->
+<!--                                <label class="col-form-label">Yangilik turi</label>-->
+<!--                                <div class="col-md-9">-->
+<!--                                    --><?//= $form->field($model, 'type')->textInput()->label(false) ?>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-group row">-->
+<!--                                <label class="col-form-label">Yangilik kategoriyasi</label>-->
+<!--                                <div class="col-md-9">-->
+<!--                                    --><?//= $form->field($model, 'category_id')->textInput()->label(false) ?>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-group row">-->
+<!--                                <label class="col-form-label">Yangilikni chop etilish sanasi</label>-->
+<!--                                <div class="col-md-9">-->
+<!--                                    --><?//= $form->field($model, 'published_at')->input('date')->label(false) ?>
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="form-group">

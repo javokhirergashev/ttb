@@ -132,7 +132,7 @@ $page = 1;
         <div class="row">
             <?php foreach ($doctors as $doctor): ?>
                 <?php
-                    $doctor_image = \common\models\StaticFunctions::getImage('user', $doctor->id, $doctor->avatar)
+                $doctor_image = \common\models\StaticFunctions::getImage('user', $doctor->id, $doctor->avatar)
                 ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="doctor-item">
@@ -516,107 +516,25 @@ $page = 1;
       </div>
    </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                    <div class="image">
-                        <a href="single-projects.html">
-                            <img src="/frontend-files/img/projects/image1.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p>
+            <?php foreach ($news as $news_blog) : ?>
+            <?php $news_image = \common\models\StaticFunctions::getImage('news',$news_blog->id,$news_blog->main_image)?>
+                <div class="col-lg-4 col-md-6">
+                    <div class="projects-item">
+                        <div class="image">
                             <a href="single-projects.html">
-                                Reducing Hospitalization-Related Stress: Improving Patient Satisfaction and Outcomes
+                                <img src="<?= $news_image ?>" alt="image">
                             </a>
-                        </p>
+                        </div>
+                        <div class="content">
+                            <p>
+                                <a href="single-projects.html">
+                                    <?= $news_blog->title[Yii::$app->language] ?>
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                    <div class="image">
-                        <a href="single-projects.html">
-                            <img src="/frontend-files/img/projects/image2.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p>
-                            <a href="single-projects.html">
-                                TeleHealth Services and Banyan Virtual Nurse System Help Hospitals Respond to COVID-19
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                    <div class="image">
-                        <a href="single-projects.html">
-                            <img src="/frontend-files/img/projects/image3.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p>
-                            <a href="single-projects.html">
-                                The Secret Behind Changing Patient Behavior: Achieving the Confidence
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                    <div class="image">
-                        <a href="single-projects.html">
-                            <img src="/frontend-files/img/projects/image4.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p>
-                            <a href="single-projects.html">
-                                Reducing Hospitalization-Related Stress: Improving Patient Satisfaction and Outcomes
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                    <div class="image">
-                        <a href="single-projects.html">
-                            <img src="/frontend-files/img/projects/image5.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p>
-                            <a href="single-projects.html">
-                                TeleHealth Services and Banyan Virtual Nurse System Help Hospitals Respond to COVID-19
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                    <div class="image">
-                        <a href="single-projects.html">
-                            <img src="/frontend-files/img/projects/image6.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="content">
-                        <p>
-                            <a href="single-projects.html">
-                                The Secret Behind Changing Patient Behavior: Achieving the Confidence
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 >>>>>>> bc6d67a9456855db7cc4b93789c77074ea4b630b
@@ -710,53 +628,16 @@ $page = 1;
         </div>
 
         <div class="partner-list">
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/1.jpg" alt="image">
-                </a>
-            </div>
 
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/2.jpg" alt="image">
-                </a>
-            </div>
+            <?php foreach ($partners as $partner) : ?>
+             <?php $partner_image = \common\models\StaticFunctions::getImage('partners',$partner->id,$partner->image)?>
+                <div class="partner-item">
+                    <a href="partner.html">
+                        <img src="<?=$partner_image?>" alt="image">
+                    </a>
+                </div>
+            <?php endforeach; ?>
 
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/3.jpg" alt="image">
-                </a>
-            </div>
-
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/4.jpg" alt="image">
-                </a>
-            </div>
-
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/5.jpg" alt="image">
-                </a>
-            </div>
-
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/5.jpg" alt="image">
-                </a>
-            </div>
-
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/6.jpg" alt="image">
-                </a>
-            </div>
-
-            <div class="partner-item">
-                <a href="partner.html">
-                    <img src="/frontend-files/img/partner/7.jpg" alt="image">
-                </a>
-            </div>
         </div>
     </div>
 </section>

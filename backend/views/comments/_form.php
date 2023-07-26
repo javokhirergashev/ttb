@@ -55,7 +55,7 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group row">
+                        <div class="form-group row" style="padding-top: 20px!important;">
                             <label class="col-form-label">Ism va familiyasi</label>
                             <div class="col-md-9">
                                 <?= $form->field($model, 'client_full_name')->textInput(['maxlength' => true])->label(false) ?>
@@ -64,7 +64,7 @@ use yii\widgets\ActiveForm;
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group row" style="padding-top: 20px!important;">
+                            <div class="form-group row" >
                                 <label class="col-form-label">Statusi</label>
                                 <div class="col-md-9">
                                     <?= $form->field($model, 'status')->dropDownList([

@@ -79,7 +79,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a href="<?= \yii\helpers\Url::to(['/']) ?>">
-                        <img src="/frontend-files/img/NSHTB.png" class="black-logo" alt="image" style="width: 80%; height: 80%">
+                        <img src="/frontend-files/img/NSHTB.png" class="black-logo" alt="image" style="width: 20%; height: 20%">
                         <img src="/frontend-files/img/logo-2.png" class="white-logo" alt="image">
                     </a>
 

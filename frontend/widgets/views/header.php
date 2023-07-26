@@ -67,7 +67,7 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="/frontend-files/img/logo.png" class="black-logo" alt="image">
+                            <img src="/frontend-files/img/NSHTB.tif" class="black-logo" alt="image">
                             <img src="/frontend-files/img/logo-2.png" class="white-logo" alt="image">
                         </a>
                     </div>

@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\behaviors\ConvertBehaviors;
 use common\behaviors\DateTimeBehavior;
+use common\modules\country\models\District;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -26,7 +27,12 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $avatar
  * @property int $status
  * @property string|null $verification_token
+ * @property string|null $telegram_link
+ * @property string|null $instagram_link
+ * @property string|null $facebook_link
+ * @property string|null $twitter_link
  * @property int|null $position_id
+ * @property int|null $district_id
  *
  * @property Position $position
  * @property Queue[] $queues
@@ -66,7 +72,7 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return [
             [['password'], 'safe'],
-            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'position_id'], 'integer'],
+            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'district_id', 'position_id'], 'integer'],
             [['phone_number', 'first_name', 'last_name', 'email', 'username', 'password_hash', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => Position::class, 'targetAttribute' => ['position_id' => 'id']],
@@ -80,22 +86,27 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'phone_number' => 'Phone Number',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
+            'phone_number' => 'Telefon raqami',
+            'first_name' => 'Ismi',
+            'last_name' => 'Familiyasi',
             'email' => 'Email',
-            'username' => 'Username',
-            'type' => 'Type',
-            'role' => 'Role',
+            'username' => 'Login',
+            'type' => 'Turi',
+            'role' => 'Rol',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'deleted_at' => 'Deleted At',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'deleted_at' => 'O\'chirilgan vaqti',
             'avatar' => 'Avatar',
             'status' => 'Status',
             'verification_token' => 'Verification Token',
-            'position_id' => 'Position ID',
+            'position_id' => 'Lavozimi',
+            'district_id' => 'Tuman',
+            'telegram_link' => 'Telegram',
+            'facebook_link' => 'Facebook',
+            'instagram_link' => 'Instagram',
+            'twitter_link' => 'Twitter',
         ];
     }
 
@@ -138,4 +149,13 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Service::class, ['updated_by' => 'id']);
     }
+    public function getDistrict()
+    {
+        return $this->hasOne(District::class, ['id' => 'district_id']);
+    }
+    public function getQvp()
+    {
+        return $this->hasOne(Qvp::class, ['id' => 'qvp_id']);
+    }
+
 }

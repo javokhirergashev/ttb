@@ -45,6 +45,15 @@
              <li>
                  <a href="<?= \yii\helpers\Url::to(['terriytory/index']) ?>"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span> <span> Teritoriya </span></a>
              </li>
+             <li class="submenu">
+                 <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg" alt=""></span>
+                     <span>Tashxislar to'plami</span> <span class="menu-arrow"></span></a>
+                 <ul style="display: none;">
+                     <li><a href="<?= \yii\helpers\Url::to(['diagnosis-class/']) ?>">Tashxislar sinfi</a></li>
+                     <li><a href="<?= \yii\helpers\Url::to(['diagnosis-group/']) ?>">Tashxislar guruhi</a></li>
+                     <li><a href="<?= \yii\helpers\Url::to(['diagnosis-list/']) ?>">Tashxislar ro'yxati</a></li>
+                 </ul>
+             </li>
             <li class="submenu">
                <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-16.svg" alt=""></span>
                   <span>Sayt sozlamalari</span> <span class="menu-arrow"></span></a>

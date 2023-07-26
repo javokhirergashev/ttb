@@ -52,7 +52,8 @@ return [
 
     'on beforeAction' => function () {
         if (Yii::$app->user->isGuest && Yii::$app->request->url != '/site/login') {
-            Yii::$app->response->redirect(['site/login']);
+            Yii::$app->getResponse()->redirect(['site/login']);
+            Yii::$app->end();
         }
     },
 

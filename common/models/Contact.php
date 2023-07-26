@@ -51,10 +51,10 @@ class Contact extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'value' => 'Value',
-            'slug' => 'Slug',
-            'icon' => 'Icon',
+            'title' => 'Sarlavha',
+            'value' => 'Qiymati',
+            'slug' => 'Kalit so\'z',
+            'icon' => 'Ikonka',
         ];
     }
 

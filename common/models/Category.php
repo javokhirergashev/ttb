@@ -64,11 +64,11 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'icon' => 'Icon',
+            'title' => 'Sarlavha',
+            'icon' => 'Ikonka',
             'parent_id' => 'Parent ID',
             'status' => 'Status',
-            'type' => 'Type',
+            'type' => 'Turi',
         ];
     }
 

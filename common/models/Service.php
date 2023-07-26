@@ -74,15 +74,15 @@ class Service extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'title' => 'Nomi',
+            'description' => 'Izoh',
             'content' => 'Content',
             'status' => 'Status',
-            'image' => 'Image',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'created_by' => 'Created By',
-            'updated_by' => 'Updated By',
+            'image' => 'Rasm',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'created_by' => 'Yaratgan foydalanuvchi',
+            'updated_by' => 'Tahrirlagan foydalanuvchi',
             'icon' => 'Icon',
             'type' => 'Type',
         ];

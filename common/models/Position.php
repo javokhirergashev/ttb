@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\behaviors\ConvertBehaviors;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "position".
@@ -56,9 +57,9 @@ class Position extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Nomi',
             'status' => 'Status',
-            'type' => 'Type',
+            'type' => 'turi',
         ];
     }
 
@@ -71,4 +72,10 @@ class Position extends \yii\db\ActiveRecord
     {
         return $this->hasMany(User::class, ['position_id' => 'id']);
     }
+
+    public static function getPositionTitle()
+    {
+        return ArrayHelper::map(Position::find()->where(['status' => Position::STATUS_ACTIVE])->all(), 'id', 'title.'.Yii::$app->language);
+    }
+
 }

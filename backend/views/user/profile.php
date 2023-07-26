@@ -2,21 +2,28 @@
 /**
  * @var $user \common\models\User
  * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $historyProvider \yii\data\ActiveDataProvider
  * @var $model \common\models\Queue
+ * @var $people \common\models\People
+ * @var $history \common\models\History
  */
+
+
 ?>
 
 <div class="content">
     <div class="row">
         <div class="col-sm-7 col-6">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard </a></li>
+                <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Dashboard </a></li>
                 <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                 <li class="breadcrumb-item active">My Profile</li>
             </ul>
         </div>
         <div class="col-sm-5 col-6 text-end m-b-30">
-            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+            <a href="<?= \yii\helpers\Url::to(['user/profile-edite']) ?>" class="btn btn-primary btn-rounded"><i
+                        class="fa fa-plus"></i>Profile
+                o'zgartirish</a>
         </div>
     </div>
     <div class="card-box profile-header">
@@ -95,22 +102,26 @@
                                                         </form>
                                                     </div>
                                                     <div class="add-group">
-                                                        <a href="add-patient.html"
-                                                           class="btn btn-primary add-pluss ms-2"><img
-                                                                    src="assets/img/icons/plus.svg" alt=""></a>
+                                                        <a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>"
+                                                           class="btn btn-primary">
+                                                            <img
+                                                                    src="/backend-files/img/icons/plus.svg"
+                                                                    alt="">
+                                                        </a>
                                                         <a href="javascript:;"
                                                            class="btn btn-primary doctor-refresh ms-2"><img
-                                                                    src="assets/img/icons/re-fresh.svg" alt=""></a>
+                                                                    src="/backend-files/img/icons/re-fresh.svg" alt="">
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto text-end float-end ms-auto download-grp">
                                             <a href="javascript:;" class=" me-2"><img
-                                                        src="assets/img/icons/pdf-icon-01.svg"
+                                                        src="/backend-files/img/icons/pdf-icon-01.svg"
                                                         alt=""></a>
                                             <a href="javascript:;" class=" me-2"><img
-                                                        src="assets/img/icons/pdf-icon-02.svg"
+                                                        src="/backend-files/img/icons/pdf-icon-02.svg"
                                                         alt=""></a>
                                             <a href="javascript:;" class=" me-2"><img
                                                         src="assets/img/icons/pdf-icon-03.svg"
@@ -143,7 +154,7 @@
                                             <tr>
                                                 <td><?= $model->id; ?></td>
                                                 <td class="profile-image">
-                                                    <a href="<?= \yii\helpers\Url::to(['people/view', 'id' => $model->id]) ?>">
+                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
                                                         <?= $model->first_name . " " . $model->last_name ?>
                                                     </a>
                                                 </td>
@@ -153,9 +164,17 @@
                                                 <td><?= "Qvp  title" ?></td>
                                                 <td><?= "Qvp  title" ?></td>
                                                 <td class="text-end">
-                                                    <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
-                                                       class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
-                                                    <a data-method="post" href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
+                                                    <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->people_id, 'queue_id' => $model->id]) ?>"
+                                                       class="btn btn-primary add-pluss ms-2"><i class="fa fa-pen"></i></a>
+                                                    <a data-bs-toggle="modal"
+                                                       data-bs-target="#staticBackdrop"
+                                                       title="Yo'naltirish"
+                                                       href="!#"
+                                                       data-value="<?= $model->id ?>"
+                                                       class="btn btn-primary add-pluss ms-2 open-modal-class"><i
+                                                                class="fa fa-external-link"></i></a>
+                                                    <a data-method="post"
+                                                       href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
                                                        class="btn btn-danger add-pluss ms-2"><i
                                                                 class="fa fa-times"></i></a>
                                                 </td>
@@ -170,7 +189,83 @@
                 </div>
             </div>
             <div class="tab-pane" id="bottom-tab2">
-                Tab content 2
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card card-table show-entire">
+                            <div class="card-body">
+                                <div class="page-table-header mb-2">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <div class="doctor-table-blk">
+                                                <div class="doctor-search-blk">
+                                                    <div class="top-nav-search table-search-blk">
+                                                        <form>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Search here">
+                                                            <a class="btn"><img src="assets/img/icons/search-normal.svg"
+                                                                                alt=""></a>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table border-0 custom-table comman-table datatable mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Id
+                                            </th>
+                                            <th>FIO</th>
+                                            <th>Tekshirilgan vaqti</th>
+                                            <th>Telefon nomeri</th>
+                                            <th>Passport seriyasi</th>
+                                            <th>Tugilgan sanasi</th>
+                                            <th>Address</th>
+                                            <th class="text-end">Amallar</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        foreach ($historyProvider->getModels() as $index => $people): ?>
+                                            <tr>
+                                                <td><?= $index + 1; ?></td>
+                                                <td class="profile-image">
+                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $history->id]) ?>">
+                                                        <?= $people->first_name . " " . $people->last_name ?>
+                                                    </a>
+                                                </td>
+                                                <td><?= date("d.m.Y", $people->getDiagnosis()->one()->created_at) ?></td>
+                                                <td><?= $people->phone_number ?></td>
+                                                <td><?= $people->passport_number ?? $people->metrka_number ?></td>
+                                                <td><?= $people->birthday ?></td>
+                                                <td><?= "test" ?></td>
+                                                <td class="text-end">
+                                                    <a href="javascript:;" class=" me-2"><img
+                                                                src="/backend-files/img/icons/pdf-icon-01.svg"
+                                                                alt=""></a>
+                                                    <a href="javascript:;" class=" me-2"><img
+                                                                src="/backend-files/img/icons/pdf-icon-02.svg"
+                                                                alt=""></a>
+                                                    <a href="javascript:;" class=" me-2"><img
+                                                                src="assets/img/icons/pdf-icon-03.svg"
+                                                                alt=""></a>
+                                                    <a href="javascript:;"><img src="assets/img/icons/pdf-icon-04.svg"
+                                                                                alt=""></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="bottom-tab3">
                 Tab content 3
@@ -382,9 +477,42 @@
                 </li>
             </ul>
         </div>
-        <div class="topnav-dropdown-footer">
-            <a href="chat.html">See all messages</a>
-        </div>
     </div>
 </div>
+</div>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel">Boshqa shifokorga yon</h4>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php $form = \yii\widgets\ActiveForm::begin(['method' => 'POST', 'action' => 'redirect', 'options' => ['id' => 'modal-form']]) ?>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Doctorni tanlang:</label>
+                    <?= $form->field($history, 'to_doctor_id')->dropDownList(\common\models\User::getDropDownList(), ['prompt' => 'Shifokorni tanlang'])->label(false) ?>
+                    <?= $form->field($history, 'queue_id', ['options' => ['id' => 'queue_hidden_id']])->hiddenInput()->label(false) ?>
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Sababi:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+
+                <?php \yii\widgets\ActiveForm::end() ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                </button>
+                <button type="submit" id="form-modal-submit" class="btn btn-primary">Send message</button>
+                <div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

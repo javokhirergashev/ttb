@@ -121,7 +121,8 @@ use yii\widgets\ActiveForm;
                 <label class="col-form-label">Mahalla</label>
                 <div class="col-md-9">
                     <?php
-                    echo $form->field($model, 'quarterIds')->widget(DepDrop::classname(), [
+                    echo $form->field($model, 'quarter_id')->widget(DepDrop::classname(), [
+                        'options' => ['id' => 'qvp-id'],
                         'pluginOptions' => [
                             'depends' => ['quarter-id'],
                             'placeholder' => 'MFY ni tanlang',
@@ -138,11 +139,16 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">QVP</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'qvp_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Qvp::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'title'), [
-                        'prompt' => 'QVP ni tanlang',
-                        'options' => [
-                        ]
-                    ])->label(false) ?>
+                    <?= $form->field($model, 'qvp_id')->widget(DepDrop::classname(), [
+                        'options' => ['id' => 'territory-id'],
+                        'pluginOptions' => [
+                            'depends' => ['qvp-id'],
+                            'placeholder' => 'Qvp tanlang',
+                            'url' => Url::to(['/qvp/qvp']),
+                            'initialize' => true,
+                        ],
+                        'type' => DepDrop::TYPE_SELECT2,
+                    ])->label(false); ?>
                 </div>
             </div>
         </div>
@@ -150,14 +156,30 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">Uchastka</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'territory_code')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Territory::find()->where(['status' => \common\models\Qvp::STATUS_ACTIVE])->all(), 'id', 'name'), [
-                        'prompt' => 'Uchastkani tanlang',
-                        'options' => [
-                        ]
-                    ])->label(false) ?>
+                    <?= $form->field($model, 'territory_id')->widget(DepDrop::classname(), [
+                        'pluginOptions' => [
+                            'depends' => ['territory-id'],
+                            'placeholder' => 'Uchastka tanlang',
+                            'url' => Url::to(['/people/territory']),
+                            'initialize' => true,
+                        ],
+                        'type' => DepDrop::TYPE_SELECT2,
+                    ])->label(false); ?>
+                    <?php
+                    echo $form->field($model, 'territory_id')->widget(DepDrop::classname(), [
+                        'pluginOptions' => [
+                            'depends' => ['territory_code'],
+                            'placeholder' => 'Uchastkani  tanlang',
+                            'url' => Url::to(['/people/territory']),
+                            'initialize' => true,
+                        ],
+                        'type' => DepDrop::TYPE_SELECT2,
+                    ])->label(false);
+                    ?>
                 </div>
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="form-group row">
                 <label class="col-form-label">Status</label>

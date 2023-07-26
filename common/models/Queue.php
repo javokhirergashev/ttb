@@ -25,6 +25,10 @@ use yii\behaviors\TimestampBehavior;
  */
 class Queue extends \yii\db\ActiveRecord
 {
+    const STATUS_PENDING = 1;
+    const STATUS_VIEWED = 2;
+    const STATUS_NOT_COME = 3;
+    const STATUS_REDIRECT = 4;
 
 
     /**
@@ -48,7 +52,8 @@ class Queue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id', 'user_id', 'status', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
+            [['service_id', 'user_id', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
+            [['status'], 'default', 'value' => self::STATUS_PENDING],
             [['service_id', 'user_id', 'status', 'created_at', 'updated_at', 'number', 'people_id'], 'integer'],
             [['reason', 'first_name', 'last_name', 'phone_number', 'passport_number', 'metrka_number'], 'string', 'max' => 255],
             [['writing_time'], 'unique'],
@@ -67,17 +72,17 @@ class Queue extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'reason' => 'Reason',
-            'service_id' => 'Service ID',
-            'user_id' => 'User ID',
+            'reason' => 'Murojaat ',
+            'service_id' => 'Xizmat nomi',
+            'user_id' => 'Shifokor',
             'status' => 'Status',
-            'writing_time' => 'Writing Time',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'phone_number' => 'Phone Number',
-            'number' => 'Number',
+            'writing_time' => 'Yozilgan vaqti',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'first_name' => 'Ismi',
+            'last_name' => 'Familiyasi',
+            'phone_number' => 'Telefon raqami',
+            'number' => 'Raqami',
         ];
     }
 

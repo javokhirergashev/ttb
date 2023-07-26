@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\form\ProfileUpdateForm;
 use backend\models\form\UserForm;
 use common\models\People;
 use common\models\Queue;
@@ -135,6 +136,7 @@ class UserController extends Controller
     /**
      * Finds the UserCreateForm model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param int $id ID
      *
      * @return UserCreateForm the loaded model
@@ -154,14 +156,35 @@ class UserController extends Controller
 //        var_dump(\Yii::$app->user->id);
 //        die();
         $query = Queue::find()
-            ->andWhere(['user_id' => \Yii::$app->user->id]);
+            ->andWhere(['user_id' => \Yii::$app->user->id])->andWhere(['status' => Queue::STATUS_PENDING]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
+
+        $historyQuery = People::find()->leftJoin('diagnosis', 'people.id=diagnosis.people_id')
+            ->andWhere(['diagnosis.doctor_id' => \Yii::$app->user->id])->orderBy(['diagnosis.id' => SORT_DESC]);
+        $historyProvider = new ActiveDataProvider([
+            'query' => $historyQuery
+        ]);
+
         return $this->render('profile', [
             'user' => \Yii::$app->user->identity,
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'historyProvider' => $historyProvider
         ]);
+    }
+
+    public function actionProfileEdite()
+    {
+        $form = new ProfileUpdateForm();
+        if ($form->load(\Yii::$app->request->post())) {
+            if ($form->save()) {
+                return $this->redirect(['user/profile']);
+            }
+        }
+
+        return $this->render('profile-edite', ['model' => $form]);
+
     }
 }

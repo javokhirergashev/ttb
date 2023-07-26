@@ -58,8 +58,8 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'type' => 'Type',
+            'title' => 'Nomi',
+            'type' => 'Turi',
             'status' => 'Status',
             'parent_id' => 'Parent ID',
         ];

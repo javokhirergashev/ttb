@@ -7,6 +7,10 @@ $(document).ready(function () {
         $('.modal-body').empty();
     })
 
+
+
+
+
 });
 
 $(document).ready(function () {
@@ -16,7 +20,6 @@ $(document).ready(function () {
     // Attach a change event handler
     dateTimePicker.on('change', function () {
         // Get the selected date
-
         var user_id = $('#queue-user_id').val();
         if (!user_id) {
             alert('Siz hali shifokor tanlamadingiz, Iltimos shifokorlardan birini tanlang');
@@ -24,11 +27,13 @@ $(document).ready(function () {
             return;
         }
         var selectedDate = dateTimePicker.val();
+        console.log(selectedDate)
+        alert("dsfsdf")
 
 
         // Send AJAX request
         $.ajax({
-            url: '/queue/check-time', // Replace with your actual AJAX endpoint
+            url: '/ru/queue/check-time', // Replace with your actual AJAX endpoint
             method: 'POST', // or 'GET' depending on your needs
             data: {
                 selectedDate: selectedDate,
@@ -64,4 +69,7 @@ $(document).ready(function () {
             }
         });
     });
+
+
+
 });

@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\search\PeopleSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Peoples';
+$this->title = 'Aholi ro\'yxati';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="people-index">
@@ -44,19 +44,25 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            'id',
                             'first_name',
                             'last_name',
-                            'middle_name',
-                            'pinfl',
-                            'passport_seria',
+//                            'middle_name',
+//                            'pinfl',
+//                            'passport_seria',
                             'passport_number',
                             'phone_number',
                             'birthday',
                             //'region_id',
                             //'district_id',
-                            'quarter_id',
-                            'qvp_id',
+//                            'quarter_id',
+//                            'qvp_id',
                             'metrka_number',
-                            'gender',
-                            'territory_code',
+//                            'gender',
+                            [
+                                'attribute' => 'territory_code',
+                                'value' => function ($data) {
+                                    return "";
+//                                    return \common\models\Territory::findOne($data->territory_code)->name;
+                                }
+                            ],
                             [
                                 'attribute' => 'status',
                                 'value' => function ($data) {
@@ -67,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     }
                                 },
                                 'format' => 'raw',
-                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol',\common\models\People::STATUS_INACTIVE => 'Faol emas']
+                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol', \common\models\People::STATUS_INACTIVE => 'Faol emas']
                             ],
                             [
                                 'class' => 'yii\grid\ActionColumn',
@@ -80,6 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $controller = Yii::$app->controller->id;
                                         $code = <<<BUTTONS
                                 <div class="btn-group flex-center">
+                                <a href="/{$controller}/view?id={$model->id}" id="{$controller}{$model->id}" data-postID="{$model->id}" class="btn btn-success"><i class="far fa-eye"></i></a>
                                     <a href="/{$controller}/update?id={$model->id}" class="btn btn-primary"><i class="far fa-edit"></i></a>
                                     <a href="/{$controller}/delete?id={$model->id}" data-method="post" id="{$controller}{$model->id}" data-postID="{$model->id}" data-postType="{$controller}" class="btn btn-danger postRemove" data-method="post"><i class="far fa-trash-alt"></i></a>
                                 </div>

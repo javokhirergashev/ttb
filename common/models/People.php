@@ -41,8 +41,8 @@ class People extends \yii\db\ActiveRecord
      * {@inheritdoc}
      */
     public $quarterIds;
-    const STATUS_INACTIVE = 1;
-    const STATUS_ACTIVE = 2;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
 
@@ -60,7 +60,6 @@ class People extends \yii\db\ActiveRecord
                 'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
 //                'default' => 'today'
             ],
-            TimestampBehavior::class
         ];
     }
 
@@ -70,13 +69,14 @@ class People extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
+            [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
             [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'passport_seria'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
+            [['territory_id'], 'exist', 'skipOnError' => true, 'targetClass' => Territory::class, 'targetAttribute' => ['territory_id' => 'id']],
             [['quarterIds', 'birthday'], 'safe']
         ];
     }
@@ -88,22 +88,22 @@ class People extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'middle_name' => 'Middle Name',
+            'first_name' => 'Ism',
+            'last_name' => 'Familiya',
+            'middle_name' => 'Otasining ismi',
             'status' => 'Status',
             'pinfl' => 'Pinfl',
             'passport_seria' => 'Passport Seriyasi',
-            'passport_number' => 'Passport Number',
-            'phone_number' => 'Phone Number',
-            'birthday' => 'Birthday',
-            'region_id' => 'Region ID',
-            'district_id' => 'District ID',
-            'quarter_id' => 'Quarter ID',
-            'qvp_id' => 'Qvp ID',
-            'metrka_number' => 'Metrka Number',
-            'gender' => 'Gender',
-            'territory_code' => 'Territory Code',
+            'passport_number' => 'Passport Raqami',
+            'phone_number' => 'Telefon raqami',
+            'birthday' => 'Tug\'ilgan yil',
+            'region_id' => 'Viloyat',
+            'district_id' => 'Tuman',
+            'quarter_id' => 'Mahalla',
+            'qvp_id' => 'Qvp',
+            'metrka_number' => 'Metrka raqami',
+            'gender' => 'Jinsi',
+            'territory_code' => 'Uchastka',
         ];
     }
 
@@ -145,5 +145,15 @@ class People extends \yii\db\ActiveRecord
     public function getRegion()
     {
         return $this->hasOne(Region::class, ['id' => 'region_id']);
+    }
+
+    public function getDiagnosis()
+    {
+        return $this->hasMany(Diagnosis::class, ['people_id' => 'id'])->orderBy(['id' => SORT_DESC]);
+    }
+
+    public function getTerritory()
+    {
+        return $this->hasOne(Territory::class, ['id' => 'territory_id']);
     }
 }

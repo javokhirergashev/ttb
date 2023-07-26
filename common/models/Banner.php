@@ -65,13 +65,13 @@ class Banner extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
+            'title' => 'Sarlavha',
+            'description' => 'Izoh',
             'status' => 'Status',
-            'type' => 'Type',
-            'image' => 'Image',
+            'type' => 'Turi',
+            'image' => 'Rasm',
             'link' => 'Link',
-            'sort' => 'Sort',
+            'sort' => 'Saralash',
         ];
     }
 }

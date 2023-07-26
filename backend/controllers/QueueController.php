@@ -111,7 +111,8 @@ class QueueController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->updateAttributes(['status' => Queue::STATUS_NOT_COME]);
 
         return $this->redirect(\Yii::$app->request->referrer);
     }

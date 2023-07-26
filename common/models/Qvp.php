@@ -79,17 +79,17 @@ class Qvp extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'address' => 'Address',
-            'phone_number' => 'Phone Number',
+            'title' => 'Nomi',
+            'address' => 'Manzili',
+            'phone_number' => 'Telefon raqami',
             'status' => 'Status',
-            'type' => 'Type',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'number' => 'Number',
-            'quarter_id' => 'Quarter ID',
-            'district_id' => 'District ID',
-            'region_id' => 'Region ID',
+            'type' => 'Turi',
+            'created_at' => 'Yaratilgan vaqti',
+            'updated_at' => 'Tahrirlangan vaqti',
+            'number' => 'Raqami',
+            'quarter_id' => 'Mahalla',
+            'district_id' => 'Tuman',
+            'region_id' => 'Viloyat',
         ];
     }
 
@@ -149,8 +149,18 @@ class Qvp extends \yii\db\ActiveRecord
         return $this->hasMany(Quarter::class, ['id' => 'quarter_id'])->via('qvpQuarters');
     }
 
-    public static function getDropDownList()
+    public static function getDropdownList($quarter_id = null)
     {
-        return ArrayHelper::map(static::find()->all(), 'id', 'title');
+        if ($quarter_id) {
+            return self::find()
+                ->leftJoin('qvp_quater qq', 'qvp.id=qq.qvp_id')
+                ->andWhere(['qq.quarter_id' => $quarter_id])
+                ->select("qvp.id as id, (title) as name")
+                ->asArray()
+                ->all();
+        }
+
+        return ArrayHelper::map(Qvp::find()->where(['status' => Qvp::STATUS_ACTIVE])->all(), 'id', 'title');
+
     }
 }

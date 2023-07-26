@@ -492,30 +492,6 @@ $page = 1;
         </div>
 
       <div class="row">
-
-          <?php foreach ($news as $index => $news): ?>
-              <div class="col-lg-4 col-md-6">
-                <div class="projects-item">
-                   <div class="image">
-                      <a href="single-projects.html">
-                         <img src="<?=$news->main_image?>" alt="image">
-                      </a>
-                   </div>
-                   <div class="content">
-                      <p>
-                         <a href="single-projects.html">
-                            <?=$news->title?>
-                         </a>
-                      </p>
-                   </div>
-                </div>
-             </div>
-          <?php endforeach;?>
-
-
-      </div>
-   </div>
-        <div class="row">
             <?php foreach ($news as $news_blog) : ?>
             <?php $news_image = \common\models\StaticFunctions::getImage('news',$news_blog->id,$news_blog->main_image)?>
                 <div class="col-lg-4 col-md-6">
@@ -537,7 +513,6 @@ $page = 1;
             <?php endforeach; ?>
         </div>
     </div>
->>>>>>> bc6d67a9456855db7cc4b93789c77074ea4b630b
 </section>
 <!-- End Projects Area -->
 
@@ -633,6 +608,7 @@ $page = 1;
              <?php $partner_image = \common\models\StaticFunctions::getImage('partners',$partner->id,$partner->image)?>
                 <div class="partner-item">
                     <a href="partner.html">
+                        <img src="<?=$partner_image?>" alt="image">
                         <img src="<?=$partner_image?>" alt="image">
                     </a>
                 </div>

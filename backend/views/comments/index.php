@@ -47,8 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //                            'id',
                             'client_full_name',
-                            'comment',
-                            'image',
+                            [
+                                'attribute' => 'comment',
+                                'value' => function ($model) {
+                                    return $model->comment[Yii::$app->language];
+                                }
+                            ],
+//                            'image',
                             'status',
                             [
                                 'class' => 'yii\grid\ActionColumn',

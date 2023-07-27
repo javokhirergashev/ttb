@@ -4,9 +4,11 @@ namespace backend\controllers;
 
 use common\models\Comments;
 use common\models\search\CommentsSearch;
+use common\models\StaticFunctions;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CommentsController implements the CRUD actions for Comments model.
@@ -70,8 +72,12 @@ class CommentsController extends Controller
         $model = new Comments();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->image = UploadedFile::getInstance($model, 'image');
+                if ($model->save()) {
+                    $model->image = StaticFunctions::saveImage('comments', $model->id, $model->image);
+                    return $this->redirect(['index']);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -93,8 +99,20 @@ class CommentsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $oldImage = $model->image;
+                $model->image = UploadedFile::getInstance($model, 'image');
+                if (!empty($model->image)) {
+                    StaticFunctions::deleteImage('comments', $model->id, $oldImage);
+                    $model->image = StaticFunctions::saveImage('coments', $model->id, $model->image);
+                } else {
+                    $model->image = $oldImage;
+                }
+                if ($model->save()) {
+                    return $this->redirect(['index']);
+                }
+            }
         }
 
         return $this->render('update', [

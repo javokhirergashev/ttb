@@ -2,16 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\Faq;
-use common\models\search\FaqSearch;
+use common\models\Referral;
+use common\models\search\ReferralSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FaqController implements the CRUD actions for Faq model.
+ * ReferralController implements the CRUD actions for Referral model.
  */
-class FaqController extends Controller
+class ReferralController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,23 +33,26 @@ class FaqController extends Controller
     }
 
     /**
-     * Lists all Faq models.
+     * Lists all Referral models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new FaqSearch();
+        $searchModel = new ReferralSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+
+        $referral = new Referral();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'referral' => $referral,
         ]);
     }
 
     /**
-     * Displays a single Faq model.
+     * Displays a single Referral model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,29 +65,26 @@ class FaqController extends Controller
     }
 
     /**
-     * Creates a new Faq model.
+     * Creates a new Referral model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($people_id)
     {
-        $model = new Faq();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index']);
+        $model = new Referral(['people_id' => $people_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->status = Referral::STATUS_PENDING;
+            if ($model->save()) {
+                return $this->redirect(['/user/profile']);
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
         return $this->render('create', [
-            'model' => $model,
+            'model' => $model
         ]);
     }
 
     /**
-     * Updates an existing Faq model.
+     * Updates an existing Referral model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -94,7 +95,7 @@ class FaqController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -103,7 +104,7 @@ class FaqController extends Controller
     }
 
     /**
-     * Deletes an existing Faq model.
+     * Deletes an existing Referral model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,18 +118,34 @@ class FaqController extends Controller
     }
 
     /**
-     * Finds the Faq model based on its primary key value.
+     * Finds the Referral model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Faq the loaded model
+     * @return Referral the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Faq::findOne(['id' => $id])) !== null) {
+        if (($model = Referral::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionCancel()
+    {
+        $requestParams = Yii::$app->request->post();
+
+        if ($requestParams['id']) {
+
+            $referral = Referral::findOne($requestParams['id']);
+            $referral->reason = $requestParams['reason'];
+            $referral->status = Referral::STATUS_CANCELLED;
+            $referral->save();
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+        return $this->redirect(['index']);
+
     }
 }

@@ -189,6 +189,7 @@ class PeopleController extends Controller
     {
         $model = new Referral(['people_id' => $people_id]);
         if ($model->load(Yii::$app->request->post())) {
+            $model->status = Referral::STATUS_PENDING;
             if ($model->save()) {
                 return $this->redirect(['/user/profile']);
             }

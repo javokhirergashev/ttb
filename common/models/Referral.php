@@ -2,33 +2,40 @@
 
 namespace common\models;
 
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "referral".
  *
- * @property int           $id
- * @property int|null      $clinic_id
- * @property int|null      $type
- * @property string|null   $reason
- * @property int|null      $people_id
- * @property int|null      $diagnosis_list_id
- * @property int|null      $section_id
- * @property int|null      $created_at
- * @property int|null      $updated_at
- * @property int|null      $created_by
- * @property int|null      $updated_by
- * @property int|null      $status
+ * @property int $id
+ * @property int|null $clinic_id
+ * @property int|null $type
+ * @property string|null $reason
+ * @property int|null $people_id
+ * @property int|null $diagnosis_list_id
+ * @property int|null $section_id
+ * @property int|null $created_at
+ * @property int|null $updated_at
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property int|null $status
  *
- * @property Clinic        $clinic
- * @property User          $createdBy
+ * @property Clinic $clinic
+ * @property User $createdBy
  * @property DiagnosisList $diagnosisList
- * @property People        $people
- * @property Section       $section
- * @property User          $updatedBy
+ * @property People $people
+ * @property Section $section
+ * @property User $updatedBy
  */
 class Referral extends \yii\db\ActiveRecord
 {
     const OPERATION = 1;
     const STATSIONAR = 2;
+
+    const STATUS_PENDING = 1;
+    const STATUS_CANCELLED = 2;
+    const STATUS_ACCEPTED = 3;
 
     /**
      * {@inheritdoc}
@@ -36,6 +43,14 @@ class Referral extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'referral';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+            BlameableBehavior::class
+        ];
     }
 
     /**
@@ -46,7 +61,7 @@ class Referral extends \yii\db\ActiveRecord
         return [
             [['clinic_id', 'type', 'people_id', 'diagnosis_list_id', 'section_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'status'], 'default', 'value' => null],
             [['clinic_id', 'type', 'people_id', 'diagnosis_list_id', 'section_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'status'], 'integer'],
-            [['reason'], 'string', 'max' => 255],
+            [['reason', 'comment'], 'string', 'max' => 255],
             [['clinic_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clinic::class, 'targetAttribute' => ['clinic_id' => 'id']],
             [['diagnosis_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => DiagnosisList::class, 'targetAttribute' => ['diagnosis_list_id' => 'id']],
             [['people_id'], 'exist', 'skipOnError' => true, 'targetClass' => People::class, 'targetAttribute' => ['people_id' => 'id']],
@@ -143,5 +158,15 @@ class Referral extends \yii\db\ActiveRecord
             self::OPERATION => 'Jarrohlik amaliyoti',
             self::STATSIONAR => 'Statsionar davolanish'
         ];
+    }
+
+    public function getStatusName()
+    {
+        if ($this->status == self::STATUS_CANCELLED) {
+            return '<span class="badge badge-danger">Bekor qilindi</span>';
+        } elseif ($this->status == self::STATUS_PENDING) {
+            return '<span class="badge badge-info">Kutilmoqda</span>';
+        }
+        return '<span class="badge badge-success">Bekor qilindi</span>';
     }
 }

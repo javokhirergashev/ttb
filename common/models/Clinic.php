@@ -2,40 +2,52 @@
 
 namespace common\models;
 
-use Yii;
+use common\modules\country\models\District;
+use common\modules\country\models\Region;
+use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "clinic".
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $name
  * @property string|null $description
- * @property int|null $status
- * @property int|null $created_at
- * @property int|null $updated_at
- * @property int|null $created_by
- * @property int|null $updated_by
- * @property int|null $region_id
- * @property int|null $district_id
- * @property int|null $type
+ * @property int|null    $status
+ * @property int|null    $created_at
+ * @property int|null    $updated_at
+ * @property int|null    $created_by
+ * @property int|null    $updated_by
+ * @property int|null    $region_id
+ * @property int|null    $district_id
+ * @property int|null    $type
  * @property string|null $address
  * @property string|null $phone_number
  *
- * @property User $createdBy
- * @property District $district
- * @property Region $region
- * @property Room[] $rooms
- * @property Section[] $sections
- * @property User $updatedBy
+ * @property User        $createdBy
+ * @property District    $district
+ * @property Region      $region
+ * @property Room[]      $rooms
+ * @property Section[]   $sections
+ * @property User        $updatedBy
  */
 class Clinic extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'clinic';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class
+        ];
     }
 
     /**
@@ -45,6 +57,7 @@ class Clinic extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'region_id', 'district_id', 'type'], 'default', 'value' => null],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'region_id', 'district_id', 'type'], 'integer'],
             [['name', 'description', 'address', 'phone_number'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
@@ -114,6 +127,11 @@ class Clinic extends \yii\db\ActiveRecord
     public function getRooms()
     {
         return $this->hasMany(Room::class, ['clinic_id' => 'id']);
+    }
+
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(static::find()->andWhere(['status' => self::STATUS_ACTIVE])->all(), 'id', 'name');
     }
 
     /**

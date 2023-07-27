@@ -4,14 +4,15 @@ namespace backend\controllers;
 
 use common\models\Diagnosis;
 use common\models\People;
-use common\models\Qvp;
+use common\models\Referral;
 use common\models\search\PeopleSearch;
+use common\models\Section;
 use common\models\Territory;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * PeopleController implements the CRUD actions for People model.
@@ -55,7 +56,9 @@ class PeopleController extends Controller
 
     /**
      * Displays a single People model.
+     *
      * @param int $id ID
+     *
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -69,6 +72,7 @@ class PeopleController extends Controller
     /**
      * Creates a new People model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return string|\yii\web\Response
      */
     public function actionCreate()
@@ -92,7 +96,9 @@ class PeopleController extends Controller
     /**
      * Updates an existing People model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param int $id ID
+     *
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -112,7 +118,9 @@ class PeopleController extends Controller
     /**
      * Deletes an existing People model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param int $id ID
+     *
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -126,7 +134,9 @@ class PeopleController extends Controller
     /**
      * Finds the People model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param int $id ID
+     *
      * @return People the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -172,5 +182,39 @@ class PeopleController extends Controller
             'dataProvider' => $dataProvider,
             'people' => $people
         ]);
+    }
+
+
+    public function actionReferral($people_id)
+    {
+        $model = new Referral(['people_id' => $people_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                return $this->redirect(['/user/profile']);
+            }
+        }
+        return $this->render('referral', [
+            'model' => $model
+        ]);
+    }
+
+    public function actionSection()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $cat_id = $parents[0];
+                if (intval($cat_id)) {
+                    $out = Section::getDropDownList($cat_id);
+                    return ['output' => $out, 'selected' => ''];
+                } else {
+                    return intval($cat_id);
+                }
+
+            }
+        }
+        return ['output' => '', 'selected' => ''];
     }
 }

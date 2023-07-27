@@ -2,23 +2,25 @@
 
 namespace common\models\search;
 
+use common\models\People;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\People;
 
 /**
  * PeopleSearch represents the model behind the search form of `common\models\People`.
  */
 class PeopleSearch extends People
 {
+    public $full_name;
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender','birthday'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code'], 'safe'],
+            [['id', 'status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'full_name'], 'safe'],
         ];
     }
 
@@ -50,9 +52,9 @@ class PeopleSearch extends People
 
         $this->load($params);
 
-        if (!$this->validate()) {
+        if (! $this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+             $query->where('0=1');
             return $dataProvider;
         }
 
@@ -76,6 +78,12 @@ class PeopleSearch extends People
             ->andFilterWhere(['ilike', 'birthday', $this->birthday])
             ->andFilterWhere(['ilike', 'metrka_number', $this->metrka_number])
             ->andFilterWhere(['ilike', 'territory_code', $this->territory_code]);
+
+
+        if ($this->full_name) {
+
+            $query->andWhere(['or', ['ilike', 'first_name', $this->full_name], ['ilike', 'last_name', $this->full_name]]);
+        }
 
         return $dataProvider;
     }

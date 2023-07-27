@@ -2,22 +2,24 @@
 
 namespace common\models;
 
-use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "section".
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $name
- * @property int|null $clinic_id
- * @property int|null $status
- * @property int|null $room_count
+ * @property int|null    $clinic_id
+ * @property int|null    $status
+ * @property int|null    $room_count
  *
- * @property Clinic $clinic
- * @property Room[] $rooms
+ * @property Clinic      $clinic
+ * @property Room[]      $rooms
  */
 class Section extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -71,5 +73,15 @@ class Section extends \yii\db\ActiveRecord
     public function getRooms()
     {
         return $this->hasMany(Room::class, ['section_id' => 'id']);
+    }
+
+    public static function getDropDownList($clinic_id = null)
+    {
+        if ($clinic_id) {
+            return ArrayHelper::map(static::find()
+                ->andWhere(['clinic_id' => $clinic_id])
+                ->andWhere(['status' => self::STATUS_ACTIVE])->all(), 'id', 'name');
+        }
+        return ArrayHelper::map(static::find()->andWhere(['status' => self::STATUS_ACTIVE])->all(), 'id', 'name');
     }
 }

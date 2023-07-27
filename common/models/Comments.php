@@ -43,9 +43,10 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['comment', 'image'], 'safe'],
             [['status'], 'default', 'value' => null],
             [['status'], 'integer'],
-            [['client_full_name', 'comment', 'image'], 'string', 'max' => 255],
+            [['client_full_name'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,10 +56,10 @@ class Comments extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'client_full_name' => 'Client Full Name',
-            'comment' => 'Comment',
-            'image' => 'Image',
+//            'id' => 'ID',
+            'client_full_name' => 'Ismi va familiyasi',
+            'comment' => 'Komment',
+            'image' => 'Rasm',
             'status' => 'Status',
         ];
     }

@@ -177,9 +177,10 @@
                                           href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
                                           class="btn btn-danger add-pluss ms-2"><i
                                              class="fa fa-times"></i></a>
-                                       <a href="<?= \yii\helpers\Url::to(['people/referral   ', 'id' => $model->id]) ?>"
-                                          class="btn btn-danger add-pluss ms-2"><i
-                                             class="fa fa-link"></i></a>
+
+                                        <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
+                                           class="btn btn-info  add-pluss ms-2"><i
+                                                    class="fa fa-right-long"></i></a>
                                     </td>
                                  </tr>
                               <?php endforeach; ?>

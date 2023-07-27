@@ -542,7 +542,7 @@ $page = 1;
                                 <?php foreach ($comments as $comment) : ?>
                                 <?php $comment_img = \common\models\StaticFunctions::getImage('commnents',$comment->id,$comment->image)?>
 
-                                <p><?=$comment->comment?></p>
+                                <p><?=$comment->comment[Yii::$app->language]?></p>
 
                                 <div class="info">
                                     <img src="<?=$comment_img?>" alt="image">

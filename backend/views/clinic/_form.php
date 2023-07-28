@@ -11,33 +11,72 @@ use yii\widgets\ActiveForm;
 <div class="clinic-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="row card-box">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Shifoxona nomi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'name')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Izoh</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'description')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Manzil</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'address')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Viloyat</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'status')->dropDownList(\common\modules\country\models\Region::getDropDownList(),
+                        ['prompt' => "Viloyatni tanlang"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Tuman</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'status')->dropDownList(\common\modules\country\models\District::getDropDownList(),
+                        ['prompt' => "Tumanni tanlang"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Telefon raqam</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'phone_number')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Status</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'status')->dropDownList([
+                        \common\models\Clinic::STATUS_ACTIVE => "Active",
+                        \common\models\Clinic::STATUS_INACTIVE => "InActive",
+                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-end">
+            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+        </div>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
-
-    <?= $form->field($model, 'region_id')->textInput() ?>
-
-    <?= $form->field($model, 'district_id')->textInput() ?>
-
-    <?= $form->field($model, 'type')->textInput() ?>
-
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

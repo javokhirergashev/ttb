@@ -87,12 +87,15 @@
                                     <td><?= $model->phone_number ?></td>
                                     <td><?= $model->region_id ? $model->region->name[Yii::$app->language] : " ---- ----" ?></td>
                                     <td><?= $model->district_id ? $model->district->name[Yii::$app->language] : " ---- ----" ?></td>
-<!--                                    <td>--><?//= $model->quarter_id ? $model->quarter->name[Yii::$app->language] :" ---- ----" ?><!--</td>-->
                                     <td class="text-end">
                                         <a href="<?= \yii\helpers\Url::to(['section/index', 'clinic_id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i class="fa fa-section"></i></a>
                                         <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i class="fa fa-place-of-worship"></i></a>
+                                        <a data-method="post"
+                                           href="<?= \yii\helpers\Url::to(['clinic/update', 'id' => $model->id]) ?>"
+                                           class="btn btn-primary add-pluss ms-2"><i
+                                                    class="far fa-edit"></i></a>
                                         <a data-method="post"
                                            href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
                                            class="btn btn-danger add-pluss ms-2"><i

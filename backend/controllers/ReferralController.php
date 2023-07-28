@@ -2,19 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\Diagnosis;
-use common\models\People;
-use common\models\Queue;
-use common\models\search\DiagnosisSearch;
-use common\models\search\PeopleSearch;
-use yii\filters\VerbFilter;
+use common\models\Referral;
+use common\models\search\ReferralSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * DiagnosisController implements the CRUD actions for Diagnosis model.
+ * ReferralController implements the CRUD actions for Referral model.
  */
-class DiagnosisController extends Controller
+class ReferralController extends Controller
 {
     /**
      * @inheritDoc
@@ -35,26 +33,27 @@ class DiagnosisController extends Controller
     }
 
     /**
-     * Lists all Diagnosis models.
+     * Lists all Referral models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new DiagnosisSearch();
+        $searchModel = new ReferralSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+
+        $referral = new Referral();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'referral' => $referral,
         ]);
     }
 
     /**
-     * Displays a single Diagnosis model.
-     *
+     * Displays a single Referral model.
      * @param int $id ID
-     *
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -66,45 +65,28 @@ class DiagnosisController extends Controller
     }
 
     /**
-     * Creates a new Diagnosis model.
+     * Creates a new Referral model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     *
      * @return string|\yii\web\Response
      */
-    public function actionCreate($people_id, $queue_id = null)
+    public function actionCreate($people_id)
     {
-        $model = new Diagnosis(['people_id' => $people_id]);
-        $people = People::findOne($people_id);
-        if (! $people) {
-            throw new NotFoundHttpException("Ushbu bemor topilmadi");
-        }
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $model->doctor_id = \Yii::$app->user->id;
-                if ($model->save()) {
-                    if ($queue_id) {
-                        Queue::findOne($queue_id)->updateAttributes(['status' => Queue::STATUS_VIEWED]);
-                    }
-                    return $this->redirect(['user/profile']);
-                }
+        $model = new Referral(['people_id' => $people_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->status = Referral::STATUS_PENDING;
+            if ($model->save()) {
+                return $this->redirect(['/user/profile']);
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
         return $this->render('create', [
-            'model' => $model,
-            'people' => $people
+            'model' => $model
         ]);
     }
 
     /**
-     * Updates an existing Diagnosis model.
+     * Updates an existing Referral model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     *
      * @param int $id ID
-     *
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -122,11 +104,9 @@ class DiagnosisController extends Controller
     }
 
     /**
-     * Deletes an existing Diagnosis model.
+     * Deletes an existing Referral model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     *
      * @param int $id ID
-     *
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -138,30 +118,34 @@ class DiagnosisController extends Controller
     }
 
     /**
-     * Finds the Diagnosis model based on its primary key value.
+     * Finds the Referral model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     *
      * @param int $id ID
-     *
-     * @return Diagnosis the loaded model
+     * @return Referral the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Diagnosis::findOne(['id' => $id])) !== null) {
+        if (($model = Referral::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionPeople()
+    public function actionCancel()
     {
-        $searchModel = new PeopleSearch();
-        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        return $this->render('people', [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel
-        ]);
+        $requestParams = Yii::$app->request->post();
+
+        if ($requestParams['id']) {
+
+            $referral = Referral::findOne($requestParams['id']);
+            $referral->reason = $requestParams['reason'];
+            $referral->status = Referral::STATUS_CANCELLED;
+            $referral->save();
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+        return $this->redirect(['index']);
+
     }
 }

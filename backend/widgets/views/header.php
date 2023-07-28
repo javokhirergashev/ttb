@@ -112,8 +112,6 @@
          </a>
          <div class="dropdown-menu">
             <a class="dropdown-item" href="<?= \yii\helpers\Url::to(['user/profile']) ?>">My Profile</a>
-            <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-            <a class="dropdown-item" href="settings.html">Settings</a>
             <a data-method="post" class="dropdown-item"
                href="<?= \yii\helpers\Url::to(['site/logout']) ?>">Logout</a>
          </div>
@@ -128,8 +126,6 @@
             class="fa-solid fa-ellipsis-vertical"></i></a>
       <div class="dropdown-menu dropdown-menu-end">
          <a class="dropdown-item" href="profile.html">My Profile</a>
-         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-         <a class="dropdown-item" href="settings.html">Settings</a>
          <a class="dropdown-item" href="login.html">Logout</a>
       </div>
    </div>

@@ -14,8 +14,6 @@ $this->title = 'Komentlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="comments-index">
-
-    <
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">

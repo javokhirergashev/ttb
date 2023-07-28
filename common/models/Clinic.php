@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\modules\country\models\District;
 use common\modules\country\models\Region;
+use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 

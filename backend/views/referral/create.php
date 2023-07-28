@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var common\models\Referral $model */
 
-$this->title = 'Create Referral';
+$this->title = 'Yo\'llanma yaratish';
 $this->params['breadcrumbs'][] = ['label' => 'Referrals', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

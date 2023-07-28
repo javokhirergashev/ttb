@@ -167,6 +167,6 @@ class Referral extends \yii\db\ActiveRecord
         } elseif ($this->status == self::STATUS_PENDING) {
             return '<span class="badge badge-info">Kutilmoqda</span>';
         }
-        return '<span class="badge badge-success">Bekor qilindi</span>';
+        return '<span class="badge badge-success">Tasdiqlandi</span>';
     }
 }

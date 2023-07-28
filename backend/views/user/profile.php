@@ -1,11 +1,13 @@
 <?php
 /**
- * @var $user            \common\models\User
- * @var $dataProvider    \yii\data\ActiveDataProvider
- * @var $historyProvider \yii\data\ActiveDataProvider
- * @var $model           \common\models\Queue
- * @var $people          \common\models\People
- * @var $history         \common\models\History
+ * @var $user                 \common\models\User
+ * @var $dataProvider         \yii\data\ActiveDataProvider
+ * @var $historyProvider      \yii\data\ActiveDataProvider
+ * @var $referralDataProvider \yii\data\ActiveDataProvider
+ * @var $referral             \common\models\Referral
+ * @var $model                \common\models\Queue
+ * @var $people               \common\models\People
+ * @var $history              \common\models\History
  */
 
 
@@ -21,9 +23,8 @@
          </ul>
       </div>
       <div class="col-sm-5 col-6 text-end m-b-30">
-         <a href="<?= \yii\helpers\Url::to(['user/profile-edite']) ?>" class="btn btn-primary btn-rounded"><i
-               class="fa fa-plus"></i>Profile
-            o'zgartirish</a>
+         <a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>" class="btn btn-primary btn-rounded"><i
+               class="fa fa-plus"></i>Aholi ro'yhatiga o'tish</a>
       </div>
    </div>
    <div class="card-box profile-header">
@@ -178,9 +179,9 @@
                                           class="btn btn-danger add-pluss ms-2"><i
                                              class="fa fa-times"></i></a>
 
-                                        <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
-                                           class="btn btn-info  add-pluss ms-2"><i
-                                                    class="fa fa-right-long"></i></a>
+                                       <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
+                                          class="btn btn-info  add-pluss ms-2"><i
+                                             class="fa fa-right-long"></i></a>
                                     </td>
                                  </tr>
                               <?php endforeach; ?>
@@ -272,7 +273,99 @@
             </div>
          </div>
          <div class="tab-pane" id="bottom-tab3">
-            Tab content 3
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="card card-table show-entire">
+                     <div class="card-body">
+                        <div class="page-table-header mb-2">
+                           <div class="row align-items-center">
+                              <div class="col">
+                                 <div class="doctor-table-blk">
+                                    <h3>Yo'naltirilganlar</h3>
+                                    <div class="doctor-search-blk">
+                                       <div class="top-nav-search table-search-blk">
+                                          <form>
+                                             <input type="text" value="<?= $searchModel->first_name ?>"
+                                                    name="ReferralSearch[first_name]"
+                                                    class="form-control"
+                                                    placeholder="Search here">
+                                             <a class="btn"><img src="assets/img/icons/search-normal.svg"
+                                                                 alt=""></a>
+                                          </form>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-auto text-end float-end ms-auto download-grp">
+                                 <a href="javascript:;" class=" me-2"><img
+                                       src="/backend-files/img/icons/pdf-icon-01.svg"
+                                       alt=""></a>
+                                 <a href="javascript:;" class=" me-2"><img
+                                       src="/backend-files/img/icons/pdf-icon-02.svg"
+                                       alt=""></a>
+                                 <a href="javascript:;" class=" me-2"><img
+                                       src="assets/img/icons/pdf-icon-03.svg"
+                                       alt=""></a>
+                                 <a href="javascript:;"><img src="assets/img/icons/pdf-icon-04.svg"
+                                                             alt=""></a>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="table-responsive">
+                           <table class="table border-0 custom-table comman-table datatable mb-0">
+                              <thead>
+                              <tr>
+                                 <th>
+                                    Nomer
+                                 </th>
+                                 <th>FIO</th>
+                                 <th>Yo'naltirilgan vaqti</th>
+                                 <th>Doctor</th>
+                                 <th>Sababi</th>
+                                 <th>Klinika nomi</th>
+                                 <th>Bolim nomi</th>
+                                 <th>Holati</th>
+                                 <th class="text-end">Amallar</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <?php
+                              foreach ($referralDataProvider->getModels() as $index => $referral): ?>
+                                 <tr>
+                                    <td><?= $index; ?></td>
+                                    <td class="profile-image">
+                                       <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
+                                          <?= $referral->people->first_name . " " . $referral->people->last_name ?>
+                                       </a>
+                                    </td>
+                                    <td><?= date("d.m.Y", $referral->created_at) ?></td>
+                                    <td><?= $referral->comment ?></td>
+                                    <td><?= $referral->clinic->name ?></td>
+                                    <td><?= $referral->section->name ?></td>
+                                    <td><?= $referral->getStatusName() ?></td>
+                                    <td class="text-end">
+                                       <a href="<?= \yii\helpers\Url::to(['referral/accept', 'id' => $referral->id]) ?>"
+                                          title="Tasdiqlash"
+                                          class="btn btn-primary add-pluss ms-2"><i class="fa fa-check"></i></a>
+                                       <a data-bs-toggle="modal"
+                                          data-bs-target="#staticBackdrop"
+                                          title="Bekor qilish"
+                                          href="!#"
+                                          data-value="<?= $referral->id ?>"
+                                          class="btn btn-danger add-pluss ms-2 cancel-button"><i
+                                             class="fa fa-times"></i></a>
+                                    </td>
+                                 </tr>
+                              <?php endforeach; ?>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </div>

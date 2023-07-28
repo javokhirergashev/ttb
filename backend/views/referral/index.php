@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <tr>
                            <td><?= $index; ?></td>
                            <td class="profile-image">
-                              <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
+                              <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->people_id]) ?>">
                                  <?= $model->people->first_name . " " . $model->people->last_name ?>
                               </a>
                            </td>
@@ -85,6 +85,9 @@ $this->params['breadcrumbs'][] = $this->title;
                            <td><?= $model->section->name ?></td>
                            <td><?= $model->getStatusName() ?></td>
                            <td class="text-end">
+                              <a href="<?= \yii\helpers\Url::to(['referral/view', 'id' => $model->id]) ?>"
+                                 title="korish"
+                                 class="btn btn-info add-pluss ms-2 text-white"><i class="fa fa-eye"></i></a>
                               <a href="<?= \yii\helpers\Url::to(['referral/accept', 'id' => $model->id]) ?>"
                                  title="Tasdiqlash"
                                  class="btn btn-primary add-pluss ms-2"><i class="fa fa-check"></i></a>

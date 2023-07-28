@@ -99,8 +99,13 @@ class ReferralController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if (Yii::$app->request->post('update') === null) {
+                $model->status = Referral::STATUS_PENDING;
+            }
+            if ($model->save()) {
+                return $this->redirect(['user/profile', 'tab' => 'third']);
+            }
         }
 
         return $this->render('update', [
@@ -168,7 +173,7 @@ class ReferralController extends Controller
     public function actionAccept($id)
     {
         $referral = Referral::findOne($id);
-        if (!$referral){
+        if (! $referral) {
             throw new NotFoundHttpException();
         }
         $referral->updateAttributes(['status' => Referral::STATUS_ACCEPTED]);

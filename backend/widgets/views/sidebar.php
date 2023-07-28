@@ -93,7 +93,7 @@
                 <li>
                     <a href="<?= \yii\helpers\Url::to(['referral/index']) ?>"><span class="menu-side"><img
                                     src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span>
-                        <span> Yo'llanmalar</span></a>
+                        <span> Yo'llanmalar <span class="badge badge-warning"><?=\common\models\Referral::find()->andWhere(['status' => \common\models\Referral::STATUS_PENDING])->count()?></span></span></a>
                 </li>
             </ul>
             <div class="logout-btn">

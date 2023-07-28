@@ -13,6 +13,7 @@ return [
     'bootstrap' => ['log'],
     'timeZone' => 'Asia\Tashkent',
     'language' => 'uz',
+    'name' => 'TTB',
     'modules' => [],
     'components' => [
         'request' => [

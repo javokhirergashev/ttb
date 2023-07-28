@@ -5,9 +5,9 @@ namespace backend\controllers;
 use common\models\Referral;
 use common\models\search\ReferralSearch;
 use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ReferralController implements the CRUD actions for Referral model.
@@ -53,7 +53,9 @@ class ReferralController extends Controller
 
     /**
      * Displays a single Referral model.
+     *
      * @param int $id ID
+     *
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -67,6 +69,7 @@ class ReferralController extends Controller
     /**
      * Creates a new Referral model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return string|\yii\web\Response
      */
     public function actionCreate($people_id)
@@ -86,7 +89,9 @@ class ReferralController extends Controller
     /**
      * Updates an existing Referral model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param int $id ID
+     *
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -106,7 +111,9 @@ class ReferralController extends Controller
     /**
      * Deletes an existing Referral model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param int $id ID
+     *
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -120,7 +127,9 @@ class ReferralController extends Controller
     /**
      * Finds the Referral model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param int $id ID
+     *
      * @return Referral the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -133,6 +142,9 @@ class ReferralController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * @return \yii\web\Response
+     */
     public function actionCancel()
     {
         $requestParams = Yii::$app->request->post();
@@ -140,6 +152,9 @@ class ReferralController extends Controller
         if ($requestParams['id']) {
 
             $referral = Referral::findOne($requestParams['id']);
+            if (! $referral) {
+                throw new NotFoundHttpException();
+            }
             $referral->reason = $requestParams['reason'];
             $referral->status = Referral::STATUS_CANCELLED;
             $referral->save();
@@ -148,4 +163,17 @@ class ReferralController extends Controller
         return $this->redirect(['index']);
 
     }
+
+
+    public function actionAccept($id)
+    {
+        $referral = Referral::findOne($id);
+        if (!$referral){
+            throw new NotFoundHttpException();
+        }
+        $referral->updateAttributes(['status' => Referral::STATUS_ACCEPTED]);
+
+        return $this->redirect(['index']);
+    }
+
 }

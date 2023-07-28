@@ -51,6 +51,7 @@ class SectionController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'clinic_id' => $clinic_id
         ]);
     }
 
@@ -84,7 +85,7 @@ class SectionController extends Controller
             if ($model->load($this->request->post())) {
                 $model->clinic_id = $clinic_id;
                 if ($model->save()) {
-                    return $this->redirect(['clinic/index']);
+                    return $this->redirect(['section/index', 'clinic_id'=> $model->clinic_id]);
                 }
             }
         } else {
@@ -109,7 +110,7 @@ class SectionController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'clinic_id' => $model->clinic_id]);
         }
 
         return $this->render('update', [

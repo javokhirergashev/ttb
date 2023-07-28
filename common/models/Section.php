@@ -19,11 +19,8 @@ use yii\helpers\ArrayHelper;
 class Section extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 1;
-<<<<<<< HEAD
     const STATUS_INACTIVE = 2;
-=======
 
->>>>>>> beb309d3fd816d49748ded31400bf6ebb8d62391
     /**
      * {@inheritdoc}
      */
@@ -52,10 +49,10 @@ class Section extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'clinic_id' => 'Clinic ID',
+            'name' => 'Bo\'lim nomi',
+            'clinic_id' => 'Shifoxona',
             'status' => 'Status',
-            'room_count' => 'Room Count',
+            'room_count' => 'Xonalar soni',
         ];
     }
 

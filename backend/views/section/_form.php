@@ -10,10 +10,8 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="diagnosis-form">
-    <a href="<?= \yii\helpers\Url::to(['clinic/']) ?>">Ortga</a> <?php $form = ActiveForm::begin(); ?>
+     <?php $form = ActiveForm::begin(); ?>
     <div class="row card-box">
-        <h3><strong class="font-weight-normal"> Yangi bo'lim qo'shish</strong>
-            : <?= $clinic->name ?></h3>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="col-form-label">Bo'lim nomi</label>

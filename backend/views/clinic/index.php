@@ -46,7 +46,11 @@
                                                class="btn btn-primary doctor-refresh ms-2"><img
                                                         src="/backend-files/img/icons/re-fresh.svg" alt=""></a>
                                         </div>
+                                        <div class="add-group m-l-5">
+                                            <a href="<?= \yii\helpers\Url::to(['clinic/create']) ?>" class="btn btn-success">Yangi shifoxona qo'shish</a>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="col-auto text-end float-end ms-auto download-grp">
@@ -79,22 +83,16 @@
                             foreach ($dataProvider->getModels() as $index => $model): ?>
                                 <tr>
                                     <td><?= $model->id; ?></td>
-                                    <td class="profile-image">
-                                        <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
-                                            <?= $model->name?>
-                                        </a>
-                                    </td>
                                     <td><?= $model->name ?></td>
                                     <td><?= $model->phone_number ?></td>
-                                    <td><?= $model->district_id ?></td>
-                                    <td><?= $model->region_id ?></td>
-                                    <td><?= $model->district_id ?></td>
+                                    <td><?= $model->region_id ? $model->region->name[Yii::$app->language] : " ---- ----" ?></td>
+                                    <td><?= $model->district_id ? $model->district->name[Yii::$app->language] : " ---- ----" ?></td>
 <!--                                    <td>--><?//= $model->quarter_id ? $model->quarter->name[Yii::$app->language] :" ---- ----" ?><!--</td>-->
                                     <td class="text-end">
                                         <a href="<?= \yii\helpers\Url::to(['section/index', 'clinic_id' => $model->id]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>
+                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-section"></i></a>
                                         <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
+                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-place-of-worship"></i></a>
                                         <a data-method="post"
                                            href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
                                            class="btn btn-danger add-pluss ms-2"><i

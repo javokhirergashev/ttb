@@ -80,7 +80,7 @@
          <li class="nav-item"><a class="nav-link active" href="#about-cont" data-bs-toggle="tab">Navbatdagilar</a>
          </li>
          <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-bs-toggle="tab">Ko'rilganlar</a></li>
-         <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-bs-toggle="tab">Messages</a></li>
+         <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-bs-toggle="tab">Yo'llanmalar</a></li>
       </ul>
       <div class="tab-content">
          <div class="tab-pane show active" id="about-cont">
@@ -285,7 +285,7 @@
                                     <div class="doctor-search-blk">
                                        <div class="top-nav-search table-search-blk">
                                           <form>
-                                             <input type="text" value="<?= $searchModel->first_name ?>"
+                                             <input type="text" value=""
                                                     name="ReferralSearch[first_name]"
                                                     class="form-control"
                                                     placeholder="Search here">
@@ -322,41 +322,35 @@
                                  </th>
                                  <th>FIO</th>
                                  <th>Yo'naltirilgan vaqti</th>
-                                 <th>Doctor</th>
-                                 <th>Sababi</th>
+                                 <th>Tashxis</th>
                                  <th>Klinika nomi</th>
                                  <th>Bolim nomi</th>
+                                 <th>Sababi</th>
                                  <th>Holati</th>
-                                 <th class="text-end">Amallar</th>
+                                 <th class="text-center">Amallar</th>
                               </tr>
                               </thead>
                               <tbody>
                               <?php
                               foreach ($referralDataProvider->getModels() as $index => $referral): ?>
                                  <tr>
-                                    <td><?= $index; ?></td>
+                                    <td><?= $index + 1; ?></td>
                                     <td class="profile-image">
-                                       <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
+                                       <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $referral->id]) ?>">
                                           <?= $referral->people->first_name . " " . $referral->people->last_name ?>
                                        </a>
                                     </td>
                                     <td><?= date("d.m.Y", $referral->created_at) ?></td>
                                     <td><?= $referral->comment ?></td>
                                     <td><?= $referral->clinic->name ?></td>
-                                    <td><?= $referral->section->name ?></td>
+                                    <td><?= $referral->section->name ?? "--- ---" ?></td>
+                                    <td><?= $referral->reason ?? "--- ---" ?></td>
                                     <td><?= $referral->getStatusName() ?></td>
-                                    <td class="text-end">
-                                       <a href="<?= \yii\helpers\Url::to(['referral/accept', 'id' => $referral->id]) ?>"
-                                          title="Tasdiqlash"
-                                          class="btn btn-primary add-pluss ms-2"><i class="fa fa-check"></i></a>
-                                       <a data-bs-toggle="modal"
-                                          data-bs-target="#staticBackdrop"
-                                          title="Bekor qilish"
-                                          href="!#"
-                                          data-value="<?= $referral->id ?>"
-                                          class="btn btn-danger add-pluss ms-2 cancel-button"><i
-                                             class="fa fa-times"></i></a>
-                                    </td>
+                                    <td class="text-center">
+                                       <a href="<?= \yii\helpers\Url::to(['referral/update', 'id' => $referral->id]) ?>"
+                                          title="Update"
+                                          class="btn btn-primary add-pluss ms-2"><i class="fa fa-edit"></i></a>
+
                                  </tr>
                               <?php endforeach; ?>
                               </tbody>

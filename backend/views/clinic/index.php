@@ -90,8 +90,8 @@
                                     <td class="text-end">
                                         <a href="<?= \yii\helpers\Url::to(['section/index', 'clinic_id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i class="fa fa-section"></i></a>
-                                        <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-place-of-worship"></i></a>
+                                        <a href="<?= \yii\helpers\Url::to(['room/index', 'id' => $model->id]) ?>"
+                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-people-roof"></i></a>
                                         <a data-method="post"
                                            href="<?= \yii\helpers\Url::to(['clinic/update', 'id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i

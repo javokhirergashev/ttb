@@ -230,23 +230,17 @@ $page = 1;
         </div>
 
         <div class="row">
+        <?php foreach ($services as $service )  :?>
+            <?php
+            $service_img = \common\models\StaticFunctions::getImage('service',$service->id,  $service->image);
+            ?>
             <div class="col-lg-3 col-md-6">
                 <div class="single-shop">
                     <div class="product-image">
-                        <a href="single-product.html">
-                            <img src="/frontend-files/img/shop/image1.jpg" alt="image">
+                        <a href="">
+                            <img src="<?=$service_img?>" alt="image">
                         </a>
-
-                        <div class="percentage">
-                            -40%
-                        </div>
-
                         <ul class="add-to-cart-btn">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </li>
                             <li>
                                 <a href="#">
                                     <i class="fas fa-heart"></i>
@@ -262,11 +256,10 @@ $page = 1;
 
                     <div class="product-content">
                         <h3>
-                            <a href="single-product.html">
-                                Medical Mask
+                            <a href="">
+                               <?=$service->title[Yii::$app->language];?>
                             </a>
                         </h3>
-                        <span>Datsun</span>
                         <div class="bar"></div>
                         <ul class="rating">
                             <li>
@@ -285,198 +278,12 @@ $page = 1;
                                 <i class="fas fa-star"></i>
                             </li>
                         </ul>
-                        <b>$140.00</b>
-                        <a href="cart.html" class="cart-icon">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
+                        <b><?=$service->description[Yii::$app->language];?></b>
                     </div>
                 </div>
             </div>
+        <?php endforeach;?>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="single-shop">
-                    <div class="product-image">
-                        <a href="single-product.html">
-                            <img src="/frontend-files/img/shop/image2.jpg" alt="image">
-                        </a>
-
-                        <ul class="add-to-cart-btn">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-heart"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-star"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="product-content">
-                        <h3>
-                            <a href="single-product.html">
-                                Hand Sanitizer
-                            </a>
-                        </h3>
-                        <span>Datsun</span>
-                        <div class="bar"></div>
-                        <ul class="rating">
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li class="rating1">
-                                <i class="fas fa-star"></i>
-                            </li>
-                        </ul>
-                        <b>$290.00</b>
-                        <a href="cart.html" class="cart-icon">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-shop">
-                    <div class="product-image">
-                        <a href="single-product.html">
-                            <img src="/frontend-files/img/shop/image3.jpg" alt="image">
-                        </a>
-
-                        <div class="percentage">
-                            -40%
-                        </div>
-
-                        <ul class="add-to-cart-btn">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-heart"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-star"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="product-content">
-                        <h3>
-                            <a href="single-product.html">
-                                Drugs
-                            </a>
-                        </h3>
-                        <span>Datsun</span>
-                        <div class="bar"></div>
-                        <ul class="rating">
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li class="rating1">
-                                <i class="fas fa-star"></i>
-                            </li>
-                        </ul>
-                        <b>$110.00</b>
-                        <a href="cart.html" class="cart-icon">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-shop">
-                    <div class="product-image">
-                        <a href="single-product.html">
-                            <img src="/frontend-files/img/shop/image4.jpg" alt="image">
-                        </a>
-
-                        <div class="percentage">
-                            -40%
-                        </div>
-
-                        <ul class="add-to-cart-btn">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-heart"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fas fa-star"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="product-content">
-                        <h3>
-                            <a href="single-product.html">
-                                Medical Gloves
-                            </a>
-                        </h3>
-                        <span>Datsun</span>
-                        <div class="bar"></div>
-                        <ul class="rating">
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-star"></i>
-                            </li>
-                            <li class="rating1">
-                                <i class="fas fa-star"></i>
-                            </li>
-                        </ul>
-                        <b>$220.00</b>
-                        <a href="cart.html" class="cart-icon">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>

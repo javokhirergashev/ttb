@@ -78,7 +78,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">Passport raqami</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'passport_number')->textInput(['maxlength' => 7])->label(false) ?>
+                    <?= $form->field($model, 'passport_number')->textInput(['maxlength' => 9])->label(false) ?>
                 </div>
             </div>
         </div>

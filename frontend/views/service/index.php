@@ -106,50 +106,6 @@ use yii\widgets\ActiveForm;
 
 <!-- Start Appointment Area -->
 <section class="appointment-area ptb-100">
-   <div class="container-fluid">
-      <div class="row align-items-center">
-         <div class="col-lg-6">
-            <div class="row">
-               <div class="col-lg-6 col-md-6">
-                  <div class="single-fun-fact">
-                     <h3>
-                        <span class="odometer" data-count="270">00</span>
-                        <span class="sign-icon">+</span>
-                     </h3>
-                     <p><?= Yii::t('app', 'Malakali shifokorlar')?></p>
-                  </div>
-               </div>
-
-               <div class="col-lg-6 col-md-6">
-                  <div class="single-fun-fact">
-                     <h3>
-                        <span class="odometer" data-count="2.7">00</span>
-                        <span class="sign-icon">K</span>
-                     </h3>
-                     <p><?= Yii::t('app', 'Online foydalanuvchilar')?></p>
-                  </div>
-               </div>
-
-               <div class="col-lg-6 col-md-6">
-                  <div class="single-fun-fact">
-                     <h3>
-                        <span class="odometer" data-count="99.60">00</span>
-                        <span class="sign-icon">%</span>
-                     </h3>
-                     <p><?= Yii::t('app', 'Yuqori sifat')?></p>
-                  </div>
-               </div>
-
-               <div class="col-lg-6 col-md-6">
-                  <div class="single-fun-fact">
-                     <h3>
-                        <span class="odometer" data-count="30">00</span>
-                        <span class="sign-icon">+</span>
-                     </h3>
-                     <p><?= Yii::t('app', 'Yillik tajriba')?></p>
-                  </div>
-               </div>
-
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-6">
@@ -157,7 +113,7 @@ use yii\widgets\ActiveForm;
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="2700">00</span>
+                                <span class="odometer odometer-auto-theme" data-count="2700"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span><span class="odometer-formatting-mark">,</span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span></div></span>
                                 <span class="sign-icon">+</span>
                             </h3>
                             <p>Care Locations</p>
@@ -167,7 +123,7 @@ use yii\widgets\ActiveForm;
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="2.7">00</span>
+                                <span class="odometer odometer-auto-theme" data-count="2.7"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span><span class="odometer-formatting-mark odometer-radix-mark">.</span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span></div></span>
                                 <span class="sign-icon">K</span>
                             </h3>
                             <p>Virtual Care Solutions</p>
@@ -177,7 +133,7 @@ use yii\widgets\ActiveForm;
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="99.60">00</span>
+                                <span class="odometer odometer-auto-theme" data-count="99.60"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">9</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">9</span></span></span></span></span><span class="odometer-formatting-mark odometer-radix-mark">.</span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">6</span></span></span></span></span></div></span>
                                 <span class="sign-icon">%</span>
                             </h3>
                             <p>Connections Success Rate</p>
@@ -187,7 +143,7 @@ use yii\widgets\ActiveForm;
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="30">00</span>
+                                <span class="odometer odometer-auto-theme" data-count="30"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">3</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span></div></span>
                                 <span class="sign-icon">+</span>
                             </h3>
                             <p>Award Winning</p>
@@ -195,8 +151,9 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-6">
-                <div class="appointment-form queue-form">
+                <div class="appointment-form">
                     <div class="content">
                         <span>Call to Action</span>
                         <h3>Make An Appointment</h3>
@@ -328,25 +285,6 @@ use yii\widgets\ActiveForm;
                         <li>
                             <i class="flaticon-check-1"></i>
                             <?= Yii::t('app', 'Foydalanish imkoniyati va qulaylik')?>
-=======
-                            Get unlimited 24/7 Video Chat with a provider at no extra cost
-                        </li>
-                        <li>
-                            <i class="flaticon-check-1"></i>
-                            Easily book appointments and renew prescriptions
-                        </li>
-                        <li>
-                            <i class="flaticon-check-1"></i>
-                            Skip unnecessary trips to the ER or urgent care
-                        </li>
-                        <li>
-                            <i class="flaticon-check-1"></i>
-                            Have a Remote Visit with your primary care provider over video
-                        </li>
-                        <li>
-                            <i class="flaticon-check-1"></i>
-                            Message with your provider
->>>>>>> bc6d67a9456855db7cc4b93789c77074ea4b630b
                         </li>
                     </ul>
                 </div>

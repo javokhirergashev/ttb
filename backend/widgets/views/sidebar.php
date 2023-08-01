@@ -22,6 +22,11 @@
                         src="/backend-files/img/icons/menu-icon-02.svg" alt=""></span>
                   <span> Aholi ro'yxati </span></a>
             </li>
+             <li>
+                 <a href="<?= \yii\helpers\Url::to(['clinic/']) ?>"><span class="menu-side"><img
+                                 src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
+                     <span> Shifoxonalar </span></a>
+             </li>
             <li>
                <a href="<?= \yii\helpers\Url::to(['referral/index']) ?>"><span class="menu-side"><img
                         src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span>

@@ -130,6 +130,10 @@ class Clinic extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Room::class, ['clinic_id' => 'id']);
     }
+    public function getClinic()
+    {
+        return $this->hasMany(Section::class, ['clinic_id' => 'id']);
+    }
 
     public static function getDropDownList()
     {
@@ -155,5 +159,4 @@ class Clinic extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
-
 }

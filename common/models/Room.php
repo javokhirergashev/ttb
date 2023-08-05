@@ -20,6 +20,8 @@ use Yii;
  */
 class Room extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
     /**
      * {@inheritdoc}
      */
@@ -49,12 +51,12 @@ class Room extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'section_id' => 'Section ID',
-            'bed_count' => 'Bed Count',
+            'clinic_id' => 'Shifoxona',
+            'section_id' => 'Bo\'lim',
+            'bed_count' => 'Koyka soni',
             'type' => 'Type',
             'status' => 'Status',
-            'clinic_id' => 'Clinic ID',
-            'name' => 'Name',
+            'name' => 'Xona nomi',
         ];
     }
 

@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+use common\models\Clinic;
 use common\models\Room;
 use common\models\search\RoomSearch;
+use common\models\Section;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,14 +38,19 @@ class RoomController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($section_id, $clinic_id)
     {
-        $searchModel = new RoomSearch();
+        $searchModel = new RoomSearch([
+            'section_id' => $section_id,
+            'clinic_id' => $clinic_id
+        ]);
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'section_id' => $section_id,
+            'clinic_id' => $clinic_id
         ]);
     }
 
@@ -65,13 +72,25 @@ class RoomController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($section_id, $clinic_id)
     {
+        $checked_clinic =  Clinic::findOne($clinic_id);
+        $checked_section = Section::findOne($section_id);
+        if (!$checked_clinic) {
+            throw new NotFoundHttpException("Bunday shifoxona mavjud emas!");
+        }
+        if (!$checked_section) {
+            throw new NotFoundHttpException("Bunday bo\'lim  mavjud emas!");
+        }
         $model = new Room();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->clinic_id = $clinic_id;
+                $model->section_id = $section_id;
+                if ($model->save()) {
+                    return $this->redirect(['room/index','clinic_id' => $model->clinic_id, 'section_id'=> $model->section_id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -79,6 +98,7 @@ class RoomController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'clinic' => $checked_section
         ]);
     }
 
@@ -94,7 +114,7 @@ class RoomController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -113,7 +133,7 @@ class RoomController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index']);//shu yerni tugirlash kerak. indexga qaytganda $clinic_id va section_id parametrlarini berish kerak!!!
     }
 
     /**

@@ -44,20 +44,25 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
 
 //                            'id',
+                            [
+                                'attribute' => 'clinic_id',
+                                'value' => function ($data) {
+                                    return \common\models\Clinic::findOne($data->clinic_id)->name;
+                                }
+                            ],
                             'name',
-//                            'clinic_id',
                             'room_count',
                             [
                                 'attribute' => 'status',
                                 'value' => function ($data) {
-                                    if ($data->status == \common\models\Partners::STATUS_ACTIVE) {
+                                    if ($data->status == \common\models\Clinic::STATUS_ACTIVE) {
                                         return '<span class="badge badge-success">Faol</span>';
                                     } else {
                                         return '<span class="badge badge-danger">Faol emas</span>';
                                     }
                                 },
                                 'format' => 'raw',
-                                'filter' => [\common\models\Partners::STATUS_ACTIVE => 'Faol',\common\models\User::STATUS_INACTIVE => 'Faol emas']
+                                'filter' => [\common\models\Clinic::STATUS_ACTIVE => 'Faol',\common\models\Clinic::STATUS_INACTIVE => 'Faol emas']
                             ],
                             [
                                 'class' => 'yii\grid\ActionColumn',
@@ -71,6 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $code = <<<BUTTONS
                                 <div class="btn-group flex-center">
                                     <a href="/{$controller}/update?id={$model->id}" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                    <a href="/room/index?section_id={$model->id}&clinic_id={$model->clinic_id}" class="btn btn-primary"><i class="fas fa-people-roof"></i></a>
                                     <a href="/{$controller}/delete?id={$model->id}" id="{$controller}{$model->id}" data-postID="{$model->id}" data-postType="{$controller}" class="btn btn-danger postRemove" data-method="post"><i class="far fa-trash-alt"></i></a>
                                 </div>
 BUTTONS;

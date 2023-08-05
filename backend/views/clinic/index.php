@@ -90,14 +90,12 @@
                                     <td class="text-end">
                                         <a href="<?= \yii\helpers\Url::to(['section/index', 'clinic_id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i class="fa fa-section"></i></a>
-                                        <a href="<?= \yii\helpers\Url::to(['room/index', 'id' => $model->id]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-people-roof"></i></a>
                                         <a data-method="post"
                                            href="<?= \yii\helpers\Url::to(['clinic/update', 'id' => $model->id]) ?>"
                                            class="btn btn-primary add-pluss ms-2"><i
                                                     class="far fa-edit"></i></a>
                                         <a data-method="post"
-                                           href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
+                                           href="<?= \yii\helpers\Url::to(['clinic/delete', 'id' => $model->id]) ?>"
                                            class="btn btn-danger add-pluss ms-2"><i
                                                     class="fa fa-times"></i></a>
                                     </td>

@@ -11,22 +11,37 @@ use yii\widgets\ActiveForm;
 <div class="room-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'section_id')->textInput() ?>
-
-    <?= $form->field($model, 'bed_count')->textInput() ?>
-
-    <?= $form->field($model, 'type')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'clinic_id')->textInput() ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
+    <div class="row card-box">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Xona nomi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'name')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Koykalar soni</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'bed_count')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-form-label">Status</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'status')->dropDownList([
+                        \common\models\Room::STATUS_ACTIVE => "Active",
+                        \common\models\Room::STATUS_INACTIVE => "InActive",
+                    ], ['prompt' => "Statusni tanlang"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-end">
+            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+        </div>
 
     <?php ActiveForm::end(); ?>
 

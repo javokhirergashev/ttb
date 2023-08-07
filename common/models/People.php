@@ -29,7 +29,17 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $metrka_number
  * @property int|null $gender
  * @property string|null $territory_code
- *
+ * @property string|null $dispensary_control
+ * @property string|null $ayol_daftar
+ * @property string|null $temir_daftar
+ * @property string|null $yoshlar_daftar
+ * @property string|null $job
+ * @property string|null $height
+ * @property string|null $weight
+ * @property string|null $blood_pressure
+ * @property string|null $saturation
+ * @property string|null $pulse
+ * @property string|null $disablity_class_id
  * @property District $district
  * @property Quarter $quarter
  * @property Qvp $qvp
@@ -45,6 +55,16 @@ class People extends \yii\db\ActiveRecord
     const STATUS_INACTIVE = 2;
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
+    const DISPENSARY_CONTROL_TRUE = 1;
+    const DISPENSARY_CONTROL_FALSE = 2;
+    const AYOL_DAFTAR_TRUE = 1;
+    const AYOL_DAFTAR_FALSE = 2;
+    const TEMIR_DAFTAR_TRUE = 1;
+    const TEMIR_DAFTAR_FALSE = 2;
+    const YOSHLAR_DAFTAR_TRUE = 1;
+    const YOSHLAR_DAFTAR_FALSE = 2;
+
+
 
     public static function tableName()
     {
@@ -71,7 +91,7 @@ class People extends \yii\db\ActiveRecord
         return [
             [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'passport_seria'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control','ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
@@ -104,6 +124,17 @@ class People extends \yii\db\ActiveRecord
             'metrka_number' => 'Metrka raqami',
             'gender' => 'Jinsi',
             'territory_code' => 'Uchastka',
+            'dispensary_control' => '"D" nazorat',
+            'ayol_daftar' => 'Ayollar daftari',
+            'temir_daftar' => 'Temir daftar',
+            'yoshlar_daftar' => 'Yoshlar daftari',
+            'job' => 'Ish joyi',
+            'height' => 'Bo\'yi',
+            'weight' => 'Vazni',
+            'blood_pressure' => 'Qon bosimi',
+            'saturation' => 'Saturatsiyasi',
+            'pulse' => 'Pulsi',
+            'disablity_class_id' => 'Nogironligi',
         ];
     }
 

@@ -40,6 +40,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $saturation
  * @property string|null $pulse
  * @property string|null $disablity_class_id
+ * @property string|null $head_family
  * @property District $district
  * @property Quarter $quarter
  * @property Qvp $qvp
@@ -63,6 +64,8 @@ class People extends \yii\db\ActiveRecord
     const TEMIR_DAFTAR_FALSE = 2;
     const YOSHLAR_DAFTAR_TRUE = 1;
     const YOSHLAR_DAFTAR_FALSE = 2;
+    const OILA_BOSHI_TRUE = 1;
+    const OILA_BOSHI_FALSE = 2;
 
 
 
@@ -91,7 +94,7 @@ class People extends \yii\db\ActiveRecord
         return [
             [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control','ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control','ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
@@ -123,6 +126,7 @@ class People extends \yii\db\ActiveRecord
             'qvp_id' => 'Qvp',
             'metrka_number' => 'Metrka raqami',
             'gender' => 'Jinsi',
+            'head_family' => 'Oila boshi',
             'territory_code' => 'Uchastka',
             'dispensary_control' => '"D" nazorat',
             'ayol_daftar' => 'Ayollar daftari',
@@ -186,5 +190,10 @@ class People extends \yii\db\ActiveRecord
     public function getTerritory()
     {
         return $this->hasOne(Territory::class, ['id' => 'territory_id']);
+    }
+
+    public function getDisablity()
+    {
+        return $this->hasOne(DisablityClass::class, ['id' => 'disablity_class_id']);
     }
 }

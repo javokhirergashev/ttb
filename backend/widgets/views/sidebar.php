@@ -23,6 +23,11 @@
                   <span> Aholi ro'yxati </span></a>
             </li>
              <li>
+                 <a href="<?= \yii\helpers\Url::to(['disablity-class/']) ?>"><span class="menu-side"><img
+                                 src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
+                     <span> Nogironlik sinflari </span></a>
+             </li>
+             <li>
                  <a href="<?= \yii\helpers\Url::to(['clinic/']) ?>"><span class="menu-side"><img
                                  src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
                      <span> Shifoxonalar </span></a>

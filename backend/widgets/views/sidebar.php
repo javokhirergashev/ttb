@@ -22,6 +22,15 @@
                         src="/backend-files/img/icons/menu-icon-02.svg" alt=""></span>
                   <span> Aholi ro'yxati </span></a>
             </li>
+             <li class="submenu">
+                 <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg"
+                                                          alt=""></span>
+                     <span>Emlash</span> <span class="menu-arrow"></span></a>
+                 <ul style="display: none;">
+                     <li><a href="<?= \yii\helpers\Url::to(['vaccination/']) ?>">Emlash turlari</a></li>
+                     <li><a href="<?= \yii\helpers\Url::to(['diagnosis-group/']) ?>">Tashxislar guruhi</a></li>
+                 </ul>
+             </li>
              <li>
                  <a href="<?= \yii\helpers\Url::to(['disablity-class/']) ?>"><span class="menu-side"><img
                                  src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>

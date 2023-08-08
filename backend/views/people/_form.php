@@ -117,8 +117,22 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">Nogironlik sinfi</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'disablity_class_id')->dropDownList([\common\models\DisablityClass::getDropDownList()],
+                    <?= $form->field($model, 'disablity_class_id')->dropDownList(\common\models\DisablityClass::getDropDownList(),
                         ['prompt' => "Nogironlik sinfi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Nogironlik guruhi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'disability_group')->dropDownList([
+                        \common\models\People::DISABILITY_FALSE => "Yo'q",
+                        \common\models\People::DISABILITY_FIRST => "I guruh",
+                        \common\models\People::DISABILITY_SECOND => "II guruh",
+                        \common\models\People::DISABILITY_THIRD => "III guruh",
+                        \common\models\People::DISABILITY_FOURTH => "IV guruh",
+                    ], ['prompt' => "Nogironlik guruhi"])->label(false) ?>
                 </div>
             </div>
         </div>
@@ -180,15 +194,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Passport seriyasi</label>
-                <div class="col-md-9">
-                    <?= $form->field($model, 'passport_seria')->textInput(['maxlength' => 2])->label(false) ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label class="col-form-label">Passport raqami</label>
+                <label class="col-form-label">Passport seriyasi va raqami</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'passport_number')->textInput(['maxlength' => 9])->label(false) ?>
                 </div>

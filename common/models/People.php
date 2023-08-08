@@ -30,6 +30,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $gender
  * @property string|null $territory_code
  * @property string|null $dispensary_control
+ * @property string|null $disability_group
  * @property string|null $ayol_daftar
  * @property string|null $temir_daftar
  * @property string|null $yoshlar_daftar
@@ -66,8 +67,11 @@ class People extends \yii\db\ActiveRecord
     const YOSHLAR_DAFTAR_FALSE = 2;
     const OILA_BOSHI_TRUE = 1;
     const OILA_BOSHI_FALSE = 2;
-
-
+    const DISABILITY_FIRST = 1;
+    const DISABILITY_SECOND = 2;
+    const DISABILITY_THIRD = 3;
+    const DISABILITY_FOURTH = 4;
+    const DISABILITY_FALSE= 0;
 
     public static function tableName()
     {
@@ -93,7 +97,7 @@ class People extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
-            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
+            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group'], 'integer'],
             [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control','ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
@@ -138,7 +142,8 @@ class People extends \yii\db\ActiveRecord
             'blood_pressure' => 'Qon bosimi',
             'saturation' => 'Saturatsiyasi',
             'pulse' => 'Pulsi',
-            'disablity_class_id' => 'Nogironligi',
+            'disablity_class_id' => 'Nogironlik sinfi',
+            'disability_group' => 'Nogironlik guruhi',
         ];
     }
 

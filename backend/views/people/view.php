@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if ($data->status == \common\models\People::OILA_BOSHI_TRUE) {
                         return 'Ha';
-                    } else {
+                    } else if ($data->status == \common\models\People::OILA_BOSHI_FALSE) {
                         return 'Yo\'q';
                     }
                 }
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if ($data->status == \common\models\People::DISPENSARY_CONTROL_TRUE) {
                         return 'Turadi';
-                    } else {
+                    } else if ($data->status == \common\models\People::DISPENSARY_CONTROL_FALSE) {
                         return 'Turmaydi';
                     }
                 }
@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if ($data->disablity->name != 0) {
                         return $data->disablity->name;
-                    }else{
+                    } else {
                         return 'Yo\'q';
                     }
                 }
@@ -124,13 +124,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if ($data->disability_group == \common\models\People::DISABILITY_FALSE) {
                         return 'Yo\'q';
-                    } else if ($data->disability_group == \common\models\People::DISABILITY_FIRST){
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_FIRST) {
                         return 'I guruh';
-                    } else if ($data->disability_group == \common\models\People::DISABILITY_SECOND){
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_SECOND) {
                         return 'II guruh';
-                    } else if ($data->disability_group == \common\models\People::DISABILITY_THIRD){
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_THIRD) {
                         return 'II guruh';
-                    } else if ($data->disability_group == \common\models\People::DISABILITY_FOURTH){
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_FOURTH) {
                         return 'IV guruh';
                     }
                 }
@@ -138,9 +138,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'ayol_daftar',
                 'value' => function ($data) {
-                    if ($data->status == \common\models\People::AYOL_DAFTAR_TRUE) {
+                    if ($data->ayol_daftar == \common\models\People::AYOL_DAFTAR_TRUE) {
                         return 'Turadi';
-                    } else {
+                    } else if ($data->ayol_daftar == \common\models\People::AYOL_DAFTAR_FALSE) {
                         return 'Turmaydi';
                     }
                 }
@@ -148,9 +148,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'temir_daftar',
                 'value' => function ($data) {
-                    if ($data->status == \common\models\People::TEMIR_DAFTAR_TRUE) {
+                    if ($data->temir_daftar == \common\models\People::TEMIR_DAFTAR_TRUE) {
                         return 'Turadi';
-                    } else {
+                    } else if ($data->temir_daftar == \common\models\People::TEMIR_DAFTAR_FALSE) {
                         return 'Turmaydi';
                     }
                 }
@@ -158,9 +158,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'temir_daftar',
                 'value' => function ($data) {
-                    if ($data->status == \common\models\People::YOSHLAR_DAFTAR_TRUE) {
+                    if ($data->yoshlar_daftar == \common\models\People::YOSHLAR_DAFTAR_TRUE) {
                         return 'Turadi';
-                    } else {
+                    } else if ($data->yoshlar_daftar == \common\models\People::YOSHLAR_DAFTAR_FALSE) {
                         return 'Turmaydi';
                     }
                 }

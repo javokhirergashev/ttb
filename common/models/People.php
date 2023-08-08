@@ -142,7 +142,7 @@ class People extends \yii\db\ActiveRecord
             'blood_pressure' => 'Qon bosimi',
             'saturation' => 'Saturatsiyasi',
             'pulse' => 'Pulsi',
-            'disablity_class_id' => 'Nogironlik sinfi',
+            'disability_class_id' => 'Nogironlik sinfi',
             'disability_group' => 'Nogironlik guruhi',
         ];
     }

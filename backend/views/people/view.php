@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\People $model */
 
-$this->title = $model->id;
+$this->title = $model->first_name . ' ' . $model->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'Peoples', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Tahrirlash', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('O\'chirish', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -47,6 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'passport_number',
             'phone_number',
             'birthday',
+            'job',
             [
                 'attribute' => 'region_id',
                 'value' => function ($data) {
@@ -88,6 +89,87 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->territory->name;
                 }
             ],
+            [
+                'attribute' => 'oila_boshi',
+                'value' => function ($data) {
+                    if ($data->status == \common\models\People::OILA_BOSHI_TRUE) {
+                        return 'Ha';
+                    } else {
+                        return 'Yo\'q';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'dispensary_control',
+                'value' => function ($data) {
+                    if ($data->status == \common\models\People::DISPENSARY_CONTROL_TRUE) {
+                        return 'Turadi';
+                    } else {
+                        return 'Turmaydi';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'disability_class_id',
+                'value' => function ($data) {
+                    if ($data->disablity->name != 0) {
+                        return $data->disablity->name;
+                    }else{
+                        return 'Yo\'q';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'disability_group',
+                'value' => function ($data) {
+                    if ($data->disability_group == \common\models\People::DISABILITY_FALSE) {
+                        return 'Yo\'q';
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_FIRST){
+                        return 'I guruh';
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_SECOND){
+                        return 'II guruh';
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_THIRD){
+                        return 'II guruh';
+                    } else if ($data->disability_group == \common\models\People::DISABILITY_FOURTH){
+                        return 'IV guruh';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'ayol_daftar',
+                'value' => function ($data) {
+                    if ($data->status == \common\models\People::AYOL_DAFTAR_TRUE) {
+                        return 'Turadi';
+                    } else {
+                        return 'Turmaydi';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'temir_daftar',
+                'value' => function ($data) {
+                    if ($data->status == \common\models\People::TEMIR_DAFTAR_TRUE) {
+                        return 'Turadi';
+                    } else {
+                        return 'Turmaydi';
+                    }
+                }
+            ],
+            [
+                'attribute' => 'temir_daftar',
+                'value' => function ($data) {
+                    if ($data->status == \common\models\People::YOSHLAR_DAFTAR_TRUE) {
+                        return 'Turadi';
+                    } else {
+                        return 'Turmaydi';
+                    }
+                }
+            ],
+            'height',
+            'weight',
+            'blood_pressure',
+            'saturation',
+            'pulse',
         ],
     ]) ?>
 

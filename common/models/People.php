@@ -70,7 +70,7 @@ class People extends \yii\db\ActiveRecord
     const DISABILITY_SECOND = 2;
     const DISABILITY_THIRD = 3;
     const DISABILITY_FOURTH = 4;
-    const DISABILITY_FALSE= 0;
+    const DISABILITY_FALSE = 0;
 
     public static function tableName()
     {
@@ -97,7 +97,7 @@ class People extends \yii\db\ActiveRecord
         return [
             [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'default', 'value' => null],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control','ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control', 'ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
@@ -119,7 +119,6 @@ class People extends \yii\db\ActiveRecord
             'middle_name' => 'Otasining ismi',
             'status' => 'Status',
             'pinfl' => 'Pinfl',
-            'passport_seria' => 'Passport Seriyasi',
             'passport_number' => 'Passport Raqami',
             'phone_number' => 'Telefon raqami',
             'birthday' => 'Tug\'ilgan yil',
@@ -199,5 +198,16 @@ class People extends \yii\db\ActiveRecord
     public function getDisablity()
     {
         return $this->hasOne(DisablityClass::class, ['id' => 'disablity_class_id']);
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . " " . $this->last_name . " " . $this->middle_name;
+    }
+
+    public function getAddress()
+    {
+        return "O'ZBEKISTON, Namangan viloyati, Namangan shahri, Bo‘ston";
+//        return $this->region->name[Yii::$app->language] . ", " . $this->district->name[Yii::$app->language] . ", " . $this->quarter->name[Yii::$app->language];
     }
 }

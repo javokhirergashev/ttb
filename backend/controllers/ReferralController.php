@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Referral;
 use common\models\search\ReferralSearch;
+use kartik\mpdf\Pdf;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -157,7 +158,7 @@ class ReferralController extends Controller
         if ($requestParams['id']) {
 
             $referral = Referral::findOne($requestParams['id']);
-            if (! $referral) {
+            if (!$referral) {
                 throw new NotFoundHttpException();
             }
             $referral->reason = $requestParams['reason'];
@@ -173,12 +174,48 @@ class ReferralController extends Controller
     public function actionAccept($id)
     {
         $referral = Referral::findOne($id);
-        if (! $referral) {
+        if (!$referral) {
             throw new NotFoundHttpException();
         }
         $referral->updateAttributes(['status' => Referral::STATUS_ACCEPTED]);
 
         return $this->redirect(['index']);
+    }
+
+    public function actionPdf($id)
+    {
+        $model = Referral::findOne($id);
+        $content = $this->renderPartial('pdf', ['model' => $model]);
+        $time = date('d.m.Y H:i');
+
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_UTF8,
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+            // your html content input
+            'content' => $content,
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
+            // any css to be embedded if required
+            'cssInline' => '.kv-heading-1{font-size:18px}',
+            // set mPDF properties on the fly
+            'options' => ['title' => 'Yollanma'],
+            // call mPDF methods on the fly
+            'methods' => [
+//                'SetHeader' => ['Ttb'],
+                'SetFooter' => ["$time"],
+            ]
+        ]);
+
+        // return the pdf output as per the destination setting
+        return $pdf->render();
     }
 
 }

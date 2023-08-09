@@ -14,6 +14,11 @@ class m230808_132144_create_vaccination_people_table extends Migration
     {
         $this->createTable('{{%vaccination_people}}', [
             'id' => $this->primaryKey(),
+            'people_id' => $this->integer(),
+            'vaccination_id' => $this->integer(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer()
+
         ]);
     }
 

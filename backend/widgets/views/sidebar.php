@@ -25,10 +25,10 @@
              <li class="submenu">
                  <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg"
                                                           alt=""></span>
-                     <span>Emlash</span> <span class="menu-arrow"></span></a>
+                     <span>Emlash bo'limi</span> <span class="menu-arrow"></span></a>
                  <ul style="display: none;">
                      <li><a href="<?= \yii\helpers\Url::to(['vaccination/']) ?>">Emlash turlari</a></li>
-                     <li><a href="<?= \yii\helpers\Url::to(['diagnosis-group/']) ?>">Tashxislar guruhi</a></li>
+                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-people/']) ?>">Emlash</a></li>
                  </ul>
              </li>
              <li>

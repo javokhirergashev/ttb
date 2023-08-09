@@ -18,7 +18,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $middle_name
  * @property int|null $status
  * @property string|null $pinfl
- * @property string|null $passport_seria
  * @property string|null $passport_number
  * @property string|null $phone_number
  * @property integer|null $birthday
@@ -96,7 +95,7 @@ class People extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
+            [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'default', 'value' => null],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group'], 'integer'],
             [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control','ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],

@@ -28,7 +28,7 @@
                      <span>Emlash bo'limi</span> <span class="menu-arrow"></span></a>
                  <ul style="display: none;">
                      <li><a href="<?= \yii\helpers\Url::to(['vaccination/']) ?>">Emlash turlari</a></li>
-                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-people/']) ?>">Emlash</a></li>
+                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-people/people']) ?>">Emlash</a></li>
                  </ul>
              </li>
              <li>

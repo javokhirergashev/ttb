@@ -17,12 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Dashboard </a></li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['diagnosis-list/index']) ?>">Tashxislar</a></li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
                 </ul>
             </div>
         </div>
     </div>
-    <h3><?= Html::encode($this->title) ?></h3>
+
 
     <?= $this->render('_form', [
         'model' => $model,

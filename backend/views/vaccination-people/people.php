@@ -8,19 +8,17 @@
 
 
 <div class="content">
-
    <div class="page-header">
       <div class="row">
          <div class="col-sm-12">
             <ul class="breadcrumb">
-               <li class="breadcrumb-item"><a href="patients.html">Patients </a></li>
+               <li class="breadcrumb-item"><a href="patients.html">Emlash </a></li>
                <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-               <li class="breadcrumb-item active">Patient List</li>
+               <li class="breadcrumb-item active">Aholi ro'yhati</li>
             </ul>
          </div>
       </div>
    </div>
-
    <div class="row">
       <div class="col-sm-12">
          <div class="card card-table show-entire">
@@ -29,14 +27,14 @@
                   <div class="row align-items-center">
                      <div class="col">
                         <div class="doctor-table-blk">
-                           <h3>Patient List</h3>
+                           <h3>Aholi ro'yhati</h3>
                            <div class="doctor-search-blk">
                               <div class="top-nav-search table-search-blk">
                                  <form method="get" action="people">
                                     <input type="text" value="<?= $searchModel->full_name ?>"
                                            name="PeopleSearch[full_name]"
                                            class="form-control"
-                                           placeholder="Search here">
+                                           placeholder="Ism familiya bo'yicha qidiruv">
                                     <a class="btn"><img src="assets/img/icons/search-normal.svg"
                                                         alt=""></a>
                                  </form>
@@ -96,17 +94,8 @@
                            <td><?= $model->qvp_id ? $model->qvp->title : " ---- ----" ?></td>
                            <td><?= $model->quarter_id ? $model->quarter->name[Yii::$app->language] : " ---- ----" ?></td>
                            <td class="text-end">
-                              <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->id]) ?>"
+                              <a href="<?= \yii\helpers\Url::to(['vaccination-people/create', 'people_id' => $model->id]) ?>"
                                  class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>
-                              <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
-                                 class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
-                              <a data-method="post"
-                                 href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
-                                 class="btn btn-danger add-pluss ms-2"><i
-                                    class="fa fa-times"></i></a>
-                              <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
-                                 class="btn btn-info  add-pluss ms-2"><i
-                                    class="fa fa-right-long"></i></a>
                            </td>
                         </tr>
                      <?php endforeach; ?>

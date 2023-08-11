@@ -103,6 +103,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                            data-value="<?= $model->id ?>"
                                            class="btn btn-secondary add-pluss ms-2 cancel-button"><i
                                                     class="fa fa-print"></i></a>
+                                        <a title="Honaga joylash"
+                                           href="<?= \yii\helpers\Url::to(['referral/room-people', 'id' => $model->id]) ?>"
+                                           class="btn btn-success add-pluss ms-2"><i
+                                                    class="fa fa-hotel"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use common\models\Referral;
+use common\models\Room;
+use common\models\RoomPeople;
 use common\models\search\ReferralSearch;
 use kartik\mpdf\Pdf;
 use Yii;
@@ -216,6 +218,33 @@ class ReferralController extends Controller
 
         // return the pdf output as per the destination setting
         return $pdf->render();
+    }
+
+
+    public function actionRoomPeople($id)
+    {
+        $referral = Referral::findOne($id);
+        $room = Room::find()->andWhere(['section_id' => $referral->section_id])->one();
+        $model = RoomPeople::find()->andWhere(['referral_id' => $referral->id])->one();
+
+        if ($model){
+            return $this->redirect([Yii::$app->request->referrer]);
+        }
+
+        //  xona bosh yoki bo'sh emasligini tekshirish logikasi yoziladi
+
+        $model = new RoomPeople([
+            'referral_id' => $id,
+            'room_id' => $room->id,
+            'people_id' => $referral->people_id,
+            'status' => RoomPeople::STATUS_START,
+            'created_at' => time()
+        ]);
+
+        if ($model->save()) {
+            return $this->redirect([Yii::$app->request->referrer]);
+        }
+        return $this->redirect([Yii::$app->request->referrer]);
     }
 
 }

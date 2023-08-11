@@ -1,19 +1,20 @@
 <?php
 
-use common\models\Vaccination;
+use common\models\VaccinationClass;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var common\models\search\VaccinationSearch $searchModel */
+/** @var common\models\search\VaccinationClassSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Emlash turlari';
+$this->title = 'Emlash sinflari';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vaccination-index">
+<div class="vaccination-class-index">
+
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
@@ -29,8 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3><?= Html::encode($this->title) ?></h3>
 
     <p>
-        <?= Html::a('Yangi emlash turini qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yangi emlash sinfini qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card-box">
@@ -43,26 +45,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-//            'id',
+//                            'id',
                             'name',
-                            [
-                                'attribute' => 'vaccination_class_id', // Migration faylda Foreignkeyni to'g'irlab quyish kerak!!! columnda muammo bor. Bazadan ruchnoy o'zgartirib qo'yganman
-                                'value' => function ($data) {
-                                    return $data->vacclass->name;
-                                }
-                            ],
-                            'time',
                             [
                                 'attribute' => 'status',
                                 'value' => function ($data) {
-                                    if ($data->status == \common\models\Vaccination::STATUS_ACTIVE) {
+                                    if ($data->status == \common\models\VaccinationClass::STATUS_ACTIVE) {
                                         return '<span class="badge badge-success">Faol</span>';
                                     } else {
                                         return '<span class="badge badge-danger">Faol emas</span>';
                                     }
                                 },
                                 'format' => 'raw',
-                                'filter' => [\common\models\Vaccination::STATUS_ACTIVE => 'Faol', \common\models\Vaccination::STATUS_INACTIVE => 'Faol emas']
+                                'filter' => [\common\models\VaccinationClass::STATUS_ACTIVE => 'Faol', \common\models\VaccinationClass::STATUS_INACTIVE => 'Faol emas']
                             ],
                             [
                                 'class' => 'yii\grid\ActionColumn',

@@ -4,12 +4,12 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Vaccination;
+use common\models\VaccinationClass as VaccinationClassModel;
 
 /**
- * VaccinationSearch represents the model behind the search form of `common\models\Vaccination`.
+ * VaccinationClass represents the model behind the search form of `common\models\VaccinationClass`.
  */
-class VaccinationSearch extends Vaccination
+class VaccinationClass extends VaccinationClassModel
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,7 @@ class VaccinationSearch extends Vaccination
     public function rules()
     {
         return [
-            [['id', 'status', 'vaccination_class_id'], 'integer'],
-            [['name', 'time'], 'safe'],
+            [['id'], 'integer'],
         ];
     }
 
@@ -40,7 +39,7 @@ class VaccinationSearch extends Vaccination
      */
     public function search($params)
     {
-        $query = Vaccination::find();
+        $query = VaccinationClassModel::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +58,7 @@ class VaccinationSearch extends Vaccination
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'vaccination_class_id' => $this->vaccination_class_id,
-            'status' => $this->status,
         ]);
-
-        $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'time', $this->time])
-            ->andFilterWhere(['ilike', 'vaccination_class_id', $this->vaccination_class_id]);
 
         return $dataProvider;
     }

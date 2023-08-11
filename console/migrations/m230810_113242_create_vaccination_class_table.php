@@ -14,6 +14,8 @@ class m230810_113242_create_vaccination_class_table extends Migration
     {
         $this->createTable('{{%vaccination_class}}', [
             'id' => $this->primaryKey(),
+            'name' => $this->string(),
+            'status' => $this->tinyInteger()->defaultValue(2)
         ]);
     }
 

@@ -6,25 +6,24 @@ use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "vaccination".
+ * This is the model class for table "vaccination_class".
  *
  * @property int $id
  * @property string|null $name
- * @property string|null $time
- * @property string|null $vaccination_class_id
  * @property int|null $status
+ *
+ * @property VaccinationPeople[] $vaccinationPeoples
  */
-class Vaccination extends \yii\db\ActiveRecord
+class VaccinationClass extends \yii\db\ActiveRecord
 {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
-
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'vaccination';
+        return 'vaccination_class';
     }
 
     /**
@@ -34,8 +33,8 @@ class Vaccination extends \yii\db\ActiveRecord
     {
         return [
             [['status'], 'default', 'value' => null],
-            [['status', 'vaccination_class_id'], 'integer'],
-            [['name', 'time'], 'string', 'max' => 255],
+            [['status'], 'integer'],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -47,15 +46,20 @@ class Vaccination extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Nomi',
-            'vaccination_class_id' => 'Emlash sinfi',
-            'time' => 'Emlash yoshi',
-            'status' => 'Status',
+            'status' => 'Statusi',
         ];
     }
-    public function getVacclass()
+
+    /**
+     * Gets query for [[VaccinationPeoples]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVaccinationPeoples()
     {
-        return $this->hasOne(VaccinationClass::class, ['id' => 'vaccination_class_id']);
+        return $this->hasMany(VaccinationPeople::class, ['vaccination_class_id' => 'id']);
     }
+
     public static function getDropDownList()
     {
         return ArrayHelper::map(static::find()->andWhere(['status' => self::STATUS_ACTIVE])->all(), 'id', 'name');

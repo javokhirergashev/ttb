@@ -69,7 +69,6 @@
                         <th>FIO</th>
                         <th>Tug'ilgan sana</th>
                         <th>Telefon nomeri</th>
-                        <th>Passport seriyasi</th>
                         <th>Metrka</th>
                         <th>Qvp</th>
                         <th>MFY</th>
@@ -89,13 +88,14 @@
                            </td>
                            <td><?= $model->birthday ?></td>
                            <td><?= $model->phone_number ?></td>
-                           <td><?= $model->passport_number ?></td>
                            <td><?= $model->metrka_number ?></td>
                            <td><?= $model->qvp_id ? $model->qvp->title : " ---- ----" ?></td>
                            <td><?= $model->quarter_id ? $model->quarter->name[Yii::$app->language] : " ---- ----" ?></td>
                            <td class="text-end">
-                              <a href="<?= \yii\helpers\Url::to(['vaccination-people/create', 'people_id' => $model->id]) ?>"
+                              <a href="<?= \yii\helpers\Url::to(['vaccination-people/create', 'person_id' => $model->id]) ?>"
                                  class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>
+                               <a href="<?= \yii\helpers\Url::to(['vaccination-people/index', 'person_id' => $model->id]) ?>"
+                                  class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
                            </td>
                         </tr>
                      <?php endforeach; ?>

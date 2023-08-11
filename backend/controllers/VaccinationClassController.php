@@ -2,18 +2,16 @@
 
 namespace backend\controllers;
 
-use common\models\People;
-use common\models\search\PeopleSearch;
-use common\models\VaccinationPeople;
-use common\models\search\VaccinationPeopleSearch;
+use common\models\VaccinationClass;
+use common\models\search\VaccinationClassSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * VaccinationPeopleController implements the CRUD actions for VaccinationPeople model.
+ * VaccinationClassController implements the CRUD actions for VaccinationClass model.
  */
-class VaccinationPeopleController extends Controller
+class VaccinationClassController extends Controller
 {
     /**
      * @inheritDoc
@@ -34,31 +32,23 @@ class VaccinationPeopleController extends Controller
     }
 
     /**
-     * Lists all VaccinationPeople models.
+     * Lists all VaccinationClass models.
      *
      * @return string
      */
-    public function actionIndex($person_id)
+    public function actionIndex()
     {
-
-        $checked_person = People::findOne($person_id);
-        if (!$checked_person) {
-            throw new NotFoundHttpException("Bunday shaxs aholi ro'yhatida mavjud emas!");
-        }
-        $searchModel = new VaccinationPeopleSearch([
-            'people_id' => $person_id
-        ]);
+        $searchModel = new VaccinationClassSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'person' => $checked_person,
         ]);
     }
 
     /**
-     * Displays a single VaccinationPeople model.
+     * Displays a single VaccinationClass model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -71,23 +61,17 @@ class VaccinationPeopleController extends Controller
     }
 
     /**
-     * Creates a new VaccinationPeople model.
+     * Creates a new VaccinationClass model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($person_id)
+    public function actionCreate()
     {
-        $checked_person = People::findOne($person_id);
-        if (!$checked_person) {
-            throw new NotFoundHttpException("Bunday shaxs aholi ro'yhatida mavjud emas!");
-        }
-
-        $model = new VaccinationPeople();
+        $model = new VaccinationClass();
 
         if ($this->request->isPost) {
-            $model->people_id = $person_id;
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['people']);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -95,12 +79,11 @@ class VaccinationPeopleController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'person' => $checked_person
         ]);
     }
 
     /**
-     * Updates an existing VaccinationPeople model.
+     * Updates an existing VaccinationClass model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -120,7 +103,7 @@ class VaccinationPeopleController extends Controller
     }
 
     /**
-     * Deletes an existing VaccinationPeople model.
+     * Deletes an existing VaccinationClass model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -134,28 +117,18 @@ class VaccinationPeopleController extends Controller
     }
 
     /**
-     * Finds the VaccinationPeople model based on its primary key value.
+     * Finds the VaccinationClass model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return VaccinationPeople the loaded model
+     * @return VaccinationClass the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = VaccinationPeople::findOne(['id' => $id])) !== null) {
+        if (($model = VaccinationClass::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionPeople()
-    {
-        $searchModel = new PeopleSearch();
-        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        return $this->render('people', [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel
-        ]);
     }
 }

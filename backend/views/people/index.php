@@ -63,18 +63,18 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                    return \common\models\Territory::findOne($data->territory_code)->name;
                                 }
                             ],
-                            [
-                                'attribute' => 'status',
-                                'value' => function ($data) {
-                                    if ($data->status == \common\models\People::STATUS_ACTIVE) {
-                                        return '<span class="badge badge-success">Faol</span>';
-                                    } else {
-                                        return '<span class="badge badge-danger">Faol emas</span>';
-                                    }
-                                },
-                                'format' => 'raw',
-                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol', \common\models\People::STATUS_INACTIVE => 'Faol emas']
-                            ],
+//                            [
+//                                'attribute' => 'status',
+//                                'value' => function ($data) {
+//                                    if ($data->status == \common\models\People::STATUS_ACTIVE) {
+//                                        return '<span class="badge badge-success">Faol</span>';
+//                                    } else {
+//                                        return '<span class="badge badge-danger">Faol emas</span>';
+//                                    }
+//                                },
+//                                'format' => 'raw',
+//                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol', \common\models\People::STATUS_INACTIVE => 'Faol emas']
+//                            ],
                             [
                                 'class' => 'yii\grid\ActionColumn',
                                 'header' => 'Amallar',

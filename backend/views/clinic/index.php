@@ -34,8 +34,8 @@
                                             <form>
                                                 <input type="text" class="form-control"
                                                        placeholder="Search here">
-                                                <a class="btn"><img src="assets/img/icons/search-normal.svg"
-                                                                    alt=""></a>
+<!--                                                <a class="btn"><img src="assets/img/icons/search-normal.svg"-->
+<!--                                                                    alt=""></a>-->
                                             </form>
                                         </div>
                                         <div class="add-group">
@@ -53,15 +53,15 @@
 
                                 </div>
                             </div>
-                            <div class="col-auto text-end float-end ms-auto download-grp">
-                                <a href="javascript:;" class=" me-2"><img src="assets/img/icons/pdf-icon-01.svg"
-                                                                          alt=""></a>
-                                <a href="javascript:;" class=" me-2"><img src="assets/img/icons/pdf-icon-02.svg"
-                                                                          alt=""></a>
-                                <a href="javascript:;" class=" me-2"><img src="assets/img/icons/pdf-icon-03.svg"
-                                                                          alt=""></a>
-                                <a href="javascript:;"><img src="assets/img/icons/pdf-icon-04.svg" alt=""></a>
-                            </div>
+<!--                            <div class="col-auto text-end float-end ms-auto download-grp">-->
+<!--                                <a href="javascript:;" class=" me-2"><img src="/assets/img/icons/pdf-icon-01.svg"-->
+<!--                                                                          alt=""></a>-->
+<!--                                <a href="javascript:;" class=" me-2"><img src="assets/img/icons/pdf-icon-02.svg"-->
+<!--                                                                          alt=""></a>-->
+<!--                                <a href="javascript:;" class=" me-2"><img src="assets/img/icons/pdf-icon-03.svg"-->
+<!--                                                                          alt=""></a>-->
+<!--                                <a href="javascript:;"><img src="assets/img/icons/pdf-icon-04.svg" alt=""></a>-->
+<!--                            </div>-->
                         </div>
                     </div>
 

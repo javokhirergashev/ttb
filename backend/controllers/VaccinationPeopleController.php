@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\search\PeopleSearch;
 use common\models\VaccinationPeople;
 use common\models\search\VaccinationPeopleSearch;
 use yii\web\Controller;
@@ -130,5 +131,14 @@ class VaccinationPeopleController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionPeople()
+    {
+        $searchModel = new PeopleSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('people', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
+        ]);
     }
 }

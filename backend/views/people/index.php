@@ -85,8 +85,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'buttons' => function ($url, $model) {
                                         $controller = Yii::$app->controller->id;
                                         $code = <<<BUTTONS
-                                <div class="btn-group flex-center">
-                                <a href="/{$controller}/view?id={$model->id}" id="{$controller}{$model->id}" data-postID="{$model->id}" class="btn btn-success"><i class="far fa-eye"></i></a>
+                                <div class="btn-group flex-center"  >
+                                    <a href="/{$controller}/view?id={$model->id}" id="{$controller}{$model->id}" data-postID="{$model->id}" class="btn btn-success"><i class="far fa-eye"></i></a>
                                     <a href="/{$controller}/update?id={$model->id}" class="btn btn-primary"><i class="far fa-edit"></i></a>
                                     <a href="/{$controller}/delete?id={$model->id}" data-method="post" id="{$controller}{$model->id}" data-postID="{$model->id}" data-postType="{$controller}" class="btn btn-danger postRemove" data-method="post"><i class="far fa-trash-alt"></i></a>
                                 </div>

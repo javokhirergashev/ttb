@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-sm-12">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Dashboard </a>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Bosh sahifa </a>
                     </li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
@@ -45,6 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
                             'name',
+                            [
+                                'attribute' => 'vaccination_class_id', // Migration faylda Foreignkeyni to'g'irlab quyish kerak!!! columnda muammo bor. Bazadan ruchnoy o'zgartirib qo'yganman
+                                'value' => function ($data) {
+                                    return $data->vacclass->name;
+                                }
+                            ],
                             'time',
                             [
                                 'attribute' => 'status',

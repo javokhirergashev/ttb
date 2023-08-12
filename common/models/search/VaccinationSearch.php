@@ -17,7 +17,7 @@ class VaccinationSearch extends Vaccination
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
+            [['id', 'status', 'vaccination_class_id'], 'integer'],
             [['name', 'time'], 'safe'],
         ];
     }
@@ -59,11 +59,13 @@ class VaccinationSearch extends Vaccination
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'vaccination_class_id' => $this->vaccination_class_id,
             'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['ilike', 'name', $this->name])
-            ->andFilterWhere(['ilike', 'time', $this->time]);
+            ->andFilterWhere(['ilike', 'time', $this->time])
+            ->andFilterWhere(['ilike', 'vaccination_class_id', $this->vaccination_class_id]);
 
         return $dataProvider;
     }

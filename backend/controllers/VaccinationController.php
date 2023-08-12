@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 
 use common\models\search\PeopleSearch;
+use common\models\search\VaccinationSearch;
 use common\models\Vaccination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -39,7 +40,7 @@ class VaccinationController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel1 = new PeopleSearch();
+        $searchModel1 = new VaccinationSearch();
         $dataProvider1 = $searchModel1->search(\Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider1,

@@ -29,6 +29,14 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                <label class="col-form-label">Emlash sinfi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'vaccination_class_id')->dropDownList(\common\models\VaccinationClass::getDropDownList(), ['prompt' => "Emlash sinfini tanlang"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <label class="col-form-label">Status</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'status')->dropDownList([

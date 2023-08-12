@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "vaccination".
@@ -10,6 +11,7 @@ use Yii;
  * @property int $id
  * @property string|null $name
  * @property string|null $time
+ * @property string|null $vaccination_class_id
  * @property int|null $status
  */
 class Vaccination extends \yii\db\ActiveRecord
@@ -32,7 +34,7 @@ class Vaccination extends \yii\db\ActiveRecord
     {
         return [
             [['status'], 'default', 'value' => null],
-            [['status'], 'integer'],
+            [['status', 'vaccination_class_id'], 'integer'],
             [['name', 'time'], 'string', 'max' => 255],
         ];
     }
@@ -45,8 +47,17 @@ class Vaccination extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Nomi',
+            'vaccination_class_id' => 'Emlash sinfi',
             'time' => 'Emlash yoshi',
             'status' => 'Status',
         ];
+    }
+    public function getVacclass()
+    {
+        return $this->hasOne(VaccinationClass::class, ['id' => 'vaccination_class_id']);
+    }
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(static::find()->andWhere(['status' => self::STATUS_ACTIVE])->all(), 'id', 'name');
     }
 }

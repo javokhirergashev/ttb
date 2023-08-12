@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\People;
 use common\models\search\PeopleSearch;
 use common\models\VaccinationPeople;
 use common\models\search\VaccinationPeopleSearch;
@@ -37,14 +38,22 @@ class VaccinationPeopleController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($person_id)
     {
-        $searchModel = new VaccinationPeopleSearch();
+
+        $checked_person = People::findOne($person_id);
+        if (!$checked_person) {
+            throw new NotFoundHttpException("Bunday shaxs aholi ro'yhatida mavjud emas!");
+        }
+        $searchModel = new VaccinationPeopleSearch([
+            'people_id' => $person_id
+        ]);
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'person' => $checked_person,
         ]);
     }
 
@@ -66,13 +75,19 @@ class VaccinationPeopleController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate()
+    public function actionCreate($person_id)
     {
+        $checked_person = People::findOne($person_id);
+        if (!$checked_person) {
+            throw new NotFoundHttpException("Bunday shaxs aholi ro'yhatida mavjud emas!");
+        }
+
         $model = new VaccinationPeople();
 
         if ($this->request->isPost) {
+            $model->people_id = $person_id;
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['people']);
             }
         } else {
             $model->loadDefaultValues();
@@ -80,6 +95,7 @@ class VaccinationPeopleController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'person' => $checked_person
         ]);
     }
 
@@ -132,6 +148,7 @@ class VaccinationPeopleController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
     public function actionPeople()
     {
         $searchModel = new PeopleSearch();

@@ -231,6 +231,7 @@ class PeopleController extends Controller
             'mode' => Pdf::MODE_UTF8,
             // A4 paper format
             'format' => Pdf::FORMAT_A4,
+            'filename' => $model->first_name . ' ' . $model->last_name . ' ' . date_default_timezone_set('Asia/Tashkent').'.pdf',
             // portrait orientation
             'orientation' => Pdf::ORIENT_PORTRAIT,
             // stream to browser inline

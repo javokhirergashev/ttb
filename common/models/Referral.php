@@ -60,8 +60,9 @@ class Referral extends \yii\db\ActiveRecord
     {
         return [
             [['clinic_id', 'type', 'people_id', 'diagnosis_list_id', 'section_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'status'], 'default', 'value' => null],
-            [['clinic_id', 'type', 'people_id', 'diagnosis_list_id', 'section_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'status'], 'integer'],
+            [['clinic_id', 'type', 'people_id', 'diagnosis_list_id', 'section_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'status', 'day_count'], 'integer'],
             [['reason', 'comment'], 'string', 'max' => 255],
+            [['day_count', 'people_id', 'clinic_id', 'section_id'], 'required'],
             [['clinic_id'], 'exist', 'skipOnError' => true, 'targetClass' => Clinic::class, 'targetAttribute' => ['clinic_id' => 'id']],
             [['diagnosis_list_id'], 'exist', 'skipOnError' => true, 'targetClass' => DiagnosisList::class, 'targetAttribute' => ['diagnosis_list_id' => 'id']],
             [['people_id'], 'exist', 'skipOnError' => true, 'targetClass' => People::class, 'targetAttribute' => ['people_id' => 'id']],

@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('PDF', ['pdf', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+
     </p>
     <div class="row">
         <div class="col-md-12">

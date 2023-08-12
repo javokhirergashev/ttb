@@ -1,42 +1,181 @@
 <?php
 
-/**
- * @var $model \common\models\Referral
- */
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/** @var yii\web\View $this */
+/** @var common\models\People $model */
+
+$this->title = $model->first_name . ' ' . $model->last_name . ' ' . $model->middle_name;
+$this->params['breadcrumbs'][] = ['label' => 'Peoples', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+\yii\web\YiiAsset::register($this);
 ?>
+<div class="people-view">
 
-<div class="container">
-    <table class="table table-bordered">
-        <tr>
-            <td style="padding:15px;" class="text-center"><img src="./backend-files/flag.jpg" alt=""></td>
-            <td style="padding:20px 15px;" class="text-center"> O'ZBEKISTON RESPUBLIKASI SOG'LIQNI SAQLASH VAZIRLIGI
-            </td>
-        </tr>
-    </table>
-
-    <h3 class="text-center" style="margin-bottom: 35px">Imtiyozli yo’llanma   №<?= $model->id ?>
-        (<?= date('d.m.Y', $model->created_at) ?>)</h3>
-    <table class="table table-bordered" width="100%">
-        <tr>
-            <td style="padding:8px 12px; width: 40%">1.Familiyasi, ismi, sharifi :</td>
-            <td style="padding:8px 12px"><?= $model->people->getFullName() ?></td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">2.Jismoniy shaxsning shaxsiy identifikatsion raqami</td>
-            <td style="padding:10px"> <?= $model->people_id ?>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">3. Tug’ilgan sanasi:</td>
-            <td style="padding:10px"> <?= $model->people->birthday ?>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">4.Doimiy yashash manzili:</td>
-            <td style="padding:10px"> <?=$model->people->getAddress()?>
-            </td>
-        </tr>
-    </table>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="table-responsive p-5">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+//            'id',
+                            'first_name',
+                            'last_name',
+                            'middle_name',
+                            [
+                                'attribute' => 'status',
+                                'value' => function ($data) {
+                                    if ($data->status == \common\models\People::STATUS_ACTIVE) {
+                                        return 'faol';
+                                    } else {
+                                        return 'faol emas';
+                                    }
+                                }
+                            ],
+                            'pinfl',
+                            'passport_number',
+                            'phone_number',
+                            'birthday',
+                            'job',
+                            [
+                                'attribute' => 'region_id',
+                                'value' => function ($data) {
+                                    return $data->region->name[Yii::$app->language];
+                                }
+                            ],
+                            [
+                                'attribute' => 'district_id',
+                                'value' => function ($data) {
+                                    return $data->district->name[Yii::$app->language];
+                                }
+                            ],
+                            [
+                                'attribute' => 'quarter_id',
+                                'value' => function ($data) {
+                                    return $data->quarter->name[Yii::$app->language];
+                                }
+                            ],
+                            [
+                                'attribute' => 'qvp_id',
+                                'value' => function ($data) {
+                                    return $data->qvp->title;
+                                }
+                            ],
+                            'metrka_number',
+                            [
+                                'attribute' => 'gender',
+                                'value' => function ($data) {
+                                    if ($data->status == \common\models\People::GENDER_MALE) {
+                                        return 'erkak';
+                                    } else {
+                                        return 'ayol';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'territory_code',
+                                'value' => function ($data) {
+                                    return $data->territory->name;
+                                }
+                            ],
+                            [
+                                'attribute' => 'oila_boshi',
+                                'value' => function ($data) {
+                                    if ($data->status == \common\models\People::OILA_BOSHI_TRUE) {
+                                        return 'Ha';
+                                    } else if ($data->status == \common\models\People::OILA_BOSHI_FALSE) {
+                                        return 'Yo\'q';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'dispensary_control',
+                                'value' => function ($data) {
+                                    if ($data->status == \common\models\People::DISPENSARY_CONTROL_TRUE) {
+                                        return 'Turadi';
+                                    } else if ($data->status == \common\models\People::DISPENSARY_CONTROL_FALSE) {
+                                        return 'Turmaydi';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'disability_class_id',
+                                'value' => function ($data) {
+                                    if ($data->disablity->name != 0) {
+                                        return $data->disablity->name;
+                                    } else {
+                                        return 'Yo\'q';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'disability_group',
+                                'value' => function ($data) {
+                                    if ($data->disability_group == \common\models\People::DISABILITY_FALSE) {
+                                        return 'Yo\'q';
+                                    } else if ($data->disability_group == \common\models\People::DISABILITY_FIRST) {
+                                        return 'I guruh';
+                                    } else if ($data->disability_group == \common\models\People::DISABILITY_SECOND) {
+                                        return 'II guruh';
+                                    } else if ($data->disability_group == \common\models\People::DISABILITY_THIRD) {
+                                        return 'II guruh';
+                                    } else if ($data->disability_group == \common\models\People::DISABILITY_FOURTH) {
+                                        return 'IV guruh';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'ayol_daftar',
+                                'value' => function ($data) {
+                                    if ($data->ayol_daftar == \common\models\People::AYOL_DAFTAR_TRUE) {
+                                        return 'Turadi';
+                                    } else if ($data->ayol_daftar == \common\models\People::AYOL_DAFTAR_FALSE) {
+                                        return 'Turmaydi';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'temir_daftar',
+                                'value' => function ($data) {
+                                    if ($data->temir_daftar == \common\models\People::TEMIR_DAFTAR_TRUE) {
+                                        return 'Turadi';
+                                    } else if ($data->temir_daftar == \common\models\People::TEMIR_DAFTAR_FALSE) {
+                                        return 'Turmaydi';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'temir_daftar',
+                                'value' => function ($data) {
+                                    if ($data->yoshlar_daftar == \common\models\People::YOSHLAR_DAFTAR_TRUE) {
+                                        return 'Turadi';
+                                    } else if ($data->yoshlar_daftar == \common\models\People::YOSHLAR_DAFTAR_FALSE) {
+                                        return 'Turmaydi';
+                                    }
+                                }
+                            ],
+                            'height',
+                            'weight',
+                            'blood_pressure',
+                            'saturation',
+                            'pulse',
+                        ],
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

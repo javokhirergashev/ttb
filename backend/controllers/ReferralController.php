@@ -263,7 +263,7 @@ class ReferralController extends Controller
             ->andWhere(['>', 'leave_date', time()])
             ->orderBy(['leave_date' => SORT_ASC])->one();
 
-        $enetered_date = strtotime(date('d.m.Y 08:00', ($leaveDate->leave_date + strtotime("+1 day")));
+        $enetered_date = strtotime(date('d.m.Y 08:00', ($leaveDate->leave_date + strtotime("+1 day"))));
         $model = new RoomPeople([
             'referral_id' => $id,
             'room_id' => $room->id,

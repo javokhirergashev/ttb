@@ -219,7 +219,6 @@ class PeopleController extends Controller
         }
         return ['output' => '', 'selected' => ''];
     }
-
     public function actionPdf($id)
     {
         $model = People::findOne($id);
@@ -235,7 +234,7 @@ class PeopleController extends Controller
             // portrait orientation
             'orientation' => Pdf::ORIENT_PORTRAIT,
             // stream to browser inline
-            'destination' => Pdf::DEST_BROWSER,
+            'destination' => Pdf::DEST_DOWNLOAD,
             // your html content input
             'content' => $content,
             // format content from your own css file if needed or use the
@@ -244,10 +243,9 @@ class PeopleController extends Controller
             // any css to be embedded if required
             'cssInline' => '.kv-heading-1{font-size:18px}',
             // set mPDF properties on the fly
-            'options' => ['title' => 'Yollanma'],
+            'options' => ['title' => 'Aholi'],
             // call mPDF methods on the fly
             'methods' => [
-//                'SetHeader' => ['Ttb'],
                 'SetFooter' => ["$time"],
             ]
         ]);

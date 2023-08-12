@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\People $model */
 
-$this->title = $model->first_name . ' ' . $model->last_name . ' ' . $model->middle_name;
+$this->title = $model->last_name . ' ' . $model->first_name . ' ' . $model->middle_name;
 $this->params['breadcrumbs'][] = ['label' => 'Peoples', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -15,10 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="page-header">
         <div class="row">
-            <div class="col-sm-12">
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
-                </ul>
+            <div class="col-sm-12 ">
+                <h4 class="text-center">Namangan shahar tibbiyot birlashmasiga qarashli <?=$model->qvp->title?> da ro'yhatda turuvchi</h4>
+                <h4 class="text-center">fuqaro <?= Html::encode($this->title)?>ning ma'lumotlari</h4>
             </div>
         </div>
     </div>

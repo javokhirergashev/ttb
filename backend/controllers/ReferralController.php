@@ -224,27 +224,59 @@ class ReferralController extends Controller
     public function actionRoomPeople($id)
     {
         $referral = Referral::findOne($id);
-        $room = Room::find()->andWhere(['section_id' => $referral->section_id])->one();
-        $model = RoomPeople::find()->andWhere(['referral_id' => $referral->id])->one();
 
-        if ($model){
-            return $this->redirect([Yii::$app->request->referrer]);
+        $sql = "select room.id, count(rp.room_id) as count
+    from room
+             where room.section_id = $referral->section_id
+             left join public.room_people rp on room.id = rp.room_id and rp.status = 1
+    group by room.id
+    having count(rp.room_id) < room.bed_count";
+
+        $row = Yii::$app->db->createCommand($sql);
+        $model = $row->queryOne();
+        if ($model) {
+            $roomPeople = RoomPeople::find()->andWhere(['referral_id' => $referral->id])->one();
+            if ($roomPeople) {
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+            $newModel = new RoomPeople([
+                'referral_id' => $id,
+                'room_id' => $model['id'],
+                'people_id' => $referral->people_id,
+                'status' => RoomPeople::STATUS_START,
+                'created_at' => strtotime(date('d.m.Y 08:00', strtotime('+ 1 day'))),
+                'leave_date' => strtotime(date('d.m.Y 17:00', strtotime("+ $referral->day_count day"))),
+            ]);
+
+            if ($newModel->save()) {
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+            return $this->redirect(Yii::$app->request->referrer);
         }
 
-        //  xona bosh yoki bo'sh emasligini tekshirish logikasi yoziladi
+        $room = Room::find()->leftJoin('room_people rp', 'room.id=rp.room_id')
+            ->andWhere(['section_id' => $referral->section_id])
+            ->andWhere(['>', 'leave_date', time()])
+            ->orderBy(['leave_date' => SORT_ASC])->one();
 
+        $leaveDate = RoomPeople::find()->andWhere(['room_id' => $room->id])
+            ->andWhere(['>', 'leave_date', time()])
+            ->orderBy(['leave_date' => SORT_ASC])->one();
+
+        $enetered_date = strtotime(date('d.m.Y 08:00', ($leaveDate->leave_date + strtotime("+1 day")));
         $model = new RoomPeople([
             'referral_id' => $id,
             'room_id' => $room->id,
             'people_id' => $referral->people_id,
             'status' => RoomPeople::STATUS_START,
-            'created_at' => time()
+            'created_at' => $enetered_date + strtotime("+ $referral->bed_count"),
+            'leave_date' => strtotime(date('d.m.Y 08:00', ($leaveDate->leave_date + strtotime("+1 day")))),
         ]);
 
         if ($model->save()) {
-            return $this->redirect([Yii::$app->request->referrer]);
+            return $this->redirect(Yii::$app->request->referrer);
         }
-        return $this->redirect([Yii::$app->request->referrer]);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
 }

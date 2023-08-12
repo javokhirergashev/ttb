@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th>FIO</th>
                                 <th>Yo'naltirilgan vaqti</th>
                                 <th>Doctor</th>
-                                <th>Sababi</th>
+                                <th>Yotish kuni</th>
                                 <th>Klinika nomi</th>
                                 <th>Bolim nomi</th>
                                 <th>Holati</th>
@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php
                             foreach ($dataProvider->getModels() as $index => $model): ?>
                                 <tr>
-                                    <td><?= $index; ?></td>
+                                    <td><?= $index + 1; ?></td>
                                     <td class="profile-image">
                                         <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->people_id]) ?>">
                                             <?= $model->people->first_name . " " . $model->people->last_name ?>
@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </td>
                                     <td><?= date("d.m.Y", $model->created_at) ?></td>
                                     <td><?= $model->createdBy->getFullName() ?></td>
-                                    <td><?= $model->comment ?></td>
+                                    <td><?= $model->day_count ?? "-- --" ?></td>
                                     <td><?= $model->clinic->name ?></td>
                                     <td><?= $model->section->name ?></td>
                                     <td><?= $model->getStatusName() ?></td>
@@ -88,9 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <a href="<?= \yii\helpers\Url::to(['referral/view', 'id' => $model->id]) ?>"
                                            title="korish"
                                            class="btn btn-info add-pluss ms-2 text-white"><i class="fa fa-eye"></i></a>
-                                        <a href="<?= \yii\helpers\Url::to(['referral/accept', 'id' => $model->id]) ?>"
-                                           title="Tasdiqlash"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-check"></i></a>
+
                                         <a data-bs-toggle="modal"
                                            data-bs-target="#staticBackdrop"
                                            title="Bekor qilish"
@@ -103,10 +101,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                            data-value="<?= $model->id ?>"
                                            class="btn btn-secondary add-pluss ms-2 cancel-button"><i
                                                     class="fa fa-print"></i></a>
-                                        <a title="Honaga joylash"
-                                           href="<?= \yii\helpers\Url::to(['referral/room-people', 'id' => $model->id]) ?>"
-                                           class="btn btn-success add-pluss ms-2"><i
-                                                    class="fa fa-hotel"></i></a>
+                                        <?php if ($model->status === Referral::STATUS_ACCEPTED): ?>
+                                            <a title="Honaga joylash"
+                                               href="<?= $model->status == Referral::STATUS_ACCEPTED ? \yii\helpers\Url::to(['referral/room-people', 'id' => $model->id]) : '' ?>"
+                                               class="btn btn-success add-pluss ms-2"><i
+                                                        class="fa fa-hotel"></i></a>
+                                        <?php else : ?>
+
+                                            <a href="<?= \yii\helpers\Url::to(['referral/accept', 'id' => $model->id]) ?>"
+                                               title="Tasdiqlash"
+                                               class="btn btn-primary add-pluss ms-2"><i class="fa fa-check"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

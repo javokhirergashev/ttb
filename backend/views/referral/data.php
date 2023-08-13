@@ -42,21 +42,4 @@ $qrCode = (new QrCode(Yii::$app->request->getHostInfo()."/referral/data?id=".$mo
             </td>
         </tr>
     </table>
-
-
-    <table class="table table-bordered">
-        <tr>
-            <td style="padding:8px 12px; width: 25%">
-                <img style="width:20%;object-fit: cover" src="<?= $qrCode->writeDataUri() ?>">
-            </td>
-            <td style="padding:8px 12px">QR-kod skaner qilinganda, ushbu hujjatning nusxasi O'zbekiston Respublikasi
-                Sog'liqni saqlash vazirligining rasmiy axborot resursidan https://ssv.uz generatsiya qilinadi.
-                Boshqa axborot resurslaridan shakllantirilgan hujjat O'zbekiston Respublikasi Sog'liqni saqlash
-                vazirligiga
-                tegishli emas.
-            </td>
-        </tr>
-    </table>
-
-
 </div>

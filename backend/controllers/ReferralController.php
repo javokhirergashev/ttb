@@ -6,11 +6,14 @@ use common\models\Referral;
 use common\models\Room;
 use common\models\RoomPeople;
 use common\models\search\ReferralSearch;
+use Da\QrCode\QrCode;
 use kartik\mpdf\Pdf;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\FormatConverter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * ReferralController implements the CRUD actions for Referral model.
@@ -184,11 +187,13 @@ class ReferralController extends Controller
         return $this->redirect(['index']);
     }
 
+
     public function actionPdf($id)
     {
         $model = Referral::findOne($id);
         $content = $this->renderPartial('pdf', ['model' => $model]);
         $time = date('d.m.Y H:i');
+
 
         // setup kartik\mpdf\Pdf component
         $pdf = new Pdf([
@@ -221,7 +226,15 @@ class ReferralController extends Controller
     }
 
 
-    public function actionRoomPeople($id)
+    public function actionData($id)
+    {
+        $referral = Referral::findOne($id);
+        return $this->render('data', ['model' => $referral]);
+    }
+
+
+    public
+    function actionRoomPeople($id)
     {
         $referral = Referral::findOne($id);
 
@@ -263,7 +276,7 @@ class ReferralController extends Controller
             ->andWhere(['>', 'leave_date', time()])
             ->orderBy(['leave_date' => SORT_ASC])->one();
 
-        $enetered_date = strtotime(date('d.m.Y 08:00', ($leaveDate->leave_date + strtotime("+1 day")));
+        $enetered_date = strtotime(date('d.m.Y 08:00', ($leaveDate->leave_date + strtotime("+1 day"))));
         $model = new RoomPeople([
             'referral_id' => $id,
             'room_id' => $room->id,

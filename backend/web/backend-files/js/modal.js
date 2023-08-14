@@ -5,7 +5,6 @@ $('#form-modal-submit').on('click', function (e) {
 })
 
 $('#form-modal-cancel').on('click',function (e){
-    alert("nslnflksdnflksd")
     $('#cancel-form').submit();
 })
 

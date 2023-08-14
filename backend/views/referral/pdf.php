@@ -7,7 +7,7 @@
 use Da\QrCode\QrCode;
 use yii\helpers\Url;
 
-$qrCode = (new QrCode(Yii::$app->request->getHostInfo()."/referral/data?id=".$model->id))->setSize(150);
+$qrCode = (new QrCode(Yii::$app->request->getHostInfo() . "/referral/data?id=" . $model->id))->setSize(150);
 ?>
 
 <div class="container">
@@ -39,6 +39,16 @@ $qrCode = (new QrCode(Yii::$app->request->getHostInfo()."/referral/data?id=".$mo
         <tr>
             <td style="padding:10px;">4.Doimiy yashash manzili:</td>
             <td style="padding:10px"> <?= $model->people->getAddress() ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px;">5.Joylashish sanasi:</td>
+            <td style="padding:10px"> <?= $model->getRoomPeople()->exists() ? $model->roomPeople->getStatusName() : "--- ---" ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px;">6. Holati :</td>
+            <td style="padding:10px"> <?= $model->getStatusName() ?>
             </td>
         </tr>
     </table>

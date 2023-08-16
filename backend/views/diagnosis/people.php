@@ -13,7 +13,7 @@
       <div class="row">
          <div class="col-sm-12">
             <ul class="breadcrumb">
-               <li class="breadcrumb-item"><a href="patients.html">Patients </a></li>
+               <li class="breadcrumb-item"><a href="patients.html">Patients</a></li>
                <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                <li class="breadcrumb-item active">Patient List</li>
             </ul>
@@ -38,7 +38,8 @@
                                            class="form-control"
                                            placeholder="Search here">
                                     <a class="btn"><img src="assets/img/icons/search-normal.svg"
-                                                        alt=""></a>
+                                                        alt="">
+                                    </a>
                                  </form>
                               </div>
                               <div class="add-group">

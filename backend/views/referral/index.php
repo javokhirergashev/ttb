@@ -106,8 +106,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                                href="<?= $model->status == Referral::STATUS_ACCEPTED ? \yii\helpers\Url::to(['referral/room-people', 'id' => $model->id]) : '' ?>"
                                                class="btn btn-success add-pluss ms-2"><i
                                                         class="fa fa-hotel"></i></a>
-                                        <?php else : ?>
+                                        <?php elseif ($model->status == Referral::STATUS_LOCATION) : ?>
+                                            <a href="<?= \yii\helpers\Url::to(['referral/exit', 'id' => $model->id]) ?>"
+                                               title="Chiqarib yuborish"
+                                               class="btn btn-primary add-pluss ms-2"><i
+                                                        class="fa fa-right-long"></i></a>
 
+                                        <?php elseif ($model->status == Referral::STATUS_EXIT): ?>
+
+                                            <?php echo " " ?>
+                                        <?php else : ?>
                                             <a href="<?= \yii\helpers\Url::to(['referral/accept', 'id' => $model->id]) ?>"
                                                title="Tasdiqlash"
                                                class="btn btn-primary add-pluss ms-2"><i class="fa fa-check"></i></a>

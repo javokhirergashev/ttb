@@ -1,5 +1,6 @@
 <?php
 
+use BaconQrCode\Encoder\QrCode;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -172,9 +173,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             'saturation',
                             'pulse',
                         ],
-                    ]) ?>
+                    ]);
+
+                    ?>
+
+
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+

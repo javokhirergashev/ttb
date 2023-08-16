@@ -42,7 +42,7 @@ class RoomPeople extends \yii\db\ActiveRecord
             [['room_id', 'people_id', 'created_at', 'updated_at', 'status', 'day', 'leave_date'], 'integer'],
             [['people_id'], 'exist', 'skipOnError' => true, 'targetClass' => People::class, 'targetAttribute' => ['people_id' => 'id']],
             [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::class, 'targetAttribute' => ['room_id' => 'id']],
-            [['referral_id'], 'exist', 'skipOnError' => true, 'targetClass' => Referral::class, 'targetAttribute' => ['referral' => 'id']],
+            [['referral_id'], 'exist', 'skipOnError' => true, 'targetClass' => Referral::class, 'targetAttribute' => ['referral_id' => 'id']],
         ];
     }
 
@@ -82,4 +82,15 @@ class RoomPeople extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Room::class, ['id' => 'room_id']);
     }
+
+
+//    public function getStatusName()
+//    {
+//        if ($this->status == self::STATUS_START) {
+//            return '<span class="badge badge-info">Bekor qilindi</span>';
+//        } elseif ($this->status == self::STATUS_PENDING) {
+//            return '<span class="badge badge-info">Kutilmoqda</span>';
+//        }
+//        return '<span class="badge badge-success">Tasdiqlandi</span>';
+//    }
 }

@@ -6,11 +6,14 @@ use common\models\Referral;
 use common\models\Room;
 use common\models\RoomPeople;
 use common\models\search\ReferralSearch;
+use Da\QrCode\QrCode;
 use kartik\mpdf\Pdf;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\FormatConverter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * ReferralController implements the CRUD actions for Referral model.
@@ -184,11 +187,13 @@ class ReferralController extends Controller
         return $this->redirect(['index']);
     }
 
+
     public function actionPdf($id)
     {
         $model = Referral::findOne($id);
         $content = $this->renderPartial('pdf', ['model' => $model]);
         $time = date('d.m.Y H:i');
+
 
         // setup kartik\mpdf\Pdf component
         $pdf = new Pdf([
@@ -221,14 +226,23 @@ class ReferralController extends Controller
     }
 
 
-    public function actionRoomPeople($id)
+    public function actionData($id)
     {
         $referral = Referral::findOne($id);
+        return $this->render('data', ['model' => $referral]);
+    }
+
+
+    public
+    function actionRoomPeople($id)
+    {
+        $referral = Referral::findOne($id);
+        $referral->updateAttributes(['status' => Referral::STATUS_LOCATION]);
 
         $sql = "select room.id, count(rp.room_id) as count
     from room
+             left join room_people rp on room.id = rp.room_id and rp.status = 1
              where room.section_id = $referral->section_id
-             left join public.room_people rp on room.id = rp.room_id and rp.status = 1
     group by room.id
     having count(rp.room_id) < room.bed_count";
 
@@ -259,6 +273,10 @@ class ReferralController extends Controller
             ->andWhere(['>', 'leave_date', time()])
             ->orderBy(['leave_date' => SORT_ASC])->one();
 
+        if (!$room) {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
         $leaveDate = RoomPeople::find()->andWhere(['room_id' => $room->id])
             ->andWhere(['>', 'leave_date', time()])
             ->orderBy(['leave_date' => SORT_ASC])->one();
@@ -276,6 +294,15 @@ class ReferralController extends Controller
         if ($model->save()) {
             return $this->redirect(Yii::$app->request->referrer);
         }
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionExit($id)
+    {
+        $roomPeople = RoomPeople::findOne(['referral_id' => $id]);
+        $roomPeople->updateAttributes(['status' => RoomPeople::STATUS_LEAVED]);
+        Referral::updateAll(['status' => Referral::STATUS_EXIT], ['id' => $id]);
+
         return $this->redirect(Yii::$app->request->referrer);
     }
 

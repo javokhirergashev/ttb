@@ -37,6 +37,10 @@ class Referral extends \yii\db\ActiveRecord
     const STATUS_CANCELLED = 2;
     const STATUS_ACCEPTED = 3;
 
+    const STATUS_LOCATION = 4;
+    const STATUS_DONTCOME = 5;
+    const STATUS_EXIT = 6;
+
     /**
      * {@inheritdoc}
      */
@@ -167,7 +171,16 @@ class Referral extends \yii\db\ActiveRecord
             return '<span class="badge badge-danger">Bekor qilindi</span>';
         } elseif ($this->status == self::STATUS_PENDING) {
             return '<span class="badge badge-info">Kutilmoqda</span>';
+        } elseif ($this->status === self::STATUS_LOCATION) {
+            return '<span class="badge badge-warning">Joylashgan</span>';
+        } elseif ($this->status == Referral::STATUS_EXIT) {
+            return '<span class="badge badge-primary">Chiqib ketildi </span>';
         }
         return '<span class="badge badge-success">Tasdiqlandi</span>';
+    }
+
+    public function getRoomPeople()
+    {
+        return $this->hasOne(RoomPeople::class, ['referral_id' => 'id']);
     }
 }

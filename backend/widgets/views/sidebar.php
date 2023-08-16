@@ -3,24 +3,39 @@
       <div id="sidebar-menu" class="sidebar-menu">
          <ul>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"><span class="menu-side"><img
-                        src="/backend-files/img/icons/menu-icon-01.svg" alt=""></span>
-                  <span> Bosh sahifa </span></a>
+               <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"
+                  class="<?= Yii::$app->request->url == "/" ? "active" : "" ?>">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-01.svg" alt="">
+                   </span>
+                  <span> Bosh sahifa </span>
+               </a>
             </li>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['user/']) ?>"><span class="menu-side"><img
-                        src="/backend-files/img/icons/menu-icon-03.svg" alt=""></span>
+               <a  href="<?= \yii\helpers\Url::to(['user/']) ?>"
+                   class="<?= Yii::$app->controller->id == "user" ? "active" : "" ?>">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-03.svg" alt="">
+                   </span>
                   <span> Xodimlar </span></a>
             </li>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['position/']) ?>"><span class="menu-side"><img
-                        src="/backend-files/img/icons/menu-icon-06.svg" alt=""></span>
-                  <span> Lavozimlar </span></a>
+               <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
+                  class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-06.svg" alt="">
+                   </span>
+                  <span> Lavozimlar </span>
+               </a>
             </li>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['people/']) ?>"><span class="menu-side"><img
-                        src="/backend-files/img/icons/menu-icon-02.svg" alt=""></span>
-                  <span> Aholi ro'yxati </span></a>
+               <a href="<?= \yii\helpers\Url::to(['people/']) ?>"
+                  class="<?= Yii::$app->controller->id == "people" ? "active" : "" ?>">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-02.svg" alt="">
+                   </span>
+                  <span> Aholi ro'yxati </span>
+               </a>
             </li>
              <li class="submenu">
                  <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg"

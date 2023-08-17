@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\DateTimeBehavior;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -21,6 +22,17 @@ use yii\web\IdentityInterface;
  * @property string|null $instagram_link
  * @property string|null $facebook_link
  * @property string|null $twitter_link
+ * @property integer|null $gender
+ * @property integer|null $category
+ * @property integer|null $rate
+ * @property integer|null $birthday
+ * @property integer|null $retired
+ * @property integer|null $decree
+ * @property integer|null $disabled
+ * @property integer|null $deputy
+ * @property integer|null $qualification_date
+ * @property integer|null $hayfsan
+ *
  * @property string      $auth_key
  * @property integer     $status
  * @property integer     $created_at
@@ -58,7 +70,20 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             TimestampBehavior::class,
+            'birthday' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'birthday',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+            'qualification_date' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'qualification_date',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
         ];
+
     }
 
     /**
@@ -69,10 +94,10 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['phone_number', 'username'], 'required'],
             ['email', 'email'],
-            [['avatar'], 'safe'],
-            [['first_name', 'last_name', 'email', 'address', 'birthday', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
+            [['avatar', 'birthday', 'qualification_date'], 'safe'],
+            [['first_name', 'last_name', 'email', 'address','telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
-            [['status', 'role', 'position_id', 'qvp_id', 'district_id'], 'integer'],
+            [['status', 'role', 'position_id', 'qvp_id', 'district_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
         ];
     }
 

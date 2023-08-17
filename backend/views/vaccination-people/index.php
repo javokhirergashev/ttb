@@ -4,6 +4,7 @@
  * @var $model        \common\models\VaccinationPeople
  * @var $searchModel  \common\models\search\VaccinationPeopleSearch
  * @var $person
+ * @var $qvp_id
  */
 
 use yii\grid\GridView;
@@ -36,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-box">
                 <div class="table-responsive p-5">
                     <div class="col-1  mb-3">
-                        <a href="<?=Url::to(['pdf','id'=>$person->id])?>"><img style="width:50px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>
+                        <a href="<?=Url::to(['pdf','id'=>$person->id, 'qvp_id' => $qvp_id])?>"><img style="width:50px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>
                     </div>
 
                     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

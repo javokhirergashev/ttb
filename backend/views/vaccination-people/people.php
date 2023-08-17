@@ -94,7 +94,7 @@
                            <td class="text-end">
                               <a title="Emlashni amalga oshirish" href="<?= \yii\helpers\Url::to(['vaccination-people/create', 'person_id' => $model->id]) ?>"
                                  class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>
-                               <a title="Emlash tarixini ko'rish" href="<?= \yii\helpers\Url::to(['vaccination-people/index', 'person_id' => $model->id]) ?>"
+                               <a title="Emlash tarixini ko'rish" href="<?= \yii\helpers\Url::to(['vaccination-people/index', 'person_id' => $model->id,'qvp_id' => $model->qvp_id]) ?>"
                                   class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
                            </td>
                         </tr>

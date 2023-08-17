@@ -38,13 +38,22 @@
                </a>
             </li>
              <li class="submenu">
-                 <a href="#"><span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg"
-                                                          alt=""></span>
-                     <span>Emlash bo'limi</span> <span class="menu-arrow"></span></a>
+                 <a href="#">
+                     <span class="menu-side">
+                         <img src="/backend-files/img/icons/menu-icon-15.svg" alt="">
+                     </span>
+                     <span>Emlash bo'limi</span> <span class="menu-arrow"></span>
+                 </a>
                  <ul style="display: none;">
-                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-class/']) ?>">Emlash sinflari</a></li>
-                     <li><a href="<?= \yii\helpers\Url::to(['vaccination/']) ?>">Emlash turlari</a></li>
-                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-people/people']) ?>">Emlash</a></li>
+                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-class/']) ?>"
+                            class="<?= Yii::$app->controller->id == "vaccination-class" ? "active" : "" ?>">Emlash sinflari</a>
+                     </li>
+                     <li><a href="<?= \yii\helpers\Url::to(['vaccination/'])?>"
+                         class="<?= Yii::$app->controller->id == "vaccination" ? "active" : "" ?>">Emlash turlari</a>
+                     </li>
+                     <li><a href="<?= \yii\helpers\Url::to(['vaccination-people/people']) ?>"
+                         class="<?= Yii::$app->controller->id == "vaccination-people/people" ? "active" : "" ?>">Emlash</a>
+                     </li>
                  </ul>
              </li>
              <li>

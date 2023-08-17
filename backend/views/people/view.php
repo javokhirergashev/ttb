@@ -93,7 +93,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'gender',
                 'value' => function ($data) {
-                    if ($data->status == \common\models\People::GENDER_MALE) {
+                    if ($data->gender == \common\models\People::GENDER_MALE) {
                         return 'erkak';
                     } else {
                         return 'ayol';

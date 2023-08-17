@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\UserCreateForm $model */
 
-$this->title = $model->first_name;
+$this->title = $model->first_name . ' ' . $model->last_name;
 $this->params['breadcrumbs'][] = ['label' => 'User Create Forms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -44,12 +44,85 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'id',
+//                            'id',
                             'phone_number',
                             'first_name',
                             'last_name',
                             'email:email',
                             'username',
+                            [
+                                'attribute' => 'gender',
+                                'value' => function ($data) {
+                                    if ($data->gender == \common\models\UserCreateForm::GENDER_MALE) {
+                                        return 'erkak';
+                                    } else {
+                                        return 'ayol';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'birthday',
+                                'format' => ['date', 'php:d.m.Y']
+                            ],
+                            'rate',
+                            [
+                                'attribute' => 'retired',
+                                'value' => function ($data) {
+                                    if ($data->retired == \common\models\UserCreateForm::RETIRED_TRUE) {
+                                        return 'Nafaqada';
+                                    } else {
+                                        return 'Nafaqa yoshida emas';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'category',
+                                'value' => function ($data) {
+                                    if ($data->category == \common\models\UserCreateForm::WITHOUT_CATEGORY) {
+                                        return 'Yo\'q';
+                                    } else if ($data->category == \common\models\UserCreateForm::FIRST_CATEGORY) {
+                                        return '1-toifa';
+                                    } else if ($data->category == \common\models\UserCreateForm::SECOND_CATEGORY) {
+                                        return '2-toifa';
+                                    } else {
+                                        return 'oliy toifa';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'decree',
+                                'value' => function ($data) {
+                                    if ($data->decree == \common\models\UserCreateForm::DEPUTY_TRUE) {
+                                        return 'Dekretda';
+                                    } else {
+                                        return 'Dekretda emas';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'disabled',
+                                'value' => function ($data) {
+                                    if ($data->disabled == \common\models\UserCreateForm::DISABLED_FALSE) {
+                                        return 'Yo\'q';
+                                    } else {
+                                        return 'Bor';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'deputy',
+                                'value' => function ($data) {
+                                    if ($data->deputy == \common\models\UserCreateForm::DEPUTY_FALSE) {
+                                        return 'Yo\'q';
+                                    } else {
+                                        return 'Bor';
+                                    }
+                                }
+                            ],
+                            [
+                                'attribute' => 'qualification_date',
+                                'format' => ['date', 'php:d.m.Y']
+                            ],
                             [
                                 'attribute' => 'district_id',
                                 'value' => function ($data) {
@@ -100,6 +173,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'raw',
                                 'filter' => [\common\models\User::STATUS_ACTIVE => 'Faol', \common\models\User::STATUS_INACTIVE => 'Faol emas']
                             ],
+
 //            'verification_token',
                             [
                                 'attribute' => 'position_id',

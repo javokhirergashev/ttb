@@ -33,6 +33,16 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $twitter_link
  * @property int|null $position_id
  * @property int|null $district_id
+ * @property int|null $gender
+ * @property int|null $category
+ * @property int|null $rate
+ * @property int|null $birthday
+ * @property int|null $retired
+ * @property int|null $decree
+ * @property int|null $disabled
+ * @property int|null $deputy
+ * @property int|null $qualification_date
+ * @property int|null $hayfsan
  *
  * @property Position $position
  * @property Queue[] $queues
@@ -49,6 +59,22 @@ class UserCreateForm extends \yii\db\ActiveRecord
     const ROLE_STATIST = 3;
     const ROLE_DOCTOR = 4;
     const ROLE_NURSE = 5;
+    const GENDER_MALE = 1;
+    const GENDER_FEMALE = 2;
+    const RETIRED_TRUE = 1;
+    const RETIRED_FALSE = 2;
+    const WITHOUT_CATEGORY = 0;
+    const FIRST_CATEGORY = 1;
+    const SECOND_CATEGORY = 2;
+    const HIGHER_CATEGORY = 3;
+    const DECREE_FALSE = 0;
+    const DECREE_TRUE = 1;
+    const DISABLED_FALSE = 0;
+    const DISABLED_TRUE = 1;
+    const DEPUTY_FALSE = 0;
+    const DEPUTY_TRUE = 1;
+    const HAYFSAN_FALSE = 0;
+    const HAYFSAN_TRUE = 1;
 
     /**
      * {@inheritdoc}
@@ -61,7 +87,18 @@ class UserCreateForm extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::class
+            'birthday' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'birthday',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+            'qualification_date' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'qualification_date',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
         ];
     }
 
@@ -71,8 +108,8 @@ class UserCreateForm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['password'], 'safe'],
-            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'district_id', 'position_id'], 'integer'],
+            [['password', 'birthday', 'qualification_date'], 'safe'],
+            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'district_id', 'position_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
             [['phone_number', 'first_name', 'last_name', 'email', 'username', 'password_hash', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => Position::class, 'targetAttribute' => ['position_id' => 'id']],
@@ -102,6 +139,16 @@ class UserCreateForm extends \yii\db\ActiveRecord
             'status' => 'Status',
             'verification_token' => 'Verification Token',
             'position_id' => 'Lavozimi',
+            'gender' => 'Jinsi',
+            'category' => 'Toifasi',
+            'rate' => 'Stabkasi',
+            'birthday' => 'Tug\'ilgan vaqti',
+            'retired' => 'Nafaqa',
+            'decree' => 'Dekret',
+            'disabled' => 'Nogironligi',
+            'deputy' => 'O\'rindoshligi',
+            'qualification_date' => 'Malaka oshirgan vaqti',
+            'hayfsan' => 'Hayfsan',
             'district_id' => 'Tuman',
             'telegram_link' => 'Telegram',
             'facebook_link' => 'Facebook',

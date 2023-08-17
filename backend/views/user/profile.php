@@ -58,7 +58,7 @@
                               <span class="title"><?= Yii::t('app', 'Email') ?>:</span>
                               <span class="text"><a href="#"><span class="__cf_email__"
                                     ><?= $user->email ?? " ---- ----" ?></span></a></span>
-                           </li>
+
                            <li>
                               <span class="title">Birthday:</span>
                               <span class="text"><?= $user->birthday ?? "---- ----" ?></span>

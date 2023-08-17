@@ -29,22 +29,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Tahrirlash', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('O\'chirish', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+            'class' => 'btn btn-success',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('PDF', ['pdf', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+<!--        --><?php //= Html::a('PDF', ['pdf', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <a href="<?=\yii\helpers\Url::to(['pdf','id'=> $model->id])?>"><img style="width:30px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>
 
     </p>
     <div class="row">
         <div class="col-md-12">
             <div class="card-box">
                 <div class="table-responsive p-5">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
 //            'id',
                             'first_name',
                             'last_name',

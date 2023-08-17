@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Bosh sahifa </a></li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['vaccination/people']) ?>">Emlash </a></li>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['vaccination-people/people']) ?>">Emlash </a></li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
                 </ul>

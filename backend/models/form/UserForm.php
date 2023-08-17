@@ -2,6 +2,7 @@
 
 namespace backend\models\form;
 
+use common\behaviors\DateTimeBehavior;
 use common\models\StaticFunctions;
 use common\models\User;
 use yii\base\Exception;
@@ -16,19 +17,13 @@ class UserForm extends \yii\base\Model
     public $phone_number;
     public $username;
     public $email;
-
-
     public $password;
-
     public $password_confirm;
-
     public $first_name;
-
     public $last_name;
     public $role;
     public $id;
     public $status;
-
     public $avatar;
     public $birthday;
     public $address;
@@ -39,11 +34,37 @@ class UserForm extends \yii\base\Model
     public $telegram_link;
     public $instagram_link;
     public $facebook_link;
+    public $gender;
+    public $category;
+    public $rate;
+    public $retired;
+    public $decree;
+    public $disabled;
+    public $deputy;
+    public $qualification_date;
+    public $hayfsan;
     public $twitter_link;
 
 
 
     const SCENARIO_REGISTER = 'register';
+    public function behaviors()
+    {
+        return [
+            'birthday' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'birthday',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+            'qualification_date' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'qualification_date',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -52,15 +73,16 @@ class UserForm extends \yii\base\Model
     {
         return [
             [['phone_number', 'username'], 'required'],
+            [['birthday', 'qualification_date'], 'safe'],
             [['password', 'position_id'], 'required', 'on' => self::SCENARIO_REGISTER],
 //            ['username', 'unique', 'targetAttribute' => 'username', 'targetClass' => User::class],
             ['username', 'validateUsername'],
             ['email', 'email'],
             [['avatar'], 'safe'],
             [['password'], 'string', 'min' => 6, 'max' => 16],
-            [['first_name', 'last_name', 'email', 'birthday', 'address', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'email', 'address', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
-            [['status', 'role', 'user_id', 'id', 'qvp_id', 'district_id', 'position_id'], 'integer'],
+            [['status', 'role', 'user_id', 'id', 'qvp_id', 'district_id', 'position_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
             [['password_confirm'], 'compare', 'compareAttribute' => 'password'],
         ];
     }
@@ -69,8 +91,9 @@ class UserForm extends \yii\base\Model
     {
         $scenarios = parent::scenarios();
         $scenarios['register'] = ['username', 'email', 'password', 'phone_number', 'avatar', 'first_name', 'last_name',
-            'password_confirm', 'status', 'role', 'birthday', 'address', 'position_id', 'qvp_id', 'district_id', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'];
-
+            'password_confirm', 'status', 'role', 'birthday', 'address', 'position_id', 'qvp_id', 'district_id',
+            'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link', 'gender', 'category', 'rate', 'retired',
+            'decree', 'disabled', 'deputy', 'hayfsan', 'birthday', 'qualification_date'];
         return $scenarios;
     }
 
@@ -122,6 +145,15 @@ class UserForm extends \yii\base\Model
             'address' => $this->address,
             'birthday' => $this->birthday,
             'position_id' => $this->position_id,
+            'gender' => $this->gender,
+            'category' => $this->category,
+            'rate' => $this->rate,
+            'retired' => $this->retired,
+            'decree' => $this->decree,
+            'disabled' => $this->disabled,
+            'deputy' => $this->deputy,
+            'qualification_date' => $this->qualification_date,
+            'hayfsan' => $this->hayfsan,
             'qvp_id' => $this->qvp_id,
             'district_id' => $this->district_id,
             'telegram_link' => $this->telegram_link,

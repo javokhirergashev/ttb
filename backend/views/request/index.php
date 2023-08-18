@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'last_name',
                             'phone_number',
                             'comment:ntext',
-//                            'created_at',
+                            'created_at:datetime',
 //                            'updated_at',
                             [
                                 'class' => 'yii\grid\ActionColumn',

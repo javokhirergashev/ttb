@@ -66,6 +66,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             'rate',
                             [
+                                'attribute' => 'deputy',
+                                'value' => function ($data) {
+                                    if ($data->deputy == \common\models\UserCreateForm::DEPUTY_FALSE) {
+                                        return 'Yo\'q';
+                                    } else {
+                                        return 'Bor';
+                                    }
+                                }
+                            ],
+                            [
                                 'attribute' => 'retired',
                                 'value' => function ($data) {
                                     if ($data->retired == \common\models\UserCreateForm::RETIRED_TRUE) {
@@ -103,16 +113,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'disabled',
                                 'value' => function ($data) {
                                     if ($data->disabled == \common\models\UserCreateForm::DISABLED_FALSE) {
-                                        return 'Yo\'q';
-                                    } else {
-                                        return 'Bor';
-                                    }
-                                }
-                            ],
-                            [
-                                'attribute' => 'deputy',
-                                'value' => function ($data) {
-                                    if ($data->deputy == \common\models\UserCreateForm::DEPUTY_FALSE) {
                                         return 'Yo\'q';
                                     } else {
                                         return 'Bor';

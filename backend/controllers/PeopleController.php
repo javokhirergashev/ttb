@@ -174,12 +174,20 @@ class PeopleController extends Controller
     public function actionHistory($id)
     {
         $people = People::findOne($id);
+
+        $vaccinationQuery = $people->getPeopleVaccination();
+
+        $vaccinationProvider = new ActiveDataProvider([
+            'query' => $vaccinationQuery
+        ]);
+
         $query = Diagnosis::find()->andWhere(['people_id' => $id]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);
 
         return $this->render('history', [
+            'vaccinationProvider' => $vaccinationProvider,
             'dataProvider' => $dataProvider,
             'people' => $people
         ]);
@@ -219,6 +227,7 @@ class PeopleController extends Controller
         }
         return ['output' => '', 'selected' => ''];
     }
+
     public function actionPdf($id)
     {
         $model = People::findOne($id);
@@ -231,7 +240,7 @@ class PeopleController extends Controller
             'mode' => Pdf::MODE_UTF8,
             // A4 paper format
             'format' => Pdf::FORMAT_A4,
-            'filename' => $model->first_name . ' ' . $model->last_name . ' ' . $time.'.pdf',
+            'filename' => $model->first_name . ' ' . $model->last_name . ' ' . $time . '.pdf',
             // portrait orientation
             'orientation' => Pdf::ORIENT_PORTRAIT,
             // stream to browser inline

@@ -210,4 +210,14 @@ class People extends \yii\db\ActiveRecord
         return "O'ZBEKISTON, Namangan viloyati, Namangan shahri, Bo‘ston";
 //        return $this->region->name[Yii::$app->language] . ", " . $this->district->name[Yii::$app->language] . ", " . $this->quarter->name[Yii::$app->language];
     }
+
+    public function getPeopleVaccination()
+    {
+        return $this->hasMany(VaccinationPeople::class, ['people_id' => 'id']);
+    }
+
+    public function getVaccination()
+    {
+        return $this->hasMany(Vaccination::class, ['id' => 'vaccination_id'])->via('peopleVaccination');
+    }
 }

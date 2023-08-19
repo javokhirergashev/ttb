@@ -54,7 +54,7 @@ class Vaccination extends \yii\db\ActiveRecord
     }
     public function getVacclass()
     {
-        return $this->hasOne(VaccinationClass::class, ['id' => 'vaccination_class_id ']);
+        return $this->hasOne(VaccinationClass::class, ['id' => 'vaccination_class_id']);
     }
     public static function getDropDownList()
     {

@@ -150,10 +150,12 @@ class DataController extends Controller
         var_dump("Peopel created");
 
         $titles = [
-            json_encode(['uz' => "Doctor", "en" => "Doctor", "ru" => "Doctor"], JSON_UNESCAPED_SLASHES),
-            json_encode(['uz' => "Hamshira", "en" => "Hamshira", "ru" => "Hamshira"], JSON_UNESCAPED_SLASHES),
-            json_encode(['uz' => "Laborant", "en" => "Lobarant", "ru" => "Lobarant"], JSON_UNESCAPED_SLASHES),
+            ['uz' => "Doctor", "en" => "Doctor", "ru" => "Doctor"],
+            ['uz' => "Hamshira", "en" => "Hamshira", "ru" => "Hamshira"],
+            ['uz' => "Laborant", "en" => "Lobarant", "ru" => "Lobarant"],
         ];
+
+
 
         for ($i = 0; $i <= 10; $i++) {
             $position = new Position([

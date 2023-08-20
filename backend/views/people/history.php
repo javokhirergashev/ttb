@@ -21,6 +21,12 @@
                 <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                 <li class="breadcrumb-item active"><?= $people->first_name . " " . $people->last_name ?></li>
             </ul>
+
+            <form method="post" action="<?= \yii\helpers\Url::to(['people/history', 'id' => $people->id]) ?>"
+                  enctype="multipart/form-data">
+                <input type="file" name="excel">
+                <input type="submit">
+            </form>
         </div>
     </div>
     <div class="card-box profile-header pb-3">
@@ -30,8 +36,11 @@
                     <div class="profile-img-wrap">
                         <div class="profile-img pb-3">
                             <a href="#"><img class="avatar mb-3" src="assets/img/doctor-03.jpg" alt=""></a>
+
                         </div>
                     </div>
+
+
                     <div class="profile-basic mb-3">
                         <div class="row">
                             <div class="col-md-5">
@@ -152,10 +161,10 @@
                                             <tr>
                                                 <td><?= $index + 1; ?></td>
                                                 <td>
-                                                    <?= $referral->comment?>
+                                                    <?= $referral->comment ?>
                                                 </td>
                                                 <td>
-                                                    <?= $referral->createdBy->getFullName()?>
+                                                    <?= $referral->createdBy->getFullName() ?>
                                                 </td>
                                                 <td>
                                                     <?= $referral->clinic_id ? $referral->clinic->name : "--- ---" ?>

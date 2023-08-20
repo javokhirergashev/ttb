@@ -9,17 +9,21 @@ use common\models\search\PeopleSearch;
 use common\models\Section;
 use common\models\Territory;
 use kartik\mpdf\Pdf;
+use Shuchkin\SimpleXLSX;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * PeopleController implements the CRUD actions for People model.
  */
 class PeopleController extends Controller
 {
+    public $enableCsrfValidation = false;
+
     /**
      * @inheritDoc
      */
@@ -173,8 +177,19 @@ class PeopleController extends Controller
 
     public function actionHistory($id)
     {
-        $people = People::findOne($id);
 
+        $file = UploadedFile::getInstanceByName('excel');
+        $people = People::findOne($id);
+        if ($file) {
+            $xlsx = SimpleXLSX::parse($file->tempName);
+            $rows = $xlsx->rows();
+            echo "<pre>";
+            var_dump($rows);
+            die();
+        }
+
+
+        $this->render('import');
         $vaccinationQuery = $people->getPeopleVaccination();
         $referralQuery = $people->getReferral();
 
@@ -268,6 +283,15 @@ class PeopleController extends Controller
 
         // return the pdf output as per the destination setting
         return $pdf->render();
+    }
+
+
+    public function actionImport()
+    {
+
+        $this->layout = 'blank';
+
+
     }
 
 

@@ -1,9 +1,11 @@
 <?php
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $referralProvider \yii\data\ActiveDataProvider
  * @var $vaccinationProvider \yii\data\ActiveDataProvider
  * @var $people \common\models\People
  * @var $vaccinationPeople \common\models\VaccinationPeople
+ * @var $referral \common\models\Referral
  */
 
 
@@ -135,17 +137,42 @@
                                             <th>
                                                 Id
                                             </th>
-                                            <th>FIO</th>
-                                            <th>Tekshirilgan vaqti</th>
-                                            <th>Telefon nomeri</th>
-                                            <th>Passport seriyasi</th>
-                                            <th>Tugilgan sanasi</th>
-                                            <th>Address</th>
-                                            <th class="text-end">Amallar</th>
+                                            <th>Tashxis</th>
+                                            <th>Doktor FIO</th>
+                                            <th>Klinika</th>
+                                            <th>Bo'lim</th>
+                                            <th>Muddati</th>
+                                            <th>Yo'llanma vaqti</th>
+                                            <th class="text-center">Holati</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+                                        foreach ($referralProvider->getModels() as $index => $referral): ?>
+                                            <tr>
+                                                <td><?= $index + 1; ?></td>
+                                                <td>
+                                                    <?= $referral->comment?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->createdBy->getFullName()?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->clinic_id ? $referral->clinic->name : "--- ---" ?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->section_id ? $referral->section->name : "--- ---" ?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->day_count ?>
+                                                </td>
+                                                <td><?= date("d.m.Y", $referral->created_at) ?></td>
 
+                                                <td class="text-center" title="PDF">
+                                                    <?= $referral->getStatusName() ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>

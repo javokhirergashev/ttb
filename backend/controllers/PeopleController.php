@@ -176,9 +176,14 @@ class PeopleController extends Controller
         $people = People::findOne($id);
 
         $vaccinationQuery = $people->getPeopleVaccination();
+        $referralQuery = $people->getReferral();
 
         $vaccinationProvider = new ActiveDataProvider([
             'query' => $vaccinationQuery
+        ]);
+
+        $referralProvider = new ActiveDataProvider([
+            'query' => $referralQuery
         ]);
 
         $query = Diagnosis::find()->andWhere(['people_id' => $id]);
@@ -189,7 +194,8 @@ class PeopleController extends Controller
         return $this->render('history', [
             'vaccinationProvider' => $vaccinationProvider,
             'dataProvider' => $dataProvider,
-            'people' => $people
+            'people' => $people,
+            'referralProvider' => $referralProvider
         ]);
     }
 

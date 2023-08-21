@@ -103,7 +103,8 @@ class People extends \yii\db\ActiveRecord
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
             [['territory_id'], 'exist', 'skipOnError' => true, 'targetClass' => Territory::class, 'targetAttribute' => ['territory_id' => 'id']],
-            [['quarterIds', 'birthday'], 'safe']
+            [['quarterIds', 'birthday'], 'safe'],
+            [['first_name'], 'string', 'max' => 10]
         ];
     }
 

@@ -13,7 +13,7 @@ use yii\grid\GridView;
 $this->title = 'Aholi ro\'yxati';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-    <div class="people-index">
+<div class="people-index">
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
@@ -31,38 +31,44 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Yangi aholi qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <div class="row">
         <div class="col-md-12">
             <div class="card-box">
+
+                <form action="" enctype="multipart/form-data" method="post">
+                    <input type="file" accept="application/vnd.sealed.xls" name="excel">
+                    <button type="submit" class="btn btn-success">Yuborish</button>
+                </form>
                 <div class="table-responsive p-5">
-<?= GridView::widget([
-    'dataProvider' => $dataProvider,
-    'filterModel' => $searchModel,
-    'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 //                            'id',
-        'first_name',
-        'last_name',
+                            'first_name',
+                            'last_name',
 //                            'middle_name',
 //                            'pinfl',
 //                            'passport_seria',
-        'passport_number',
-        'phone_number',
-        'birthday',
-        //'region_id',
-        //'district_id',
+                            'passport_number',
+                            'phone_number',
+                            'birthday',
+                            //'region_id',
+                            //'district_id',
 //                            'quarter_id',
 //                            'qvp_id',
-        'metrka_number',
+                            'metrka_number',
 //                            'gender',
-        [
-            'attribute' => 'territory_code',
-            'value' => function ($data) {
-                return "";
+                            [
+                                'attribute' => 'territory_code',
+                                'value' => function ($data) {
+                                    return "";
 //                                    return \common\models\Territory::findOne($data->territory_code)->name;
-            }
-        ],
+                                }
+                            ],
 //                            [
 //                                'attribute' => 'status',
 //                                'value' => function ($data) {
@@ -75,16 +81,16 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                'format' => 'raw',
 //                                'filter' => [\common\models\People::STATUS_ACTIVE => 'Faol', \common\models\People::STATUS_INACTIVE => 'Faol emas']
 //                            ],
-        [
-            'class' => 'yii\grid\ActionColumn',
-            'header' => 'Amallar',
-            'headerOptions' => ['style' => 'text-align:center'],
-            'template' => '{buttons}',
-            'contentOptions' => ['style' => 'min-width:150px;max-width:150px;width:150px', 'class' => 'v-align-middle'],
-            'buttons' => [
-                'buttons' => function ($url, $model) {
-                    $controller = Yii::$app->controller->id;
-                    $code = <<<BUTTONS
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'header' => 'Amallar',
+                                'headerOptions' => ['style' => 'text-align:center'],
+                                'template' => '{buttons}',
+                                'contentOptions' => ['style' => 'min-width:150px;max-width:150px;width:150px', 'class' => 'v-align-middle'],
+                                'buttons' => [
+                                    'buttons' => function ($url, $model) {
+                                        $controller = Yii::$app->controller->id;
+                                        $code = <<<BUTTONS
 
                                 <div class="btn-group flex-center"  >
                                     <a href="/{$controller}/view?id={$model->id}" id="{$controller}{$model->id}" data-postID="{$model->id}" class="btn btn-success"><i class="far fa-eye"></i></a>
@@ -92,17 +98,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <a href="/{$controller}/delete?id={$model->id}" data-method="post" id="{$controller}{$model->id}" data-postID="{$model->id}" data-postType="{$controller}" class="btn btn-danger postRemove" data-method="post"><i class="far fa-trash-alt"></i></a>
                                 </div>
 BUTTONS;
-                    return $code;
-                }
+                                        return $code;
+                                    }
 
-            ],
+                                ],
 
-        ],
-    ],
-]); ?>
+                            ],
+                        ],
+                    ]); ?>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 

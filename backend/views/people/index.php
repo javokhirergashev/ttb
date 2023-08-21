@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-box">
 
                 <form action="" enctype="multipart/form-data" method="post">
-                    <input type="file" accept="application/vnd.sealed.xls" name="excel">
+                    <input type="file" accept=".xlsx,.xls" name="excel">
                     <button type="submit" class="btn btn-success">Yuborish</button>
                 </form>
                 <div class="table-responsive p-5">

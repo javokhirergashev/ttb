@@ -49,9 +49,18 @@ class PeopleController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel = new PeopleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $file = UploadedFile::getInstanceByName('excel');
+        if ($file) {
+            $xlsx = SimpleXLSX::parse($file->tempName);
+            if ($xlsx) {
+                $rows = $xlsx->rows();
+                echo "<pre>";
+                var_dump($rows);
+                die();
+            }
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -187,9 +196,6 @@ class PeopleController extends Controller
             var_dump($rows);
             die();
         }
-
-
-        $this->render('import');
         $vaccinationQuery = $people->getPeopleVaccination();
         $referralQuery = $people->getReferral();
 

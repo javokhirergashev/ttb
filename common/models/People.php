@@ -224,4 +224,9 @@ class People extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Vaccination::class, ['id' => 'vaccination_id'])->via('peopleVaccination');
     }
+
+    public function getReferral()
+    {
+        return $this->hasMany(Referral::class, ['people_id' => 'id']);
+    }
 }

@@ -264,5 +264,16 @@ class PeopleController extends Controller
         return $pdf->render();
     }
 
+    public function actionPregnant($id)
+    {
+        $person = People::findOne($id);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $person->updateAttributes(['pregnant_status' => People::PREGNANT_TRUE]);
+
+        return $this->redirect(['history', 'id'=>$person->id]);
+
+    }
 
 }

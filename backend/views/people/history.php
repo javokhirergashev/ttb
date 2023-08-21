@@ -41,7 +41,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-5">
                                 <ul class="personal-info">
                                     <li>
                                         <span class="title"><?= Yii::t('app', 'Phone') ?>:</span>
@@ -62,6 +62,19 @@
                                     </li>
                                 </ul>
                             </div>
+                            <?php if ($people->gender == \common\models\People::GENDER_FEMALE && $people->pregnant_status == \common\models\People::PREGNANT_FALSE): ?>
+                            <div class="col-md-2">
+                                <div class="pregnant_button">
+                                    <a href="<?= \yii\helpers\Url::to(['people/pregnant','id'=> $people->id])?>" class="btn btn-primary p-2"><i class="fa fa-person-pregnant" style="font-size: 32px"></i></a>
+                                </div>
+                            </div>
+                            <?php elseif ($people->gender == \common\models\People::GENDER_FEMALE && $people->pregnant_status == \common\models\People::PREGNANT_TRUE) :?>
+                                <div class="col-md-2">
+                                    <div class="pregnant_button">
+                                        <a href="<?= \yii\helpers\Url::to(['people/pregnant','id'=> $people->id])?>" class="btn btn-primary p-2">Homiladorlik tarixi</a>
+                                    </div>
+                                </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
@@ -69,139 +82,141 @@
         </div>
     </div>
     <div class="profile-tabs">
-
         <ul class="nav nav-tabs nav-tabs-bottom pt-5">
-            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-bs-toggle="tab">Tashxislar</a>
+            <li class="nav-item"><a class="nav-link active" href="#about-cont"                                    data-bs-toggle="tab">Tashxislar</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-bs-toggle="tab">Yo'llanmalar</a></li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-bs-toggle="tab">Emlanishlar</a></li>
+            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-bs-toggle="tab">Yo'llanmalar</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-bs-toggle="tab">Emlanishlar</a>
+            </li>
         </ul>
-        <div class="tab-content">
-            <div class="tab-pane show active" id="about-cont">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card card-table show-entire">
-                            <div class="card-body">
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane show active" id="about-cont">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table show-entire">
+                        <div class="card-body">
 
-                                <div class="table-responsive">
-                                    <table class="table border-0 custom-table comman-table datatable mb-0">
-                                        <thead>
+                            <div class="table-responsive">
+                                <table class="table border-0 custom-table comman-table datatable mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>Tashxis</th>
+                                        <th>Yaratilgan vaqti</th>
+                                        <th>Tashxis sinfi</th>
+
+                                        <th class="text-end">Yuklab olish</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($dataProvider->getModels() as $index => $model): ?>
                                         <tr>
-                                            <th>
-                                                Id
-                                            </th>
-                                            <th>Tashxis</th>
-                                            <th>Yaratilgan vaqti</th>
-                                            <th>Tashxis sinfi</th>
+                                            <td><?= $index + 1; ?></td>
+                                            <td class="profile-image">
+                                                <?= $model->title ?>
+                                            </td>
+                                            <td><?= date("d.m.Y", $model->created_at) ?></td>
+                                            <td><?= $model->diagnosis_list_id ? $model->diagnosisList->name : " ---- ----" ?></td>
 
-                                            <th class="text-end">Yuklab olish</th>
+                                            <td class="text-end" title="PDF">
+                                                <a href="javascript:;" class=" me-2"><img
+                                                            src="/backend-files/img/icons/pdf-icon-01.svg"
+                                                            alt=""></a>
+                                            </td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                        foreach ($dataProvider->getModels() as $index => $model): ?>
-                                            <tr>
-                                                <td><?= $index + 1; ?></td>
-                                                <td class="profile-image">
-                                                    <?= $model->title ?>
-                                                </td>
-                                                <td><?= date("d.m.Y", $model->created_at) ?></td>
-                                                <td><?= $model->diagnosis_list_id ? $model->diagnosisList->name : " ---- ----" ?></td>
-
-                                                <td class="text-end" title="PDF">
-                                                    <a href="javascript:;" class=" me-2"><img
-                                                                src="/backend-files/img/icons/pdf-icon-01.svg"
-                                                                alt=""></a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="bottom-tab2">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card card-table show-entire">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table border-0 custom-table comman-table datatable mb-0">
-                                        <thead>
-                                        <tr>
-                                            <th>
-                                                Id
-                                            </th>
-                                            <th>FIO</th>
-                                            <th>Tekshirilgan vaqti</th>
-                                            <th>Telefon nomeri</th>
-                                            <th>Passport seriyasi</th>
-                                            <th>Tugilgan sanasi</th>
-                                            <th>Address</th>
-                                            <th class="text-end">Amallar</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="bottom-tab3">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card card-table show-entire">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table border-0 custom-table comman-table datatable mb-0">
-                                        <thead>
-                                        <tr>
-                                            <th>Nomer</th>
-                                            <th>Emlash nomi</th>
-                                            <th>Emlangan vaqti</th>
-                                            <th>Yoshi</th>
-                                            <th>Preparat nomi</th>
-                                            <th>Olish yoshi</th>
-                                            <th class="text-center">Seriya</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                        foreach ($vaccinationProvider->getModels() as $index => $vaccinationPeople): ?>
-                                            <tr>
-                                                <td><?= $index + 1; ?></td>
-                                                <td class="profile-image">
-                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $vaccinationPeople->id]) ?>">
-                                                        <?= $vaccinationPeople->vaccination->name ?>
-                                                    </a>
-                                                </td>
-                                                <td><?= date("d.m.Y", $vaccinationPeople->created_at) ?></td>
-                                                <td><?= $vaccinationPeople->vaccination->id ?></td>
-                                                <td><?= $vaccinationPeople->preparat_name ?></td>
-                                                <td><?= $vaccinationPeople->vaccination->time ?></td>
-                                                <td class="text-center">
-                                                    <?= $vaccinationPeople->seria ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="tab-pane" id="bottom-tab2">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table show-entire">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table border-0 custom-table comman-table datatable mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>FIO</th>
+                                        <th>Tekshirilgan vaqti</th>
+                                        <th>Telefon nomeri</th>
+                                        <th>Passport seriyasi</th>
+                                        <th>Tugilgan sanasi</th>
+                                        <th>Address</th>
+                                        <th class="text-end">Amallar</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="bottom-tab3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table show-entire">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table border-0 custom-table comman-table datatable mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Nomer</th>
+                                        <th>Emlash nomi</th>
+                                        <th>Emlangan vaqti</th>
+                                        <th>Yoshi</th>
+                                        <th>Preparat nomi</th>
+                                        <th>Olish yoshi</th>
+                                        <th class="text-center">Seriya</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($vaccinationProvider->getModels() as $index => $vaccinationPeople): ?>
+                                        <tr>
+                                            <td><?= $index + 1; ?></td>
+                                            <td class="profile-image">
+                                                <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $vaccinationPeople->id]) ?>">
+                                                    <?= $vaccinationPeople->vaccination->name ?>
+                                                </a>
+                                            </td>
+                                            <td><?= date("d.m.Y", $vaccinationPeople->created_at) ?></td>
+                                            <td><?= $vaccinationPeople->vaccination->id ?></td>
+                                            <td><?= $vaccinationPeople->preparat_name ?></td>
+                                            <td><?= $vaccinationPeople->vaccination->time ?></td>
+                                            <td class="text-center">
+                                                <?= $vaccinationPeople->seria ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+</div>
 </div>

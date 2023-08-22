@@ -49,9 +49,57 @@ class PeopleController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel = new PeopleSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $file = UploadedFile::getInstanceByName('excel');
+        if ($file) {
+            $xlsx = SimpleXLSX::parse($file->tempName);
+            if ($xlsx) {
+                $rows = $xlsx->rows();
+                $transaction = Yii::$app->db->beginTransaction();
+                foreach ($rows as $index => $row) {
+
+                    if ($index < 1) {
+                        continue;
+                    }
+
+                    $people = new People();
+                    $people->first_name = $row[0];
+                    $people->last_name = $row[1];
+                    $people->middle_name = $row[2];
+                    $people->pinfl = $row[3] . "";
+                    $people->passport_number = $row[4];
+                    $people->birthday = strtotime($row[5]);
+                    $people->phone_number = $row[6] . "";
+                    $people->gender = $row[7];
+                    $people->metrka_number = $row[8];
+                    $people->region_id = $row[9];
+                    $people->district_id = $row[10];
+                    $people->quarter_id = $row[11];
+                    $people->qvp_id = $row[12];
+                    $people->dispensary_control = $row[13] . "";
+                    $people->ayol_daftar = $row[14];
+                    $people->temir_daftar = $row[15];
+                    $people->yoshlar_daftar = $row[16];
+                    $people->job = $row[17];
+                    $people->height = $row[18] . "";
+                    $people->weight = $row[19] . "";
+                    $people->blood_pressure = $row[20];
+                    $people->saturation = $row[21];
+                    $people->pulse = $row[22] . "";
+                    $people->head_family = $row[23];
+
+                    if (!$people->save()) {
+                        $transaction->rollBack();
+                        var_dump($people->errors);
+                        die($index);
+                    }
+
+                }
+                $transaction->commit();
+                $this->redirect(['index']);
+            }
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -187,9 +235,6 @@ class PeopleController extends Controller
             var_dump($rows);
             die();
         }
-
-
-        $this->render('import');
         $vaccinationQuery = $people->getPeopleVaccination();
         $referralQuery = $people->getReferral();
 

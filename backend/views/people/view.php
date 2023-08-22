@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'pinfl',
                     'passport_number',
                     'phone_number',
-                    'birthday',
+                    'birthday:date',
                     'job',
                     [
                         'attribute' => 'region_id',

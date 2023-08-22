@@ -1,9 +1,11 @@
 <?php
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $referralProvider \yii\data\ActiveDataProvider
  * @var $vaccinationProvider \yii\data\ActiveDataProvider
  * @var $people \common\models\People
  * @var $vaccinationPeople \common\models\VaccinationPeople
+ * @var $referral \common\models\Referral
  */
 
 
@@ -19,6 +21,12 @@
                 <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                 <li class="breadcrumb-item active"><?= $people->first_name . " " . $people->last_name ?></li>
             </ul>
+
+            <form method="post" action="<?= \yii\helpers\Url::to(['people/history', 'id' => $people->id]) ?>"
+                  enctype="multipart/form-data">
+                <input type="file" name="excel">
+                <input type="submit">
+            </form>
         </div>
     </div>
     <div class="card-box profile-header pb-3">
@@ -28,8 +36,11 @@
                     <div class="profile-img-wrap">
                         <div class="profile-img pb-3">
                             <a href="#"><img class="avatar mb-3" src="assets/img/doctor-03.jpg" alt=""></a>
+
                         </div>
                     </div>
+
+
                     <div class="profile-basic mb-3">
                         <div class="row">
                             <div class="col-md-5">
@@ -41,7 +52,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-5">
                                 <ul class="personal-info">
                                     <li>
                                         <span class="title"><?= Yii::t('app', 'Phone') ?>:</span>
@@ -62,6 +73,22 @@
                                     </li>
                                 </ul>
                             </div>
+                            <?php if ($people->gender == \common\models\People::GENDER_FEMALE && $people->pregnant_status == \common\models\People::PREGNANT_FALSE): ?>
+                                <div class="col-md-2">
+                                    <div class="pregnant_button">
+                                        <a href="<?= \yii\helpers\Url::to(['people/pregnant', 'id' => $people->id]) ?>"
+                                           class="btn btn-primary p-2"><i class="fa fa-person-pregnant"
+                                                                          style="font-size: 32px"></i></a>
+                                    </div>
+                                </div>
+                            <?php elseif ($people->gender == \common\models\People::GENDER_FEMALE && $people->pregnant_status == \common\models\People::PREGNANT_TRUE) : ?>
+                                <div class="col-md-2">
+                                    <div class="pregnant_button">
+                                        <a href="<?= \yii\helpers\Url::to(['people/pregnant', 'id' => $people->id]) ?>"
+                                           class="btn btn-primary p-2">Homiladorlik tarixi</a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -135,17 +162,42 @@
                                             <th>
                                                 Id
                                             </th>
-                                            <th>FIO</th>
-                                            <th>Tekshirilgan vaqti</th>
-                                            <th>Telefon nomeri</th>
-                                            <th>Passport seriyasi</th>
-                                            <th>Tugilgan sanasi</th>
-                                            <th>Address</th>
-                                            <th class="text-end">Amallar</th>
+                                            <th>Tashxis</th>
+                                            <th>Doktor FIO</th>
+                                            <th>Klinika</th>
+                                            <th>Bo'lim</th>
+                                            <th>Muddati</th>
+                                            <th>Yo'llanma vaqti</th>
+                                            <th class="text-center">Holati</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+                                        foreach ($referralProvider->getModels() as $index => $referral): ?>
+                                            <tr>
+                                                <td><?= $index + 1; ?></td>
+                                                <td>
+                                                    <?= $referral->comment ?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->createdBy->getFullName() ?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->clinic_id ? $referral->clinic->name : "--- ---" ?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->section_id ? $referral->section->name : "--- ---" ?>
+                                                </td>
+                                                <td>
+                                                    <?= $referral->day_count ?>
+                                                </td>
+                                                <td><?= date("d.m.Y", $referral->created_at) ?></td>
 
+                                                <td class="text-center" title="PDF">
+                                                    <?= $referral->getStatusName() ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>

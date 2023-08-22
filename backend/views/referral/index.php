@@ -89,13 +89,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                            title="korish"
                                            class="btn btn-info add-pluss ms-2 text-white"><i class="fa fa-eye"></i></a>
 
-                                        <a data-bs-toggle="modal"
-                                           data-bs-target="#staticBackdrop"
-                                           title="Bekor qilish"
-                                           href="!#"
-                                           data-value="<?= $model->id ?>"
-                                           class="btn btn-danger add-pluss ms-2 cancel-button"><i
-                                                    class="fa fa-times"></i></a>
+                                        <?php if ($model->status < Referral::STATUS_ACCEPTED): ?>
+                                            <a data-bs-toggle="modal"
+                                               data-bs-target="#staticBackdrop"
+                                               title="Bekor qilish"
+                                               href="!#"
+                                               data-value="<?= $model->id ?>"
+                                               class="btn btn-danger add-pluss ms-2 cancel-button"><i
+                                                        class="fa fa-times"></i></a>
+                                        <?php endif; ?>
                                         <a title="Chop etish" target="_blank"
                                            href="<?= \yii\helpers\Url::to(['referral/pdf', 'id' => $model->id]) ?>"
                                            data-value="<?= $model->id ?>"
@@ -107,7 +109,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                                class="btn btn-success add-pluss ms-2"><i
                                                         class="fa fa-hotel"></i></a>
                                         <?php elseif ($model->status == Referral::STATUS_LOCATION) : ?>
-                                            <a href="<?= \yii\helpers\Url::to(['referral/exit', 'id' => $model->id]) ?>"
+                                            <a style="display:none"
+                                               href="<?= \yii\helpers\Url::to(['referral/exit', 'id' => $model->id]) ?>"
                                                title="Chiqarib yuborish"
                                                class="btn btn-primary add-pluss ms-2"><i
                                                         class="fa fa-right-long"></i></a>

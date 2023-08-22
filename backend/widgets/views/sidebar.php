@@ -3,12 +3,12 @@
       <div id="sidebar-menu" class="sidebar-menu">
          <ul>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['site/index']) ?>"
+               <a href="<?= \yii\helpers\Url::to(['/']) ?>"
                   class="<?= Yii::$app->request->url == "/" ? "active" : "" ?>">
                    <span class="menu-side">
                        <img src="/backend-files/img/icons/menu-icon-01.svg" alt="">
                    </span>
-                  <span> Bosh sahifa </span>
+                  <span> Bosh sahifa test git </span>
                </a>
             </li>
             <li>

@@ -45,6 +45,7 @@ use yii\behaviors\TimestampBehavior;
  * @property Quarter $quarter
  * @property Qvp $qvp
  * @property Region $region
+ * @property Region $pregnant_status
  */
 class People extends \yii\db\ActiveRecord
 {
@@ -71,23 +72,25 @@ class People extends \yii\db\ActiveRecord
     const DISABILITY_THIRD = 3;
     const DISABILITY_FOURTH = 4;
     const DISABILITY_FALSE = 0;
+    const PREGNANT_FALSE = 1;
+    const PREGNANT_TRUE = 2;
 
     public static function tableName()
     {
         return 'people';
     }
 
-    public function behaviors()
-    {
-        return [
-            'birthday' => [
-                'class' => DateTimeBehavior::class,
-                'attribute' => 'birthday', //атрибут модели, который будем менять
-                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
-//                'default' => 'today'
-            ],
-        ];
-    }
+//    public function behaviors()
+//    {
+//        return [
+//            'birthday' => [
+//                'class' => DateTimeBehavior::class,
+//                'attribute' => 'birthday', //атрибут модели, который будем менять
+//                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+////                'default' => 'today'
+//            ],
+//        ];
+//    }
 
     /**
      * {@inheritdoc}
@@ -96,14 +99,15 @@ class People extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'default', 'value' => null],
-            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group'], 'integer'],
+            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group', 'pregnant_status'], 'integer'],
             [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control', 'ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
             [['territory_id'], 'exist', 'skipOnError' => true, 'targetClass' => Territory::class, 'targetAttribute' => ['territory_id' => 'id']],
-            [['quarterIds', 'birthday'], 'safe']
+            [['quarterIds', 'birthday'], 'safe'],
+            [['first_name'], 'string', 'max' => 10]
         ];
     }
 
@@ -142,6 +146,7 @@ class People extends \yii\db\ActiveRecord
             'pulse' => 'Pulsi',
             'disability_class_id' => 'Nogironlik sinfi',
             'disability_group' => 'Nogironlik guruhi',
+            'pregnant_status' => 'Homiladorlik',
         ];
     }
 
@@ -219,5 +224,10 @@ class People extends \yii\db\ActiveRecord
     public function getVaccination()
     {
         return $this->hasMany(Vaccination::class, ['id' => 'vaccination_id'])->via('peopleVaccination');
+    }
+
+    public function getReferral()
+    {
+        return $this->hasMany(Referral::class, ['people_id' => 'id']);
     }
 }

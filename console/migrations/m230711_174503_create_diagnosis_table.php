@@ -40,14 +40,7 @@ class m230711_174503_create_diagnosis_table extends Migration
         );
 
         // add foreign key for table `{{%user}}`
-        $this->addForeignKey(
-            '{{%fk-diagnosis-created_by}}',
-            '{{%diagnosis}}',
-            'created_by',
-            '{{%user}}',
-            'id',
-            'CASCADE'
-        );
+
 
         // creates index for column `updated_by`
         $this->createIndex(

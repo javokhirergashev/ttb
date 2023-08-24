@@ -86,7 +86,7 @@
                                  <?= $model->first_name . " " . $model->last_name . " " . $model->middle_name ?>
                               </a>
                            </td>
-                           <td><?=date('d.m.Y',$model->birthday)?></td>
+                           <td><?= date('d.m.Y',$model->birthday) ?></td>
                            <td><?= $model->phone_number ?></td>
                            <td><?= $model->metrka_number ?></td>
 <!--                           <td>--><?php //= $model->qvp_id ? $model->qvp->title : " ---- ----" ?><!--</td>-->

@@ -84,7 +84,7 @@
                             <?php elseif ($people->gender == \common\models\People::GENDER_FEMALE && $people->pregnant_status == \common\models\People::PREGNANT_TRUE) : ?>
                                 <div class="col-md-2">
                                     <div class="pregnant_button">
-                                        <a href="<?= \yii\helpers\Url::to(['people/pregnant', 'id' => $people->id]) ?>"
+                                        <a href="<?= \yii\helpers\Url::to(['pregnant/index', 'person_id' => $people->id]) ?>"
                                            class="btn btn-primary p-2">Homiladorlik tarixi</a>
                                     </div>
                                 </div>

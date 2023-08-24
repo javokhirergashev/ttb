@@ -84,11 +84,6 @@ class VaccinationPeople extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPerson()
-    {
-        return $this->hasOne(People::class, ['id' => 'people_id']);
-    }
-
     /**
      * Gets query for [[Vaccination]].
      *
@@ -101,5 +96,9 @@ class VaccinationPeople extends \yii\db\ActiveRecord
     public function getVacclass()
     {
         return $this->hasOne(VaccinationClass::class, ['id' => 'vaccination_class_id']);
+    }
+    public function getPerson()
+    {
+        return $this->hasOne(People::class, ['id' => 'people_id']);
     }
 }

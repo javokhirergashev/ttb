@@ -1,5 +1,7 @@
 <?php
 
+use backend\widgets\DropdownTreeWidget;
+use kartik\dropdown\DropdownX;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -56,10 +58,13 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="form-group row">
                 <label class="col-form-label">Tashxis turi</label>
                 <div class="col-md-9">
+
+
                     <?= $form->field($model, 'diagnosis_list_id')->dropDownList(\common\models\DiagnosisList::getDropDownList(), ['prompt' => 'Tashxis turini tanlang'])->label(false) ?>
                 </div>
             </div>
@@ -69,8 +74,6 @@ use yii\widgets\ActiveForm;
         <div class="form-group text-end">
             <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
         </div>
-
     </div>
     <?php ActiveForm::end(); ?>
-
 </div>

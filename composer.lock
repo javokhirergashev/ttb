@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb7fd7b22bebca7e777eaaf3deaf02fc",
+    "content-hash": "a479aadcdf8402a757e38bce7c7222a2",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -402,6 +402,54 @@
                 "source": "https://github.com/codemix/yii2-localeurls/tree/1.8.0"
             },
             "time": "2022-05-04T06:51:52+00:00"
+        },
+        {
+            "name": "delikates-nsk/yii2-shadowed-tabs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/delikates-nsk/yii2-shadowed-tabs.git",
+                "reference": "851018e6a2db66e8c1c858a177069e73e35aa3cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/delikates-nsk/yii2-shadowed-tabs/zipball/851018e6a2db66e8c1c858a177069e73e35aa3cc",
+                "reference": "851018e6a2db66e8c1c858a177069e73e35aa3cc",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "2.*"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "delikatesnsk\\shadowedtabs\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Constantin G. Nekhoroshkov",
+                    "email": "delikates.nsk@gmail.com"
+                }
+            ],
+            "description": "A tabs widget for Yii Framework 2",
+            "homepage": "https://github.com/delikates-nsk/yii2-shadowed-tabs",
+            "keywords": [
+                "extension",
+                "tabs",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/delikates-nsk/yii2-shadowed-tabs/issues",
+                "source": "https://github.com/delikates-nsk/yii2-shadowed-tabs/tree/master"
+            },
+            "time": "2018-08-02T10:04:34+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -6513,7 +6561,8 @@
     "stability-flags": {
         "kartik-v/yii2-widget-datetimepicker": 20,
         "kartik-v/yii2-widget-select2": 20,
-        "kartik-v/yii2-widget-depdrop": 20
+        "kartik-v/yii2-widget-depdrop": 20,
+        "delikates-nsk/yii2-shadowed-tabs": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

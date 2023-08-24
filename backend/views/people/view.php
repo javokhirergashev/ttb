@@ -36,9 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <!--        --><?php //= Html::a('PDF', ['pdf', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <a href="<?= \yii\helpers\Url::to(['pdf', 'id' => $model->id]) ?>"><img style="width:30px"
-                                                                                src="/backend-files/img/icons/pdf-icon-01.svg"
-                                                                                alt=""></a>
+        <a href="<?=\yii\helpers\Url::to(['pdf','id'=> $model->id])?>"><img style="width:30px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>
 
     </p>
     <div class="row">
@@ -65,7 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             'pinfl',
                             'passport_number',
                             'phone_number',
-                            'birthday',
+                            [
+                                'attribute' => 'birthday',
+                                'format' => ['datetime', 'php:d.m.Y']
+                            ],
                             'job',
                             [
                                 'attribute' => 'region_id',
@@ -201,3 +202,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+

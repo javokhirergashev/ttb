@@ -55,7 +55,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            'passport_seria',
                             'passport_number',
                             'phone_number',
-                            'birthday',
+                            [
+                                'attribute' => 'birthday',
+                                'format' => ['datetime', 'php:d.m.Y']
+                            ],
                             //'region_id',
                             //'district_id',
 //                            'quarter_id',

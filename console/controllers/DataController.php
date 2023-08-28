@@ -125,7 +125,7 @@ class DataController extends Controller
             $people->middle_name = $faker->userName;
             $people->pinfl = $faker->numberBetween(10000000000000, 99999999999999) . "";
             $people->passport_number = $faker->numberBetween(548555, 999999) . "";
-            $people->birthday = 714151445;
+            $people->birthday = rand(651794046, 1693180446);
             $people->metrka_number = $faker->numberBetween(548555, 999999) . "";
             $people->gender = rand(1, 2);
             $people->territory_id = $territory_id;
@@ -154,7 +154,6 @@ class DataController extends Controller
             ['uz' => "Hamshira", "en" => "Hamshira", "ru" => "Hamshira"],
             ['uz' => "Laborant", "en" => "Lobarant", "ru" => "Lobarant"],
         ];
-
 
 
         for ($i = 0; $i <= 10; $i++) {

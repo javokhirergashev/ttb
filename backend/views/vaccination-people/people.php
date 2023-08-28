@@ -89,7 +89,7 @@
                            <td><?= date('d.m.Y',$model->birthday) ?></td>
                            <td><?= $model->phone_number ?></td>
                            <td><?= $model->metrka_number ?></td>
-                           <td><?= $model->qvp_id ? $model->qvp->title : " ---- ----" ?></td>
+<!--                           <td>--><?php //= $model->qvp_id ? $model->qvp->title : " ---- ----" ?><!--</td>-->
                            <td><?= $model->quarter_id ? $model->quarter->name[Yii::$app->language] : " ---- ----" ?></td>
                            <td class="text-end">
                               <a title="Emlashni amalga oshirish" href="<?= \yii\helpers\Url::to(['vaccination-people/create', 'person_id' => $model->id]) ?>"

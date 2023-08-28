@@ -4,7 +4,6 @@
  * @var $model        \common\models\VaccinationPeople
  * @var $searchModel  \common\models\search\VaccinationPeopleSearch
  * @var $person
- * @var $qvp_id
  */
 
 use yii\grid\GridView;

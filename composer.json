@@ -34,7 +34,8 @@
     "2amigos/yii2-qrcode-helper": "^2.0",
     "yiisoft/yii2-faker": "^2.0",
     "shuchkin/simplexlsx": "^1.0",
-    "delikates-nsk/yii2-shadowed-tabs": "@dev"
+    "delikates-nsk/yii2-shadowed-tabs": "@dev",
+    "alex290/yii2-treeselect": "*"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.1.0",

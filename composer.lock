@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a479aadcdf8402a757e38bce7c7222a2",
+    "content-hash": "504fae3b2e51a4611a663b7b27dfaec2",
     "packages": [
         {
             "name": "2amigos/qrcode-library",
@@ -150,6 +150,50 @@
             },
             "abandoned": "2amigos/qrcode-library",
             "time": "2020-01-31T20:12:22+00:00"
+        },
+        {
+            "name": "alex290/yii2-treeselect",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alex290/yii2-treeselect.git",
+                "reference": "5ba014ad1f537bcbe964bec9cdf8a94f7ddfdd13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alex290/yii2-treeselect/zipball/5ba014ad1f537bcbe964bec9cdf8a94f7ddfdd13",
+                "reference": "5ba014ad1f537bcbe964bec9cdf8a94f7ddfdd13",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "alex290\\treeselect\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Martynov",
+                    "email": "alex@webgoal.ru"
+                }
+            ],
+            "description": "Select Tree Map",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/alex290/yii2-treeselect/issues",
+                "source": "https://github.com/alex290/yii2-treeselect/tree/1.0.2"
+            },
+            "time": "2018-01-03T09:40:08+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -6571,5 +6615,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

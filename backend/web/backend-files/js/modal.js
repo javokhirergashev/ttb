@@ -4,11 +4,11 @@ $('#form-modal-submit').on('click', function (e) {
 
 })
 
-$('#form-modal-cancel').on('click',function (e){
+$('#form-modal-cancel').on('click', function (e) {
     $('#cancel-form').submit();
 })
 
-$(document).ready(function (){
+$(document).ready(function () {
 
     $('.open-modal-class').on('click', function (e) {
         let id = $(this).attr('data-value')
@@ -20,8 +20,5 @@ $(document).ready(function (){
         let id = $(this).attr('data-value')
         $('#hidden-cancel-id').val(id)
     })
-
-
-
 
 })

@@ -37,10 +37,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="card-box">
 
-                <form action="" enctype="multipart/form-data" method="post">
-                    <input type="file" accept=".xlsx,.xls" name="excel">
-                    <button type="submit" class="btn btn-success">Yuborish</button>
-                </form>
+                <div class="d-flex justify-content-between">
+                    <form action="" enctype="multipart/form-data" method="post">
+                        <input type="file" accept=".xlsx,.xls" name="excel">
+                        <button type="submit" class="btn btn-success">Yuklash</button>
+                    </form>
+                    <div class="text-end">
+                        <a class="btn btn-success" href="<?= Url::to(['statistics/people-by-year']) ?>">Yosh bo'yicha
+                            hisobot &nbsp&nbsp<i
+                                    class="fa fa-file-excel"></i></a>
+                    </div>
+                </div>
                 <div class="table-responsive p-5">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,

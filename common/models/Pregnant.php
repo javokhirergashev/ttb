@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\DateTimeBehavior;
 use Yii;
 
 /**
@@ -31,6 +32,17 @@ class Pregnant extends \yii\db\ActiveRecord
     {
         return 'pregnant';
     }
+    public function behaviors()
+    {
+        return [
+            'created_at' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'created_at', //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -40,7 +52,8 @@ class Pregnant extends \yii\db\ActiveRecord
         return [
             [['person_id', 'height', 'weight_height_index', 'weight', 'pulse', 'blood_pressure', 'pregnant_week', 'stomach_diameter'], 'default', 'value' => null],
             [['person_id', 'height', 'weight_height_index', 'weight', 'pulse', 'blood_pressure', 'pregnant_week', 'stomach_diameter'], 'integer'],
-            [['utt_conclusion'], 'string'],
+            [['utt_conclusion', 'anamnez'], 'string'],
+            [['created_at'], 'safe'],
             [['diagnosis_id', 'description'], 'string', 'max' => 255],
             [['person_id'], 'exist', 'skipOnError' => true, 'targetClass' => People::class, 'targetAttribute' => ['person_id' => 'id']],
         ];
@@ -64,10 +77,13 @@ class Pregnant extends \yii\db\ActiveRecord
             'pregnant_week' => 'Homiladorlik haftasi',
             'utt_conclusion' => 'UZI xulosasi',
             'stomach_diameter' => 'Qorin diametri',
+            'anamnez' => 'Anamnez',
+            'created_at' => 'Ko\'rik vaqti'
         ];
     }
 
-    /**
+
+    /**`q
      * Gets query for [[Person]].
      *
      * @return \yii\db\ActiveQuery

@@ -4,8 +4,9 @@ use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var common\models\Pregnant $model */
+/** @var common\models\Pregnant $person */
 
-$this->title = 'Create Pregnant';
+$this->title = $person->first_name .' '. $person->last_name .'ning homiladorlik ko\'ruvi';
 $this->params['breadcrumbs'][] = ['label' => 'Pregnants', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'person_id' => $person->id,
     ]) ?>
 
 </div>

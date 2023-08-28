@@ -47,7 +47,9 @@ class PregnantController extends Controller
         $searchModel = new PregnantSearch([
             'person_id' => $person_id
         ]);
-
+        if (!$searchModel) {
+            return "Homilladorlik bo'yicha hali ko'rik olib borilmagan";
+        }
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -75,14 +77,17 @@ class PregnantController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($id)
+    public function actionCreate($person_id)
     {
+        $checked_person = People::findOne($person_id);
+        if (!$checked_person) {
+            throw new NotFoundHttpException("Bunday shifoxona mavjud emas!");
+        }
         $model = new Pregnant();
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $model->person_id = $id;
-                $model->save();
-                return $this->redirect(['index', 'id' => $model->id]);
+        $model->person_id = $person_id;
+        if ($model->load($this->request->post())) {
+            if ($model->save()) {
+                return $this->redirect(['pregnant/index', 'person_id' => $checked_person->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -90,6 +95,7 @@ class PregnantController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'person' => $checked_person
         ]);
     }
 

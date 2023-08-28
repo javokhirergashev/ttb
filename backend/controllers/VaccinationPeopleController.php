@@ -40,16 +40,12 @@ class VaccinationPeopleController extends Controller
      *
      * @return string
      */
-    public function actionIndex($person_id, $qvp_id)
+    public function actionIndex($person_id)
     {
 
         $checked_person = People::findOne($person_id);
         if (!$checked_person) {
             throw new NotFoundHttpException("Bunday shaxs aholi ro'yhatida mavjud emas!");
-        }
-        $checked_qvp = Qvp::findOne($qvp_id);
-        if (!$checked_qvp) {
-            throw new NotFoundHttpException("Bunday tashkilot SHTB tassarrufida mavjud emas  mavjud emas!");
         }
         $searchModel = new VaccinationPeopleSearch([
             'people_id' => $person_id
@@ -60,7 +56,6 @@ class VaccinationPeopleController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'person' => $checked_person,
-            'qvp_id' => $qvp_id
         ]);
     }
 
@@ -165,11 +160,12 @@ class VaccinationPeopleController extends Controller
             'searchModel' => $searchModel
         ]);
     }
+
     public function actionPdf($id, $qvp_id)
     {
-        $qvp = Qvp::findOne($qvp_id);
-        $model = People::findOne($id);
-        $content = $this->renderPartial('pdf', ['model' => $model, 'qvp' => $qvp]);
+        $person = People::findOne($id);
+        $models = VaccinationPeople::find()->where(['people_id' => $id])->all();
+        $content = $this->renderPartial('pdf', ['model' => $models, 'person' => $person]);
         $time = date('d.m.Y H:i');
 
         // setup kartik\mpdf\Pdf component

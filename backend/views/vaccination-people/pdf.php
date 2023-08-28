@@ -4,9 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var common\models\VaccinationPeople $model */
-/** @var common\models\People $model */
-/** @var $qvp */
+/** @var  $models */
+/** @var  $person */
+
+
 
 ?>
 
@@ -20,24 +21,24 @@ use yii\widgets\DetailView;
     </div>
     </div>
     <div class="row">
-        <p style="font-weight: bold;font-size: 20px" class="text-center ">Imtiyozli yo’llanma №<?= $model->id ?></p>
+        <p style="font-weight: bold;font-size: 20px" class="text-center ">Imtiyozli yo’llanma №<?= $person->id ?></p>
         <p class="text-center" style="font-size:17px;font-weight:500">O'zbekiston Respublikasi Sog'liqni Saqlash Vazirligi Namangan Shahar Tibbiyot Birlashmasi <br>Tibbiyot muassasasi nomi:  <?=$qvp->title?>&nbsp;<span style="text-decoration: underline;font-weight: bold">F №063</span></p>
-        <p><span style="font-weight: bold">Shaxsiy indentifikatsion tartib raqami:&nbsp;</span><?=$model->id?></p>
+        <p><span style="font-weight: bold">Shaxsiy indentifikatsion tartib raqami:&nbsp;</span><?=$person->qvp->title?></p>
         <p><span style="font-weight: bold">Ro'yxatga olindi:</span></p>
-        <p><span style="font-weight: bold">Ismi,&nbsp;sharifi: </span><?=$model->first_name?>&nbsp; <?=$model->last_name?> &nbsp;<?=$model->middle_name?> </p>
+        <p><span style="font-weight: bold">Ismi,&nbsp;sharifi: </span><?=$person->first_name?>&nbsp; <?=$person->last_name?> &nbsp;<?=$person->middle_name?> </p>
         <p>
             <span style="font-weight: bold">Tug'ilgan sana:&nbsp;yil:</span>
-            <?=Yii::$app->formatter->asDatetime($model->birthday,'php:Y')?>
+            <?=Yii::$app->formatter->asDatetime($person->birthday,'php:Y')?>
             <span style="font-weight: bold">oy:&nbsp;</span>
-            <?=Yii::$app->formatter->asDatetime($model->birthday,'php:M')?>
+            <?=Yii::$app->formatter->asDatetime($person->birthday,'php:M')?>
             <span style="font-weight: bold">kun:&nbsp;</span>
-            <?=Yii::$app->formatter->asDatetime($model->birthday,'php:d')?>
+            <?=Yii::$app->formatter->asDatetime($person->birthday,'php:d')?>
         </p>
         <p>
             <span style="font-weight: bold">Yashash manzilgohi, tibbiyot muassasasi nomi,aholi punkti:</span>
             <?=$qvp->title?>
             <span style="font-weight: bold">Ko'cha:</span>
-            <?=$qvp->address?>
+            <?=$person->address?>
         </p>
         <table class="table table-bordered">
                 <tr>

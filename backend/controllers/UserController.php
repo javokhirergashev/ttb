@@ -160,6 +160,8 @@ class UserController extends Controller
 
         $history = new History();
 
+
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query
         ]);

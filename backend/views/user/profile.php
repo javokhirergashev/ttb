@@ -44,8 +44,6 @@
                            <small
                               class="text-muted"><?= $user->position_id ? $user->position->title : "-------" ?></small>
                            <div class="staff-id">Employee ID : DR-<?= $user->id ?></div>
-                           <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Send Message</a>
-                           </div>
                         </div>
                      </div>
                      <div class="col-md-7">
@@ -96,7 +94,7 @@
                                     <div class="doctor-search-blk">
                                        <div class="top-nav-search table-search-blk">
                                           <form>
-                                             <input type="text" class="form-control"
+                                             <input type="text" name="name" class="form-control"
                                                     placeholder="Search here">
                                              <a class="btn"><img src="assets/img/icons/search-normal.svg"
                                                                  alt=""></a>

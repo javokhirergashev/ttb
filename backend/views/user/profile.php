@@ -75,13 +75,15 @@
     </div>
     <div class="profile-tabs">
         <ul class="nav nav-tabs nav-tabs-bottom">
-            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-bs-toggle="tab">Navbatdagilar</a>
+            <li class="nav-item"><a class="nav-link active" data-href="#about-cont" href="#about-cont" data-bs-toggle="tab">Navbatdagilar</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-bs-toggle="tab">Ko'rilganlar</a></li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-bs-toggle="tab">Yo'llanmalar</a></li>
+            <li class="nav-item"><a class="nav-link" data-href="#bottom-tab2" href="#bottom-tab2" data-bs-toggle="tab">Ko'rilganlar</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" data-href="#bottom-tab3" href="#bottom-tab3" data-bs-toggle="tab">Yo'llanmalar</a>
+            </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane show active" id="about-cont">
+            <div class="tab-pane  show active" id="about-cont">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card card-table show-entire">
@@ -94,7 +96,7 @@
                                                 <div class="doctor-search-blk">
                                                     <div class="top-nav-search table-search-blk">
                                                         <form>
-                                                            <input type="text" name="name" class="form-control"
+                                                            <input type="text" name="name" value="<?= Yii::$app->request->queryParams['name'] ?? '' ?>" class="form-control"
                                                                    placeholder="Search here">
                                                             <a class="btn"><img src="assets/img/icons/search-normal.svg"
                                                                                 alt=""></a>
@@ -107,7 +109,7 @@
                                                                     src="/backend-files/img/icons/plus.svg"
                                                                     alt="">
                                                         </a>
-                                                        <a href="javascript:;"
+                                                        <a href="<?=\yii\helpers\Url::to(['user/profile'])?>"
                                                            class="btn btn-primary doctor-refresh ms-2"><img
                                                                     src="/backend-files/img/icons/re-fresh.svg" alt="">
                                                         </a>
@@ -203,7 +205,9 @@
                                                 <div class="doctor-search-blk">
                                                     <div class="top-nav-search table-search-blk">
                                                         <form>
-                                                            <input type="text" name="fullname" class="form-control"
+                                                            <input type="text" name="fullname"
+                                                                   value="<?= Yii::$app->request->queryParams['fullname'] ?? '' ?>"
+                                                                   class="form-control"
                                                                    placeholder="Search here">
                                                             <a class="btn"><img src="assets/img/icons/search-normal.svg"
                                                                                 alt=""></a>
@@ -283,8 +287,9 @@
                                                 <div class="doctor-search-blk">
                                                     <div class="top-nav-search table-search-blk">
                                                         <form>
-                                                            <input type="text" value=""
-                                                                   name="ReferralSearch[first_name]"
+                                                            <input type="text"
+                                                                   value="<?= Yii::$app->request->queryParams['fname'] ?? '' ?>"
+                                                                   name="fname"
                                                                    class="form-control"
                                                                    placeholder="Search here">
                                                             <a class="btn"><img src="assets/img/icons/search-normal.svg"

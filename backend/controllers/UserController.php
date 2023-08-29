@@ -155,26 +155,47 @@ class UserController extends Controller
 
     public function actionProfile()
     {
+        $requestParamas = \Yii::$app->request->queryParams;
         $query = Queue::find()
             ->andWhere(['user_id' => \Yii::$app->user->id])->andWhere(['status' => Queue::STATUS_PENDING]);
 
+        if (isset($requestParamas['name'])) {
+            $name = trim($requestParamas['name'], ' ');
+            $query->andWhere(['or',
+                ['ilike', "CONCAT(first_name, ' ', last_name)", $name],
+                ['ilike', "CONCAT(last_name, ' ', first_name)", $name],
+            ]);
+        }
+
         $history = new History();
-
-
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query
-        ]);
-
-        $referralDataProvider = new ActiveDataProvider([
-            'query' => Referral::find()->andWhere(['created_by' => \Yii::$app->user->id])
-        ]);
 
         $historyQuery = People::find()->leftJoin('diagnosis', 'people.id=diagnosis.people_id')
             ->andWhere(['diagnosis.doctor_id' => \Yii::$app->user->id])->orderBy(['diagnosis.id' => SORT_DESC]);
-        $historyProvider = new ActiveDataProvider([
-            'query' => $historyQuery
-        ]);
+
+        if (isset($requestParamas['full_name'])) {
+            $name = trim($requestParamas['full_name'], ' ');
+            $historyQuery->andWhere(['or',
+                ['ilike', "CONCAT(first_name, ' ', last_name)", $name],
+                ['ilike', "CONCAT(last_name, ' ', first_name)", $name],
+            ]);
+        }
+
+        $referralQuery = Referral::find()->andWhere(['created_by' => \Yii::$app->user->id]);
+
+        if (isset($requestParamas['fname'])) {
+            $name = trim($requestParamas['fname'], ' ');
+            $referralQuery->
+            leftJoin('people', 'referral.people_id=people.id')
+                ->andWhere(['or',
+                    ['ilike', "CONCAT(first_name, ' ', last_name)", $name],
+                    ['ilike', "CONCAT(last_name, ' ', first_name)", $name],
+                ]);
+        }
+
+
+        $dataProvider = new ActiveDataProvider(['query' => $query]);
+        $referralDataProvider = new ActiveDataProvider(['query' => $referralQuery]);
+        $historyProvider = new ActiveDataProvider(['query' => $historyQuery]);
 
         return $this->render('profile', [
             'user' => \Yii::$app->user->identity,

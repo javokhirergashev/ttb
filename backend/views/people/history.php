@@ -22,11 +22,6 @@
                 <li class="breadcrumb-item active"><?= $people->first_name . " " . $people->last_name ?></li>
             </ul>
 
-            <form method="post" action="<?= \yii\helpers\Url::to(['people/history', 'id' => $people->id]) ?>"
-                  enctype="multipart/form-data">
-                <input type="file" name="excel">
-                <input type="submit">
-            </form>
         </div>
     </div>
     <div class="card-box profile-header pb-3">

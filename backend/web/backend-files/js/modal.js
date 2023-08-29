@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let element = document.querySelector(`a[data-href="#about-cont"]`);
         console.log(element)
         if (element) {
-            tabElement.classList.add("active");
+            element.classList.add("active");
             const tabContentId = element.getAttribute("href");
             document.querySelector(tabContentId).classList.add("show", "active");
         }

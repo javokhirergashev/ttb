@@ -28,7 +28,6 @@ $(document).ready(function () {
         }
         var selectedDate = dateTimePicker.val();
         console.log(selectedDate)
-        alert("dsfsdf")
 
 
         // Send AJAX request

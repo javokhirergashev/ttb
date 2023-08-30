@@ -48,7 +48,7 @@ use yii\widgets\DetailView;
         <?php if ($model->id == 2 ): ?>
             <p class="text-center"><?=$model->vacclass->name?></p>
         <?php endif; ?>
-
+    
     <?php endforeach; ?>
     <table class="table table-bordered">
         <tr>

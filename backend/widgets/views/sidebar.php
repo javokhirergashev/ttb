@@ -8,7 +8,7 @@
                    <span class="menu-side">
                        <img src="/backend-files/img/icons/menu-icon-01.svg" alt="">
                    </span>
-                  <span> Bosh sahifa test git </span>
+                  <span> Bosh sahifa</span>
                </a>
             </li>
             <li>
@@ -71,7 +71,7 @@
                      <span class="menu-side">
                          <img src="/backend-files/img/icons/menu-icon-13.svg" alt="">
                      </span>
-                     <span> Shifoxonalar </span>
+                     <span> Shifoxonalar</span>
                  </a>
              </li>
             <li>
@@ -87,7 +87,7 @@
                <a href="<?= \yii\helpers\Url::to(['category/']) ?>"
                     class="<?= Yii::$app->controller->id == "category" ? "active" : "" ?>">
                    <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
-                  <span> Kategoriyalar </span>
+                  <span> Kategoriyalar</span>
                </a>
             </li>
             <li>

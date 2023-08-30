@@ -164,10 +164,13 @@ class VaccinationPeopleController extends Controller
 
     public function actionPdf($id)
     {
+
         $person = People::findOne($id);
         $models = VaccinationPeople::find()->where(['people_id' => $id])->all();
-        $content = $this->renderPartial('pdf', ['model' => $models, 'person' => $person]);
-
+//        foreach ($models as $model){
+//            print_r($model->vacclass->name);die();
+//        }
+        $content = $this->renderPartial('pdf', ['models' => $models, 'person' => $person]);
         $time = date('d.m.Y H:i');
 
         // setup kartik\mpdf\Pdf component

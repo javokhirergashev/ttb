@@ -1,6 +1,6 @@
 <div class="header">
    <div class="header-left">
-      <a href="index.html" class="logo">
+      <a href="/" class="logo">
          <img src="/backend-files/img/logo.png" width="35" height="35" alt=""> <span>Pre Clinic</span>
       </a>
    </div>

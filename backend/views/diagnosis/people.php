@@ -100,18 +100,16 @@
                                     <td><?= $model->qvp_id ? $model->qvp->title : " ---- ----" ?></td>
                                     <td><?= $model->quarter_id ? $model->quarter->name[Yii::$app->language] : " ---- ----" ?></td>
                                     <td class="text-end">
-                                        <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->id, 'type' => \common\models\Diagnosis::TYPE_REFERENCE]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>
+                                        <a href="<?= \yii\helpers\Url::to(['people/reference-create', 'id' => $model->id]) ?>"
+                                           title="Ma'lumotnoma yaratish" class="btn btn-primary add-pluss ms-2"><i
+                                                    class="fa fa-file-text"></i></a>
                                         <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->id]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-plus"></i></a>
-                                        <a href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
-                                           class="btn btn-primary add-pluss ms-2"><i class="fa fa-eye"></i></a>
-                                        <a data-method="post"
-                                           href="<?= \yii\helpers\Url::to(['queue/delete', 'id' => $model->id]) ?>"
-                                           class="btn btn-danger add-pluss ms-2"><i
-                                                    class="fa fa-times"></i></a>
+                                           title="Diagnost qo'shish" class="btn btn-primary add-pluss ms-2"><i
+                                                    class="fa fa-plus"></i></a>
+                                        <a  title="Ko'rish" href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
+                                           class="btn btn-success add-pluss ms-2"><i class="fa fa-eye"></i></a>
                                         <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
-                                           class="btn btn-info  add-pluss ms-2"><i
+                                           class="btn btn-info text-white  add-pluss ms-2"><i
                                                     class="fa fa-right-long"></i></a>
                                     </td>
                                 </tr>

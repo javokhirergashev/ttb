@@ -32,6 +32,9 @@ class Diagnosis extends \yii\db\ActiveRecord
         return 'diagnosis';
     }
 
+
+    const TYPE_REFERENCE = 1;
+
     public function behaviors()
     {
         return [

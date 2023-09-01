@@ -356,9 +356,8 @@ class PeopleController extends Controller
 
     public function actionReferenceCreate($id)
     {
-        $model = new Reference();
+        $model = new Reference(['people_id' => $id]);
         $people = People::findOne($id);
-
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['people/history', 'id' => $id]);

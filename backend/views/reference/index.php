@@ -54,7 +54,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                                class="btn btn-primary doctor-refresh ms-2"><img
                                                         src="/backend-files/img/icons/re-fresh.svg" alt=""></a>
                                         </div>
+
                                     </div>
+                                </div>
+                                <div class="text-end">
+                                    <a href="<?= \yii\helpers\Url::to(['diagnosis/people']) ?>" class="btn btn-primary btn-rounded"><i
+                                                class="fa fa-plus"></i>Aholi ro'yhatiga o'tish</a>
                                 </div>
                             </div>
                         </div>

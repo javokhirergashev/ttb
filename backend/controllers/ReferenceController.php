@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\Reference;
+use common\models\ReferenceDiagnosis;
 use common\models\search\ReferenceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -130,5 +131,33 @@ class ReferenceController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    public function actionDiagnosisCreate($id)
+    {
+
+        $reference = Reference::findOne($id);
+        $people = $reference->people;
+        $model = new ReferenceDiagnosis(['reference_id' => $id]);
+        $referenceDiagnosis = ReferenceDiagnosis::find()->andWhere(['reference_id' => $id])->all();
+        if ($model->load(\Yii::$app->request->post())) {
+
+            if ($model->position == ReferenceDiagnosis::POSITION_MAIN_DOCTOR) {
+                $reference->updateAttributes(['status' => Reference::STATUS_FINISHED]);
+            }
+            if ($model->save()) {
+                return $this->redirect(['reference/index']);
+            }
+        }
+
+
+        return $this->render('diagnosis-create', [
+            'model' => $model,
+            'people' => $people,
+            'referenceDiagnosis' => $referenceDiagnosis,
+            'reference' => $reference
+        ]);
+
     }
 }

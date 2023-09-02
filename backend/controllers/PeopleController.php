@@ -360,7 +360,7 @@ class PeopleController extends Controller
         $people = People::findOne($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['people/history', 'id' => $id]);
+            return $this->redirect(['reference/index']);
         }
 
 

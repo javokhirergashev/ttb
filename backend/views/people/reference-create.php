@@ -7,27 +7,30 @@ use yii\widgets\ActiveForm;
 /** @var common\models\Reference $model */
 /** @var yii\widgets\ActiveForm $form */
 /** @var \common\models\People $people */
+$this->title = 'Malumotnomalar';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="diagnosis-form">
-    <a href="<?= \yii\helpers\Url::to(['user/profile']) ?>">Ortga</a>
+    <h4>Malumotnoma yaratish</h4>
     <?php $form = ActiveForm::begin(); ?>
     <div class="row card-box">
+
         <h3><strong class="font-weight-normal"> FIO</strong>
             : <?= $people->first_name . " " . $people->last_name . " " . $people->middle_name ?></h3>
         <h3><strong class="font-weight-normal"> Tugilgan yili</strong> : <?= $people->birthday ?></h3>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="col-form-label">Maqsad</label>
+                <label class="col-form-label">Turi</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'reason')->textarea()->label(false) ?>
+                    <?= $form->field($model, 'type')->dropDownList(\common\models\Reference::getTypeList())->label(false) ?>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="col-form-label">Qayerga (so'ralgan joyga)</label>
+                <label class="col-form-label">Qayerga (so'ralgan joy)</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'where_to')->textarea()->label(false) ?>
+                    <?= $form->field($model, 'where_to')->textInput()->label(false) ?>
                 </div>
             </div>
         </div>

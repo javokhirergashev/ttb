@@ -90,7 +90,7 @@ class Reference extends \yii\db\ActiveRecord
     }
 
 
-    public function getTypeList()
+    public static function getTypeList()
     {
         return [
             self::TYPE_086 => "086",
@@ -98,7 +98,12 @@ class Reference extends \yii\db\ActiveRecord
         ];
     }
 
-    public  function getStatusList()
+    public function getTypeName()
+    {
+        return self::getTypeList()[$this->type];
+    }
+
+    public function getStatusList()
     {
         return [
             self::STATUS_START => "Aktiv",
@@ -109,5 +114,11 @@ class Reference extends \yii\db\ActiveRecord
     public function getReferenceDiagnosis()
     {
         return $this->hasMany(ReferenceDiagnosis::class, ['reference_id' => 'id']);
+    }
+
+
+    public function isMainDoctor()
+    {
+        return $this->getReferenceDiagnosis()->andWhere(['position' => ReferenceDiagnosis::POSITION_MAIN_DOCTOR])->exists();
     }
 }

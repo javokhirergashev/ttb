@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= Url::to(['/']) ?>">Bosh sahifa</a></li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-                    <li class="breadcrumb-item active">Reference list</li>
+                    <li class="breadcrumb-item active">Malumotnomalar</li>
                 </ul>
             </div>
         </div>
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <h3>Malumotnoma ro'yxati</h3>
                                     <div class="doctor-search-blk">
                                         <div class="top-nav-search table-search-blk">
-                                            <form method="get" action="people">
+                                            <form method="get">
                                                 <input type="text" value="<?= $searchModel->full_name ?>"
                                                        name="PeopleSearch[full_name]"
                                                        class="form-control"
@@ -79,21 +79,29 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php
 
                             foreach ($dataProvider->getModels() as $index => $model): ?>
-                                <tr>
-                                    <td><?= $model->id; ?></td>
-                                    <td class="profile-image">
-                                        <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
-                                            <?= $model->people_id ? $model->people->getFullName() : " "; ?>
-                                        </a>
-                                    </td>
-                                    <td><?= $model->getTypeList()[1] ?></td>
-                                    <td><?= $model->where_to ?></td>
-                                    <td><?= date('d.m.Y H:i', $model->created_at) ?></td>
-                                    <td><?= $model->getReferenceDiagnosis()->count() ?? "---" ?></td>
-                                    <td class="text-center">
-                                        Aktive
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td><?= $model->id; ?></td>
+                                <td class="profile-image">
+                                    <a href="<?= \yii\helpers\Url::to(['reference/diagnosis-create', 'id' => $model->id]) ?>">
+                                        <?= $model->people_id ? $model->people->getFullName() : " "; ?>
+                                    </a>
+                                </td>
+                                <td><?= $model->getTypeName() ?></td>
+                                <td><?= $model->where_to ?></td>
+                                <td><?= date('d.m.Y H:i', $model->created_at) ?></td>
+                                <td><?= $model->getReferenceDiagnosis()->count() ?? "---" ?></td>
+                                <td class="text-center">
+                                    <?php
+                                    if ($model->status === Reference::STATUS_START):
+                                        echo '<span class="badge badge-primary">Faol</span>';
+                                        ?>
+                                    <?php else : ?>
+                                        <a href="<?= $model->status === Reference::STATUS_FINISHED ? Url::to(['reference/pdf', 'id' => $model->id]) : "#" ?>"
+                                       class=" me-2"><img src="/backend-files/img/icons/pdf-icon-01.svg"
+                                                          alt=""></a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
                             <?php endforeach; ?>
                             </tbody>
                         </table>

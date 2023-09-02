@@ -2,7 +2,10 @@
 
 namespace common\models;
 
-use app\models\User;
+
+use MongoDB\BSON\Timestamp;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "reference_diagnosis".
@@ -30,6 +33,26 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
         return 'reference_diagnosis';
     }
 
+    const POSITION_THERAPIST = 1;
+    const POSITION_DOCTOR = 2;
+    const POSITION_ENDOCRINOLOGIST = 3;
+    const POSITION_PSYCHIATRIST = 4;
+    const POSITION_OTOLARINGOLOG = 5;
+    const POSITION_OFTALMOLOG = 6;
+    const POSITION_DENTIST = 7;
+    const POSITION_DERMATOLOG = 8;
+    const POSITION_NARCOLOG = 9;
+    const POSITION_MAIN_DOCTOR = 10;
+
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+            BlameableBehavior::class
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -37,6 +60,7 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
     {
         return [
             [['reference_id', 'position', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'default', 'value' => null],
+            [['position'], 'default', 'value' => self::POSITION_DOCTOR],
             [['reference_id', 'position', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['diagnosis'], 'string', 'max' => 255],
             [['reference_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reference::class, 'targetAttribute' => ['reference_id' => 'id']],
@@ -90,5 +114,26 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
     public function getUpdatedBy()
     {
         return $this->hasOne(User::class, ['id' => 'updated_by']);
+    }
+
+    public static function getPositionList()
+    {
+        return [
+            self::POSITION_THERAPIST => 'Терапевт',
+            self::POSITION_DOCTOR => 'Врач',
+            self::POSITION_ENDOCRINOLOGIST => 'Эндокринолог',
+            self::POSITION_PSYCHIATRIST => 'Психиатр',
+            self::POSITION_OTOLARINGOLOG => 'Отоларинголог',
+            self::POSITION_OFTALMOLOG => 'Окулист',
+            self::POSITION_DENTIST => 'Стоматолог',
+            self::POSITION_DERMATOLOG => 'Дерматолог',
+            self::POSITION_MAIN_DOCTOR => 'Главный врач',
+
+        ];
+    }
+
+    public function getPositionName()
+    {
+        return self::getPositionList()[$this->position];
     }
 }

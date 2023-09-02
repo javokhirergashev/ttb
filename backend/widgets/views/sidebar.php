@@ -19,15 +19,7 @@
                    </span>
                   <span> Xodimlar </span></a>
             </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
-                  class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">
-                   <span class="menu-side">
-                       <img src="/backend-files/img/icons/menu-icon-06.svg" alt="">
-                   </span>
-                  <span> Lavozimlar </span>
-               </a>
-            </li>
+
             <li>
                <a href="<?= \yii\helpers\Url::to(['people/']) ?>"
                   class="<?= Yii::$app->controller->id == "people" ? "active" : "" ?>">
@@ -74,15 +66,23 @@
                      <span> Shifoxonalar</span>
                  </a>
              </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['referral/index']) ?>"
+             <li>
+                 <a href="<?= \yii\helpers\Url::to(['referral/index']) ?>"
                     class="<?= Yii::$app->controller->id == "referral" ? "active" : "" ?>">
                    <span class="menu-side">
                        <img src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span>
-                  <span> Yo'llanmalar <span
-                        class="badge badge-warning"><?= \common\models\Referral::find()->andWhere(['status' => \common\models\Referral::STATUS_PENDING])->count() ?></span></span>
-               </a>
-            </li>
+                     <span> Yo'llanmalar <span
+                                 class="badge badge-warning"><?= \common\models\Referral::find()->andWhere(['status' => \common\models\Referral::STATUS_PENDING])->count() ?></span></span>
+                 </a>
+             </li>
+             <li>
+                 <a href="<?= \yii\helpers\Url::to(['reference/index']) ?>"
+                    class="<?= Yii::$app->controller->id == "referral" ? "active" : "" ?>">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
+                     <span> Ma'lumotnomalar</span>
+                 </a>
+             </li>
             <li>
                <a href="<?= \yii\helpers\Url::to(['category/']) ?>"
                     class="<?= Yii::$app->controller->id == "category" ? "active" : "" ?>">
@@ -98,6 +98,15 @@
                   <span> Xizmatlar </span>
                </a>
             </li>
+             <li>
+                 <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
+                    class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-06.svg" alt="">
+                   </span>
+                     <span> Lavozimlar </span>
+                 </a>
+             </li>
             <li>
                <a href="<?= \yii\helpers\Url::to(['news/']) ?>"
                     class="<?= Yii::$app->controller->id == "news" ? "active" : "" ?>">

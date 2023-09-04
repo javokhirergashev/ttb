@@ -166,11 +166,8 @@ class VaccinationPeopleController extends Controller
     {
 
         $person = People::findOne($id);
-        $models = VaccinationPeople::find()->where(['people_id' => $id])->all();
-//        foreach ($models as $model){
-//            print_r($model->vacclass->name);die();
-//        }
-        $content = $this->renderPartial('pdf', ['models' => $models, 'person' => $person]);
+
+        $content = $this->renderPartial('pdf', ['person' => $person]);
         $time = date('d.m.Y H:i');
 
         // setup kartik\mpdf\Pdf component

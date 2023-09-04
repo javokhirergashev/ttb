@@ -24,7 +24,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $created_at
  * @property int|null $updated_at
  *
- * @property People $people
+ * @property People $person
  * @property Vaccination $vaccination
  */
 class VaccinationPeople extends \yii\db\ActiveRecord
@@ -36,12 +36,14 @@ class VaccinationPeople extends \yii\db\ActiveRecord
     {
         return 'vaccination_people';
     }
+
     public function behaviors()
     {
         return [
             TimestampBehavior::class,
         ];
     }
+
     /**
      * {@inheritdoc}
      */
@@ -73,7 +75,7 @@ class VaccinationPeople extends \yii\db\ActiveRecord
             'reaction' => 'Emlashga rekasiyalar',
             'reaction_local' => 'Mahalliy',
             'reaction_common' => 'Umumiy',
-            'medical_repulse'  => 'Tibbiyot qarshiligi',
+            'medical_repulse' => 'Tibbiyot qarshiligi',
             'created_at' => 'Yaratilgan vaqti',
             'updated_at' => 'Tahrirlangan muddati',
         ];
@@ -93,10 +95,12 @@ class VaccinationPeople extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Vaccination::class, ['id' => 'vaccination_id']);
     }
+
     public function getVacclass()
     {
         return $this->hasOne(VaccinationClass::class, ['id' => 'vaccination_class_id']);
     }
+
     public function getPerson()
     {
         return $this->hasOne(People::class, ['id' => 'people_id']);

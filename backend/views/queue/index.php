@@ -10,15 +10,26 @@ use yii\grid\GridView;
 /** @var common\models\search\QueueSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Queues';
+$this->title = 'Navbatlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="queue-index">
-
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Bosh sahifa </a>
+                    </li>
+                    <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                    <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Queue', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yangi navbat yaratish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

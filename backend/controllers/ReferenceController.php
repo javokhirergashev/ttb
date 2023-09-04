@@ -160,4 +160,23 @@ class ReferenceController extends Controller
         ]);
 
     }
+
+
+    public function actionDiagnosisUpdate($diagnosis_id)
+    {
+        $model = ReferenceDiagnosis::findOne($diagnosis_id);
+
+        if ($model->load(\Yii::$app->request->post())) {
+
+            if ($model->save()) {
+                return $this->redirect(['reference/index']);
+            }
+        }
+
+
+        return $this->render('diagnosis-update', [
+            'model' => $model,
+        ]);
+
+    }
 }

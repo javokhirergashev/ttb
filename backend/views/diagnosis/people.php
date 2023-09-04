@@ -109,7 +109,7 @@
                                         <a  title="Ko'rish" href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
                                            class="btn btn-success add-pluss ms-2"><i class="fa fa-eye"></i></a>
                                         <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
-                                           class="btn btn-info text-white  add-pluss ms-2"><i
+                                                   class="btn btn-info text-white  add-pluss ms-2"><i
                                                     class="fa fa-right-long"></i></a>
                                     </td>
                                 </tr>

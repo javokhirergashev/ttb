@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-sm-12">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Bosh sahifa </a>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Bosh sahifa </a>
                     </li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-    <h3><?= Html::encode($this->title) ?></h3>
+
 
     <p>
         <?= Html::a('Yangi tashxis yaratish', ['create'], ['class' => 'btn btn-success']) ?>

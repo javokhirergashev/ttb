@@ -31,10 +31,7 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
-//        'authManager' => [
-//            'class' => 'yii\rbac\DbManager', // You can use different implementations, like DbManager or FileManager
-//            'defaultRoles' => ['*'], // Define default roles
-//        ],
+
         'qr' => [
             'class' => '\Da\QrCode\Component\QrCodeComponent',
             // ... you can configure more properties of the component here
@@ -62,10 +59,6 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'mdm' => [
-            'class' => '',
-            // ...
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

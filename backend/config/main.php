@@ -24,19 +24,17 @@ return [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'site/*', // Allow access to the site controller for everyone.
-            'admin/*', // Allow access to the admin controller for those with the necessary permissions.
-            // Add more actions that should be accessible without authentication or specific permissions.
+            '*', // Allow access to the admin controller for those with the necessary permissions.
         ],
     ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
-        'authManager' => [
-            'class' => 'yii\rbac\DbManager', // You can use different implementations, like DbManager or FileManager
-            'defaultRoles' => ['*'], // Define default roles
-        ],
+//        'authManager' => [
+//            'class' => 'yii\rbac\DbManager', // You can use different implementations, like DbManager or FileManager
+//            'defaultRoles' => ['*'], // Define default roles
+//        ],
         'qr' => [
             'class' => '\Da\QrCode\Component\QrCodeComponent',
             // ... you can configure more properties of the component here

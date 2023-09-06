@@ -17,5 +17,14 @@ return [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'itemTable' => 'auth_item',
+            'assignmentTable' => 'auth_assignment',
+            'ruleTable' => 'auth_rule',
+            'defaultRoles' => ['guest'],
+            'cache' => 'cache',
+        ],
+
     ],
 ];

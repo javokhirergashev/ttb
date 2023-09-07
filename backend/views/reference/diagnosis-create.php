@@ -80,11 +80,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?= $diagnosis->getPositionName() ?>
                                     </td>
                                     <td><?= $diagnosis->diagnosis ?></td>
-                                    <td><?= $diagnosis->createdBy->getFullName() ?? "--- ---" ?></td>
+                                    <td><?= $diagnosis->createdBy->getFullName() ?? "Admin" ?></td>
                                     <td><?= date('d.m.Y H:i', $diagnosis->created_at) ?></td>
                                     <?php if ($diagnosis->created_by == Yii::$app->user->id): ?>
                                         <td class="text-center"><a
-                                                    href="<? Url::to(['reference/pdf', 'id' => $model->id]) ?>"
+                                                    href="<?= Url::to(['reference/diagnosis-update', 'diagnosis_id' => $diagnosis->id]) ?>"
                                                     class="btn btn-success me-2"><i class="fa fa-edit"></i></a></td>
                                     <?php endif; ?>
                                 </tr>

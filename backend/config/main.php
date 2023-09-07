@@ -15,11 +15,23 @@ return [
     'timeZone' => 'Asia\Tashkent',
     'language' => 'uz',
     'name' => 'TTB',
-    'modules' => [],
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu', // You can choose a different layout if desired.
+        ],
+    ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            '*', // Allow access to the admin controller for those with the necessary permissions.
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
+
         'qr' => [
             'class' => '\Da\QrCode\Component\QrCodeComponent',
             // ... you can configure more properties of the component here

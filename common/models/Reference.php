@@ -3,6 +3,9 @@
 namespace common\models;
 
 
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "reference".
  *
@@ -33,6 +36,13 @@ class Reference extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+            BlameableBehavior::class
+        ];
+    }
     public static function tableName()
     {
         return 'reference';
@@ -45,8 +55,9 @@ class Reference extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'status', 'type', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'default', 'value' => null],
-            [['user_id', 'people_id', 'status', 'type', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
+            [['user_id', 'people_id', 'status', 'type', 'created_by', 'updated_by'], 'integer'],
             [['reason', 'where_to'], 'string', 'max' => 255],
+            [['created_at', 'updated_at'], 'safe'],
             [['type'], 'default', 'value' => self::TYPE_086],
             [['status'], 'default', 'value' => self::STATUS_START],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],

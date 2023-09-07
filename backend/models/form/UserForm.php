@@ -44,7 +44,7 @@ class UserForm extends \yii\base\Model
     public $qualification_date;
     public $hayfsan;
     public $twitter_link;
-    public $terrytory_id;
+    public $territory_id;
 
 
 

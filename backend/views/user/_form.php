@@ -1,6 +1,8 @@
 <?php
 
+use kartik\depdrop\DepDrop;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
@@ -221,6 +223,31 @@ use yii\widgets\ActiveForm;
                                     'options' => [
                                     ]
                                 ])->label(false) ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label">Brigada</label>
+                            <div class="col-md-9">
+                                <?= $form->field($model, 'territory_id')->widget(DepDrop::classname(), [
+                                    'pluginOptions' => [
+                                        'depends' => ['territory-id'],
+                                        'placeholder' => 'Uchastka tanlang',
+                                        'url' => Url::to(['/people/territory']),
+                                        'initialize' => true,
+                                    ],
+                                    'type' => DepDrop::TYPE_SELECT2,
+                                ])->label(false); ?>
+                                <?php
+                                echo $form->field($model, 'territory_id')->widget(DepDrop::classname(), [
+                                    'pluginOptions' => [
+                                        'depends' => ['territory_code'],
+                                        'placeholder' => 'Uchastkani  tanlang',
+                                        'url' => Url::to(['/people/territory']),
+                                        'initialize' => true,
+                                    ],
+                                    'type' => DepDrop::TYPE_SELECT2,
+                                ])->label(false);
+                                ?>
                             </div>
                         </div>
                     </div>

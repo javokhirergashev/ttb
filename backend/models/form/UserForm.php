@@ -44,6 +44,7 @@ class UserForm extends \yii\base\Model
     public $qualification_date;
     public $hayfsan;
     public $twitter_link;
+    public $terrytory_id;
 
 
 
@@ -82,7 +83,7 @@ class UserForm extends \yii\base\Model
             [['password'], 'string', 'min' => 6, 'max' => 16],
             [['first_name', 'last_name', 'email', 'address', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
-            [['status', 'role', 'user_id', 'id', 'qvp_id', 'district_id', 'position_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
+            [['status', 'role', 'user_id', 'id', 'qvp_id', 'district_id', 'position_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan', 'territory_id'], 'integer'],
             [['password_confirm'], 'compare', 'compareAttribute' => 'password'],
         ];
     }
@@ -93,7 +94,7 @@ class UserForm extends \yii\base\Model
         $scenarios['register'] = ['username', 'email', 'password', 'phone_number', 'avatar', 'first_name', 'last_name',
             'password_confirm', 'status', 'role', 'birthday', 'address', 'position_id', 'qvp_id', 'district_id',
             'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link', 'gender', 'category', 'rate', 'retired',
-            'decree', 'disabled', 'deputy', 'hayfsan', 'birthday', 'qualification_date'];
+            'decree', 'disabled', 'deputy', 'hayfsan', 'birthday', 'qualification_date', 'terrytory_id'];
         return $scenarios;
     }
 
@@ -159,7 +160,8 @@ class UserForm extends \yii\base\Model
             'telegram_link' => $this->telegram_link,
             'instagram_link' => $this->instagram_link,
             'facebook_link' => $this->facebook_link,
-            'twitter_link' => $this->facebook_link
+            'twitter_link' => $this->facebook_link,
+            'territory_id' => $this->terrytory_id
         ]);
 
         if ($this->password) {

@@ -178,14 +178,21 @@
                       <a href="<?= \yii\helpers\Url::to(['banner/']) ?>"
                       class="<?= Yii::$app->controller->id == "banner" ? "active" : "" ?>">Bannerlar</a>
                   </li>
+                   <li>
+                       <a href="<?= \yii\helpers\Url::to(['partners/']) ?>"
+                          class="<?= Yii::$app->controller->id == "partners" ? "active" : "" ?>">
+                           <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span>
+                           <span> Hamkorlar</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a href="<?= \yii\helpers\Url::to(['contact/']) ?>"
+                          class="<?= Yii::$app->controller->id == "contact" ? "active" : "" ?>">
+                           <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-11.svg" alt=""></span>
+                           <span> Kontaktlar </span>
+                       </a>
+                   </li>
                </ul>
-            </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['contact/']) ?>"
-                    class="<?= Yii::$app->controller->id == "contact" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-11.svg" alt=""></span>
-                  <span> Kontaktlar </span>
-               </a>
             </li>
             <li>
                <a href="<?= \yii\helpers\Url::to(['site/map']) ?>"
@@ -194,14 +201,6 @@
                    <span> Kartada ko'rish</span>
                </a>
             </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['partners/']) ?>"
-                    class="<?= Yii::$app->controller->id == "partners" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span>
-                  <span> Hamkorlar</span>
-               </a>
-            </li>
-
          </ul>
          <div class="logout-btn">
             <a data-method="post" href="<?= \yii\helpers\Url::to(['site/logout']) ?>"><span class="menu-side"><img

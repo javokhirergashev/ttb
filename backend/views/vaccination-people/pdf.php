@@ -52,7 +52,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
         <?= $person->address ?>
     </p>
     <p>
-        <span style="font-weight: bold">Tug'ilgan sana:&nbsp;yil:</span>
+        <span style="font-weight: bold">Tug'ilgan sana:&nbsp;</span>
         <?= Yii::$app->formatter->asDatetime($person->birthday, 'php:d.m.Y') ?>
     </p>
     <p>
@@ -64,10 +64,10 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
     </p>
 </div>
 <div class="row">
+    <br>
     <?php foreach ($classes as $index => $class): ?>
         <?php if ($class->id == 1) : ?>
             <p class="text-center"><?= $class->name ?></p>
-
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 10%">Emlash turi</td>
@@ -80,16 +80,15 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                     <td class="text-center">Shu <br>jumladan <br>umumiy</td>
                     <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
                 </tr>
-                <tr>
-
-                </tr>
+                <br>
                 <?php
                 /**
                  * @var $models \common\models\Vaccination[]
                  * @var $vaccinationPeople \common\models\VaccinationPeople
                  */
                 $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
-                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+                    ->orderBy(['id' => SORT_ASC])->all();
+                ?>
 
                 <?php foreach ($models as $model): ?>
                     <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
@@ -107,24 +106,26 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 
                 <?php endforeach; ?>
             </table>
+            <br>
+
 
         <?php elseif ($class->id == 2) : ?>
+
             <p class="text-center"><?= $class->name ?></p>
             <table class="table table-bordered">
                 <tr>
-                    <td class="text-center" style="width: 10%">Emlash turi</td>
+                    <td class="text-center" style="width: 11%">Tuberkulin sinamalari,oy,kun,yil</td>
+                    <td class="text-center" style="width: 8%">Natijasi</td>
+                    <td class="text-center" style="width: 10%">Seriya</td>
+                    <td class="text-center" style="width: 8%">Emlash turi</td>
                     <td class="text-center">Yoshi</td>
                     <td class="text-center">Muddati</td>
-                    <td class="text-center">Miqdori</td>
-                    <td class="text-center">Preparatning nomi,ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width: 8.5%">Miqdori <br> (doza)</td>
+                    <td class="text-center" style="width: 8%">Seriya</td>
                     <td class="text-center">Emlashga reaksiyalar <br>maxalliy, <br>umumiy</td>
-                    <td class="text-center">Shu <br>jumladan <br>maxalliy</td>
-                    <td class="text-center">Shu <br>jumladan <br>umumiy</td>
                     <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
                 </tr>
-                <tr>
 
-                </tr>
                 <?php
                 /**
                  * @var $models \common\models\Vaccination[]
@@ -136,23 +137,113 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php foreach ($models as $model): ?>
                     <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
                     <tr>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->created_at : ""?></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
                         <td class="text-center"><?= $model->name ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->seria : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
-                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction_local : "" ?></td>
-                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction_common : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+<!--                        <td class="text-center">--><?php //= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?><!--</td>-->
                     </tr>
 
                 <?php endforeach; ?>
             </table>
+            <br>
+            <br>
+            <br>
+            <br>
         <?php elseif ($class->id == 3) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center" ><?= $class->name ?></p>
+            <table style="margin-top:100px!important;" class="table table-bordered" >
+        <tr>
+            <td class="text-center" style="width: 11%">Tuberkulin sinamalari,oy,kun,yil</td>
+            <td class="text-center" style="width: 8%">Natijasi</td>
+            <td class="text-center" style="width: 10%">Seriya</td>
+            <td class="text-center" style="width: 8%">Emlash turi</td>
+            <td class="text-center">Yoshi</td>
+            <td class="text-center">Muddati</td>
+            <td class="text-center" style="width: 8.5%">Miqdori <br> (doza)</td>
+            <td class="text-center" style="width: 8%">Seriya</td>
+            <td class="text-center">Emlashga reaksiyalar <br>maxalliy, <br>umumiy</td>
+            <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+        </tr>
+
+        <?php
+        /**
+         * @var $models \common\models\Vaccination[]
+         * @var $vaccinationPeople \common\models\VaccinationPeople
+         */
+        $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+            ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+        <?php foreach ($models as $model): ?>
+            <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+            <tr>
+                <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->created_at : ""?></td>
+                <td class="text-center"></td>
+                <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                <td class="text-center"><?= $model->name ?></td>
+                <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->seria : "" ?></td>
+                <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+                <!--                        <td class="text-center">--><?php //= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?><!--</td>-->
+            </tr>
+
+        <?php endforeach; ?>
+    </table>
         <?php elseif ($class->id == 4) : ?>
             <p class="text-center"><?= $class->name ?></p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 11%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 8%">Miqdori</td>
+                    <td class="text-center">Seriya</td>
+                    <td class="text-center">Emlashga reaksiyalar umumiy</td>
+                    <td class="text-center" style="width: 8.5%"></td>
+                    <td class="text-center" style="width: 8%">Seriya</td>
+                    <td class="text-center">Emlashga reaksiyalar <br>maxalliy, <br>umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->created_at : ""?></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->seria : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+                        <!--                        <td class="text-center">--><?php //= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?><!--</td>-->
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
         <?php elseif ($class->id == 5) : ?>
             <p class="text-center"><?= $class->name ?></p>
         <?php elseif ($class->id == 6) : ?>

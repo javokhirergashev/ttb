@@ -181,4 +181,26 @@ class QvpController extends Controller
         }
         return ['output' => '', 'selected' => ''];
     }
+
+    public function actionQvpByDistrict()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $cat_id = $parents[0];
+                if (intval($cat_id)) {
+                    $out = Qvp::getDropdownListByDistrict($cat_id);
+                    return ['output' => $out, 'selected' => ''];
+                } else {
+                    return intval($cat_id);
+                }
+            }
+        }
+        return ['output' => '', 'selected' => ''];
+    }
+
+
 }

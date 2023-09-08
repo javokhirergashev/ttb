@@ -34,15 +34,18 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
     }
 
     const POSITION_THERAPIST = 1;
-    const POSITION_DOCTOR = 2;
-    const POSITION_ENDOCRINOLOGIST = 3;
-    const POSITION_PSYCHIATRIST = 4;
-    const POSITION_OTOLARINGOLOG = 5;
-    const POSITION_OFTALMOLOG = 6;
-    const POSITION_DENTIST = 7;
-    const POSITION_DERMATOLOG = 8;
-    const POSITION_NARCOLOG = 9;
-    const POSITION_MAIN_DOCTOR = 10;
+    const POSITION_SURGEON = 2;
+    const POSITION_NEUROPATHOLOGIST = 3;
+    const POSITION_ENDOCRINOLOGIST = 4;
+    const POSITION_PSYCHIATRIST = 5;
+    const POSITION_OTOLARINGOLOG = 6;
+    const POSITION_NARCOLOG = 7;
+    const POSITION_OFTALMOLOG = 8;
+    const POSITION_DENTIST = 9;
+    const POSITION_DERMATOLOG = 10;
+    const POSITION_RENTGEN = 11;
+    const POSITION_LABORANT = 12;
+    const POSITION_MAIN_DOCTOR = 13;
 
 
     public function behaviors()
@@ -60,7 +63,7 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
     {
         return [
             [['reference_id', 'position', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'default', 'value' => null],
-            [['position'], 'default', 'value' => self::POSITION_DOCTOR],
+            [['position'], 'default', 'value' => self::POSITION_SURGEON],
             [['reference_id', 'position', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['diagnosis'], 'string', 'max' => 255],
             [['reference_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reference::class, 'targetAttribute' => ['reference_id' => 'id']],
@@ -119,15 +122,19 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
     public static function getPositionList()
     {
         return [
-            self::POSITION_THERAPIST => 'Терапевт',
-            self::POSITION_DOCTOR => 'Врач',
-            self::POSITION_ENDOCRINOLOGIST => 'Эндокринолог',
-            self::POSITION_PSYCHIATRIST => 'Психиатр',
-            self::POSITION_OTOLARINGOLOG => 'Отоларинголог',
-            self::POSITION_OFTALMOLOG => 'Окулист',
-            self::POSITION_DENTIST => 'Стоматолог',
-            self::POSITION_DERMATOLOG => 'Дерматолог',
-            self::POSITION_MAIN_DOCTOR => 'Главный врач',
+            self::POSITION_THERAPIST => 'Terapevt',
+            self::POSITION_SURGEON => 'Jarroh',
+            self::POSITION_NEUROPATHOLOGIST => 'Nevropotolog',
+            self::POSITION_ENDOCRINOLOGIST => 'Endokrinolog',
+            self::POSITION_PSYCHIATRIST => 'Psixiatr',
+            self::POSITION_NARCOLOG => 'Narkolog',
+            self::POSITION_OTOLARINGOLOG => 'Otolaringolok',
+            self::POSITION_OFTALMOLOG => 'Okulist',
+            self::POSITION_DENTIST => 'Stomatolog',
+            self::POSITION_DERMATOLOG => 'Dermatolog',
+            self::POSITION_RENTGEN => 'Rentgen (flyurografik) tekshiruv ma\'lumoti',
+            self::POSITION_LABORANT => 'Laborator tekshiruvlar ma\'lumoti',
+            self::POSITION_MAIN_DOCTOR => 'TNK xulosasi:',
 
         ];
     }

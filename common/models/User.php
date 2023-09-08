@@ -12,12 +12,12 @@ use yii\web\IdentityInterface;
 /**
  * User model
  *
- * @property integer     $id
- * @property string      $username
- * @property string      $password_hash
- * @property string      $password_reset_token
- * @property string      $verification_token
- * @property string      $email
+ * @property integer $id
+ * @property string $username
+ * @property string $password_hash
+ * @property string $password_reset_token
+ * @property string $verification_token
+ * @property string $email
  * @property string|null $telegram_link
  * @property string|null $instagram_link
  * @property string|null $facebook_link
@@ -33,14 +33,14 @@ use yii\web\IdentityInterface;
  * @property integer|null $qualification_date
  * @property integer|null $hayfsan
  *
- * @property string      $auth_key
- * @property integer     $status
- * @property integer     $created_at
- * @property integer     $updated_at
- * @property integer     $position_id
- * @property integer     $district_id
- * @property integer     $qvp_id
- * @property string      $password write-only password
+ * @property string $auth_key
+ * @property integer $status
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property integer $position_id
+ * @property integer $district_id
+ * @property integer $qvp_id
+ * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -53,6 +53,10 @@ class User extends ActiveRecord implements IdentityInterface
     const ROLE_STATIST = 3;
     const ROLE_DOCTOR = 4;
     const ROLE_NURSE = 5;
+
+    const ROLE_USER = 'user';
+    const ROLE_MANAGE = 'manager';
+    const ROLE_ADMINISTRATOR = 'administrator';
 
 
     /**
@@ -95,7 +99,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['phone_number', 'username'], 'required'],
             ['email', 'email'],
             [['avatar', 'birthday', 'qualification_date'], 'safe'],
-            [['first_name', 'last_name', 'email', 'address','telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'email', 'address', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
             [['status', 'role', 'position_id', 'qvp_id', 'district_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
         ];
@@ -138,7 +142,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByPasswordResetToken($token)
     {
-        if (! static::isPasswordResetTokenValid($token)) {
+        if (!static::isPasswordResetTokenValid($token)) {
             return null;
         }
 
@@ -176,7 +180,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }

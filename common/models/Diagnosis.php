@@ -32,6 +32,9 @@ class Diagnosis extends \yii\db\ActiveRecord
         return 'diagnosis';
     }
 
+
+    const TYPE_REFERENCE = 1;
+
     public function behaviors()
     {
         return [
@@ -97,5 +100,9 @@ class Diagnosis extends \yii\db\ActiveRecord
     public function getPeople()
     {
         return $this->hasOne(People::class, ['id' => 'people_id']);
+    }
+    public function getDiagnosisList()
+    {
+        return $this->hasOne(DiagnosisList::class, ['id' => 'diagnosis_list_id']);
     }
 }

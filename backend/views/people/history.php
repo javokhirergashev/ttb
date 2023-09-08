@@ -22,11 +22,6 @@
                 <li class="breadcrumb-item active"><?= $people->first_name . " " . $people->last_name ?></li>
             </ul>
 
-            <form method="post" action="<?= \yii\helpers\Url::to(['people/history', 'id' => $people->id]) ?>"
-                  enctype="multipart/form-data">
-                <input type="file" name="excel">
-                <input type="submit">
-            </form>
         </div>
     </div>
     <div class="card-box profile-header pb-3">
@@ -84,7 +79,7 @@
                             <?php elseif ($people->gender == \common\models\People::GENDER_FEMALE && $people->pregnant_status == \common\models\People::PREGNANT_TRUE) : ?>
                                 <div class="col-md-2">
                                     <div class="pregnant_button">
-                                        <a href="<?= \yii\helpers\Url::to(['people/pregnant', 'id' => $people->id]) ?>"
+                                        <a href="<?= \yii\helpers\Url::to(['pregnant/index', 'person_id' => $people->id]) ?>"
                                            class="btn btn-primary p-2">Homiladorlik tarixi</a>
                                     </div>
                                 </div>

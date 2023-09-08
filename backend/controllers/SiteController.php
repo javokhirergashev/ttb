@@ -18,6 +18,8 @@ use yii\web\Response;
 class SiteController extends Controller
 {
 
+    public $enableCsrfValidation = false;
+
     /**
      * {@inheritdoc}
      */

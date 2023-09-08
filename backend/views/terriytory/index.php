@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var common\models\search\TerritorySearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Territories';
+$this->title = 'Brigadalar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="terriytory-index">
@@ -27,10 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <h3><?= Html::encode($this->title) ?></h3>
+
 
     <p>
-        <?= Html::a('Yangi Terriytorya yaratish', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yangi brigada yaratish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <div class="row">
         <div class="col-md-12">

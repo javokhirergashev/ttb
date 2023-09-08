@@ -10,7 +10,7 @@ use yii\helpers\Url;
 /** @var common\models\search\QvpSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Qvps';
+$this->title = 'Qvp';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="qvp-index">
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <h3><?= Html::encode($this->title) ?></h3>
+
 
     <p>
         <?= Html::a('Yangi Qvp yaratish', ['create'], ['class' => 'btn btn-success']) ?>

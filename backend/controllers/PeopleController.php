@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\Diagnosis;
 use common\models\People;
+use common\models\Reference;
 use common\models\Referral;
 use common\models\search\PeopleSearch;
 use common\models\Section;
@@ -338,16 +339,35 @@ class PeopleController extends Controller
         }
         $person->updateAttributes(['pregnant_status' => People::PREGNANT_TRUE]);
 
-        return $this->redirect(['history', 'id'=>$person->id]);
+        return $this->redirect(['history', 'id' => $person->id]);
 
     }
 
-    public function actionImport()
+    public function actionReference($id)
     {
+        $query = Reference::find()->andWhere(['people_id' => $id]);
+        $dataProvider = new ActiveDataProvider(['query' => $query]);
 
-        $this->layout = 'blank';
+        return $this->render('reference', [
+            'dataProvider' => $dataProvider
+        ]);
+
+    }
+
+    public function actionReferenceCreate($id)
+    {
+        $model = new Reference(['people_id' => $id]);
+        $people = People::findOne($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['reference/index']);
+        }
 
 
+        return $this->render('reference-create', [
+            'model' => $model,
+            'people' => $people
+        ]);
     }
 
 

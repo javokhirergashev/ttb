@@ -164,4 +164,9 @@ class DiagnosisController extends Controller
             'searchModel' => $searchModel
         ]);
     }
+
+
+
+
+
 }

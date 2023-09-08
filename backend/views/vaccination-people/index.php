@@ -4,7 +4,6 @@
  * @var $model        \common\models\VaccinationPeople
  * @var $searchModel  \common\models\search\VaccinationPeopleSearch
  * @var $person
- * @var $qvp_id
  */
 
 use yii\grid\GridView;
@@ -20,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-sm-12">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Bosh sahifa </a></li>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Bosh sahifa </a></li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['vaccination-people/people']) ?>">Emlash</a></li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
@@ -37,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-box">
                 <div class="table-responsive p-5">
                     <div class="col-1  mb-3">
-                        <a href="<?=Url::to(['pdf','id'=>$person->id, 'qvp_id' => $qvp_id])?>"><img style="width:50px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>
+                        <a href="<?=Url::to(['pdf','id'=>$person->id])?>"><img style="width:50px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>
                     </div>
 
                     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

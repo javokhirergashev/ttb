@@ -163,4 +163,19 @@ class Qvp extends \yii\db\ActiveRecord
         return ArrayHelper::map(Qvp::find()->where(['status' => Qvp::STATUS_ACTIVE])->all(), 'id', 'title');
 
     }
+
+
+    public static function getDropdownListByDistrict($district_id = null)
+    {
+        if ($district_id) {
+            return self::find()
+                ->andWhere(['district_id' => $district_id])
+                ->select("qvp.id as id, (title) as name")
+                ->asArray()
+                ->all();
+        }
+
+        return ArrayHelper::map(Qvp::find()->where(['status' => Qvp::STATUS_ACTIVE])->all(), 'id', 'title');
+
+    }
 }

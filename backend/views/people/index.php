@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-sm-12">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Bosh sahifa </a>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Bosh sahifa </a>
                     </li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
@@ -37,10 +37,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="card-box">
 
-                <form action="" enctype="multipart/form-data" method="post">
-                    <input type="file" accept=".xlsx,.xls" name="excel">
-                    <button type="submit" class="btn btn-success">Yuborish</button>
-                </form>
+                <div class="d-flex justify-content-between">
+                    <form action="" enctype="multipart/form-data" method="post">
+                        <input type="file" accept=".xlsx,.xls" name="excel">
+                        <button type="submit" class="btn btn-success">Yuklash</button>
+                    </form>
+                    <div class="text-end">
+                        <a class="btn btn-success" href="<?= Url::to(['statistics/people-by-year']) ?>">Yosh bo'yicha
+                            hisobot &nbsp&nbsp<i
+                                    class="fa fa-file-excel"></i></a>
+                    </div>
+                </div>
                 <div class="table-responsive p-5">
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
@@ -55,7 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            'passport_seria',
                             'passport_number',
                             'phone_number',
-                            'birthday',
+                            [
+                                'attribute' => 'birthday',
+                                'format' => ['datetime', 'php:d.m.Y']
+                            ],
                             //'region_id',
                             //'district_id',
 //                            'quarter_id',
@@ -111,4 +121,3 @@ BUTTONS;
         </div>
     </div>
 </div>
-

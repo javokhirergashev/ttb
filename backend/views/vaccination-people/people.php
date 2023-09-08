@@ -12,7 +12,7 @@
       <div class="row">
          <div class="col-sm-12">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="patients.html">Bosh sahifa</a></li>
+                <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['/']) ?>">Bosh sahifa </a></li>
                <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                <li class="breadcrumb-item active">Emlash bo'limi</li>
             </ul>
@@ -86,10 +86,10 @@
                                  <?= $model->first_name . " " . $model->last_name . " " . $model->middle_name ?>
                               </a>
                            </td>
-                           <td><?= $model->birthday ?></td>
+                           <td><?= date($model->birthday) ?></td>
                            <td><?= $model->phone_number ?></td>
                            <td><?= $model->metrka_number ?></td>
-                           <td><?= $model->qvp_id ? $model->qvp->title : " ---- ----" ?></td>
+<!--                           <td>--><?php //= $model->qvp_id ? $model->qvp->title : " ---- ----" ?><!--</td>-->
                            <td><?= $model->quarter_id ? $model->quarter->name[Yii::$app->language] : " ---- ----" ?></td>
                            <td class="text-end">
                               <a title="Emlashni amalga oshirish" href="<?= \yii\helpers\Url::to(['vaccination-people/create', 'person_id' => $model->id]) ?>"

@@ -80,17 +80,17 @@ class People extends \yii\db\ActiveRecord
         return 'people';
     }
 
-//    public function behaviors()
-//    {
-//        return [
-//            'birthday' => [
-//                'class' => DateTimeBehavior::class,
-//                'attribute' => 'birthday', //атрибут модели, который будем менять
-//                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
-////                'default' => 'today'
-//            ],
-//        ];
-//    }
+    public function behaviors()
+    {
+        return [
+            'birthday' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'birthday', //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -179,6 +179,7 @@ class People extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Qvp::class, ['id' => 'qvp_id']);
     }
+
 
     /**
      * Gets query for [[Region]].

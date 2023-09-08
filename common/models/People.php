@@ -18,7 +18,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $middle_name
  * @property int|null $status
  * @property string|null $pinfl
- * @property string|null $passport_seria
  * @property string|null $passport_number
  * @property string|null $phone_number
  * @property integer|null $birthday
@@ -29,11 +28,24 @@ use yii\behaviors\TimestampBehavior;
  * @property string|null $metrka_number
  * @property int|null $gender
  * @property string|null $territory_code
- *
+ * @property string|null $dispensary_control
+ * @property string|null $disability_group
+ * @property string|null $ayol_daftar
+ * @property string|null $temir_daftar
+ * @property string|null $yoshlar_daftar
+ * @property string|null $job
+ * @property string|null $height
+ * @property string|null $weight
+ * @property string|null $blood_pressure
+ * @property string|null $saturation
+ * @property string|null $pulse
+ * @property string|null $disablity_class_id
+ * @property string|null $head_family
  * @property District $district
  * @property Quarter $quarter
  * @property Qvp $qvp
  * @property Region $region
+ * @property Region $pregnant_status
  */
 class People extends \yii\db\ActiveRecord
 {
@@ -45,23 +57,40 @@ class People extends \yii\db\ActiveRecord
     const STATUS_INACTIVE = 2;
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
+    const DISPENSARY_CONTROL_TRUE = 1;
+    const DISPENSARY_CONTROL_FALSE = 2;
+    const AYOL_DAFTAR_TRUE = 1;
+    const AYOL_DAFTAR_FALSE = 2;
+    const TEMIR_DAFTAR_TRUE = 1;
+    const TEMIR_DAFTAR_FALSE = 2;
+    const YOSHLAR_DAFTAR_TRUE = 1;
+    const YOSHLAR_DAFTAR_FALSE = 2;
+    const OILA_BOSHI_TRUE = 1;
+    const OILA_BOSHI_FALSE = 2;
+    const DISABILITY_FIRST = 1;
+    const DISABILITY_SECOND = 2;
+    const DISABILITY_THIRD = 3;
+    const DISABILITY_FOURTH = 4;
+    const DISABILITY_FALSE = 0;
+    const PREGNANT_FALSE = 1;
+    const PREGNANT_TRUE = 2;
 
     public static function tableName()
     {
         return 'people';
     }
 
-    public function behaviors()
-    {
-        return [
-            'birthday' => [
-                'class' => DateTimeBehavior::class,
-                'attribute' => 'birthday', //атрибут модели, который будем менять
-                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
-//                'default' => 'today'
-            ],
-        ];
-    }
+//    public function behaviors()
+//    {
+//        return [
+//            'birthday' => [
+//                'class' => DateTimeBehavior::class,
+//                'attribute' => 'birthday', //атрибут модели, который будем менять
+//                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+////                'default' => 'today'
+//            ],
+//        ];
+//    }
 
     /**
      * {@inheritdoc}
@@ -69,15 +98,16 @@ class People extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'passport_seria'], 'default', 'value' => null],
-            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'integer'],
-            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'passport_seria'], 'string', 'max' => 255],
+            [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'default', 'value' => null],
+            [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group', 'pregnant_status'], 'integer'],
+            [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control', 'ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
             [['quarter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Quarter::class, 'targetAttribute' => ['quarter_id' => 'id']],
             [['qvp_id'], 'exist', 'skipOnError' => true, 'targetClass' => Qvp::class, 'targetAttribute' => ['qvp_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
             [['territory_id'], 'exist', 'skipOnError' => true, 'targetClass' => Territory::class, 'targetAttribute' => ['territory_id' => 'id']],
-            [['quarterIds', 'birthday'], 'safe']
+            [['quarterIds', 'birthday'], 'safe'],
+            [['first_name'], 'string', 'max' => 10]
         ];
     }
 
@@ -93,7 +123,6 @@ class People extends \yii\db\ActiveRecord
             'middle_name' => 'Otasining ismi',
             'status' => 'Status',
             'pinfl' => 'Pinfl',
-            'passport_seria' => 'Passport Seriyasi',
             'passport_number' => 'Passport Raqami',
             'phone_number' => 'Telefon raqami',
             'birthday' => 'Tug\'ilgan yil',
@@ -103,7 +132,21 @@ class People extends \yii\db\ActiveRecord
             'qvp_id' => 'Qvp',
             'metrka_number' => 'Metrka raqami',
             'gender' => 'Jinsi',
+            'head_family' => 'Oila boshi',
             'territory_code' => 'Uchastka',
+            'dispensary_control' => '"D" nazorat',
+            'ayol_daftar' => 'Ayollar daftari',
+            'temir_daftar' => 'Temir daftar',
+            'yoshlar_daftar' => 'Yoshlar daftari',
+            'job' => 'Ish joyi',
+            'height' => 'Bo\'yi',
+            'weight' => 'Vazni',
+            'blood_pressure' => 'Qon bosimi',
+            'saturation' => 'Saturatsiyasi',
+            'pulse' => 'Pulsi',
+            'disability_class_id' => 'Nogironlik sinfi',
+            'disability_group' => 'Nogironlik guruhi',
+            'pregnant_status' => 'Homiladorlik',
         ];
     }
 
@@ -155,5 +198,36 @@ class People extends \yii\db\ActiveRecord
     public function getTerritory()
     {
         return $this->hasOne(Territory::class, ['id' => 'territory_id']);
+    }
+
+    public function getDisablity()
+    {
+        return $this->hasOne(DisablityClass::class, ['id' => 'disablity_class_id']);
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . " " . $this->last_name . " " . $this->middle_name;
+    }
+
+    public function getAddress()
+    {
+        return "O'ZBEKISTON, Namangan viloyati, Namangan shahri, Bo‘ston";
+//        return $this->region->name[Yii::$app->language] . ", " . $this->district->name[Yii::$app->language] . ", " . $this->quarter->name[Yii::$app->language];
+    }
+
+    public function getPeopleVaccination()
+    {
+        return $this->hasMany(VaccinationPeople::class, ['people_id' => 'id']);
+    }
+
+    public function getVaccination()
+    {
+        return $this->hasMany(Vaccination::class, ['id' => 'vaccination_id'])->via('peopleVaccination');
+    }
+
+    public function getReferral()
+    {
+        return $this->hasMany(Referral::class, ['people_id' => 'id']);
     }
 }

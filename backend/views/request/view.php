@@ -14,17 +14,23 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="request-view">
     <div class="page-header">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-11">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Dashboard </a>
+                    <li class="breadcrumb-item"><a href="<?= \yii\helpers\Url::to(['site/index']) ?>">Bosh sahifa </a>
                     </li>
                     <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
                     <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
                 </ul>
             </div>
         </div>
+        <div class="row mt-3 mb-0">
+            <div class="col-sm-12 d-flex">
+                <div class="col-sm-6"><h3>&nbsp;&nbsp;&nbsp;&nbsp;<?= Html::encode($this->title ) ?></h3></div>
+                <div class="col-sm-6 text-end"><a href="<?=\yii\helpers\Url::to(['pdf','id'=> $model->id])?>"><img style="width:40px" src="/backend-files/img/icons/pdf-icon-01.svg" alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            </div>
+        </div>
     </div>
-    <h3><?= Html::encode($this->title ) ?></h3>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card-box">
@@ -37,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'last_name',
                         'phone_number',
                         'comment:ntext',
-                        'created_at',
+                        'created_at:datetime',
 //                        'updated_at',
                         'status',
                     ],

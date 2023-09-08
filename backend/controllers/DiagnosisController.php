@@ -7,9 +7,9 @@ use common\models\People;
 use common\models\Queue;
 use common\models\search\DiagnosisSearch;
 use common\models\search\PeopleSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * DiagnosisController implements the CRUD actions for Diagnosis model.
@@ -52,7 +52,9 @@ class DiagnosisController extends Controller
 
     /**
      * Displays a single Diagnosis model.
+     *
      * @param int $id ID
+     *
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -66,13 +68,14 @@ class DiagnosisController extends Controller
     /**
      * Creates a new Diagnosis model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return string|\yii\web\Response
      */
     public function actionCreate($people_id, $queue_id = null)
     {
         $model = new Diagnosis(['people_id' => $people_id]);
         $people = People::findOne($people_id);
-        if (!$people) {
+        if (! $people) {
             throw new NotFoundHttpException("Ushbu bemor topilmadi");
         }
 
@@ -99,7 +102,9 @@ class DiagnosisController extends Controller
     /**
      * Updates an existing Diagnosis model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param int $id ID
+     *
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -119,7 +124,9 @@ class DiagnosisController extends Controller
     /**
      * Deletes an existing Diagnosis model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param int $id ID
+     *
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -133,7 +140,9 @@ class DiagnosisController extends Controller
     /**
      * Finds the Diagnosis model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param int $id ID
+     *
      * @return Diagnosis the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -150,6 +159,9 @@ class DiagnosisController extends Controller
     {
         $searchModel = new PeopleSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-        return $this->render('people', ['dataProvider' => $dataProvider]);
+        return $this->render('people', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
+        ]);
     }
 }

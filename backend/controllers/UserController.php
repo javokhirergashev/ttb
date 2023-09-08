@@ -7,6 +7,7 @@ use backend\models\form\UserForm;
 use common\models\History;
 use common\models\People;
 use common\models\Queue;
+use common\models\Referral;
 use common\models\search\UserCreateFormSearch;
 use common\models\UserCreateForm;
 use yii\data\ActiveDataProvider;
@@ -154,8 +155,6 @@ class UserController extends Controller
 
     public function actionProfile()
     {
-//        var_dump(\Yii::$app->user->id);
-//        die();
         $query = Queue::find()
             ->andWhere(['user_id' => \Yii::$app->user->id])->andWhere(['status' => Queue::STATUS_PENDING]);
 
@@ -163,6 +162,10 @@ class UserController extends Controller
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query
+        ]);
+
+        $referralDataProvider = new ActiveDataProvider([
+            'query' => Referral::find()->andWhere(['created_by' => \Yii::$app->user->id])
         ]);
 
         $historyQuery = People::find()->leftJoin('diagnosis', 'people.id=diagnosis.people_id')
@@ -175,6 +178,7 @@ class UserController extends Controller
             'user' => \Yii::$app->user->identity,
             'dataProvider' => $dataProvider,
             'historyProvider' => $historyProvider,
+            'referralDataProvider' => $referralDataProvider,
             'history' => $history
         ]);
     }

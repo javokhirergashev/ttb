@@ -9,14 +9,20 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
+    'defaultRoute' => 'user/profile',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'timeZone' => 'Asia\Tashkent',
     'language' => 'uz',
+    'name' => 'TTB',
     'modules' => [],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+        ],
+        'qr' => [
+            'class' => '\Da\QrCode\Component\QrCodeComponent',
+            // ... you can configure more properties of the component here
         ],
         'formatter' => [
             'timeZone' => 'Asia/Tashkent',

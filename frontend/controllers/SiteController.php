@@ -115,6 +115,7 @@ class SiteController extends Controller
         $news = News::find()->where(['status' => News::STATUS_ACTIVE])->all();
         $partners = Partners::find()->where(['status' => Partners::STATUS_ACTIVE])->all();
         $comments = Comments::find()->where(['status' => Comments::STATUS_ACTIVE])->all();
+        $paid_services = Service::find()->where(['status' => Service::STATUS_ACTIVE])->all();
 
         return $this->render('index', [
             'services' => $services,
@@ -122,6 +123,7 @@ class SiteController extends Controller
             'news' => $news,
             'partners'=>$partners,
             'comments'=>$comments,
+            'service'=>$paid_services,
         ]);
     }
 

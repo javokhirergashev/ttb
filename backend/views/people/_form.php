@@ -68,17 +68,9 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Passport seriyasi</label>
+                <label class="col-form-label">Passport seriyasi va raqami</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'passport_seria')->textInput(['maxlength' => 2])->label(false) ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label class="col-form-label">Passport raqami</label>
-                <div class="col-md-9">
-                    <?= $form->field($model, 'passport_number')->textInput(['maxlength' => 7])->label(false) ?>
+                    <?= $form->field($model, 'passport_number')->textInput(['maxlength' => 9])->label(false) ?>
                 </div>
             </div>
         </div>
@@ -179,7 +171,132 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
         </div>
-
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Ish joyi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'job')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Bo'yi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'height')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Vazni</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'weight')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Qon bosimi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'blood_pressure')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Saturatsiyasi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'saturation')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Pulsi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'pulse')->textInput()->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Oila boshi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'head_family')->dropDownList([
+                        \common\models\People::OILA_BOSHI_TRUE => "Ha",
+                        \common\models\People::OILA_BOSHI_FALSE => "Yo'q",
+                    ], ['prompt' => "Oila boshi sifatida belgilash"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Ayollar daftarida turishi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'ayol_daftar')->dropDownList([
+                        \common\models\People::AYOL_DAFTAR_TRUE => "Ha",
+                        \common\models\People::AYOL_DAFTAR_FALSE => "Yo'q",
+                    ], ['prompt' => "Ayollar daftarida turishi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Temir daftarida turishi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'temir_daftar')->dropDownList([
+                        \common\models\People::TEMIR_DAFTAR_TRUE => "Ha",
+                        \common\models\People::TEMIR_DAFTAR_FALSE => "Yo'q",
+                    ], ['prompt' => "Temir daftarda turishi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Yoshlar daftarida turishi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'yoshlar_daftar')->dropDownList([
+                        \common\models\People::YOSHLAR_DAFTAR_TRUE => "Ha",
+                        \common\models\People::YOSHLAR_DAFTAR_FALSE => "Yo'q",
+                    ], ['prompt' => "Yoshlar daftarda turishi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">"D" nazorati</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'dispensary_control')->dropDownList([
+                        \common\models\People::DISPENSARY_CONTROL_TRUE => "Turadi",
+                        \common\models\People::DISPENSARY_CONTROL_FALSE => "Turmaydi",
+                    ], ['prompt' => "'D' nazoratda turishi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Nogironlik sinfi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'disablity_class_id')->dropDownList(\common\models\DisablityClass::getDropDownList(),
+                        ['prompt' => "Nogironlik sinfi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-form-label">Nogironlik guruhi</label>
+                <div class="col-md-9">
+                    <?= $form->field($model, 'disability_group')->dropDownList([
+                        \common\models\People::DISABILITY_FALSE => "Yo'q",
+                        \common\models\People::DISABILITY_FIRST => "I guruh",
+                        \common\models\People::DISABILITY_SECOND => "II guruh",
+                        \common\models\People::DISABILITY_THIRD => "III guruh",
+                        \common\models\People::DISABILITY_FOURTH => "IV guruh",
+                    ], ['prompt' => "Nogironlik guruhi"])->label(false) ?>
+                </div>
+            </div>
+        </div>
         <div class="col-md-6">
             <div class="form-group row">
                 <label class="col-form-label">Status</label>

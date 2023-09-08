@@ -2,7 +2,10 @@
 
 namespace common\models;
 
+use common\behaviors\ConvertBehaviors;
+use common\behaviors\DateTimeBehavior;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "request".
@@ -33,6 +36,15 @@ class Request extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class
+        ];
+    }
+
+
     public function rules()
     {
         return [
@@ -41,6 +53,7 @@ class Request extends \yii\db\ActiveRecord
             [['status'], 'default', 'value' => self::STATUS_PENDING],
             [['created_at', 'updated_at', 'status'], 'integer'],
             [['title', 'first_name', 'last_name', 'phone_number'], 'string', 'max' => 255],
+
         ];
     }
 
@@ -56,7 +69,7 @@ class Request extends \yii\db\ActiveRecord
             'last_name' => 'Familiyasi',
             'phone_number' => 'Telefon raqami',
             'comment' => 'Murojaat',
-            'created_at' => 'Yaratilgan vaqti',
+            'created_at' => 'Murojaat kelib tushgan vaqt',
             'updated_at' => 'Tahrirlangan vaqti',
             'status' => 'Status',
         ];

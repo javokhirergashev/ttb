@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use common\modules\country\models\District;
+use common\behaviors\DateTimeBehavior;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -12,24 +12,35 @@ use yii\web\IdentityInterface;
 /**
  * User model
  *
- * @property integer $id
- * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $verification_token
- * @property string $email
+ * @property integer     $id
+ * @property string      $username
+ * @property string      $password_hash
+ * @property string      $password_reset_token
+ * @property string      $verification_token
+ * @property string      $email
  * @property string|null $telegram_link
  * @property string|null $instagram_link
  * @property string|null $facebook_link
  * @property string|null $twitter_link
- * @property string $auth_key
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property integer $position_id
- * @property integer $district_id
- * @property integer $qvp_id
- * @property string $password write-only password
+ * @property integer|null $gender
+ * @property integer|null $category
+ * @property integer|null $rate
+ * @property integer|null $birthday
+ * @property integer|null $retired
+ * @property integer|null $decree
+ * @property integer|null $disabled
+ * @property integer|null $deputy
+ * @property integer|null $qualification_date
+ * @property integer|null $hayfsan
+ *
+ * @property string      $auth_key
+ * @property integer     $status
+ * @property integer     $created_at
+ * @property integer     $updated_at
+ * @property integer     $position_id
+ * @property integer     $district_id
+ * @property integer     $qvp_id
+ * @property string      $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -59,7 +70,20 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             TimestampBehavior::class,
+            'birthday' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'birthday',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
+            'qualification_date' => [
+                'class' => DateTimeBehavior::class,
+                'attribute' => 'qualification_date',  //атрибут модели, который будем менять
+                'format' => 'dd.MM.yyyy',   //формат вывода даты для пользователя
+//                'default' => 'today'
+            ],
         ];
+
     }
 
     /**
@@ -70,10 +94,10 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['phone_number', 'username'], 'required'],
             ['email', 'email'],
-            [['avatar'], 'safe'],
-            [['first_name', 'last_name', 'email', 'address', 'birthday', 'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
+            [['avatar', 'birthday', 'qualification_date'], 'safe'],
+            [['first_name', 'last_name', 'email', 'address','telegram_link', 'instagram_link', 'facebook_link', 'twitter_link'], 'string', 'max' => 255],
             [['first_name', 'last_name',], 'required'],
-            [['status', 'role', 'position_id', 'qvp_id', 'district_id'], 'integer'],
+            [['status', 'role', 'position_id', 'qvp_id', 'district_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
         ];
     }
 
@@ -114,7 +138,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByPasswordResetToken($token)
     {
-        if (!static::isPasswordResetTokenValid($token)) {
+        if (! static::isPasswordResetTokenValid($token)) {
             return null;
         }
 
@@ -152,7 +176,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -243,6 +267,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function getPosition()
     {
         return $this->hasOne(Position::class, ['id' => 'position_id']);
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . " " . $this->last_name;
     }
 
     public function getRoleName()

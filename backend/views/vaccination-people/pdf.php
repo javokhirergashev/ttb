@@ -107,8 +107,6 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php endforeach; ?>
             </table>
             <br>
-
-
         <?php elseif ($class->id == 2) : ?>
 
             <p class="text-center"><?= $class->name ?></p>
@@ -205,12 +203,9 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                     <td class="text-center" style="width: 11%">Emlash turi</td>
                     <td class="text-center" style="width: 8%">Yoshi</td>
                     <td class="text-center" style="width: 10%">Muddati</td>
-                    <td class="text-center" style="width: 8%">Miqdori</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
                     <td class="text-center">Seriya</td>
                     <td class="text-center">Emlashga reaksiyalar umumiy</td>
-                    <td class="text-center" style="width: 8.5%"></td>
-                    <td class="text-center" style="width: 8%">Seriya</td>
-                    <td class="text-center">Emlashga reaksiyalar <br>maxalliy, <br>umumiy</td>
                     <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
                 </tr>
 

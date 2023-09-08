@@ -220,17 +220,14 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php foreach ($models as $model): ?>
                     <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
                     <tr>
-                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->created_at : ""?></td>
-                        <td class="text-center"></td>
-                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
                         <td class="text-center"><?= $model->name ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
-                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->seria : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
                         <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
-                        <!--                        <td class="text-center">--><?php //= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?><!--</td>-->
+
                     </tr>
 
                 <?php endforeach; ?>

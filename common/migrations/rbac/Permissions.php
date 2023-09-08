@@ -10,7 +10,7 @@ class Permissions extends Migration
 {
     public function up()
     {
-        $managerRole = $this->auth->getRole(User::ROLE_MANAGER);
+        $managerRole = $this->auth->getRole(User::ROLE_MANAGE);
         $administratorRole = $this->auth->getRole(User::ROLE_ADMINISTRATOR);
 
         $loginToBackend = $this->auth->createPermission('loginToBackend');

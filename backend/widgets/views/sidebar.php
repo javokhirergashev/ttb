@@ -11,14 +11,50 @@
                   <span> Bosh sahifa</span>
                </a>
             </li>
-            <li>
-               <a  href="<?= \yii\helpers\Url::to(['user/']) ?>"
-                   class="<?= Yii::$app->controller->id == "user" ? "active" : "" ?>">
+             <li class="submenu">
+                 <a href="#">
                    <span class="menu-side">
                        <img src="/backend-files/img/icons/menu-icon-03.svg" alt="">
                    </span>
-                  <span> Xodimlar </span></a>
-            </li>
+                     <span>Xodimlar bo'limi</span> <span class="menu-arrow"></span>
+                 </a>
+                 <ul style="display: none;">
+                     <li>
+                         <a href="<?= \yii\helpers\Url::to(['user/']) ?>"
+                            class="<?= Yii::$app->controller->id == "user" ? "active" : "" ?>">Xodimlar ro'yhati</a>
+                     </li>
+                     <li>
+                         <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
+                            class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">Lavozimlar</a>
+                     </li>
+
+                 </ul>
+             </li>
+             <li class="submenu">
+                 <a href="#">
+                   <span class="menu-side">
+                       <img src="/backend-files/img/icons/menu-icon-09.svg" alt="">
+                   </span>
+                     <span>Tashkilotlar va <br> brigadalar</span> <span class="menu-arrow"></span>
+                 </a>
+                 <ul style="display: none;">
+                     <li>
+                         <a href="<?= \yii\helpers\Url::to(['clinic/']) ?>"
+                            class="<?= Yii::$app->controller->id == "clinic" ? "active" : "" ?>">Shifoxonalar</a>
+                     </li>
+                     <li>
+                         <a href="<?= \yii\helpers\Url::to(['qvp/index']) ?>"
+                            class="<?= Yii::$app->controller->id == "qvp" ? "active" : "" ?>">Qvp
+                         </a>
+                     </li>
+                     <li>
+                         <a href="<?= \yii\helpers\Url::to(['terriytory/index']) ?>"
+                            class="<?= Yii::$app->controller->id == "terriytory" ? "active" : "" ?>">Teritoriya
+                         </a>
+                     </li>
+
+                 </ul>
+             </li>
 
             <li>
                <a href="<?= \yii\helpers\Url::to(['people/']) ?>"
@@ -58,15 +94,6 @@
                  </a>
              </li>
              <li>
-                 <a href="<?= \yii\helpers\Url::to(['clinic/']) ?>"
-                    class="<?= Yii::$app->controller->id == "clinic" ? "active" : "" ?>">
-                     <span class="menu-side">
-                         <img src="/backend-files/img/icons/menu-icon-13.svg" alt="">
-                     </span>
-                     <span> Shifoxonalar</span>
-                 </a>
-             </li>
-             <li>
                  <a href="<?= \yii\helpers\Url::to(['referral/index']) ?>"
                     class="<?= Yii::$app->controller->id == "referral" ? "active" : "" ?>">
                    <span class="menu-side">
@@ -84,36 +111,12 @@
                  </a>
              </li>
             <li>
-               <a href="<?= \yii\helpers\Url::to(['category/']) ?>"
-                    class="<?= Yii::$app->controller->id == "category" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
-                  <span> Kategoriyalar</span>
-               </a>
-            </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['service/']) ?>"
-                    class="<?= Yii::$app->controller->id == "service" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-15.svg" alt="">
-                   </span>
-                  <span> Xizmatlar </span>
-               </a>
-            </li>
-             <li>
-                 <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
-                    class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">
-                   <span class="menu-side">
-                       <img src="/backend-files/img/icons/menu-icon-06.svg" alt="">
-                   </span>
-                     <span> Lavozimlar </span>
-                 </a>
-             </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['news/']) ?>"
-                    class="<?= Yii::$app->controller->id == "news" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-05.svg" alt=""></span>
-                  <span> Yangiliklar </span>
-               </a>
-            </li>
+<!--               <a href="--><?//= \yii\helpers\Url::to(['category/']) ?><!--"-->
+<!--                    class="--><?//= Yii::$app->controller->id == "category" ? "active" : "" ?><!--">-->
+<!--                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>-->
+<!--                  <span> Kategoriyalar</span>-->
+<!--               </a>-->
+<!--            </li>-->
             <li>
                <a href="<?= \yii\helpers\Url::to(['request/']) ?>"
                     class="<?= Yii::$app->controller->id == "request" ? "active" : "" ?>">
@@ -128,20 +131,6 @@
                     class="<?= Yii::$app->controller->id == "queue" ? "active" : "" ?>">
                    <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span>
                   <span> Navbatlar </span>
-               </a>
-            </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['qvp/index']) ?>"
-                    class="<?= Yii::$app->controller->id == "qvp" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span>
-                  <span> Qvp </span>
-               </a>
-            </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['terriytory/index']) ?>"
-                    class="<?= Yii::$app->controller->id == "terriytory" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span>
-                  <span> Teritoriya </span>
                </a>
             </li>
             <li class="submenu">
@@ -170,27 +159,29 @@
                                                         alt=""></span>
                   <span>Sayt sozlamalari</span> <span class="menu-arrow"></span></a>
                <ul style="display: none;">
+                   <li>
+                       <a href="<?= \yii\helpers\Url::to(['news/']) ?>"
+                          class="<?= Yii::$app->controller->id == "news" ? "active" : "" ?>">Yangiliklar</a>
+                   </li>
                   <li>
                       <a href="<?= \yii\helpers\Url::to(['menu/']) ?>"
                          class="<?= Yii::$app->controller->id == "menu" ? "active" : "" ?>">Menyular</a>
                   </li>
+                   <li>
+                       <a href="<?= \yii\helpers\Url::to(['service/']) ?>"
+                          class="<?= Yii::$app->controller->id == "service" ? "active" : "" ?>">Xizmatlar</a>
+                   </li>
                   <li>
                       <a href="<?= \yii\helpers\Url::to(['banner/']) ?>"
                       class="<?= Yii::$app->controller->id == "banner" ? "active" : "" ?>">Bannerlar</a>
                   </li>
                    <li>
                        <a href="<?= \yii\helpers\Url::to(['partners/']) ?>"
-                          class="<?= Yii::$app->controller->id == "partners" ? "active" : "" ?>">
-                           <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-09.svg" alt=""></span>
-                           <span> Hamkorlar</span>
-                       </a>
+                          class="<?= Yii::$app->controller->id == "partners" ? "active" : "" ?>">Hamkorlar</a>
                    </li>
                    <li>
                        <a href="<?= \yii\helpers\Url::to(['contact/']) ?>"
-                          class="<?= Yii::$app->controller->id == "contact" ? "active" : "" ?>">
-                           <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-11.svg" alt=""></span>
-                           <span> Kontaktlar </span>
-                       </a>
+                          class="<?= Yii::$app->controller->id == "contact" ? "active" : "" ?>">Kontaktlar</a>
                    </li>
                </ul>
             </li>

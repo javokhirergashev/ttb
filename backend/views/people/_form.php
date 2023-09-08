@@ -131,7 +131,7 @@ use yii\widgets\ActiveForm;
             <div class="form-group row">
                 <label class="col-form-label">QVP</label>
                 <div class="col-md-9">
-                    <?= $form->field($model, 'qvp_id')->widget(DepDrop::classname(), [
+                        <?= $form->field($model, 'qvp_id')->widget(DepDrop::classname(), [
                         'options' => ['id' => 'territory-id'],
                         'pluginOptions' => [
                             'depends' => ['qvp-id'],

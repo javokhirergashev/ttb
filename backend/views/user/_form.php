@@ -99,9 +99,8 @@ use yii\widgets\ActiveForm;
                             <label class="col-form-label">Tuman</label>
                             <div class="col-md-9">
                                 <?= $form->field($model, 'district_id')->dropDownList(common\modules\country\models\District::getDropdownList(), [
+                                    'id' => 'qvp-id',
                                     'prompt' => 'Tumanni tanlang',
-                                    'options' => [
-                                    ]
                                 ])->label(false) ?>
                             </div>
                         </div>
@@ -220,9 +219,18 @@ use yii\widgets\ActiveForm;
                             <div class="col-md-9">
                                 <?= $form->field($model, 'qvp_id')->dropDownList(\common\models\Qvp::getDropdownList(), [
                                     'prompt' => 'QVP ni tanlang',
-                                    'options' => [
-                                    ]
+                                    'id' => 'territory-id',
                                 ])->label(false) ?>
+                                <?= $form->field($model, 'qvp_id')->widget(DepDrop::classname(), [
+                                    'options' => ['id' => 'territory-id'],
+                                    'pluginOptions' => [
+                                        'depends' => ['qvp-id'],
+                                        'placeholder' => 'Qvp tanlang',
+                                        'url' => Url::to(['/qvp/qvp-by-district']),
+                                        'initialize' => true,
+                                    ],
+                                    'type' => DepDrop::TYPE_SELECT2,
+                                ])->label(false); ?>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -237,17 +245,7 @@ use yii\widgets\ActiveForm;
                                     ],
                                     'type' => DepDrop::TYPE_SELECT2,
                                 ])->label(false); ?>
-                                <?php
-                                echo $form->field($model, 'territory_id')->widget(DepDrop::classname(), [
-                                    'pluginOptions' => [
-                                        'depends' => ['territory_code'],
-                                        'placeholder' => 'Uchastkani  tanlang',
-                                        'url' => Url::to(['/people/territory']),
-                                        'initialize' => true,
-                                    ],
-                                    'type' => DepDrop::TYPE_SELECT2,
-                                ])->label(false);
-                                ?>
+
                             </div>
                         </div>
                     </div>

@@ -43,6 +43,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $deputy
  * @property int|null $qualification_date
  * @property int|null $hayfsan
+ * @property int|null $territory_id
  *
  * @property Position $position
  * @property Queue[] $queues
@@ -109,7 +110,7 @@ class UserCreateForm extends \yii\db\ActiveRecord
     {
         return [
             [['password', 'birthday', 'qualification_date'], 'safe'],
-            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'district_id', 'position_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan'], 'integer'],
+            [['type', 'role', 'created_at', 'updated_at', 'deleted_at', 'status', 'district_id', 'position_id', 'gender', 'category', 'rate', 'retired', 'decree', 'disabled', 'deputy', 'hayfsan', 'terrytory_id'], 'integer'],
             [['phone_number', 'first_name', 'last_name', 'email', 'username', 'password_hash', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => Position::class, 'targetAttribute' => ['position_id' => 'id']],
@@ -154,6 +155,7 @@ class UserCreateForm extends \yii\db\ActiveRecord
             'facebook_link' => 'Facebook',
             'instagram_link' => 'Instagram',
             'twitter_link' => 'Twitter',
+            'terrytory_id' => 'Brigadasi'
         ];
     }
 
@@ -205,4 +207,8 @@ class UserCreateForm extends \yii\db\ActiveRecord
         return $this->hasOne(Qvp::class, ['id' => 'qvp_id']);
     }
 
+    public function getTerritory()
+    {
+        return $this->hasOne(Territory::class, ['id' => 'terrytory_id']);
+    }
 }

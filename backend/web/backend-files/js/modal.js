@@ -1,3 +1,14 @@
+window.addEventListener('beforeunload', function (e) {
+    alert("dsfdfsdfsd")
+    $.ajax({
+        url: '/site/logout', // Change this URL to the actual logout action URL
+        async: false,
+        method: 'POST', // You can use POST or GET depending on your logout action
+    });
+    // Perform an AJAX request to log the user out when the browser is closed
+
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve active tab from Local Storage
     const activeTab = localStorage.getItem("activeTab");

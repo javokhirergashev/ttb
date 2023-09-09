@@ -7,6 +7,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\web\IdentityInterface;
 
 /**
@@ -270,7 +271,11 @@ class User extends ActiveRecord implements IdentityInterface
         if ($qvp_id) {
             return self::find()
                 ->andWhere(['qvp_id' => $qvp_id])
-                ->select("id, first_name as name")
+                ->select([
+                    'id',
+                    new Expression("CONCAT(first_name,' ', last_name) AS name"),
+                    // Add other columns you want to select here
+                ])
                 ->asArray()
                 ->all();
         }

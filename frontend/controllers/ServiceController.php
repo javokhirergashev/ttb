@@ -42,11 +42,12 @@ class ServiceController extends Controller
     {
         $model = new Queue();
         if ($model->load(Yii::$app->request->post())) {
-
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', "Murojaatingiz qabul qilindi. Tez orada siz bilan bog'lanamiz!");
                 return $this->refresh();
             }
+            var_dump($model->errors);
+            die();
         }
 
         return $this->render('index', [

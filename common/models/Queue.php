@@ -30,8 +30,6 @@ class Queue extends \yii\db\ActiveRecord
     const STATUS_NOT_COME = 3;
     const STATUS_REDIRECT = 4;
 
-    public $qvp_id;
-
 
     /**
      * {@inheritdoc}
@@ -54,7 +52,7 @@ class Queue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id', 'user_id', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
+            [['service_id', 'qvp_id', 'user_id', 'writing_time', 'created_at', 'updated_at', 'number'], 'default', 'value' => null],
             [['status'], 'default', 'value' => self::STATUS_PENDING],
             [['service_id', 'user_id', 'status', 'created_at', 'updated_at', 'number', 'people_id'], 'integer'],
             [['reason', 'first_name', 'last_name', 'phone_number', 'passport_number', 'metrka_number'], 'string', 'max' => 255],
@@ -106,6 +104,11 @@ class Queue extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getQvp()
+    {
+        return $this->hasOne(Qvp::class, ['id' => 'qvp_id']);
     }
 
     public function getPeople()

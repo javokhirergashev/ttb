@@ -15,14 +15,14 @@ class QueueController extends Controller
 
     public function actionCreate()
     {
-        $model = new Queue();
+        $model = new Queue(['status' => Queue::STATUS_PENDING]);
         if ($model->load(\Yii::$app->request->post())) {
             $model->writing_time = strtotime($model->writing_time);
-            if (!$model->passport_number){
-                  die("nds nkdjssd  ds");
+            if (!$model->passport_number) {
+                die("Bu passport Malumotlarida aholi mavjud emas");
             }
 
-            $people = People::find()->andWhere(['passport_number' => 'AB12345'])->one();
+            $people = People::find()->andWhere(['passport_number' => $model->passport_number])->one();
             if (!$people) {
                 return $this->redirect(Yii::$app->request->referrer);
             }
@@ -30,6 +30,8 @@ class QueueController extends Controller
             if ($model->save(false)) {
                 return $this->redirect(\Yii::$app->request->referrer);
             }
+//            var_dump($model->errors);
+//            die();
 
         }
         \Yii::$app->session->setFlash('error', 'Navbatga yozilishda hatolik boldi');

@@ -7,6 +7,7 @@ use common\models\News;
 use common\models\Partners;
 use common\models\Request;
 use common\models\Service;
+use common\models\Territory;
 use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -281,5 +282,25 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+    public function actionUser()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $cat_id = $parents[0];
+                if (intval($cat_id)) {
+                    $out = User::getDropDownList($cat_id);
+                    return ['output' => $out, 'selected' => ''];
+                } else {
+                    return intval($cat_id);
+                }
+
+            }
+        }
+        return ['output' => '', 'selected' => ''];
     }
 }

@@ -30,6 +30,8 @@ class Queue extends \yii\db\ActiveRecord
     const STATUS_NOT_COME = 3;
     const STATUS_REDIRECT = 4;
 
+    public $qvp_id;
+
 
     /**
      * {@inheritdoc}

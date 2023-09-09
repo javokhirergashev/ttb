@@ -265,8 +265,15 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public static function getDropDownList()
+    public static function getDropDownList($qvp_id = null)
     {
+        if ($qvp_id) {
+            return self::find()
+                ->andWhere(['qvp_id' => $qvp_id])
+                ->select("id, first_name as name")
+                ->asArray()
+                ->all();
+        }
         return \yii\helpers\ArrayHelper::map(static::find()->where(['role' => self::ROLE_DOCTOR])->all(), 'id', 'first_name');
     }
 

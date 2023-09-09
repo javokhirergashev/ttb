@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
         "css/dark.css",
         "css/responsive.css",
         "css/error.css",
+        "css/custom.css",
     ];
     public $js = [
 //        "js/jquery.min.js",

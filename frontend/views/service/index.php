@@ -243,8 +243,11 @@ use yii\widgets\ActiveForm;
 
                             </div>
                         </div>
-                        <div class="col-6 col-6 mt-1">
+                        <div class="col-6 col-6 mt-3 custom__select_form">
                             <?= $form->field($model, 'user_id')->widget(DepDrop::classname(), [
+                                'options' => [
+                                        'class' => ''
+                                ],
                                 'pluginOptions' => [
                                     'depends' => ['user-id'],
                                     'placeholder' => 'Shifokorni tanlang',

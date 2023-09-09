@@ -110,9 +110,9 @@
                      <span> Ma'lumotnomalar</span>
                  </a>
              </li>
-            <li>
-<!--               <a href="--><?//= \yii\helpers\Url::to(['category/']) ?><!--"-->
-<!--                    class="--><?//= Yii::$app->controller->id == "category" ? "active" : "" ?><!--">-->
+<!--            <li>-->
+<!--               <a href="--><?php //= \yii\helpers\Url::to(['category/']) ?><!--"-->
+<!--                    class="--><?php //= Yii::$app->controller->id == "category" ? "active" : "" ?><!--">-->
 <!--                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>-->
 <!--                  <span> Kategoriyalar</span>-->
 <!--               </a>-->

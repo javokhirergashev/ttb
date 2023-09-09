@@ -125,9 +125,9 @@ class SiteController extends Controller
     {
 //        $this->layout = 'map';
         $models = User::find()->andWhere(['is not', 'lat', null])->all();
-
+        $result = [];
         foreach ($models as $index => $model) {
-            $result [] = ["lat" => $model->lat, "lon" => $model->lon, "fullname" => $model->first_name . " " . $model->last_name];
+            $result[] = ["lat" => $model->lat, "lon" => $model->lon, "fullname" => $model->first_name . " " . $model->last_name];
         }
         return $this->render('map', [
             'data' => $result,

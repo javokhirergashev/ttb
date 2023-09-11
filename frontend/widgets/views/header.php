@@ -44,16 +44,6 @@
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="sign-in.html" class="log-in">
-                                Sign In
-                            </a>
-                        </li>
-                        <li>
-                            <a href="sign-up.html" class="sign-in">
-                                Sign Up
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -78,44 +68,44 @@
         <div class="main-navbar">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a href="<?= \yii\helpers\Url::to(['/']) ?>">
+                    <a style="width:80%" href="<?= \yii\helpers\Url::to(['/']) ?>">
                         <img src="/frontend-files/img/NSHTB.png" class="black-logo" alt="image" style="width: 20%; height: 20%">
                         <img src="/frontend-files/img/logo-2.png" class="white-logo" alt="image">
                     </a>
 
-                    <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <div style="width:100%" class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['/']) ?>"
                                    class="nav-link <?= Yii::$app->request->url == "/" ? "active" : "" ?>">
-                                    Home
+                                    <?= Yii::t('app', "Bosh sahifa")?>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['site/about']) ?>"
                                    class="nav-link <?= Yii::$app->request->url == "/site/about" ? "active" : "" ?>">
-                                    About
+                                    <?= Yii::t('app', "Biz haqimizda")?>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['service/index']) ?>"
                                    class="nav-link <?= Yii::$app->controller->id == "service" ? "active" : "" ?>">
-                                    Services
+                                    <?= Yii::t('app', "Xizmatlar")?>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"
                                    class="nav-link <?= Yii::$app->controller->id == "blog" ? "active" : "" ?>">
-                                    Blog
+                                    <?= Yii::t('app', "Yangiliklar")?>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"
                                    class="nav-link <?= Yii::$app->request->url == "/site/contact" ? "active" : "" ?>">
-                                    Contact
+                                    <?= Yii::t('app', "Kontaktlar")?>
                                 </a>
                             </li>
                         </ul>

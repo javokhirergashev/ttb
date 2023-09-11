@@ -20,10 +20,10 @@ $contact = common\models\Contact::getContact("first_email");
         <div class="d-table-cell">
             <div class="container">
                 <div class="page-title-content">
-                    <h2>Contact</h2>
+                    <h2><?= Yii::t('app', "Kontaktlar")?></h2>
                     <ul>
-                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a></li>
-                        <li>Contact</li>
+                        <li><a href="<?= \yii\helpers\Url::to(['/']) ?>"><?= Yii::t('app', "Bosh sahifa")?></a></li>
+                        <li><?= Yii::t('app', "Kontaktlar")?></li>
                     </ul>
                 </div>
             </div>
@@ -83,10 +83,8 @@ $contact = common\models\Contact::getContact("first_email");
         </div>
 
         <div class="section-title">
-            <span>Contact Us</span>
-            <h2>Drop us Message for any Query</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
+            <span><?= Yii::t('app', "Biz bilan bog'laning")?></span>
+            <h2><?= Yii::t('app', "Murojaatingizni qoldiring")?></h2>
         </div>
         <?php $form = ActiveForm::begin(); ?>
         <div class="contact-form">

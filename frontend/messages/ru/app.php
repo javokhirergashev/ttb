@@ -64,7 +64,7 @@ return [
     'Tezkor ro`yxatga olish' => 'Быстрая регистрация',
     'Tezkor tahlil natijasi' => 'Быстрый результат анализа',
     'Umumiy shifokor' => 'Врач общей практики',
-    'Xizmatlar' => 'Услуги',
+    'Xizmatlar' => 'Сервисы',
     'Xodimlar' => 'Сотрудники',
     'Yangiliklar' => 'Новости',
     'Yuqori sifatli yordam ko\'rsatish: Bizning asosiy maqsadimiz bemorlarimizga eng yuqori standartdagi yordamni taqdim etishdir.' => 'Предоставление высококачественной медицинской помощи: Наша главная цель — обеспечить высочайший стандарт медицинской помощи для наших пациентов.',
@@ -84,6 +84,11 @@ return [
     'Elektron retseptlar' => "Электронные рецепты",
     'Raqamli tibbiy hisobotlar' => "Цифровые медицинские отчеты",
     'Foydalanish imkoniyati va qulaylik' => "Юзабилити и удобств",
-    '' => "",
+    'Bosh sahifa' => "Главная",
+    'Kontaktlar' => "Kонтакты",
+    'Shifokor bilan uchrashuv' => "На прием к врачу",
+    'Murojaatingizni Qoldiring' => "Оставьте свой запрос"
+
+
 
 ];

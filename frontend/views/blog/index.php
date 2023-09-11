@@ -10,9 +10,9 @@
       <div class="d-table-cell">
          <div class="container">
             <div class="page-title-content">
-               <h2>Blog</h2>
+               <h2><?= Yii::t('app', "Yangiliklar")?></h2>
                <ul>
-                  <li><a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a></li>
+                  <li><a href="<?= \yii\helpers\Url::to(['/']) ?>"><?= Yii::t('app', "Bosh sahifa")?></a></li>
                   <li><?= Yii::t('app', 'Blog') ?></li>
                </ul>
             </div>
@@ -26,10 +26,9 @@
 <section class="blog-area ptb-100">
    <div class="container-fluid">
       <div class="section-title">
-         <span>News</span>
-         <h2>Our Latest News</h2>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Quis ipsum su</p>
+         <span><?= Yii::t('app', "Yangiliklar")?></span>
+         <h2><?= Yii::t('app', "Yangiliklar")?></h2>
+
       </div>
       <?= \yii\widgets\ListView::widget([
          'dataProvider' => $dataProvider,

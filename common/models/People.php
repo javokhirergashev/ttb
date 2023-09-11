@@ -99,6 +99,7 @@ class People extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'region_id', 'territory_id', 'district_id', 'quarter_id', 'qvp_id', 'gender'], 'default', 'value' => null],
+//            [['region_id', 'district_id', 'quarter_id', 'qvp_id'], 'required'],
             [['status', 'region_id', 'district_id', 'quarter_id', 'qvp_id', 'gender', 'disability_group', 'pregnant_status'], 'integer'],
             [['first_name', 'last_name', 'middle_name', 'pinfl', 'passport_number', 'phone_number', 'metrka_number', 'territory_code', 'dispensary_control', 'ayol_daftar', 'temir_daftar', 'yoshlar_daftar', 'job', 'height', 'weight', 'blood_pressure', 'saturation', 'pulse', 'disablity_class_id', 'head_family'], 'string', 'max' => 255],
             [['district_id'], 'exist', 'skipOnError' => true, 'targetClass' => District::class, 'targetAttribute' => ['district_id' => 'id']],
@@ -107,9 +108,12 @@ class People extends \yii\db\ActiveRecord
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::class, 'targetAttribute' => ['region_id' => 'id']],
             [['territory_id'], 'exist', 'skipOnError' => true, 'targetClass' => Territory::class, 'targetAttribute' => ['territory_id' => 'id']],
             [['quarterIds', 'birthday'], 'safe'],
+            [['passport_number', 'pinfl'], 'unique'],
+            [['passport_number', 'pinfl'], 'required'],
             [['first_name'], 'string', 'max' => 10]
         ];
     }
+
 
     /**
      * {@inheritdoc}

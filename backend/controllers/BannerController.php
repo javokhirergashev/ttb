@@ -74,8 +74,8 @@ class BannerController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->image = UploadedFile::getInstance($model, 'image');
-                $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
                 if ($model->save()) {
+                    $model->image = StaticFunctions::saveImage('banner', $model->id, $model->image);
                     return $this->redirect(['index']);
                 }
             }

@@ -109,21 +109,14 @@
                        class="<?= Yii::$app->controller->id == "referral" ? "active" : "" ?>">
                    <span class="menu-side">
                        <img src="/backend-files/img/icons/menu-icon-13.svg" alt=""></span>
-<<<<<<< HEAD
-                     <span> Ma'lumotnomalar</span>
-                 </a>
-             </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['request/']) ?>"
-                    class="<?= Yii::$app->controller->id == "request" ? "active" : "" ?>">
-=======
+
                         <span> Ma'lumotnomalar</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= \yii\helpers\Url::to(['request/']) ?>"
                        class="<?= Yii::$app->controller->id == "request" ? "active" : "" ?>">
->>>>>>> 6752fafd738486d705679084ebc75c7c197eb39a
+
                    <span class="menu-side">
                        <img src="/backend-files/img/icons/menu-icon-12.svg" alt="">
                    </span>

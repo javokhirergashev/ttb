@@ -103,100 +103,51 @@ use yii\widgets\ActiveForm;
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer odometer-auto-theme" data-count="2700"><div
-                                            class="odometer-inside"><span class="odometer-digit"><span
-                                                    class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">2</span></span></span></span></span><span
-                                                class="odometer-formatting-mark">,</span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">7</span></span></span></span></span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">0</span></span></span></span></span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">0</span></span></span></span></span></div></span>
+                                <span class="odometer" data-count="270">00</span>
                                 <span class="sign-icon">+</span>
                             </h3>
-                            <p>Care Locations</p>
+                            <p><?= Yii::t('app', 'Malakali shifokorlar')?></p>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer odometer-auto-theme" data-count="2.7"><div
-                                            class="odometer-inside"><span class="odometer-digit"><span
-                                                    class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">2</span></span></span></span></span><span
-                                                class="odometer-formatting-mark odometer-radix-mark">.</span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">7</span></span></span></span></span></div></span>
+                                <span class="odometer" data-count="2.7">00</span>
                                 <span class="sign-icon">K</span>
                             </h3>
-                            <p>Virtual Care Solutions</p>
+                            <p><?= Yii::t('app', 'Online foydalanuvchilar')?></p>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer odometer-auto-theme" data-count="99.60"><div
-                                            class="odometer-inside"><span class="odometer-digit"><span
-                                                    class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">9</span></span></span></span></span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">9</span></span></span></span></span><span
-                                                class="odometer-formatting-mark odometer-radix-mark">.</span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">6</span></span></span></span></span></div></span>
+                                <span class="odometer" data-count="99.60">00</span>
                                 <span class="sign-icon">%</span>
                             </h3>
-                            <p>Connections Success Rate</p>
+                            <p><?= Yii::t('app', 'Yuqori sifat')?></p>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer odometer-auto-theme" data-count="30"><div class="odometer-inside"><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">3</span></span></span></span></span><span
-                                                class="odometer-digit"><span class="odometer-digit-spacer">8</span><span
-                                                    class="odometer-digit-inner"><span class="odometer-ribbon"><span
-                                                            class="odometer-ribbon-inner"><span
-                                                                class="odometer-value">0</span></span></span></span></span></div></span>
+                                <span class="odometer" data-count="30">00</span>
                                 <span class="sign-icon">+</span>
                             </h3>
-                            <p>Award Winning</p>
+                            <p><?= Yii::t('app', 'Yillik tajriba')?></p>
                         </div>
                     </div>
-                </div>
-            </div>
 
+                </div>
+
+            </div>
             <div class="col-lg-6">
                 <div class="appointment-form">
                     <div class="content">
-                        <span>Call to Action</span>
-                        <h3>Make An Appointment</h3>
+                        <span><?= Yii::t('app', "Shifokor bilan uchrashuv")?></span>
+                        <h3><?= Yii::t('app', "Shifokor bilan uchrashuv")?></h3>
                     </div>
                     <?php $form = ActiveForm::begin(['method' => 'POST', 'action' => \yii\helpers\Url::to(['queue/create'])], ['options' => ['id' => 'queue-form']]); ?>
                     <div class="row">
@@ -246,7 +197,7 @@ use yii\widgets\ActiveForm;
                         <div class="col-6 col-6 mt-3 custom__select_form">
                             <?= $form->field($model, 'user_id')->widget(DepDrop::classname(), [
                                 'options' => [
-                                        'class' => ''
+                                    'class' => ''
                                 ],
                                 'pluginOptions' => [
                                     'depends' => ['user-id'],
@@ -294,6 +245,10 @@ use yii\widgets\ActiveForm;
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
+        </div>
+    </div>
+
+
         </div>
     </div>
 </section>

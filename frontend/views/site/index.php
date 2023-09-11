@@ -337,30 +337,26 @@ $page = 1;
 
             <div class="col-lg-6">
                 <div class="testimonials-slider owl-carousel owl-theme">
+                    <?php foreach ($comments as $comment) : ?>
+                    <?php $comment_img = \common\models\StaticFunctions::getImage('commnents',$comment->id,$comment->image)?>
 
                        <div class="testimonials-item">
+                           <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
+                           <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
 
-                            <div class="content">
-                                <span><?= Yii::t('app', 'Mijozlarimiz fikrlari') ?></span>
-                                <h3><?= Yii::t('app', 'Mijozlarimiz biz haqimizda qanday fikrda?') ?></h3>
-                                <div class="icon">
-                                    <i class="flaticon-left-quote"></i>
-                                </div>
-                                <?php foreach ($comments as $comment) : ?>
-                                <?php $comment_img = \common\models\StaticFunctions::getImage('commnents',$comment->id,$comment->image)?>
-
-                                <p><?=$comment->comment[Yii::$app->language]?></p>
-
-                                <div class="info">
-                                    <img src="<?=$comment_img?>" alt="image">
-                                    <h4><?=$comment->client_full_name?></h4>
-                                </div>
-                                <?php endforeach; ?>
-                            </div>
+                                   <div class="content">
+                                         <div class="icon">
+                                            <i class="flaticon-left-quote"></i>
+                                        </div>
+                                        <p><?=$comment->comment[Yii::$app->language]?></p>
+                                        <div class="info">
+                                            <h4><?=$comment->client_full_name?></h4>
+                                        </div>
+                                    </div>
 
 
                         </div>
-
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -382,8 +378,7 @@ $page = 1;
             <?php foreach ($partners as $partner) : ?>
              <?php $partner_image = \common\models\StaticFunctions::getImage('partners',$partner->id,$partner->image)?>
                 <div class="partner-item">
-                    <a href="partner.html">
-                        <img src="<?=$partner_image?>" alt="image">
+                    <a href="">
                         <img src="<?=$partner_image?>" alt="image">
                     </a>
                 </div>

@@ -140,9 +140,9 @@
 <section class="appointment-area ptb-100">
    <div class="container-fluid">
       <div class="row align-items-center">
-         <div class="col-lg-6">
+         <div class="col-lg-12">
             <div class="row">
-               <div class="col-lg-6 col-md-6">
+               <div class="col-lg-6">
                   <div class="single-fun-fact">
                      <h3>
                         <span class="odometer" data-count="270">00</span>
@@ -152,7 +152,7 @@
                   </div>
                </div>
 
-               <div class="col-lg-6 col-md-6">
+               <div class="col-lg-6 ">
                   <div class="single-fun-fact">
                      <h3>
                         <span class="odometer" data-count="2.7">00</span>
@@ -162,7 +162,7 @@
                   </div>
                </div>
 
-               <div class="col-lg-6 col-md-6">
+               <div class="col-lg-6 ">
                   <div class="single-fun-fact">
                      <h3>
                         <span class="odometer" data-count="99.60">00</span>
@@ -172,7 +172,7 @@
                   </div>
                </div>
 
-               <div class="col-lg-6 col-md-6">
+               <div class="col-lg-6 ">
                   <div class="single-fun-fact">
                      <h3>
                         <span class="odometer" data-count="30">00</span>
@@ -184,85 +184,6 @@
             </div>
          </div>
 
-         <div class="col-lg-6">
-            <div class="appointment-form">
-               <div class="content">
-                  <span>Call to Action</span>
-                  <h3>Make An Appointment</h3>
-               </div>
-               <form>
-                  <div class="row">
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="form-group">
-                           <input type="text" class="form-control" id="Name" placeholder="Enter Your Name">
-                           <i class="flaticon-user"></i>
-                        </div>
-                     </div>
-
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="form-group">
-                           <input type="text" class="form-control" id="Email" placeholder="Enter Email">
-                           <i class="flaticon-email"></i>
-                        </div>
-                     </div>
-
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="form-group">
-                           <input type="text" class="form-control" id="Phone" placeholder="Enter Phone Number">
-                           <i class="flaticon-call"></i>
-                        </div>
-                     </div>
-
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="form-group">
-                           <select>
-                              <option value="">Select Category</option>
-                              <option value="">Cardiologists</option>
-                              <option value="">Dermatologists</option>
-                              <option value="">Endocrinologists</option>
-                              <option value="">Gastroenterologists</option>
-                              <option value="">Allergists</option>
-                              <option value="">Immunologists</option>
-                           </select>
-                        </div>
-                     </div>
-
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="form-group">
-                           <select>
-                              <option value="">Select Doctor</option>
-                              <option value="">Dr. James Adult</option>
-                              <option value="">Dr. James Alison</option>
-                              <option value="">Dr. Peter Adlock</option>
-                              <option value="">Dr. Jelin Alis</option>
-                              <option value="">Dr. Josh Taylor</option>
-                              <option value="">Dr. Steven Smith</option>
-                           </select>
-                        </div>
-                     </div>
-
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="form-group">
-                           <div class="input-group date" id="datetimepicker">
-                              <input type="text" class="form-control" placeholder="">
-                              <span class="input-group-addon"></span>
-                           </div>
-                           <i class="flaticon-calendar"></i>
-                        </div>
-                     </div>
-
-                     <div class="col-12">
-                        <div class="appointment-btn">
-                           <button type="submit" class="default-btn">
-                               <?= Yii::t('app', 'Shikoyat qoldirish')?>
-                              <span></span>
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-               </form>
-            </div>
-         </div>
       </div>
    </div>
 </section>

@@ -69,5 +69,8 @@ return [
     'Yangiliklar' => 'News',
     'Yuqori sifatli yordam ko\'rsatish: Bizning asosiy maqsadimiz bemorlarimizga eng yuqori standartdagi yordamni taqdim etishdir.' => 'Providing high-quality care: Our main goal is to provide the highest standard of care to our patients.',
     'Yuqumli kasalliklar bo\'limi bakteriyalar, viruslar, zamburug\'lar va parazitlar kabi mikroorganizmlar keltirib chiqaradigan kasalliklarning oldini olish, tashxislash va davolashga qaratilgan. Ushbu bo\'lim yuqumli kasalliklar tarqalishini boshqarish va nazorat qilishda hal qiluvchi rol o\'ynaydi.' => 'The Department of Infectious Diseases focuses on the prevention, diagnosis and treatment of diseases caused by microorganisms such as bacteria, viruses, fungi and parasites. This department plays a crucial role in managing and controlling the spread of infectious diseases.',
-    'Test' => '@@Test@@',
+    'Kontaktlar' => 'Contacts',
+    'Shifokor bilan uchrashuv' => 'Appointment with doctor',
+    'Murojaatingizni Qoldiring' => 'Leave your request',
+
 ];

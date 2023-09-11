@@ -1,0 +1,19 @@
+.custom__select_form .select2-selection.select2-selection--single {
+    border: 0;
+    background: transparent;
+    height: 50px;
+    line-height: 48px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    /*padding-left: 20px;*/
+    padding: 0 0 0 20px;
+    border: 1px dashed #f2f6fe;
+    color: #5d5d5d;
+    border-radius: 50px !important;
+    background-color: #f2f6fe ;
+    box-shadow: none;
+}
+
+.custom__select_form .nice-select {
+    display: none;
+}

@@ -58,6 +58,7 @@ class PeopleSearch extends People
             return $dataProvider;
         }
 
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -80,8 +81,8 @@ class PeopleSearch extends People
             ->andFilterWhere(['ilike', 'territory_code', $this->territory_code]);
 
 
-        if ($this->full_name) {
 
+        if ($this->full_name) {
             $query->andWhere(['or', ['ilike', 'first_name', $this->full_name], ['ilike', 'last_name', $this->full_name]]);
         }
 

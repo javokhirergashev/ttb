@@ -75,7 +75,8 @@
     </div>
     <div class="profile-tabs">
         <ul class="nav nav-tabs nav-tabs-bottom">
-            <li class="nav-item"><a class="nav-link active" data-href="#about-cont" href="#about-cont" data-bs-toggle="tab">Navbatdagilar</a>
+            <li class="nav-item"><a class="nav-link active" data-href="#about-cont" href="#about-cont"
+                                    data-bs-toggle="tab">Navbatdagilar</a>
             </li>
             <li class="nav-item"><a class="nav-link" data-href="#bottom-tab2" href="#bottom-tab2" data-bs-toggle="tab">Ko'rilganlar</a>
             </li>
@@ -96,7 +97,9 @@
                                                 <div class="doctor-search-blk">
                                                     <div class="top-nav-search table-search-blk">
                                                         <form>
-                                                            <input type="text" name="name" value="<?= Yii::$app->request->queryParams['name'] ?? '' ?>" class="form-control"
+                                                            <input type="text" name="name"
+                                                                   value="<?= Yii::$app->request->queryParams['name'] ?? '' ?>"
+                                                                   class="form-control"
                                                                    placeholder="Search here">
                                                             <a class="btn"><img src="assets/img/icons/search-normal.svg"
                                                                                 alt=""></a>
@@ -109,7 +112,7 @@
                                                                     src="/backend-files/img/icons/plus.svg"
                                                                     alt="">
                                                         </a>
-                                                        <a href="<?=\yii\helpers\Url::to(['user/profile'])?>"
+                                                        <a href="<?= \yii\helpers\Url::to(['user/profile']) ?>"
                                                            class="btn btn-primary doctor-refresh ms-2"><img
                                                                     src="/backend-files/img/icons/re-fresh.svg" alt="">
                                                         </a>
@@ -155,7 +158,7 @@
                                             <tr>
                                                 <td><?= $model->id; ?></td>
                                                 <td class="profile-image">
-                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $model->id]) ?>">
+                                                    <a href="#">
                                                         <?= $model->first_name . " " . $model->last_name ?>
                                                     </a>
                                                 </td>
@@ -242,7 +245,7 @@
                                             <tr>
                                                 <td><?= $index + 1; ?></td>
                                                 <td class="profile-image">
-                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $history->id]) ?>">
+                                                    <a href="<?= \yii\helpers\Url::to(['people/history', 'id' => $people->id]) ?>">
                                                         <?= $people->first_name . " " . $people->last_name ?>
                                                     </a>
                                                 </td>

@@ -7,6 +7,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\web\IdentityInterface;
 
 /**
@@ -57,6 +58,8 @@ class User extends ActiveRecord implements IdentityInterface
     const ROLE_USER = 'user';
     const ROLE_MANAGE = 'manager';
     const ROLE_ADMINISTRATOR = 'administrator';
+
+    const ADMIN_ID = 1;
 
 
     /**
@@ -263,8 +266,19 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
-    public static function getDropDownList()
+    public static function getDropDownList($qvp_id = null)
     {
+        if ($qvp_id) {
+            return self::find()
+                ->andWhere(['qvp_id' => $qvp_id])
+                ->select([
+                    'id',
+                    new Expression("CONCAT(first_name,' ', last_name) AS name"),
+                    // Add other columns you want to select here
+                ])
+                ->asArray()
+                ->all();
+        }
         return \yii\helpers\ArrayHelper::map(static::find()->where(['role' => self::ROLE_DOCTOR])->all(), 'id', 'first_name');
     }
 

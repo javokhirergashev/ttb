@@ -125,7 +125,7 @@
                                             <tr>
                                                 <td><?= $index + 1; ?></td>
                                                 <td class="profile-image">
-                                                    <?= $model->title ?>
+                                                    <?= $model->diagnosis ?>
                                                 </td>
                                                 <td><?= date("d.m.Y", $model->created_at) ?></td>
                                                 <td><?= $model->diagnosis_list_id ? $model->diagnosisList->name : " ---- ----" ?></td>

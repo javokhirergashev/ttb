@@ -94,7 +94,7 @@ class UserForm extends \yii\base\Model
         $scenarios['register'] = ['username', 'email', 'password', 'phone_number', 'avatar', 'first_name', 'last_name',
             'password_confirm', 'status', 'role', 'birthday', 'address', 'position_id', 'qvp_id', 'district_id',
             'telegram_link', 'instagram_link', 'facebook_link', 'twitter_link', 'gender', 'category', 'rate', 'retired',
-            'decree', 'disabled', 'deputy', 'hayfsan', 'birthday', 'qualification_date', 'terrytory_id'];
+            'decree', 'disabled', 'deputy', 'hayfsan', 'birthday', 'qualification_date', 'territory_id'];
         return $scenarios;
     }
 
@@ -161,7 +161,7 @@ class UserForm extends \yii\base\Model
             'instagram_link' => $this->instagram_link,
             'facebook_link' => $this->facebook_link,
             'twitter_link' => $this->facebook_link,
-            'territory_id' => $this->terrytory_id
+            'territory_id' => $this->territory_id
         ]);
 
         if ($this->password) {

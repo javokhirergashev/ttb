@@ -23,9 +23,9 @@ return [
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
-//        'allowActions' => [
-//            '*', // Allow access to the admin controller for those with the necessary permissions.
-//        ],
+        'allowActions' => [
+            '*', // Allow access to the admin controller for those with the necessary permissions.
+        ],
     ],
     'components' => [
         'request' => [

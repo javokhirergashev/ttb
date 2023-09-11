@@ -126,13 +126,6 @@
                   <span> Murojaatlar </span>
                </a>
             </li>
-            <li>
-               <a href="<?= \yii\helpers\Url::to(['queue/']) ?>"
-                    class="<?= Yii::$app->controller->id == "queue" ? "active" : "" ?>">
-                   <span class="menu-side"><img src="/backend-files/img/icons/menu-icon-14.svg" alt=""></span>
-                  <span> Navbatlar </span>
-               </a>
-            </li>
             <li class="submenu">
                <a href="#">
                    <span class="menu-side">

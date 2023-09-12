@@ -34,6 +34,8 @@ class m130524_201442_init extends Migration
         $this->insert('{{%user}}', [
             'phone_number' => '+998111234567',
             'username' => 'admin@admin.loc',
+            'first_name' => 'Admin',
+            'last_name' => 'Admin',
             'role' => \common\models\User::ROLE_ADMIN,
             'auth_key' => Yii::$app->security->generateRandomString(),
             'password_hash' => Yii::$app->security->generatePasswordHash('admin123'),

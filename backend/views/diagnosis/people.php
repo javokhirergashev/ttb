@@ -106,7 +106,7 @@
                                         <a href="<?= \yii\helpers\Url::to(['diagnosis/create', 'people_id' => $model->id]) ?>"
                                            title="Diagnost qo'shish" class="btn btn-primary add-pluss ms-2"><i
                                                     class="fa fa-plus"></i></a>
-                                        <a  title="Ko'rish" href="<?= \yii\helpers\Url::to(['queue/view', 'id' => $model->id]) ?>"
+                                        <a  title="Ko'rish" href="<?= \yii\helpers\Url::to(['people/view', 'id' => $model->id]) ?>"
                                            class="btn btn-success add-pluss ms-2"><i class="fa fa-eye"></i></a>
                                         <a href="<?= \yii\helpers\Url::to(['referral/create', 'people_id' => $model->id]) ?>"
                                                    class="btn btn-info text-white  add-pluss ms-2"><i

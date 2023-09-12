@@ -9,6 +9,9 @@ use common\models\People;
 use common\models\Queue;
 use common\models\Referral;
 use common\models\search\UserCreateFormSearch;
+use common\models\search\UserCreateSearch;
+use common\models\search\UserSearch;
+use common\models\search\WorkingHourSearch;
 use common\models\UserCreateForm;
 use common\models\WorkingHour;
 use yii\data\ActiveDataProvider;
@@ -221,6 +224,18 @@ class UserController extends Controller
         return $this->render('profile-edite', ['model' => $form]);
     }
 
+
+    public function actionTable()
+    {
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+
+        return $this->render('table', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
+        ]);
+    }
 
 
 }

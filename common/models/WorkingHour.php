@@ -19,6 +19,10 @@ use yii\behaviors\TimestampBehavior;
  */
 class WorkingHour extends \yii\db\ActiveRecord
 {
+
+    const TYPE_ENTER = 1;
+    const TYPE_EXIT = 2;
+
     /**
      * {@inheritdoc}
      */

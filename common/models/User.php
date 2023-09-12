@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\behaviors\DateTimeBehavior;
+use common\models\search\WorkingHourSearch;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -317,6 +318,16 @@ class User extends ActiveRecord implements IdentityInterface
             'phone_number',
             'role'
         ];
+    }
+
+    public function getWorkingHours()
+    {
+        return $this->hasMany(WorkingHour::class, ['user_id' => 'id']);
+    }
+
+    public function getWorkingHourEnter()
+    {
+        return $this->hasMany(WorkingHour::class, ['user_id' => 'id'])->andWhere(['type' => WorkingHour::TYPE_ENTER]);
     }
 
 

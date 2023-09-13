@@ -30,7 +30,7 @@
                                 <div class="doctor-table-blk">
                                     <div class="doctor-search-blk">
                                         <div class="top-nav-searchs table-search-blk">
-                                            <form method="get" action="people">
+                                            <form method="get" action="table">
                                                 <div class="d-flex">
                                                     <div class="">
                                                         <input type="text" value="<?= $searchModel->full_name ?>"

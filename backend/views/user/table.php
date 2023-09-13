@@ -87,6 +87,9 @@
                                     <td><?php $time = $model->getWorkingHours()->andWhere(['type' => \common\models\WorkingHour::TYPE_EXIT])->orderBy(['id' => SORT_DESC])->one();
                                         echo $time ? date('H:i', $time->created_at) : "-----"
                                         ?></td>
+                                    <td><?php $time = $model->getWorkingHour()->orderBy(['id' => SORT_DESC])->one();
+                                        echo $time->type == \common\models\WorkingHour::TYPE_ENTER ? '<span class="badge badge-success">Keldi</span>' : '<span class="badge badge-danger">Ketdi</span>';
+                                        ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

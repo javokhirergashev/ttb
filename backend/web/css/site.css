@@ -28,6 +28,10 @@ a.asc:after, a.desc:after {
     margin: 4px 4px 2px 4px;
     background: transparent;
 }
+.free td{
+    padding-top:50px;
+    padding-bottom:50px;
+}
 
 a.asc:after {
     border-bottom: solid 7px #212529;

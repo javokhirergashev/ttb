@@ -364,7 +364,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 
                 <?php endforeach; ?>
             </table>
-            <span>KPK-qizamiq-epidparotit-qizilcha,KK-qizamiq-qizilchaga qarshi emlash</span>
+            <p class="text-center">KPK-qizamiq-epidparotit-qizilcha,KK-qizamiq-qizilchaga qarshi emlash</p>
 
         <?php elseif ($class->id == 8) : ?>
             <p class="text-center">8.<?= $class->name ?>:</p>
@@ -408,17 +408,298 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php endforeach; ?>
             </table>
         <?php elseif ($class->id == 9) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">9.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->preparat_name: ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
         <?php elseif ($class->id == 10) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">10.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+
+
+
+            </table>
         <?php elseif ($class->id == 11) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">11.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+
+            </table>
         <?php elseif ($class->id == 12) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">12.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:1%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+            </table>
         <?php elseif ($class->id == 13) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">13.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+
+
+            </table>
         <?php elseif ($class->id == 14) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">14.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Preparatning nomi,ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:10%">Emlashga reaksiyalar maxalliy,umumiy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan maxalliy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+            </table>
         <?php endif; ?>
 
 

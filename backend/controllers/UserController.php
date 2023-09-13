@@ -12,6 +12,7 @@ use common\models\search\UserCreateFormSearch;
 use common\models\search\UserCreateSearch;
 use common\models\search\UserSearch;
 use common\models\search\WorkingHourSearch;
+use common\models\User;
 use common\models\UserCreateForm;
 use common\models\WorkingHour;
 use yii\data\ActiveDataProvider;
@@ -234,6 +235,20 @@ class UserController extends Controller
         return $this->render('table', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel
+        ]);
+    }
+
+    public function actionTableView($id)
+    {
+        $searchModel = new  WorkingHourSearch(['user_id' => $id]);
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $user = User::findOne($id);
+
+
+        return $this->render('table-view', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'user' => $user
         ]);
     }
 

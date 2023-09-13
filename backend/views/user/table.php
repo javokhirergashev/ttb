@@ -5,8 +5,8 @@
  * @var $searchModel  \common\models\search\UserSearch
  */;
 
-$startTimestamp = strtotime(date('Y-m-d 00:00:00', $searchModel->date));
-$endTimestamp = strtotime(date('Y-m-d 23:59:59', $searchModel->date));
+$startTimestamp = strtotime(date('Y-m-d 00:00:00', strtotime($searchModel->date)));
+$endTimestamp = strtotime(date('Y-m-d 23:59:59', strtotime($searchModel->date)));
 ?>
 
 <div class="content">
@@ -80,7 +80,7 @@ $endTimestamp = strtotime(date('Y-m-d 23:59:59', $searchModel->date));
                                 <tr>
                                     <td><?= $model->id; ?></td>
                                     <td class="profile-image">
-                                        <a href="<?= \yii\helpers\Url::to(['user/table']) ?>">
+                                        <a href="<?= \yii\helpers\Url::to(['user/table-view','id' => $model->id]) ?>">
                                             <?= $model->first_name . " " . $model->last_name ?>
                                         </a>
                                     </td>

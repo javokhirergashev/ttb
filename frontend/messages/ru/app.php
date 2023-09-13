@@ -87,7 +87,10 @@ return [
     'Bosh sahifa' => "Главная",
     'Kontaktlar' => "Kонтакты",
     'Shifokor bilan uchrashuv' => "На прием к врачу",
-    'Murojaatingizni Qoldiring' => "Оставьте свой запрос"
+    'Murojaatingizni Qoldiring' => "Оставьте свой запрос",
+    'Sizga taqdim etadigan xizmatlarimiz' => "Наши услуги для вас",
+    "Namangan shahar tibbiyot birlashmasi" => "Наманганское городское медицинское объединение",
+
 
 
 

@@ -82,13 +82,25 @@
                                         </a>
                                     </td>
                                     <td><?php $time = $model->getWorkingHourEnter()->orderBy(['id' => SORT_DESC])->one();
-                                        echo $time ? date('H:i', $time->created_at) : "-----"
+                                        if ($time) {
+                                            echo $time ? date('H:i', $time->created_at) : "-----";
+                                        } else {
+                                            echo "---- ----";
+                                        }
                                         ?></td>
                                     <td><?php $time = $model->getWorkingHours()->andWhere(['type' => \common\models\WorkingHour::TYPE_EXIT])->orderBy(['id' => SORT_DESC])->one();
-                                        echo $time ? date('H:i', $time->created_at) : "-----"
+                                        if ($time) {
+                                            echo $time ? date('H:i', $time->created_at) : "-----";
+                                        } else {
+                                            echo "---- ----";
+                                        }
                                         ?></td>
                                     <td><?php $time = $model->getWorkingHours()->orderBy(['id' => SORT_DESC])->one();
-                                        echo $time->type == \common\models\WorkingHour::TYPE_ENTER ? '<span class="badge badge-success">Keldi</span>' : '<span class="badge badge-danger">Ketdi</span>';
+                                        if ($time) {
+                                            echo $time->type == \common\models\WorkingHour::TYPE_ENTER ? '<span class="badge badge-success">Keldi</span>' : '<span class="badge badge-danger">Ketdi</span>';
+                                        } else {
+                                            echo "---- ----";
+                                        }
                                         ?></td>
                                 </tr>
                             <?php endforeach; ?>

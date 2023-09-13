@@ -11,6 +11,9 @@ use common\models\WorkingHour;
  */
 class WorkingHourSearch extends WorkingHour
 {
+
+    public $date;
+
     /**
      * {@inheritdoc}
      */
@@ -18,6 +21,7 @@ class WorkingHourSearch extends WorkingHour
     {
         return [
             [['id', 'user_id', 'created_at', 'updated_at', 'type'], 'integer'],
+            [['date'], 'safe']
         ];
     }
 
@@ -63,6 +67,14 @@ class WorkingHourSearch extends WorkingHour
             'updated_at' => $this->updated_at,
             'type' => $this->type,
         ]);
+
+        if ($this->date) {
+            $startTimestamp = strtotime(date('Y-m-d 00:00:00', strtotime($this->date)));
+            $endTimestamp = strtotime(date('Y-m-d 23:59:59', strtotime($this->date)));
+            $query->andWhere(['between', 'created_at', $startTimestamp, $endTimestamp]);
+        }
+
+        $query->orderBy(['created_at' => SORT_DESC]);
 
         return $dataProvider;
     }

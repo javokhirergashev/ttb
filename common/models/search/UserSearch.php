@@ -88,7 +88,10 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'username', $this->username]);
 
-        $query->andWhere(['<>', 'id', User::ADMIN_ID]);
+        $query->andWhere(['<>', 'public.user.id', User::ADMIN_ID]);
+
+        $query->leftJoin('working_hour', 'public.user.id=working_hour.user_id')
+            ->orderBy(['working_hour.id' => SORT_DESC]);
 
         return $dataProvider;
     }

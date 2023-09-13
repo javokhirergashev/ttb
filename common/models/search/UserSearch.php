@@ -69,11 +69,18 @@ class UserSearch extends User
             'position_id' => $this->position_id,
         ]);
 
-        if (!$this->date){
+        if (!$this->date) {
             $this->date = date('Y-m-d');
         }
 
 //        $query->andWhere(['qvp_id' => \Yii::$app->user->identity->qvp->id]);
+
+        if ($this->full_name) {
+            $query->andWhere(['or',
+                ['ilike', "CONCAT(first_name, ' ', last_name)", $this->full_name],
+                ['ilike', "CONCAT(last_name, ' ', first_name)", $this->full_name],
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'phone_number', $this->phone_number])
             ->andFilterWhere(['like', 'first_name', $this->first_name])

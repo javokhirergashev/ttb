@@ -4,6 +4,9 @@
  * @var $model        \common\models\User
  * @var $searchModel  \common\models\search\UserSearch
  */;
+
+$startTimestamp = strtotime(date('Y-m-d 00:00:00', $searchModel->date));
+$endTimestamp = strtotime(date('Y-m-d 23:59:59', $searchModel->date));
 ?>
 
 <div class="content">
@@ -42,7 +45,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="" style="margin-left: 10px;">
-                                                        <input type="date" class="date-search" name="date"
+                                                        <input type="date" class="date-search" name="UserSearch[date]"
                                                                value="<?= $searchModel->date ?? date('Y-m-d') ?>"
                                                                placeholder="Sanani tanlang">
                                                     </div>
@@ -81,21 +84,24 @@
                                             <?= $model->first_name . " " . $model->last_name ?>
                                         </a>
                                     </td>
-                                    <td><?php $time = $model->getWorkingHourEnter()->orderBy(['id' => SORT_DESC])->one();
+                                    <td><?php $time = $model->getWorkingHourEnter()->andWhere(['between', 'created_at', $startTimestamp, $endTimestamp])->orderBy(['id' => SORT_ASC])->one();
                                         if ($time) {
                                             echo $time ? date('H:i', $time->created_at) : "-----";
                                         } else {
                                             echo "---- ----";
                                         }
                                         ?></td>
-                                    <td><?php $time = $model->getWorkingHours()->andWhere(['type' => \common\models\WorkingHour::TYPE_EXIT])->orderBy(['id' => SORT_DESC])->one();
+                                    <td><?php $time = $model->getWorkingHours()->andWhere(['type' => \common\models\WorkingHour::TYPE_EXIT])->andWhere(['between', 'created_at', $startTimestamp, $endTimestamp])
+                                            ->orderBy(['id' => SORT_DESC])->one();
                                         if ($time) {
                                             echo $time ? date('H:i', $time->created_at) : "-----";
                                         } else {
                                             echo "---- ----";
                                         }
                                         ?></td>
-                                    <td><?php $time = $model->getWorkingHours()->orderBy(['id' => SORT_DESC])->one();
+                                    <td><?php $time = $model->getWorkingHours()->orderBy(['id' => SORT_DESC])
+                                            ->andWhere(['between', 'created_at', $startTimestamp, $endTimestamp])
+                                            ->one();
                                         if ($time) {
                                             echo $time->type == \common\models\WorkingHour::TYPE_ENTER ? '<span class="badge badge-success">Keldi</span>' : '<span class="badge badge-danger">Ketdi</span>';
                                         } else {

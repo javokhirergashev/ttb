@@ -30,18 +30,30 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Yangi aholi qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <div class="row">
         <div class="col-md-12">
             <div class="card-box">
 
-                <div class="d-flex justify-content-between">
                     <form action="" enctype="multipart/form-data" method="post">
-                        <input type="file" accept=".xlsx,.xls" name="excel">
-                        <button type="submit" class="btn btn-success">Yuklash</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="file" accept=".xlsx,.xls" name="excel">
+                            </div>
+                            <div class="col-md-6">
+                            <button style="padding: 10px;"  type="submit" class="btn btn-success">Yuklash</button>
+                            </div>
+                        </div>
                     </form>
+            </div>
+        </div>
+    </div>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="col-md-6"></div>
+                <div class="d-flex justify-content-between">
+
                     <div class="text-end">
                         <a class="btn btn-success" href="<?= Url::to(['statistics/people-by-year']) ?>">Yosh bo'yicha
                             hisobot &nbsp&nbsp<i

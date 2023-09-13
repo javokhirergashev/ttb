@@ -82,10 +82,10 @@
                                         </a>
                                     </td>
                                     <td><?php $time = $model->getWorkingHourEnter()->orderBy(['id' => SORT_DESC])->one();
-                                        echo $time ? $time->created_at : "-----"
+                                        echo $time ? date('H:i:s', $time->created_at) : "-----"
                                         ?></td>
                                     <td><?php $time = $model->getWorkingHours()->andWhere(['type' => \common\models\WorkingHour::TYPE_EXIT])->orderBy(['id' => SORT_DESC])->one();
-                                        echo $time ? $time->created_at : "-----"
+                                        echo $time ? date('H:i:s', $time->created_at) : "-----"
                                         ?></td>
                                 </tr>
                             <?php endforeach; ?>

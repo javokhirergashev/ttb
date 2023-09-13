@@ -47,9 +47,7 @@ class PregnantController extends Controller
         $searchModel = new PregnantSearch([
             'person_id' => $person_id
         ]);
-        if (!$searchModel) {
-            return "Homilladorlik bo'yicha hali ko'rik olib borilmagan";
-        }
+
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [

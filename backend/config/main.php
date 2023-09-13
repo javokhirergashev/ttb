@@ -68,7 +68,7 @@ return [
     ],
 
     'on beforeAction' => function () {
-        if (Yii::$app->user->isGuest && Yii::$app->request->url != '/site/login') {
+        if (Yii::$app->user->isGuest && Yii::$app->request->url != '/site/login' && Yii::$app->request->url != '/working-hour/enter' && Yii::$app->request->url != '/working-hour/exit') {
             Yii::$app->getResponse()->redirect(['site/login']);
             Yii::$app->end();
         }

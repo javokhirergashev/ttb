@@ -17,7 +17,7 @@ class QueueSearch extends Queue
     public function rules()
     {
         return [
-            [['id', 'service_id', 'user_id', 'status', 'writing_time', 'created_at', 'updated_at', 'number'], 'integer'],
+            [['id', 'service_id', 'user_id', 'qvp_id', 'status', 'writing_time', 'created_at', 'updated_at', 'number'], 'integer'],
             [['reason', 'first_name', 'last_name', 'phone_number'], 'safe'],
         ];
     }

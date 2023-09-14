@@ -9,11 +9,18 @@ use common\models\People;
 use common\models\Queue;
 use common\models\Referral;
 use common\models\search\UserCreateFormSearch;
+use common\models\search\UserCreateSearch;
+use common\models\search\UserSearch;
+use common\models\search\WorkingHourSearch;
+use common\models\User;
 use common\models\UserCreateForm;
+use common\models\WorkingHour;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 /**
@@ -216,6 +223,34 @@ class UserController extends Controller
         }
 
         return $this->render('profile-edite', ['model' => $form]);
-
     }
+
+
+    public function actionTable()
+    {
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+
+        return $this->render('table', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
+        ]);
+    }
+
+    public function actionTableView($id)
+    {
+        $searchModel = new  WorkingHourSearch(['user_id' => $id]);
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $user = User::findOne($id);
+
+
+        return $this->render('table-view', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'user' => $user
+        ]);
+    }
+
+
 }

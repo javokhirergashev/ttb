@@ -72,5 +72,27 @@ return [
     'Kontaktlar' => 'Contacts',
     'Shifokor bilan uchrashuv' => 'Appointment with doctor',
     'Murojaatingizni Qoldiring' => 'Leave your request',
+    'Sizga taqdim etadigan xizmatlarimiz' => 'Our services for you',
+    'Bosh sahifa' => 'Home',
+    'Onlayn konsultatsiya' => 'Online consult',
+    'Siz bilan 24/7 aloqadamiz' => 'We are in touch  with you 24/7',
+    "Bizning shifoxonamiz bemorlarimizga qulay va qulay tibbiy xizmatlarni taqdim etishga intiladi. Bemor tajribasini oshirishga bag'ishlashimizning bir qismi sifatida biz eng zamonaviy onlayn maslahat vositalarini taklif etamiz." => 'Our hospital strives to provide comfortable and convenient medical services to our patients. As part of our dedication to improving the patient experience, we offer state-of-the-art online consultation tools.',
+
+    'Online uchrashuvlar' => 'Online meetings',
+    'Xavfsiz va maxfiy' => 'Safe and secret',
+    'Elektron retseptlar' => 'e-recepts',
+    'Raqamli tibbiy hisobotlar' => 'Digital medical reports',
+    'Foydalanish imkoniyati va qulaylik' => 'Usability and convenience',
+    "Biz bilan bog'laning" => 'Contact with us',
+    "Murojaatingizni qoldiring" => 'Leave your message',
+    "Ism"=>"Name",
+    "Familiya"=>"Surname",
+    "Murojaat mavzusi"=>"Title of message",
+    "Murojaat matni"=>"Body of message",
+    "Murojaatni yuborish"=>"Send message",
+    "Namangan shahar tibbiyot birlashmasi" => "Namangan City Medical Association",
+    'Bizning vazifamiz har tomonlama va shaxsiylashtirilgan tibbiy xizmatlar orqali odamlar va oilalar salomatligi va hayot sifatini yaxshilashdir.' =>'Our mission is to improve the health and quality of life of individuals and families through comprehensive and personalized medical services.',
+
+
 
 ];

@@ -52,7 +52,6 @@ order by old asc";
         $file = \Yii::createObject([
             'class' => 'codemix\excelexport\ExcelFile',
             'sheets' => [
-
                 'Result per Country' => [   // Name of the excel sheet
                     'data' => $data,
                     // Set to `false` to suppress the title row

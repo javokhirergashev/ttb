@@ -52,10 +52,14 @@ class PeopleSearch extends People
 
         $this->load($params);
 
-        if (! $this->validate()) {
+        if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
-             $query->where('0=1');
+            $query->where('0=1');
             return $dataProvider;
+        }
+
+        if (\Yii::$app->user->identity->qvp_id) {
+            $query->andWhere(['people.qvp_id' => \Yii::$app->user->identity->qvp_id]);
         }
 
 
@@ -79,7 +83,6 @@ class PeopleSearch extends People
             ->andFilterWhere(['ilike', 'birthday', $this->birthday])
             ->andFilterWhere(['ilike', 'metrka_number', $this->metrka_number])
             ->andFilterWhere(['ilike', 'territory_code', $this->territory_code]);
-
 
 
         if ($this->full_name) {

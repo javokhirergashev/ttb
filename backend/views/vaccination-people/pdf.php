@@ -67,7 +67,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
     <br>
     <?php foreach ($classes as $index => $class): ?>
         <?php if ($class->id == 1) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">1.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 10%">Emlash turi</td>
@@ -109,7 +109,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             <br>
         <?php elseif ($class->id == 2) : ?>
 
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">2.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 11%">Tuberkulin sinamalari,oy,kun,yil</td>
@@ -155,7 +155,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             <br>
             <br>
         <?php elseif ($class->id == 3) : ?>
-            <p class="text-center" ><?= $class->name ?></p>
+            <p class="text-center" >3.<?= $class->name ?>:</p>
             <table style="margin-top:100px!important;" class="table table-bordered" >
         <tr>
             <td class="text-center" style="width: 11%">Tuberkulin sinamalari,oy,kun,yil</td>
@@ -197,7 +197,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
         <?php endforeach; ?>
     </table>
         <?php elseif ($class->id == 4) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">4.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 11%">Emlash turi</td>
@@ -232,30 +232,474 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 
                 <?php endforeach; ?>
             </table>
-            <br>
-            <br>
-            <br>
-            <br>
         <?php elseif ($class->id == 5) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">5.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 20%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center">Seriya</td>
+                    <td class="text-center">Emlashga reaksiyalar umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
         <?php elseif ($class->id == 6) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">6.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Preparatning nomi,ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:10%">Emlashga reaksiyalar maxalliy,umumiy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan maxalliy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->preparat_name: ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->reaction_local : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->reaction_common : ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
+            <div>
+                <span style="font-weight:bold">Preparatni harflar bilan belgilash:</span>
+                <p>
+                    <span>AKDS-adsorbirlangan difteriya-ko'kyo'tal-stolbnyak vaktsinasi;</span> <br>
+                    <span>ADS- adsorbirlangan difteriya-stolbnyak vaktsinasi;</span> <br>
+                    <span>ADS- adsorbirlangan difteriya-ko'kyo'tal-stolbnyak vaktsinasi(difteriya anatoksinini kam saqlaydi);</span><br>
+                    <span>SA- stolbnyak anotoksini (PRS-stolbnyakka qarshi zardob);</span> <br>
+                    <span>XIB- infeksiya-gemofil tayoqchalari chaqiradigan kasalliklarga:(bakterial meningit,zotiljam,sepsis)qarshi emlash;</span><br>
+                </p>
+            </div>
+            <br>
+            <br>
+            <br>
         <?php elseif ($class->id == 7) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">7.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Preparatning nomi,ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:10%">Emlashga reaksiyalar maxalliy,umumiy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan maxalliy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->preparat_name: ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->reaction_local : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->reaction_common : ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
+            <p class="text-center">KPK-qizamiq-epidparotit-qizilcha,KK-qizamiq-qizilchaga qarshi emlash</p>
+
         <?php elseif ($class->id == 8) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">8.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Preparatning nomi,ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:10%">Emlashga reaksiyalar maxalliy,umumiy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan maxalliy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->preparat_name: ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->reaction_local : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->reaction_common : ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
         <?php elseif ($class->id == 9) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">9.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+
+                <?php
+                /**
+                 * @var $models \common\models\Vaccination[]
+                 * @var $vaccinationPeople \common\models\VaccinationPeople
+                 */
+                $models = \common\models\Vaccination::find()->andWhere(['vaccination_class_id' => $class->id])
+                    ->orderBy(['id' => SORT_ASC])->all(); ?>
+
+                <?php foreach ($models as $model): ?>
+                    <?php $vaccinationPeople = \common\models\VaccinationPeople::find()->andWhere(['vaccination_id' => $model->id, 'people_id' => $person->id])->one(); ?>
+                    <tr>
+                        <td class="text-center"><?= $model->name ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? intval(date('Y')) - intval(date('Y', $vaccinationPeople->person->birthday)) : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->period : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->amount : "" ?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->seria : ""?></td>
+                        <td class="text-center"><?=$vaccinationPeople ? $vaccinationPeople->preparat_name: ""?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->reaction : "" ?></td>
+                        <td class="text-center"><?= $vaccinationPeople ? $vaccinationPeople->medical_repulse : "" ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+            </table>
         <?php elseif ($class->id == 10) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">10.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+
+
+
+            </table>
         <?php elseif ($class->id == 11) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">11.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+
+            </table>
         <?php elseif ($class->id == 12) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">12.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:1%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+            </table>
         <?php elseif ($class->id == 13) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">13.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 15%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:11%">Emlashga reaksiyalar</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 15%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center"></td>
+                </tr>
+
+
+            </table>
         <?php elseif ($class->id == 14) : ?>
-            <p class="text-center"><?= $class->name ?></p>
+            <p class="text-center">14.<?= $class->name ?>:</p>
+            <table class="table table-bordered">
+                <tr>
+                    <td class="text-center" style="width: 18%">Emlash turi</td>
+                    <td class="text-center" style="width: 8%">Yoshi</td>
+                    <td class="text-center" style="width: 10%">Muddati</td>
+                    <td class="text-center" style="width: 9%">Miqdori <br>(doza)</td>
+                    <td class="text-center" style="width:7%">Seriya</td>
+                    <td class="text-center" style="width:11%">Preparatning nomi,ishlab chiqaruvchi</td>
+                    <td class="text-center" style="width:10%">Emlashga reaksiyalar maxalliy,umumiy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan maxalliy</td>
+                    <td class="text-center" style="width:9%">Shu jumladan umumiy</td>
+                    <td class="text-center">Tibbiyot <br>qarshiligi <br> (muddat,sababi)</td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td class="text-center " style="width: 18%"><br><br></td>
+                    <td class="text-center" style="width: 8%"></td>
+                    <td class="text-center" style="width: 10%"></td>
+                    <td class="text-center" style="width: 9%"></td>
+                    <td class="text-center" style="width:7%"></td>
+                    <td class="text-center" style="width:11%"></td>
+                    <td class="text-center" style="width:10%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center" style="width:9%"></td>
+                    <td class="text-center"></td>
+                </tr>
+            </table>
         <?php endif; ?>
 
 

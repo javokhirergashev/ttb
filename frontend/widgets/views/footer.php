@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="single-footer-widget">
-                    <h3>Tinzer</h3>
-                    <p><?= Yii::t('app', "Bizning vazifamiz har tomonlama va shaxsiylashtirilgan tibbiy xizmatlar orqali odamlar va oilalar salomatligi va hayot sifatini yaxshilashdir. ")?></p>
+                    <h3><?= Yii::t('app', "Namangan shahar tibbiyot birlashmasi")?></h3>
+                    <p><?= Yii::t('app', "Bizning vazifamiz har tomonlama va shaxsiylashtirilgan tibbiy xizmatlar orqali odamlar va oilalar salomatligi va hayot sifatini yaxshilashdir.")?></p>
                     <ul class="footer-social">
                         <li>
                             <a href="#">
@@ -34,29 +34,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-1 col-sm-2">
                 <div class="single-footer-widget pl-5">
-                    <h3><?= Yii::t('app', "Bo'limlar")?></h3>
 
                     <ul class="footer-quick-links">
-                        <li>
-                            <a href="#">COVID-19 Testing</a>
-                        </li>
-                        <li>
-                            <a href="#">Birth Control</a>
-                        </li>
-                        <li>
-                            <a href="#">Orthopedics</a>
-                        </li>
-                        <li>
-                            <a href="#">Nuclear Magnetic</a>
-                        </li>
-                        <li>
-                            <a href="#">Eye Treatment</a>
-                        </li>
-                        <li>
-                            <a href="#">X-Ray</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -67,20 +49,20 @@
 
                     <ul class="footer-quick-links">
                         <li>
-                            <a href="<?= \yii\helpers\Url::to(['/']) ?>">Home</a>
+                            <a href="<?= \yii\helpers\Url::to(['/']) ?>"><?= Yii::t('app', "Bosh sahifa")?></a>
                         </li>
                         <li>
-                            <a href="<?= \yii\helpers\Url::to(['site/about']) ?>">About</a>
+                            <a href="<?= \yii\helpers\Url::to(['site/about']) ?>"><?= Yii::t('app', "Biz haqimizda")?></a>
                         </li>
 
                         <li>
-                            <a href="<?= \yii\helpers\Url::to(['service/index']) ?>">Services</a>
+                            <a href="<?= \yii\helpers\Url::to(['service/index']) ?>"><?= Yii::t('app', "Bizning xizmatlar")?></a>
                         </li>
                         <li>
-                            <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>">Blog</a>
+                            <a href="<?= \yii\helpers\Url::to(['blog/index']) ?>"><?= Yii::t('app', "Yangiliklar")?></a>
                         </li>
                         <li>
-                            <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>">Contact</a>
+                            <a href="<?= \yii\helpers\Url::to(['site/contact']) ?>"><?= Yii::t('app', "Kontaktlar")?></a>
                         </li>
                     </ul>
                 </div>

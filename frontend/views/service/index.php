@@ -63,10 +63,8 @@ use yii\widgets\ActiveForm;
 <section class="services-section bg-f4f6fe pt-100 pb-100">
     <div class="container">
         <div class="section-title">
-            <span><?= __('Our Services') ?></span>
-            <h2><?= __('Our Healthcare Services') ?></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Quis ipsum suspendisse</p>
+            <span><?=Yii::t('app',"Bizning xizmatlar")?></span>
+            <h2><?=Yii::t('app',"Sizga taqdim etadigan xizmatlarimiz")?></h2>
         </div>
         <?= \yii\widgets\ListView::widget([
             'dataProvider' => $dataProvider,

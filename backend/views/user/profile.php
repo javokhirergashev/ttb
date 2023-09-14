@@ -13,7 +13,7 @@
 
 ?>
 
-<div class="content">
+<div class="content parent-active">
     <div class="row">
         <div class="col-sm-7 col-6">
             <ul class="breadcrumb">

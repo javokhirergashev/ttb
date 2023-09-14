@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                       ],
                       [
                           'attribute' => 'qvp_id',
-                          'label' => 'Qvp',
+                          'label' => 'Ish joyi',
                           'value' => function ($data) {
                               return $data->qvp_id ? $data->qvp->title :"--- ---";
                           }

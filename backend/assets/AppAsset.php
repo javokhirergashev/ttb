@@ -34,7 +34,7 @@ class AppAsset extends AssetBundle
         "js/bootstrap-datetimepicker.min.js",
         "js/app.js",
         "js/modal.js",
-//        "js/main.js",
+        "js/main.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',

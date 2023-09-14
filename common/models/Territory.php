@@ -56,7 +56,7 @@ class Territory extends \yii\db\ActiveRecord
             'address' => 'Manzil',
             'people_count' => 'Aholi soni',
             'home_count' => 'Xonadon soni',
-            'qvp_id' => 'Qvp',
+            'qvp_id' => 'OP',
         ];
     }
 

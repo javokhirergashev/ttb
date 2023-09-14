@@ -27,6 +27,10 @@
                             <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
                                class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">Lavozimlar</a>
                         </li>
+                        <li>
+                            <a href="<?= \yii\helpers\Url::to(['user/table']) ?>"
+                               class="<?= (Yii::$app->controller->id == "user" && Yii::$app->controller->action->id == "table") ? "active" : "" ?>">Davomat</a>
+                        </li>
 
                     </ul>
                 </li>
@@ -44,12 +48,12 @@
                         </li>
                         <li>
                             <a href="<?= \yii\helpers\Url::to(['qvp/index']) ?>"
-                               class="<?= Yii::$app->controller->id == "qvp" ? "active" : "" ?>">Qvp
+                               class="<?= Yii::$app->controller->id == "qvp" ? "active" : "" ?>">Oila <br>poliklinikalari
                             </a>
                         </li>
                         <li>
                             <a href="<?= \yii\helpers\Url::to(['terriytory/index']) ?>"
-                               class="<?= Yii::$app->controller->id == "terriytory" ? "active" : "" ?>">Teritoriya
+                               class="<?= Yii::$app->controller->id == "terriytory" ? "active" : "" ?>">Brigadalar
                             </a>
                         </li>
 

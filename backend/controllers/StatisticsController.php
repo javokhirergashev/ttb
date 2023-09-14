@@ -2,7 +2,10 @@
 
 namespace backend\controllers;
 
+use common\models\Diagnosis;
+use common\models\DiagnosisList;
 use common\models\People;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 use yii\web\Controller;
 
 class StatisticsController extends Controller
@@ -61,6 +64,76 @@ order by old asc";
             ],
 
         ]);
+        return $file->send();
+    }
+
+    public function actionPeopleDiagnosis()
+    {
+
+        $rows = DiagnosisList::find()->all();
+
+//        echo "<pre>";
+//        var_dump($rows);
+//        die();
+        $data = [];
+        $total = 0;
+        foreach ($rows as $index => $row) {
+
+            $data[$index][] = $row->name ?? "";
+            $data[$index][] = rand(0, 15);
+
+        }
+        $data[$index + 1][] = "Jami: ";
+        $data[$index + 1][] = $total;
+
+        $titles = [
+            'Kasalliklar turi',
+            'Soni',
+        ];
+
+
+        $styleArray = array(
+            'font' => array(
+                'bold' => true,
+            ),
+            'borders' => array(
+                'allborders' => array(
+                    'style' => 1,
+                    'color' => array('rgb' => '000000')
+                )
+            ),
+        );
+
+
+
+        $file = \Yii::createObject([
+            'class' => 'codemix\excelexport\ExcelFile',
+            'sheets' => [
+                'Result per Country' => [   // Name of the excel sheet
+                    'data' => $data,
+                    // Set to `false` to suppress the title row
+                    'titles' => $titles,
+                    'on beforeRender' => function ($event) {
+                        $sheet = $event->sender->getSheet();
+                        $sheet->getStyle('A1:A250')->getFill()->setFillType(Fill::FILL_SOLID)->getStartColor()->setARGB('FFFF00');
+//                        $sheet->setCellValue('B3', 'List of Diagnosis');
+                        $sheet->getStyle('A')->applyFromArray([
+                            'font' => [
+                                'color' => ['rgb' => '#F2E35A'],
+                            ]
+                        ]);
+                    }
+
+
+                ],
+
+            ],
+
+        ]);
+
+        $file->getWorkbook()->getActiveSheet()->getStyle("A1:BA100")->applyFromArray($styleArray);
+
+
         return $file->send();
     }
 }

@@ -50,7 +50,8 @@ $endTimestamp = strtotime(date('Y-m-d 23:59:59', strtotime($searchModel->date)))
                                                                value="Izlash">
                                                     </div>
                                                     <div class="justify-content-center">
-                                                        <a title="Tozalash" href="<?= \yii\helpers\Url::to(['user/table-view','id' => $user->id]) ?>"
+                                                        <a title="Tozalash"
+                                                           href="<?= \yii\helpers\Url::to(['user/table-view', 'id' => $user->id]) ?>"
                                                            class="btn doctor-refresh ms-2"><img
                                                                     src="/backend-files/img/icons/re-fresh.svg" alt=""></a>
                                                     </div>
@@ -71,6 +72,7 @@ $endTimestamp = strtotime(date('Y-m-d 23:59:59', strtotime($searchModel->date)))
                         <table class="table border-0 custom-table comman-table datatable mb-0">
                             <thead>
                             <tr>
+                                <th>Nomer</th>
                                 <th>Sana</th>
                                 <th>Vaqti</th>
                                 <th>Holati</th>
@@ -81,7 +83,7 @@ $endTimestamp = strtotime(date('Y-m-d 23:59:59', strtotime($searchModel->date)))
 
                             foreach ($dataProvider->getModels() as $index => $model): ?>
                                 <tr>
-                                    <td><?= $model->id; ?></td>
+                                    <td><?= Yii::$app->request->queryParams['page'] ? Yii::$app->request->queryParams['page'] * 10 + $index + 1 : $index + 1 ?></td>
                                     <td class="profile-image">
                                         <?= date('d-m-Y', $model->created_at) ?>
                                     </td>
@@ -95,6 +97,15 @@ $endTimestamp = strtotime(date('Y-m-d 23:59:59', strtotime($searchModel->date)))
                             <?php endforeach; ?>
                             </tbody>
                         </table>
+
+                    </div>
+                    <div class="row ml-auto">
+
+                        <?= \yii\widgets\LinkPager::widget([
+                            'pagination' => $dataProvider->pagination,
+                            'prevPageLabel' => '<i class="fa fa-chevron-left"></i>',
+                            'nextPageLabel' => '<i class="fa fa-chevron-right"></i>',
+                        ]) ?>
                     </div>
                 </div>
             </div>

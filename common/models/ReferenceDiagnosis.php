@@ -134,7 +134,7 @@ class ReferenceDiagnosis extends \yii\db\ActiveRecord
             self::POSITION_DERMATOLOG => 'Dermatolog',
             self::POSITION_RENTGEN => 'Rentgen (flyurografik) tekshiruv ma\'lumoti',
             self::POSITION_LABORANT => 'Laborator tekshiruvlar ma\'lumoti',
-            self::POSITION_MAIN_DOCTOR => 'TNK xulosasi:',
+            self::POSITION_MAIN_DOCTOR => 'Bosh vrach',
 
         ];
     }

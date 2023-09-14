@@ -10,7 +10,7 @@ use yii\helpers\Url;
 /** @var common\models\search\QvpSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Qvp';
+$this->title = 'Oila poliklinikalari';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="qvp-index">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <p>
-        <?= Html::a('Yangi Qvp yaratish', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yangi OP yaratish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <div class="row">
         <div class="col-md-12">

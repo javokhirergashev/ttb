@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Address</label>
+                <label class="col-form-label">Manzili</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'address')->textInput()->label(false) ?>
                 </div>
@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Phone number</label>
+                <label class="col-form-label">Telefon raqami</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'phone_number')->textInput()->label(false) ?>
                 </div>
@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Qvp number</label>
+                <label class="col-form-label">OP raqami</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'number')->textInput()->label(false) ?>
                 </div>
@@ -49,7 +49,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Region</label>
+                <label class="col-form-label">Viloyat</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'region_id')->dropDownList(Region::getDropDownList(), [
                         'value' => Region::NAMANGAN_ID
@@ -59,7 +59,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">District</label>
+                <label class="col-form-label">Tuman</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'district_id')->dropDownList(District::getDropdownList(), ['id' => 'quarter-id', 'prompt' => "Hududni tanlang"])->label(false) ?>
                 </div>
@@ -67,7 +67,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row">
-                <label class="col-form-label">Quarter</label>
+                <label class="col-form-label">Mahalla</label>
                 <div class="col-md-9">
                     <?php
                     echo $form->field($model, 'quarterIds')->widget(DepDrop::classname(), [
@@ -90,12 +90,12 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <div class="form-group row" style="padding-top: 20px!important;">
-                <label class="col-form-label">Qvp turi</label>
+                <label class="col-form-label">OP turi</label>
                 <div class="col-md-9">
                     <?= $form->field($model, 'type')->dropDownList([
-                        \common\models\Qvp::TYPE_CLINIC => "Kilinika",
+                        \common\models\Qvp::TYPE_CLINIC => "Poliklinika",
                         \common\models\Qvp::TYPE_QVP => "Qvp",
-                    ], ['prompt' => "Qvp turini tanlang ..."])->label(false) ?>
+                    ], ['prompt' => "OP turini tanlang ..."])->label(false) ?>
                 </div>
             </div>
         </div>

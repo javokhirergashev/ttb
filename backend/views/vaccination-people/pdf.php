@@ -36,7 +36,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 </div>
 <div class="row">
 
-    <p style="font-weight: bold;font-size: 20px" class="text-center ">Imtiyozli yo’llanma №<?= $person->id ?></p>
+    <p style="font-weight: bold;font-size: 20px" class="text-center ">Profilaktik emlash kartasi №<?= $person->id ?></p>
     <p class="text-center" style="font-size:17px;font-weight:500">O'zbekiston Respublikasi Sog'liqni Saqlash Vazirligi
         Namangan Shahar Tibbiyot Birlashmasi <br>Tibbiyot muassasasi nomi: <?= $person->qvp->title ?>&nbsp;<span
                 style="text-decoration: underline;font-weight: bold">F №063</span></p>

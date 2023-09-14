@@ -15,10 +15,10 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; O'zbekiston Respublikasi</p>
-        <p>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sog'liqni saqlash Vazirligi&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+        <p>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sog'liqni Saqlash Vazirligi&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; Sog'liqni saqlash Vazirining</p>
+            &nbsp; &nbsp; &nbsp; Sog'liqni Saqlash Vazirining</p>
         <p>&nbsp;&nbsp;Namangan Shahar Tibbiyot Birlashmasi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 17.01.2022.yildagi 16-buyruq</p>
@@ -67,7 +67,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
     <br>
     <?php foreach ($classes as $index => $class): ?>
         <?php if ($class->id == 1) : ?>
-            <p class="text-center">1.<?= $class->name ?>:</p>
+            <p  class="text-center" style="font-weight:bold">1.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 10%">Emlash turi</td>
@@ -109,7 +109,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             <br>
         <?php elseif ($class->id == 2) : ?>
 
-            <p class="text-center">2.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">2.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 11%">Tuberkulin sinamalari,oy,kun,yil</td>
@@ -155,7 +155,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             <br>
             <br>
         <?php elseif ($class->id == 3) : ?>
-            <p class="text-center" >3.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center" >3.<?= $class->name ?>:</p>
             <table style="margin-top:100px!important;" class="table table-bordered" >
         <tr>
             <td class="text-center" style="width: 11%">Tuberkulin sinamalari,oy,kun,yil</td>
@@ -197,7 +197,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
         <?php endforeach; ?>
     </table>
         <?php elseif ($class->id == 4) : ?>
-            <p class="text-center">4.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">4.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 11%">Emlash turi</td>
@@ -233,7 +233,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php endforeach; ?>
             </table>
         <?php elseif ($class->id == 5) : ?>
-            <p class="text-center">5.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">5.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 20%">Emlash turi</td>
@@ -269,7 +269,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php endforeach; ?>
             </table>
         <?php elseif ($class->id == 6) : ?>
-            <p class="text-center">6.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">6.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 18%">Emlash turi</td>
@@ -324,7 +324,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             <br>
             <br>
         <?php elseif ($class->id == 7) : ?>
-            <p class="text-center">7.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">7.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 18%">Emlash turi</td>
@@ -367,7 +367,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
             <p class="text-center">KPK-qizamiq-epidparotit-qizilcha,KK-qizamiq-qizilchaga qarshi emlash</p>
 
         <?php elseif ($class->id == 8) : ?>
-            <p class="text-center">8.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">8.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 18%">Emlash turi</td>
@@ -408,7 +408,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php endforeach; ?>
             </table>
         <?php elseif ($class->id == 9) : ?>
-            <p class="text-center">9.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">9.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 18%">Emlash turi</td>
@@ -445,7 +445,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 <?php endforeach; ?>
             </table>
         <?php elseif ($class->id == 10) : ?>
-            <p class="text-center">10.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">10.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 15%">Emlash turi</td>
@@ -482,7 +482,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 
             </table>
         <?php elseif ($class->id == 11) : ?>
-            <p class="text-center">11.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">11.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 15%">Emlash turi</td>
@@ -537,7 +537,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 
             </table>
         <?php elseif ($class->id == 12) : ?>
-            <p class="text-center">12.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">12.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 15%">Emlash turi</td>
@@ -581,7 +581,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                 </tr>
             </table>
         <?php elseif ($class->id == 13) : ?>
-            <p class="text-center">13.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">13.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 15%">Emlash turi</td>
@@ -637,7 +637,7 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
 
             </table>
         <?php elseif ($class->id == 14) : ?>
-            <p class="text-center">14.<?= $class->name ?>:</p>
+            <p style="font-weight:bold" class="text-center">14.<?= $class->name ?>:</p>
             <table class="table table-bordered">
                 <tr>
                     <td class="text-center" style="width: 18%">Emlash turi</td>

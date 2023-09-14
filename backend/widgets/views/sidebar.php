@@ -27,6 +27,10 @@
                             <a href="<?= \yii\helpers\Url::to(['position/']) ?>"
                                class="<?= Yii::$app->controller->id == "position" ? "active" : "" ?>">Lavozimlar</a>
                         </li>
+                        <li>
+                            <a href="<?= \yii\helpers\Url::to(['user/table']) ?>"
+                               class="<?= (Yii::$app->controller->id == "user" && Yii::$app->controller->action->id == "table") ? "active" : "" ?>">Davomat</a>
+                        </li>
 
                     </ul>
                 </li>

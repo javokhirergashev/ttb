@@ -106,7 +106,7 @@
                             <div class="card-body">
 
                                 <div class="table-responsive">
-                                    <table class="table border-0 custom-table comman-table datatable mb-0">
+                                    <table class="table border-0 custom-table datatable mb-0 comman-table">
                                         <thead>
                                         <tr>
                                             <th>

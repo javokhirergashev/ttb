@@ -700,6 +700,13 @@ $classes = \common\models\VaccinationClass::find()->orderBy(['id' => SORT_ASC])-
                     <td class="text-center"></td>
                 </tr>
             </table>
+            <p> Karta davolash- profilaftik muassasalarda bolani ro'yhatga olish vaqtida to'ldiriladi.
+                Bolaning shahardan yoki tumandan ketishida F№63 xujjatining nusxasi beriladi.Kartaning asosiy
+                shakli tibbiyot muassasasida qoladi va 5 yilgacha saqlanadi.
+            </p>
+            <p> Ro'yxatdan o'chirilgan sana: ____________________  imzo:__________________</p>
+
+
         <?php endif; ?>
 
 

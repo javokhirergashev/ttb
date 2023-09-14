@@ -34,16 +34,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="card-box">
 
-                    <form action="" enctype="multipart/form-data" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input class="form-control" type="file" accept=".xlsx,.xls" name="excel">
-                            </div>
-                            <div class="col-md-6">
-                            <button style="padding: 10px;"  type="submit" class="btn btn-success">Yuklash</button>
-                            </div>
+                <form action="" enctype="multipart/form-data" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" type="file" accept=".xlsx,.xls" name="excel">
                         </div>
-                    </form>
+                        <div class="col-md-6">
+                            <button style="padding: 10px;" type="submit" class="btn btn-success">Yuklash</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -52,11 +52,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-12">
             <div class="card-box">
                 <div class="col-md-6"></div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-start gap-2">
 
                     <div class="text-end">
                         <a class="btn btn-success" href="<?= Url::to(['statistics/people-by-year']) ?>">Yosh bo'yicha
                             hisobot &nbsp&nbsp<i
+                                    class="fa fa-file-excel"></i></a>
+                    </div>
+                    <div class="text-start">
+                        <a class="btn btn-success" href="<?= Url::to(['statistics/people-diagnosis']) ?>">Kasalliklar
+                            bo'yicha hisobot &nbsp&nbsp<i
                                     class="fa fa-file-excel"></i></a>
                     </div>
                 </div>

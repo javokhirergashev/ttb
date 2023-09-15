@@ -29,12 +29,12 @@ use yii\widgets\ActiveForm;
                                 <?= $form->field($model, 'last_name')->textInput(['maxlength' => true])->label(false) ?>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-form-label">email</label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'email')->textInput(['maxlength' => true])->label(false) ?>
-                            </div>
-                        </div>
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">email</label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'email')->textInput(['maxlength' => true])->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group row">
                             <label class="col-form-label">Telefon</label>
                             <div class="col-md-9">
@@ -104,47 +104,47 @@ use yii\widgets\ActiveForm;
                                 ])->label(false) ?>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-form-label">Rol</label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'role')->dropDownList([
-                                    \common\models\User::ROLE_ADMIN => "admin",
-                                    \common\models\User::ROLE_MANAGER => "menejer",
-                                    \common\models\User::ROLE_STATIST => "statist",
-                                    \common\models\User::ROLE_DOCTOR => "shifokor",
-                                    \common\models\User::ROLE_NURSE => "Hamshira",
-                                ], ['prompt' => "Rolni tanlang"])->label(false) ?>
-                            </div>
-                        </div>
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">Rol</label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'role')->dropDownList([
+//                                    \common\models\User::ROLE_ADMIN => "admin",
+//                                    \common\models\User::ROLE_MANAGER => "menejer",
+//                                    \common\models\User::ROLE_STATIST => "statist",
+//                                    \common\models\User::ROLE_DOCTOR => "shifokor",
+//                                    \common\models\User::ROLE_NURSE => "Hamshira",
+//                                ], ['prompt' => "Rolni tanlang"])->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label">Login</label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'username')->textInput(['maxlength' => true])->label(false) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label">Parol</label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'password')->passwordInput()->label(false) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label">Parolni takrorlang </label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'password_confirm')->passwordInput()->label(false) ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label">Statusi</label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'status')->dropDownList([
-                                    \common\models\User::STATUS_ACTIVE => "Active",
-                                    \common\models\User::STATUS_INACTIVE => "InActive",
-                                ], ['prompt' => "Statusni tanlang"])->label(false) ?>
-                            </div>
-                        </div>
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">Login</label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'username')->textInput(['maxlength' => true])->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">Parol</label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'password')->passwordInput()->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">Parolni takrorlang </label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'password_confirm')->passwordInput()->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">Statusi</label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'status')->dropDownList([
+//                                    \common\models\User::STATUS_ACTIVE => "Active",
+//                                    \common\models\User::STATUS_INACTIVE => "InActive",
+//                                ], ['prompt' => "Statusni tanlang"])->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group row">
                             <label class="col-form-label">Jinsi</label>
                             <div class="col-md-9">
@@ -183,15 +183,15 @@ use yii\widgets\ActiveForm;
                                 ], ['prompt' => "Toifani tanlang"])->label(false) ?>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-form-label">Hayfsan</label>
-                            <div class="col-md-9">
-                                <?= $form->field($model, 'hayfsan')->dropDownList([
-                                    \common\models\UserCreateForm::HAYFSAN_FALSE => "Bor",
-                                    \common\models\UserCreateForm::HAYFSAN_TRUE => "Yo'q",
-                                ], ['prompt' => "Hayfsan belgilash"])->label(false) ?>
-                            </div>
-                        </div>
+<!--                        <div class="form-group row">-->
+<!--                            <label class="col-form-label">Hayfsan</label>-->
+<!--                            <div class="col-md-9">-->
+<!--                                --><?php //= $form->field($model, 'hayfsan')->dropDownList([
+//                                    \common\models\UserCreateForm::HAYFSAN_FALSE => "Bor",
+//                                    \common\models\UserCreateForm::HAYFSAN_TRUE => "Yo'q",
+//                                ], ['prompt' => "Hayfsan belgilash"])->label(false) ?>
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group row">
                             <label class="col-form-label">Lavozimi</label>
                             <div class="col-md-9">
